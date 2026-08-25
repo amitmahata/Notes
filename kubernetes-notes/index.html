@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kubernetes Handwritten Notes</title>
+  <meta name="description" content="Beautiful handwritten-style notes for learning Kubernetes — covering pods, deployments, services, architecture and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- App Shell -->
+  <div class="app">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="k8s-logo">⎈</span>
+        <span class="topbar-title">Kubernetes Study Notes <span class="author-pill">by Amit Mahata</span></span>
+      </div>
+      <div class="topbar-center">
+        <span class="page-indicator" id="pageIndicator">Page 1 / 6</span>
+      </div>
+      <div class="topbar-right">
+        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 Download PDF</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">&#8592; Prev</button>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next &#8594;</button>
+      </div>
+    </header>
+
+    <!-- Dot navigation -->
+    <div class="dot-nav" id="dotNav"></div>
+
+    <!-- Notebook Pages Container -->
+    <main class="notebook-container" id="notebookContainer">
+
+      <!-- ========== PAGE 1: What is Kubernetes? ========== -->
+      <div class="notebook-page active" id="page-1">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">1/6</span>
+            </div>
+
+            <h1 class="page-title">
+              What is <span class="highlight-blue">Kubernetes?</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="section-block">
+              <div class="section-num-circle">1</div>
+              <h2 class="section-title">What is Kubernetes?</h2>
+              <div class="two-col">
+                <div class="col-left">
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-blue">Kubernetes</span> is an open-source <span class="highlight-red">container orchestration</span> platform.</li>
+                    <li>Originally developed by <span class="highlight-yellow">Google</span>, now maintained by CNCF.</li>
+                    <li>Automates <span class="highlight-green">deployment, scaling</span> and management of containerized apps.</li>
+                    <li>Also known as <span class="highlight-purple">K8s</span> (K + 8 letters + s).</li>
+                    <li>Works with Docker, containerd, CRI-O runtimes.</li>
+                  </ul>
+                </div>
+                <div class="col-right">
+                  <div class="diagram-box">
+                    <div class="diagram-title">Kubernetes Stack</div>
+                    <div class="stack-diagram">
+                      <div class="stack-layer layer-app">Your App (Containers)</div>
+                      <div class="stack-arrow">&#8595;</div>
+                      <div class="stack-layer layer-pod">Pods</div>
+                      <div class="stack-arrow">&#8595;</div>
+                      <div class="stack-layer layer-k8s">&#9096; Kubernetes</div>
+                      <div class="stack-arrow">&#8595;</div>
+                      <div class="stack-layer layer-infra">Nodes / Infra</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">2</div>
+              <h2 class="section-title">Why Kubernetes?</h2>
+              <div class="feature-grid">
+                <div class="feature-card">
+                  <div class="feature-icon">&#9889;</div>
+                  <div class="feature-label">Auto Scaling</div>
+                  <div class="feature-desc">Scale up/down based on load automatically</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#128260;</div>
+                  <div class="feature-label">Self Healing</div>
+                  <div class="feature-desc">Restarts crashed containers automatically</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#128257;</div>
+                  <div class="feature-label">Rolling Updates</div>
+                  <div class="feature-desc">Zero-downtime deployments</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#9878;</div>
+                  <div class="feature-label">Load Balancing</div>
+                  <div class="feature-desc">Distributes traffic across pods</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#128295;</div>
+                  <div class="feature-label">Bin Packing</div>
+                  <div class="feature-desc">Optimally places containers on nodes</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#128274;</div>
+                  <div class="feature-label">Secrets Mgmt</div>
+                  <div class="feature-desc">Manages sensitive config data</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="remember-box">
+              <div class="remember-title">&#11088; Remember</div>
+              <div class="remember-items">
+                <div class="remember-item">&#10003; Kubernetes does <strong>NOT</strong> run your code -- it orchestrates containers</div>
+                <div class="remember-item">&#10003; K8s = open-source, cloud-native, declarative configuration</div>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <div class="tip-title">&#128161; Interview Tip</div>
+              <div class="tip-content">
+                <strong>Q:</strong> What is Kubernetes?<br/>
+                <strong>A:</strong> Kubernetes is an open-source container orchestration platform that automates deployment, scaling, and management of containerized applications.
+              </div>
+            </div>
+
+            <div class="page-footer">© 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 2: Architecture ========== -->
+      <div class="notebook-page" id="page-2">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">2/6</span>
+            </div>
+
+            <h1 class="page-title">
+              Kubernetes <span class="highlight-blue">Architecture</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="section-block">
+              <div class="section-num-circle">1</div>
+              <h2 class="section-title">Cluster Overview</h2>
+              <div class="arch-diagram">
+                <div class="arch-cluster">
+                  <div class="arch-control-plane">
+                    <div class="arch-cp-title">&#129504; Control Plane (Master)</div>
+                    <div class="arch-cp-components">
+                      <div class="arch-comp yellow">API Server</div>
+                      <div class="arch-comp green">etcd</div>
+                      <div class="arch-comp blue">Scheduler</div>
+                      <div class="arch-comp pink">Controller Manager</div>
+                    </div>
+                  </div>
+                  <div class="arch-arrow-down">&#8597; communicates via API</div>
+                  <div class="arch-workers">
+                    <div class="arch-node">
+                      <div class="arch-node-title">Worker Node 1</div>
+                      <div class="arch-node-comp">kubelet</div>
+                      <div class="arch-node-comp">kube-proxy</div>
+                      <div class="arch-pods-row">
+                        <div class="mini-pod">Pod</div>
+                        <div class="mini-pod">Pod</div>
+                      </div>
+                    </div>
+                    <div class="arch-node">
+                      <div class="arch-node-title">Worker Node 2</div>
+                      <div class="arch-node-comp">kubelet</div>
+                      <div class="arch-node-comp">kube-proxy</div>
+                      <div class="arch-pods-row">
+                        <div class="mini-pod">Pod</div>
+                        <div class="mini-pod">Pod</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">2</div>
+              <h2 class="section-title">Control Plane vs Worker Nodes</h2>
+              <div class="compare-table">
+                <div class="compare-header">
+                  <div class="compare-col-header compare-blue">Control Plane</div>
+                  <div class="compare-col-header compare-green">Worker Node</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell">kube-apiserver -- central gateway</div>
+                  <div class="compare-cell">kubelet -- node agent</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell">etcd -- key-value store</div>
+                  <div class="compare-cell">kube-proxy -- network rules</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell">kube-scheduler -- assigns pods</div>
+                  <div class="compare-cell">Container Runtime (Docker/CRI-O)</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell">controller-manager -- maintains state</div>
+                  <div class="compare-cell">Pods run here</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col" style="gap:12px">
+              <div class="remember-box" style="flex:1">
+                <div class="remember-title">&#11088; Key Points</div>
+                <div class="remember-items">
+                  <div class="remember-item">&#10003; etcd stores <strong>all</strong> cluster state</div>
+                  <div class="remember-item">&#10003; API Server is the only entry point</div>
+                  <div class="remember-item">&#10003; Scheduler only assigns, doesn't run pods</div>
+                </div>
+              </div>
+              <div class="tip-box" style="flex:1">
+                <div class="tip-title">&#128161; Interview Tip</div>
+                <div class="tip-content">
+                  <strong>Q:</strong> What is etcd?<br/>
+                  <strong>A:</strong> etcd is a distributed key-value store that stores the entire cluster state and configuration.
+                </div>
+              </div>
+            </div>
+
+            <div class="page-footer">© 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 3: Pods & Deployments ========== -->
+      <div class="notebook-page" id="page-3">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">3/6</span>
+            </div>
+
+            <h1 class="page-title">
+              <span class="highlight-green">Pods</span> &amp; <span class="highlight-blue">Deployments</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="two-col">
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">1</div>
+                <h2 class="section-title">What is a Pod?</h2>
+                <ul class="handwritten-list">
+                  <li><span class="highlight-green">Smallest deployable</span> unit in Kubernetes</li>
+                  <li>Contains <span class="highlight-blue">one or more</span> containers</li>
+                  <li>Containers share <span class="highlight-yellow">network &amp; storage</span></li>
+                  <li>Has a unique IP address inside the cluster</li>
+                  <li>Ephemeral -- pods can die and be replaced</li>
+                </ul>
+                <div class="pod-diagram">
+                  <div class="pod-box">
+                    <div class="pod-label">Pod</div>
+                    <div class="pod-inner">
+                      <div class="container-box">Container 1</div>
+                      <div class="container-box">Container 2</div>
+                    </div>
+                    <div class="pod-share">Shared: Network + Volume</div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">2</div>
+                <h2 class="section-title">What is a Deployment?</h2>
+                <ul class="handwritten-list">
+                  <li>Manages <span class="highlight-blue">ReplicaSets</span> of pods</li>
+                  <li>Declares <span class="highlight-green">desired state</span> (e.g., "3 replicas")</li>
+                  <li>Handles <span class="highlight-red">rolling updates</span> &amp; rollbacks</li>
+                  <li>Self-heals -- replaces failed pods automatically</li>
+                </ul>
+                <div class="deploy-diagram">
+                  <div class="deploy-label">Deployment</div>
+                  <div class="deploy-arrow">&#8595; manages</div>
+                  <div class="replicaset-label">ReplicaSet (replicas: 3)</div>
+                  <div class="deploy-arrow">&#8595; creates</div>
+                  <div class="pods-row">
+                    <div class="mini-pod-green">Pod</div>
+                    <div class="mini-pod-green">Pod</div>
+                    <div class="mini-pod-green">Pod</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">3</div>
+              <h2 class="section-title">Pod Lifecycle</h2>
+              <div class="lifecycle-row">
+                <div class="lifecycle-step step-pending">Pending<br/><small>Scheduled, not started</small></div>
+                <div class="lifecycle-arrow">&#8594;</div>
+                <div class="lifecycle-step step-running">Running<br/><small>At least one container running</small></div>
+                <div class="lifecycle-arrow">&#8594;</div>
+                <div class="lifecycle-step step-succeeded">Succeeded<br/><small>All containers exited 0</small></div>
+                <div class="lifecycle-or">or</div>
+                <div class="lifecycle-step step-failed">Failed<br/><small>Container exited non-zero</small></div>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <div class="tip-title">&#128161; Interview Tip</div>
+              <div class="tip-content">
+                <strong>Q:</strong> Difference between Pod and Deployment?<br/>
+                <strong>A:</strong> A Pod is a single instance of your app. A Deployment manages a group of identical pods with features like scaling, rolling updates, and self-healing.
+              </div>
+            </div>
+
+            <div class="page-footer">© 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 4: Services & Networking ========== -->
+      <div class="notebook-page" id="page-4">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">4/6</span>
+            </div>
+
+            <h1 class="page-title">
+              Services &amp; <span class="highlight-purple">Networking</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="section-block">
+              <div class="section-num-circle">1</div>
+              <h2 class="section-title">What is a Service?</h2>
+              <div class="two-col">
+                <div class="col-left">
+                  <ul class="handwritten-list">
+                    <li>A stable network endpoint to <span class="highlight-blue">expose pods</span></li>
+                    <li>Pods have dynamic IPs -- Services give a <span class="highlight-green">stable IP</span></li>
+                    <li>Acts as a <span class="highlight-red">load balancer</span> across pod replicas</li>
+                    <li>Uses <span class="highlight-yellow">label selectors</span> to find target pods</li>
+                  </ul>
+                </div>
+                <div class="col-right">
+                  <div class="service-diagram">
+                    <div class="client-box">Client</div>
+                    <div class="svc-arrow">&#8595;</div>
+                    <div class="service-box">Service (stable IP)</div>
+                    <div class="svc-arrow">&#8595; routes to</div>
+                    <div class="svc-pods">
+                      <div class="mini-pod">Pod</div>
+                      <div class="mini-pod">Pod</div>
+                      <div class="mini-pod">Pod</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">2</div>
+              <h2 class="section-title">Types of Services</h2>
+              <div class="compare-table">
+                <div class="compare-header">
+                  <div class="compare-col-header compare-blue" style="width:25%">Type</div>
+                  <div class="compare-col-header compare-green" style="width:35%">Access</div>
+                  <div class="compare-col-header compare-yellow" style="width:40%">Use Case</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">ClusterIP</div>
+                  <div class="compare-cell">Only within cluster</div>
+                  <div class="compare-cell">Internal microservice comms</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">NodePort</div>
+                  <div class="compare-cell">External via Node IP:Port</div>
+                  <div class="compare-cell">Dev/Testing exposure</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">LoadBalancer</div>
+                  <div class="compare-cell">External via Cloud LB</div>
+                  <div class="compare-cell">Production traffic (AWS/GCP)</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">ExternalName</div>
+                  <div class="compare-cell">DNS CNAME to external</div>
+                  <div class="compare-cell">Access external DB etc.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col" style="gap:12px">
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">3</div>
+                <h2 class="section-title">Ingress</h2>
+                <ul class="handwritten-list">
+                  <li>HTTP/HTTPS routing to services</li>
+                  <li>Supports <span class="highlight-blue">host-based</span> routing</li>
+                  <li>Supports <span class="highlight-green">path-based</span> routing</li>
+                  <li>Requires an <span class="highlight-red">Ingress Controller</span> (nginx, traefik)</li>
+                </ul>
+              </div>
+              <div class="tip-box" style="flex:1; align-self:flex-start; margin-top:15px">
+                <div class="tip-title">&#128161; Interview Tip</div>
+                <div class="tip-content">
+                  <strong>Q:</strong> LoadBalancer vs Ingress?<br/>
+                  <strong>A:</strong> LoadBalancer per-service (expensive). Ingress is one entry point routing to multiple services -- better for HTTP.
+                </div>
+              </div>
+            </div>
+
+            <div class="page-footer">© 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 5: ConfigMaps, Secrets & Volumes ========== -->
+      <div class="notebook-page" id="page-5">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">5/6</span>
+            </div>
+
+            <h1 class="page-title">
+              Config, <span class="highlight-red">Secrets</span> &amp; <span class="highlight-blue">Volumes</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="two-col">
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">1</div>
+                <h2 class="section-title">ConfigMap</h2>
+                <ul class="handwritten-list">
+                  <li>Stores <span class="highlight-blue">non-sensitive</span> configuration data</li>
+                  <li>Key-value pairs or entire config files</li>
+                  <li>Injected as env vars or mounted as volumes</li>
+                  <li>Example: DB host, app port, feature flags</li>
+                </ul>
+                <div class="code-snippet">
+                  <div class="code-line"><span class="code-key">apiVersion:</span> v1</div>
+                  <div class="code-line"><span class="code-key">kind:</span> ConfigMap</div>
+                  <div class="code-line"><span class="code-key">data:</span></div>
+                  <div class="code-line">&nbsp;&nbsp;<span class="code-key">DB_HOST:</span> "postgres"</div>
+                  <div class="code-line">&nbsp;&nbsp;<span class="code-key">APP_PORT:</span> "8080"</div>
+                </div>
+              </div>
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">2</div>
+                <h2 class="section-title">Secrets</h2>
+                <ul class="handwritten-list">
+                  <li>Stores <span class="highlight-red">sensitive</span> data (passwords, tokens)</li>
+                  <li>Base64 encoded <span class="highlight-yellow">(NOT encrypted by default!)</span></li>
+                  <li>Should enable etcd encryption at rest</li>
+                  <li>Types: Opaque, TLS, docker-registry</li>
+                </ul>
+                <div class="code-snippet">
+                  <div class="code-line"><span class="code-key">apiVersion:</span> v1</div>
+                  <div class="code-line"><span class="code-key">kind:</span> Secret</div>
+                  <div class="code-line"><span class="code-key">type:</span> Opaque</div>
+                  <div class="code-line"><span class="code-key">data:</span></div>
+                  <div class="code-line">&nbsp;&nbsp;<span class="code-key">password:</span> cGFzc3dvcmQ=</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">3</div>
+              <h2 class="section-title">Volumes &amp; Persistent Storage</h2>
+              <div class="volumes-grid">
+                <div class="volume-card">
+                  <div class="vol-name">emptyDir</div>
+                  <div class="vol-desc">Temp storage, deleted when pod dies</div>
+                </div>
+                <div class="volume-card">
+                  <div class="vol-name">hostPath</div>
+                  <div class="vol-desc">Mounts node filesystem path</div>
+                </div>
+                <div class="volume-card">
+                  <div class="vol-name">PersistentVolume</div>
+                  <div class="vol-desc">Cluster-wide storage resource (PV)</div>
+                </div>
+                <div class="volume-card">
+                  <div class="vol-name">PVC</div>
+                  <div class="vol-desc">Pod's claim to use a PV</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="remember-box">
+              <div class="remember-title">&#11088; ConfigMap vs Secret</div>
+              <div class="remember-items">
+                <div class="remember-item">&#10003; ConfigMap = non-sensitive config, plain text</div>
+                <div class="remember-item">&#10003; Secret = sensitive data, base64 encoded (enable encryption at rest!)</div>
+              </div>
+            </div>
+
+            <div class="page-footer">© 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 6: Real-World Use Cases & Quick Reference ========== -->
+      <div class="notebook-page" id="page-6">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">6/6</span>
+            </div>
+
+            <h1 class="page-title">
+              Use Cases &amp; <span class="highlight-yellow">Quick Reference</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="section-block">
+              <div class="section-num-circle">1</div>
+              <h2 class="section-title">Real-World Use Cases</h2>
+              <div class="usecase-grid">
+                <div class="usecase-card">
+                  <div class="uc-title">Microservices</div>
+                  <div class="uc-desc">Run 100s of microservices independently, scale each separately</div>
+                </div>
+                <div class="usecase-card">
+                  <div class="uc-title">CI/CD Pipelines</div>
+                  <div class="uc-desc">Jenkins, ArgoCD, Tekton run on K8s for build and deploy</div>
+                </div>
+                <div class="usecase-card">
+                  <div class="uc-title">ML Workloads</div>
+                  <div class="uc-desc">GPU workloads, model training and serving at scale</div>
+                </div>
+                <div class="usecase-card">
+                  <div class="uc-title">Multi-Cloud</div>
+                  <div class="uc-desc">Portable workloads across AWS, GCP, Azure</div>
+                </div>
+                <div class="usecase-card">
+                  <div class="uc-title">Data Platforms</div>
+                  <div class="uc-desc">Kafka, Spark, Flink run on Kubernetes clusters</div>
+                </div>
+                <div class="usecase-card">
+                  <div class="uc-title">E-Commerce</div>
+                  <div class="uc-desc">Netflix, Airbnb, Spotify scale on demand</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">2</div>
+              <h2 class="section-title">kubectl Quick Reference</h2>
+              <div class="cmd-grid">
+                <div class="cmd-card">
+                  <div class="cmd-code">kubectl get pods</div>
+                  <div class="cmd-desc">List all pods</div>
+                </div>
+                <div class="cmd-card">
+                  <div class="cmd-code">kubectl describe pod &lt;name&gt;</div>
+                  <div class="cmd-desc">Detailed pod info</div>
+                </div>
+                <div class="cmd-card">
+                  <div class="cmd-code">kubectl logs &lt;pod&gt;</div>
+                  <div class="cmd-desc">View pod logs</div>
+                </div>
+                <div class="cmd-card">
+                  <div class="cmd-code">kubectl apply -f file.yaml</div>
+                  <div class="cmd-desc">Deploy from YAML</div>
+                </div>
+                <div class="cmd-card">
+                  <div class="cmd-code">kubectl delete pod &lt;name&gt;</div>
+                  <div class="cmd-desc">Delete a pod</div>
+                </div>
+                <div class="cmd-card">
+                  <div class="cmd-code">kubectl scale deploy/app --replicas=5</div>
+                  <div class="cmd-desc">Scale deployment</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col" style="gap:12px">
+              <div class="remember-box" style="flex:1">
+                <div class="remember-title">&#11088; K8s Cheat Sheet</div>
+                <div class="remember-items">
+                  <div class="remember-item">&#10003; Pod -- smallest unit</div>
+                  <div class="remember-item">&#10003; Deployment -- manages ReplicaSets</div>
+                  <div class="remember-item">&#10003; Service -- stable network endpoint</div>
+                  <div class="remember-item">&#10003; Ingress -- HTTP routing gateway</div>
+                  <div class="remember-item">&#10003; ConfigMap -- non-sensitive config</div>
+                  <div class="remember-item">&#10003; Secret -- sensitive data</div>
+                </div>
+              </div>
+              <div class="tip-box" style="flex:1">
+                <div class="tip-title">&#128161; Final Tip</div>
+                <div class="tip-content">
+                  <strong>Practice:</strong> Install minikube locally and deploy a simple app. Hands-on experience beats 10x reading!<br/><br/>
+                  <code>minikube start</code>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-footer">© 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

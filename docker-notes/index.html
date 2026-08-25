@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docker Handwritten Notes</title>
+  <meta name="description" content="Beautiful handwritten-style notes for learning Docker — covering images, containers, volumes, networking, Dockerfile and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="docker-logo">&#128051;</span>
+        <span class="topbar-title">Docker Study Notes <span class="author-pill">by Amit Mahata</span></span>
+      </div>
+      <div class="topbar-center">
+        <span class="page-indicator" id="pageIndicator">Page 1 / 6</span>
+      </div>
+      <div class="topbar-right">
+        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">&#128229; Download PDF</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">&#8592; Prev</button>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next &#8594;</button>
+      </div>
+    </header>
+
+    <div class="dot-nav" id="dotNav"></div>
+
+    <main class="notebook-container" id="notebookContainer">
+
+      <!-- ========== PAGE 1: What is Docker? ========== -->
+      <div class="notebook-page active" id="page-1">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">&#9997;&#65039; Notes by Amit Mahata</span>
+              <span class="page-num">1/6</span>
+            </div>
+
+            <h1 class="page-title">
+              What is <span class="highlight-blue">Docker?</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="section-block">
+              <div class="section-num-circle">1</div>
+              <h2 class="section-title">What is Docker?</h2>
+              <div class="two-col">
+                <div class="col-left">
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-blue">Docker</span> is an open-source <span class="highlight-red">containerization</span> platform.</li>
+                    <li>Packages apps into lightweight, portable <span class="highlight-green">containers</span>.</li>
+                    <li>Containers share the host OS kernel -- <span class="highlight-yellow">no full VM needed</span>.</li>
+                    <li>Ensures "<span class="highlight-purple">works on my machine</span>" actually works everywhere.</li>
+                    <li>Built on Linux namespaces, cgroups and UnionFS.</li>
+                  </ul>
+                </div>
+                <div class="col-right">
+                  <div class="diagram-box">
+                    <div class="diagram-title">Docker Flow</div>
+                    <div class="stack-diagram">
+                      <div class="stack-layer layer-app">Dockerfile</div>
+                      <div class="stack-arrow">&#8595; docker build</div>
+                      <div class="stack-layer layer-pod">Image</div>
+                      <div class="stack-arrow">&#8595; docker run</div>
+                      <div class="stack-layer layer-k8s">Container</div>
+                      <div class="stack-arrow">&#8595; docker push</div>
+                      <div class="stack-layer layer-infra">Registry (Hub)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">2</div>
+              <h2 class="section-title">Containers vs Virtual Machines</h2>
+              <div class="compare-table">
+                <div class="compare-header">
+                  <div class="compare-col-header compare-blue">Containers</div>
+                  <div class="compare-col-header compare-green">Virtual Machines</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell">Share host OS kernel</div>
+                  <div class="compare-cell">Each has full guest OS</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell">Lightweight (MBs)</div>
+                  <div class="compare-cell">Heavy (GBs)</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell">Start in seconds</div>
+                  <div class="compare-cell">Start in minutes</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell">Less isolation (process level)</div>
+                  <div class="compare-cell">Full isolation (hardware level)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="remember-box">
+              <div class="remember-title">&#11088; Remember</div>
+              <div class="remember-items">
+                <div class="remember-item">&#10003; Docker containers are <strong>NOT</strong> VMs -- they share the host kernel</div>
+                <div class="remember-item">&#10003; Image = blueprint, Container = running instance of an image</div>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <div class="tip-title">&#128161; Interview Tip</div>
+              <div class="tip-content">
+                <strong>Q:</strong> What is Docker?<br/>
+                <strong>A:</strong> Docker is an open-source platform that automates the deployment of applications inside lightweight, portable containers that share the host OS kernel.
+              </div>
+            </div>
+
+            <div class="page-footer">&copy; 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 2: Docker Architecture ========== -->
+      <div class="notebook-page" id="page-2">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">&#9997;&#65039; Notes by Amit Mahata</span>
+              <span class="page-num">2/6</span>
+            </div>
+
+            <h1 class="page-title">
+              Docker <span class="highlight-blue">Architecture</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="section-block">
+              <div class="section-num-circle">1</div>
+              <h2 class="section-title">Client-Server Architecture</h2>
+              <div class="arch-diagram">
+                <div class="arch-cluster">
+                  <div class="arch-control-plane">
+                    <div class="arch-cp-title">&#128187; Docker Client (CLI)</div>
+                    <div class="arch-cp-components">
+                      <div class="arch-comp yellow">docker build</div>
+                      <div class="arch-comp green">docker run</div>
+                      <div class="arch-comp blue">docker pull</div>
+                      <div class="arch-comp pink">docker push</div>
+                    </div>
+                  </div>
+                  <div class="arch-arrow-down">&#8597; REST API</div>
+                  <div class="arch-control-plane" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-color: #3b82f6;">
+                    <div class="arch-cp-title" style="color: #1e40af;">&#9881; Docker Daemon (dockerd)</div>
+                    <div class="arch-cp-components">
+                      <div class="arch-comp blue">Images</div>
+                      <div class="arch-comp green">Containers</div>
+                      <div class="arch-comp yellow">Volumes</div>
+                      <div class="arch-comp pink">Networks</div>
+                    </div>
+                  </div>
+                  <div class="arch-arrow-down">&#8597; pulls/pushes</div>
+                  <div class="arch-workers">
+                    <div class="arch-node" style="max-width:100%">
+                      <div class="arch-node-title">Docker Registry (Docker Hub)</div>
+                      <div class="arch-pods-row">
+                        <div class="mini-pod">nginx</div>
+                        <div class="mini-pod">postgres</div>
+                        <div class="mini-pod">node</div>
+                        <div class="mini-pod">python</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">2</div>
+              <h2 class="section-title">Key Components</h2>
+              <div class="feature-grid">
+                <div class="feature-card">
+                  <div class="feature-icon">&#128187;</div>
+                  <div class="feature-label">Docker Client</div>
+                  <div class="feature-desc">CLI tool to interact with Docker daemon</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#9881;</div>
+                  <div class="feature-label">Docker Daemon</div>
+                  <div class="feature-desc">Background service that manages containers</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#128230;</div>
+                  <div class="feature-label">Docker Image</div>
+                  <div class="feature-desc">Read-only template with app + deps</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#128230;</div>
+                  <div class="feature-label">Container</div>
+                  <div class="feature-desc">Running instance of an image</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#128193;</div>
+                  <div class="feature-label">Registry</div>
+                  <div class="feature-desc">Storage for Docker images (Docker Hub)</div>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon">&#128196;</div>
+                  <div class="feature-label">Dockerfile</div>
+                  <div class="feature-desc">Script to build custom Docker images</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <div class="tip-title">&#128161; Interview Tip</div>
+              <div class="tip-content">
+                <strong>Q:</strong> Explain Docker architecture.<br/>
+                <strong>A:</strong> Docker uses a client-server model. The Docker Client sends commands via REST API to the Docker Daemon, which builds, runs, and manages containers. Images are stored in registries like Docker Hub.
+              </div>
+            </div>
+
+            <div class="page-footer">&copy; 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 3: Images & Containers ========== -->
+      <div class="notebook-page" id="page-3">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">&#9997;&#65039; Notes by Amit Mahata</span>
+              <span class="page-num">3/6</span>
+            </div>
+
+            <h1 class="page-title">
+              <span class="highlight-green">Images</span> &amp; <span class="highlight-blue">Containers</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="two-col">
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">1</div>
+                <h2 class="section-title">Docker Image</h2>
+                <ul class="handwritten-list">
+                  <li><span class="highlight-green">Read-only</span> template with app code + dependencies</li>
+                  <li>Built from a <span class="highlight-blue">Dockerfile</span> using layers</li>
+                  <li>Each instruction = one <span class="highlight-yellow">layer</span> (cached!)</li>
+                  <li>Stored in registries (Docker Hub, ECR, GCR)</li>
+                  <li>Tagged as <code>name:tag</code> (e.g., node:18-alpine)</li>
+                </ul>
+                <div class="deploy-diagram">
+                  <div class="deploy-label">Image Layers</div>
+                  <div class="deploy-arrow">&#8595;</div>
+                  <div class="pods-row" style="flex-direction:column; gap:3px;">
+                    <div class="mini-pod-green" style="width:100%">Layer 5: CMD node app.js</div>
+                    <div class="mini-pod-green" style="width:100%">Layer 4: COPY . /app</div>
+                    <div class="mini-pod-green" style="width:100%">Layer 3: RUN npm install</div>
+                    <div class="mini-pod-green" style="width:100%">Layer 2: WORKDIR /app</div>
+                    <div class="mini-pod-green" style="width:100%; background:#1e40af">Layer 1: FROM node:18-alpine</div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">2</div>
+                <h2 class="section-title">Docker Container</h2>
+                <ul class="handwritten-list">
+                  <li><span class="highlight-blue">Running instance</span> of a Docker image</li>
+                  <li>Has its own <span class="highlight-green">filesystem, network, processes</span></li>
+                  <li>Writable layer on top of read-only image layers</li>
+                  <li>Isolated via <span class="highlight-red">namespaces + cgroups</span></li>
+                  <li>Ephemeral -- data lost when removed (use volumes!)</li>
+                </ul>
+                <div class="pod-diagram">
+                  <div class="pod-box">
+                    <div class="pod-label">Container</div>
+                    <div class="pod-inner">
+                      <div class="container-box">App Process</div>
+                      <div class="container-box">Dependencies</div>
+                    </div>
+                    <div class="pod-share">Isolated: PID + Network + Mount</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-num-circle">3</div>
+              <h2 class="section-title">Container Lifecycle</h2>
+              <div class="lifecycle-row">
+                <div class="lifecycle-step step-pending">Created<br/><small>docker create</small></div>
+                <div class="lifecycle-arrow">&#8594;</div>
+                <div class="lifecycle-step step-running">Running<br/><small>docker start/run</small></div>
+                <div class="lifecycle-arrow">&#8594;</div>
+                <div class="lifecycle-step step-succeeded">Paused<br/><small>docker pause</small></div>
+                <div class="lifecycle-arrow">&#8594;</div>
+                <div class="lifecycle-step step-failed">Stopped<br/><small>docker stop</small></div>
+                <div class="lifecycle-or">&#8594;</div>
+                <div class="lifecycle-step" style="background:#e5e7eb; border-color:#9ca3af; color:#374151">Removed<br/><small>docker rm</small></div>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <div class="tip-title">&#128161; Interview Tip</div>
+              <div class="tip-content">
+                <strong>Q:</strong> Difference between Image and Container?<br/>
+                <strong>A:</strong> An Image is a read-only template (like a class). A Container is a running instance of that image (like an object). Images have layers; containers add a writable layer on top.
+              </div>
+            </div>
+
+            <div class="page-footer">&copy; 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 4: Dockerfile & Best Practices ========== -->
+      <div class="notebook-page" id="page-4">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">&#9997;&#65039; Notes by Amit Mahata</span>
+              <span class="page-num">4/6</span>
+            </div>
+
+            <h1 class="page-title">
+              <span class="highlight-purple">Dockerfile</span> &amp; Best Practices
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="section-block">
+              <div class="section-num-circle">1</div>
+              <h2 class="section-title">Key Dockerfile Instructions</h2>
+              <div class="compare-table">
+                <div class="compare-header">
+                  <div class="compare-col-header compare-blue" style="width:25%">Instruction</div>
+                  <div class="compare-col-header compare-green" style="width:35%">Purpose</div>
+                  <div class="compare-col-header compare-yellow" style="width:40%">Example</div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">FROM</div>
+                  <div class="compare-cell">Base image to start from</div>
+                  <div class="compare-cell"><code>FROM node:18-alpine</code></div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">WORKDIR</div>
+                  <div class="compare-cell">Set working directory</div>
+                  <div class="compare-cell"><code>WORKDIR /app</code></div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">COPY</div>
+                  <div class="compare-cell">Copy files from host to image</div>
+                  <div class="compare-cell"><code>COPY package.json .</code></div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">RUN</div>
+                  <div class="compare-cell">Execute command during build</div>
+                  <div class="compare-cell"><code>RUN npm install</code></div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">EXPOSE</div>
+                  <div class="compare-cell">Document listening port</div>
+                  <div class="compare-cell"><code>EXPOSE 3000</code></div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">CMD</div>
+                  <div class="compare-cell">Default command at runtime</div>
+                  <div class="compare-cell"><code>CMD ["node","app.js"]</code></div>
+                </div>
+                <div class="compare-row">
+                  <div class="compare-cell svc-type">ENV</div>
+                  <div class="compare-cell">Set environment variables</div>
+                  <div class="compare-cell"><code>ENV NODE_ENV=prod</code></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col" style="gap:12px">
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">2</div>
+                <h2 class="section-title">Sample Dockerfile</h2>
+                <div class="code-snippet">
+                  <div class="code-line"><span class="code-key">FROM</span> node:18-alpine</div>
+                  <div class="code-line"><span class="code-key">WORKDIR</span> /app</div>
+                  <div class="code-line"><span class="code-key">COPY</span> package*.json ./</div>
+                  <div class="code-line"><span class="code-key">RUN</span> npm ci --only=production</div>
+                  <div class="code-line"><span class="code-key">COPY</span> . .</div>
+                  <div class="code-line"><span class="code-key">EXPOSE</span> 3000</div>
+                  <div class="code-line"><span class="code-key">CMD</span> ["node", "server.js"]</div>
+                </div>
+              </div>
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">3</div>
+                <h2 class="section-title">Best Practices</h2>
+                <ul class="handwritten-list">
+                  <li>Use <span class="highlight-green">alpine</span> base images (smaller)</li>
+                  <li><span class="highlight-blue">Multi-stage builds</span> to reduce image size</li>
+                  <li>Copy <span class="highlight-yellow">package.json first</span> for layer caching</li>
+                  <li>Use <span class="highlight-red">.dockerignore</span> to exclude files</li>
+                  <li>Don't run as <span class="highlight-red">root</span> user</li>
+                  <li>Combine RUN commands with <span class="highlight-purple">&amp;&amp;</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="remember-box">
+              <div class="remember-title">&#11088; CMD vs ENTRYPOINT</div>
+              <div class="remember-items">
+                <div class="remember-item">&#10003; CMD -- default command, can be overridden at runtime</div>
+                <div class="remember-item">&#10003; ENTRYPOINT -- always runs, CMD args appended to it</div>
+                <div class="remember-item">&#10003; Use together: ENTRYPOINT ["python"] + CMD ["app.py"]</div>
+              </div>
+            </div>
+
+            <div class="page-footer">&copy; 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 5: Volumes & Networking ========== -->
+      <div class="notebook-page" id="page-5">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">&#9997;&#65039; Notes by Amit Mahata</span>
+              <span class="page-num">5/6</span>
+            </div>
+
+            <h1 class="page-title">
+              <span class="highlight-red">Volumes</span> &amp; <span class="highlight-blue">Networking</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="two-col">
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">1</div>
+                <h2 class="section-title">Docker Volumes</h2>
+                <ul class="handwritten-list">
+                  <li><span class="highlight-red">Persist data</span> beyond container lifecycle</li>
+                  <li>Managed by Docker, stored on host filesystem</li>
+                  <li>Shared between multiple containers</li>
+                  <li>Better than bind mounts for production</li>
+                </ul>
+                <div class="volumes-grid" style="grid-template-columns: repeat(3, 1fr)">
+                  <div class="volume-card">
+                    <div class="vol-name">Volumes</div>
+                    <div class="vol-desc">Docker-managed, best for persistent data</div>
+                  </div>
+                  <div class="volume-card">
+                    <div class="vol-name">Bind Mounts</div>
+                    <div class="vol-desc">Maps host path into container</div>
+                  </div>
+                  <div class="volume-card">
+                    <div class="vol-name">tmpfs</div>
+                    <div class="vol-desc">In-memory only, lost on restart</div>
+                  </div>
+                </div>
+                <div class="code-snippet" style="margin-top:8px">
+                  <div class="code-line"><span class="code-key">$</span> docker volume create mydata</div>
+                  <div class="code-line"><span class="code-key">$</span> docker run -v mydata:/app/data myimg</div>
+                </div>
+              </div>
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">2</div>
+                <h2 class="section-title">Docker Networking</h2>
+                <ul class="handwritten-list">
+                  <li>Containers communicate via <span class="highlight-blue">Docker networks</span></li>
+                  <li>DNS-based service discovery by container name</li>
+                  <li>Port mapping with <span class="highlight-green">-p host:container</span></li>
+                </ul>
+                <div class="compare-table">
+                  <div class="compare-header">
+                    <div class="compare-col-header compare-blue" style="width:30%">Driver</div>
+                    <div class="compare-col-header compare-green" style="width:70%">Use Case</div>
+                  </div>
+                  <div class="compare-row">
+                    <div class="compare-cell svc-type">bridge</div>
+                    <div class="compare-cell">Default. Containers on same host talk to each other</div>
+                  </div>
+                  <div class="compare-row">
+                    <div class="compare-cell svc-type">host</div>
+                    <div class="compare-cell">Container uses host network directly</div>
+                  </div>
+                  <div class="compare-row">
+                    <div class="compare-cell svc-type">none</div>
+                    <div class="compare-cell">No networking, fully isolated</div>
+                  </div>
+                  <div class="compare-row">
+                    <div class="compare-cell svc-type">overlay</div>
+                    <div class="compare-cell">Multi-host networking (Docker Swarm)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col" style="gap:12px">
+              <div class="remember-box" style="flex:1">
+                <div class="remember-title">&#11088; Key Points</div>
+                <div class="remember-items">
+                  <div class="remember-item">&#10003; Always use <strong>named volumes</strong> for databases</div>
+                  <div class="remember-item">&#10003; Use <strong>custom bridge</strong> networks for DNS discovery</div>
+                  <div class="remember-item">&#10003; <code>-p 8080:3000</code> maps host 8080 to container 3000</div>
+                </div>
+              </div>
+              <div class="tip-box" style="flex:1">
+                <div class="tip-title">&#128161; Interview Tip</div>
+                <div class="tip-content">
+                  <strong>Q:</strong> Volume vs Bind Mount?<br/>
+                  <strong>A:</strong> Volumes are Docker-managed and portable. Bind mounts depend on host file structure. Volumes are preferred for production; bind mounts for development.
+                </div>
+              </div>
+            </div>
+
+            <div class="page-footer">&copy; 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PAGE 6: Docker Compose & Quick Reference ========== -->
+      <div class="notebook-page" id="page-6">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">&#9997;&#65039; Notes by Amit Mahata</span>
+              <span class="page-num">6/6</span>
+            </div>
+
+            <h1 class="page-title">
+              Docker Compose &amp; <span class="highlight-yellow">Quick Reference</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="two-col">
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">1</div>
+                <h2 class="section-title">Docker Compose</h2>
+                <ul class="handwritten-list">
+                  <li>Define <span class="highlight-blue">multi-container</span> apps in one YAML file</li>
+                  <li>One command to start <span class="highlight-green">all services</span></li>
+                  <li>Auto-creates a shared <span class="highlight-yellow">network</span></li>
+                  <li>Great for <span class="highlight-red">local dev</span> environments</li>
+                </ul>
+                <div class="code-snippet" style="margin-top:6px">
+                  <div class="code-line"><span class="code-key">version:</span> "3.8"</div>
+                  <div class="code-line"><span class="code-key">services:</span></div>
+                  <div class="code-line">&nbsp;&nbsp;<span class="code-key">web:</span></div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">build:</span> .</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">ports:</span> ["3000:3000"]</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">depends_on:</span> [db]</div>
+                  <div class="code-line">&nbsp;&nbsp;<span class="code-key">db:</span></div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">image:</span> postgres:15</div>
+                  <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">volumes:</span> [pgdata:/var/lib/postgresql/data]</div>
+                  <div class="code-line"><span class="code-key">volumes:</span></div>
+                  <div class="code-line">&nbsp;&nbsp;<span class="code-key">pgdata:</span></div>
+                </div>
+              </div>
+              <div class="section-block" style="flex:1">
+                <div class="section-num-circle">2</div>
+                <h2 class="section-title">docker CLI Quick Reference</h2>
+                <div class="cmd-grid" style="grid-template-columns:1fr">
+                  <div class="cmd-card">
+                    <div class="cmd-code">docker build -t myapp .</div>
+                    <div class="cmd-desc">Build image from Dockerfile</div>
+                  </div>
+                  <div class="cmd-card">
+                    <div class="cmd-code">docker run -d -p 80:3000 myapp</div>
+                    <div class="cmd-desc">Run container in background</div>
+                  </div>
+                  <div class="cmd-card">
+                    <div class="cmd-code">docker ps / docker ps -a</div>
+                    <div class="cmd-desc">List running / all containers</div>
+                  </div>
+                  <div class="cmd-card">
+                    <div class="cmd-code">docker logs &lt;container&gt;</div>
+                    <div class="cmd-desc">View container logs</div>
+                  </div>
+                  <div class="cmd-card">
+                    <div class="cmd-code">docker exec -it &lt;c&gt; /bin/sh</div>
+                    <div class="cmd-desc">Shell into running container</div>
+                  </div>
+                  <div class="cmd-card">
+                    <div class="cmd-code">docker compose up -d</div>
+                    <div class="cmd-desc">Start all Compose services</div>
+                  </div>
+                  <div class="cmd-card">
+                    <div class="cmd-code">docker image prune -a</div>
+                    <div class="cmd-desc">Remove all unused images</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col" style="gap:12px">
+              <div class="remember-box" style="flex:1">
+                <div class="remember-title">&#11088; Docker Cheat Sheet</div>
+                <div class="remember-items">
+                  <div class="remember-item">&#10003; Image -- read-only template (layers)</div>
+                  <div class="remember-item">&#10003; Container -- running instance of image</div>
+                  <div class="remember-item">&#10003; Volume -- persistent data storage</div>
+                  <div class="remember-item">&#10003; Network -- container communication</div>
+                  <div class="remember-item">&#10003; Dockerfile -- script to build images</div>
+                  <div class="remember-item">&#10003; Compose -- multi-container orchestration</div>
+                </div>
+              </div>
+              <div class="tip-box" style="flex:1">
+                <div class="tip-title">&#128161; Final Tip</div>
+                <div class="tip-content">
+                  <strong>Practice:</strong> Containerize a simple app with Dockerfile, add a database with Docker Compose. Hands-on beats theory!<br/><br/>
+                  <code>docker init</code> scaffolds Dockerfile + Compose for you.
+                </div>
+              </div>
+            </div>
+
+            <div class="page-footer">&copy; 2026 Created by Amit Mahata | All Rights Reserved</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Design Handwritten Notes - 8+ YoE Senior Edition</title>
+  <meta name="description" content="Comprehensive, handwritten-style System Design study notes tailored for Senior / Staff Software Engineers preparing for top product companies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="brand-icon">📐</span>
+        <span class="topbar-title">System Design Notes <span class="author-pill">by Amit Mahata • 8+ YoE</span></span>
+      </div>
+      <div class="topbar-center">
+        <span class="page-indicator" id="pageIndicator">Page 1 / 8</span>
+      </div>
+      <div class="topbar-right">
+        <button class="nav-btn toc-btn" onclick="toggleTOC(true)" title="Table of Contents">📋 Index</button>
+        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 Download PDF</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page">← Prev</button>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
+      </div>
+    </header>
+
+    <!-- Dot Navigation -->
+    <div class="dot-nav" id="dotNav"></div>
+
+    <!-- Table of Contents Modal -->
+    <div class="toc-modal" id="tocModal">
+      <div class="toc-card">
+        <div class="toc-header">
+          <h3>Table of Contents (System Design Master Notes)</h3>
+          <button class="toc-close" onclick="toggleTOC(false)">&times;</button>
+        </div>
+        <div class="toc-list" id="tocList"></div>
+      </div>
+    </div>
+
+    <!-- Notebook Pages Container -->
+    <main class="notebook-container" id="notebookContainer">
+
+      <!-- =========================================================
+           PAGE 1: Fundamentals & 4-Step Interview Framework
+           ========================================================= -->
+      <article class="notebook-page active" id="page-1">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">1/8</span>
+            </div>
+
+            <h1 class="page-title">
+              System Design <span class="highlight-blue">Framework &amp; Fundamentals</span>
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: 4-Step Framework -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">①</div>
+                <h2 class="section-title">4-Step Senior System Design Framework (45 mins)</h2>
+              </div>
+              <div class="four-col">
+                <div class="feature-card">
+                  <div class="card-icon">🎯</div>
+                  <div class="card-title">1. Clarify &amp; Scope</div>
+                  <div class="card-desc">
+                    • Functional requirements<br/>
+                    • Non-functional (SLA/QPS)<br/>
+                    • Back-of-envelope math<br/>
+                    <span class="highlight-purple">(5 - 7 mins)</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🏗️</div>
+                  <div class="card-title">2. High-Level Flow</div>
+                  <div class="card-desc">
+                    • API contract (REST/gRPC)<br/>
+                    • Core DB schema entity<br/>
+                    • End-to-end block diagram<br/>
+                    <span class="highlight-blue">(10 - 15 mins)</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🔍</div>
+                  <div class="card-title">3. Deep Dive Core</div>
+                  <div class="card-desc">
+                    • Scale bottlenecks<br/>
+                    • Cache / Sharding / Queue<br/>
+                    • Algorithms &amp; data models<br/>
+                    <span class="highlight-green">(15 - 20 mins)</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🛡️</div>
+                  <div class="card-title">4. Bottlenecks &amp; Scale</div>
+                  <div class="card-desc">
+                    • SPOF &amp; Fault tolerance<br/>
+                    • Monitoring, SLOs, Tracing<br/>
+                    • Cost &amp; trade-offs<br/>
+                    <span class="highlight-red">(5 mins)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Standard Architecture Blueprint & Latency Numbers -->
+            <div class="two-col">
+              <div class="section-block">
+                <div class="section-head">
+                  <div class="sec-num blue">②</div>
+                  <h2 class="section-title">End-to-End Architecture Flow</h2>
+                </div>
+                <div class="arch-pipeline">
+                  <div class="pipeline-step blue">
+                    <span>🌐 <strong>Client (Web/Mobile)</strong></span>
+                    <span class="badge-pill blue">Anycast / GeoDNS</span>
+                  </div>
+                  <div class="flow-arrow-down">↓ Static Assets &amp; Edge Cache</div>
+                  <div class="pipeline-step purple">
+                    <span>⚡ <strong>CDN Edge Server</strong> (Cloudflare/CloudFront)</span>
+                    <span class="badge-pill purple">Edge PoP</span>
+                  </div>
+                  <div class="flow-arrow-down">↓ Dynamic Requests</div>
+                  <div class="pipeline-step yellow">
+                    <span>⚖️ <strong>L4/L7 Load Balancer</strong> (NGINX / ALB)</span>
+                    <span class="badge-pill yellow">SSL / Health</span>
+                  </div>
+                  <div class="flow-arrow-down">↓ Rate Limiting &amp; Auth</div>
+                  <div class="pipeline-step blue">
+                    <span>🚪 <strong>API Gateway</strong> (Routing, Circuit Breaker)</span>
+                    <span class="badge-pill blue">Token Bucket</span>
+                  </div>
+                  <div class="flow-arrow-down">↓ Internal Microservices</div>
+                  <div class="pipeline-step green">
+                    <span>⚙️ <strong>App Services + Cache</strong> (Redis Cluster)</span>
+                    <span class="badge-pill green">Cache-Aside</span>
+                  </div>
+                  <div class="flow-arrow-down">↓ Async Events / DB Writes</div>
+                  <div class="pipeline-step red">
+                    <span>🗄️ <strong>Primary/Replica DB + Kafka Queue</strong></span>
+                    <span class="badge-pill red">WAL / CDC</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-block">
+                <div class="section-head">
+                  <div class="sec-num purple">③</div>
+                  <h2 class="section-title">Numbers Every 8+ YoE Engineer Must Know</h2>
+                </div>
+                <div class="hand-box glow-purple">
+                  <div class="box-title">⏱️ Latency Hierarchy (Orders of Magnitude)</div>
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-green">L1 cache reference:</span> ~ 0.5 - 1 ns</li>
+                    <li><span class="highlight-green">L2 cache reference:</span> ~ 3 - 7 ns</li>
+                    <li><span class="highlight-blue">Main Memory (RAM) access:</span> ~ 100 ns</li>
+                    <li><span class="highlight-yellow">NVMe SSD random read:</span> ~ 50 - 100 µs <span class="highlight-muted">(1000x RAM)</span></li>
+                    <li><span class="highlight-orange">Read 1 MB sequentially from RAM:</span> ~ 3 µs</li>
+                    <li><span class="highlight-orange">Read 1 MB sequentially from SSD:</span> ~ 1 ms</li>
+                    <li><span class="highlight-purple">Datacenter network roundtrip (RTT):</span> ~ 0.5 ms</li>
+                    <li><span class="highlight-red">Intercontinental RTT (US ↔ EU):</span> ~ 150 ms</li>
+                  </ul>
+                  <div style="margin-top: 10px; border-top: 1px dashed #cbd5e1; padding-top: 8px;">
+                    <div class="box-title" style="font-size: 17px;">📊 Back-of-Envelope Quick Multipliers</div>
+                    <div style="font-family:'Patrick Hand'; font-size:14.5px; color:#334155;">
+                      • <strong>1 Day</strong> = 86,400 s ≈ <span class="highlight-blue">100K seconds</span> (for quick mental math)<br/>
+                      • <strong>1 Million req/day</strong> ≈ <span class="highlight-green">12 QPS</span> | <strong>100M req/day</strong> ≈ <span class="highlight-red">1.2K QPS</span><br/>
+                      • Peak Traffic multiplier: Design for <span class="highlight-purple">2x to 5x</span> of average QPS!
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Non-Functional Requirements & Availability -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num red">④</div>
+                <h2 class="section-title">Availability &amp; SLA Tiers</h2>
+              </div>
+              <div class="compare-container">
+                <div class="compare-grid">
+                  <div class="compare-col">
+                    <div class="compare-head blue">Availability Tiers (The "Nines")</div>
+                    <div class="compare-row"><span><strong>99.0% ("2 Nines")</strong></span><span class="highlight-red">3.65 days downtime / year</span></div>
+                    <div class="compare-row"><span><strong>99.9% ("3 Nines")</strong></span><span class="highlight-yellow">8.76 hours downtime / year</span></div>
+                    <div class="compare-row"><span><strong>99.99% ("4 Nines")</strong></span><span class="highlight-green">52.6 minutes downtime / year</span></div>
+                    <div class="compare-row"><span><strong>99.999% ("5 Nines")</strong></span><span class="highlight-purple">5.26 minutes downtime / year (Telco/Fintech)</span></div>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-head green">Key Reliability Metrics</div>
+                    <div class="compare-row"><span><strong>MTBF</strong> (Mean Time Between Failures)</span><span>System Uptime reliability</span></div>
+                    <div class="compare-row"><span><strong>MTTR</strong> (Mean Time to Repair)</span><span>Recovery speed &amp; automated failover</span></div>
+                    <div class="compare-row"><span><strong>RPO</strong> (Recovery Point Objective)</span><span>Max acceptable data loss</span></div>
+                    <div class="compare-row"><span><strong>RTO</strong> (Recovery Time Objective)</span><span>Max acceptable downtime</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Box -->
+            <div class="remember-box">
+              <div class="remember-header">⭐ Senior Takeaway</div>
+              <div class="remember-content">
+                ✓ Never jump straight to drawing databases or Kafka topics! First establish <strong>Read-to-Write ratio</strong> (e.g., Twitter 100:1 vs Chat 1:1), <strong>storage size per record</strong>, and whether <strong>strong consistency</strong> is non-negotiable (e.g. Payments) or <strong>eventual consistency</strong> is acceptable (e.g. Likes, News Feed).
+              </div>
+            </div>
+
+            <!-- Interview Tip -->
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff / Senior Interview Tip</div>
+              <div class="interview-body">
+                <strong>Q: How do you stand out as an 8+ YoE candidate in the first 10 minutes?</strong><br/>
+                <strong>A:</strong> Don't wait for the interviewer to give you requirements. Actively drive the scope: <em>"Assuming 50M DAU, each user making 20 requests daily yields ~12,000 QPS average, peaking at 35,000 QPS. At 500 bytes per payload, we'll store 500GB/day = 180TB over 5 years. I propose starting with an API Gateway + Cache-Aside architecture to offload 90% of reads."</em>
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 1 of 8</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 2: Scalability, Load Balancing & API Gateways
+           ========================================================= -->
+      <article class="notebook-page" id="page-2">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">2/8</span>
+            </div>
+
+            <h1 class="page-title">
+              Scalability, <span class="highlight-purple">Load Balancing</span> &amp; API Gateways
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: L4 vs L7 Load Balancer -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num blue">①</div>
+                <h2 class="section-title">Layer 4 (Transport) vs Layer 7 (Application) Load Balancing</h2>
+              </div>
+              <div class="compare-container">
+                <div class="compare-vs-badge">VS</div>
+                <div class="compare-grid">
+                  <div class="compare-col">
+                    <div class="compare-head blue">Layer 4 Load Balancer (TCP/UDP)</div>
+                    <div class="compare-row"><span><strong>Routing Level:</strong></span><span>IP + Port (Socket level)</span></div>
+                    <div class="compare-row"><span><strong>Payload Visibility:</strong></span><span>Blind to HTTP headers/cookies</span></div>
+                    <div class="compare-row"><span><strong>Performance:</strong></span><span class="highlight-green">Ultra-fast, lowest latency (no decrypt)</span></div>
+                    <div class="compare-row"><span><strong>Use Cases:</strong></span><span>DNS, Gaming, HAProxy TCP mode, AWS NLB</span></div>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-head green">Layer 7 Load Balancer (HTTP/HTTPS)</div>
+                    <div class="compare-row"><span><strong>Routing Level:</strong></span><span>URL Path, Headers, Cookies, Auth token</span></div>
+                    <div class="compare-row"><span><strong>Payload Visibility:</strong></span><span>Full HTTP message inspection + SSL Termination</span></div>
+                    <div class="compare-row"><span><strong>Smart Features:</strong></span><span class="highlight-blue">Path routing (/api/v1/orders), Rate limit, WAF</span></div>
+                    <div class="compare-row"><span><strong>Use Cases:</strong></span><span>NGINX, Envoy, Traefik, AWS ALB</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Load Balancing Algorithms -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">②</div>
+                <h2 class="section-title">Load Balancing Algorithms &amp; Consistent Hashing</h2>
+              </div>
+              <div class="four-col">
+                <div class="feature-card">
+                  <div class="card-icon">🔄</div>
+                  <div class="card-title">Round Robin / Weighted</div>
+                  <div class="card-desc">Distributes sequentially. Weighted assigns higher traffic to bigger machines.</div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">⚡</div>
+                  <div class="card-title">Least Connections</div>
+                  <div class="card-desc">Routes to instance with fewest active connections. Best for long-lived sessions (WebSockets).</div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🎯</div>
+                  <div class="card-title">Consistent Hashing</div>
+                  <div class="card-desc">Maps keys &amp; nodes on a 360° ring with virtual nodes. Adding node remaps only <strong>K/N keys</strong>!</div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">📍</div>
+                  <div class="card-title">Geo-Proximity</div>
+                  <div class="card-desc">Routes users to the closest datacenter based on GeoDNS latency / BGP Anycast.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: API Gateway & Rate Limiting -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">③</div>
+                <h2 class="section-title">API Gateway Core Responsibilities &amp; Rate Limiting Algorithms</h2>
+              </div>
+              <div class="two-col">
+                <div class="hand-box glow-blue">
+                  <div class="box-title">🚪 API Gateway Pattern</div>
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-blue">Single Entry Point:</span> Hides internal microservice topologies.</li>
+                    <li><span class="highlight-green">Authentication &amp; JWT Validation:</span> Offloads auth checks.</li>
+                    <li><span class="highlight-purple">SSL / TLS Termination:</span> Decrypts at perimeter; HTTP internally.</li>
+                    <li><span class="highlight-yellow">Protocol Translation:</span> Translates HTTP/REST to internal gRPC.</li>
+                    <li><span class="highlight-red">Circuit Breaking:</span> Fails fast on downstream service degradation.</li>
+                  </ul>
+                </div>
+                <div class="hand-box glow-amber">
+                  <div class="box-title">🛡️ Rate Limiting Algorithms</div>
+                  <div class="compare-row">
+                    <span><strong>1. Token Bucket</strong></span>
+                    <span class="badge-pill green">Allows Bursts</span>
+                  </div>
+                  <div style="font-family:'Patrick Hand'; font-size:13.5px; color:#475569; margin-bottom:4px;">
+                    Tokens added at fixed rate. Request consumes 1 token. If empty, HTTP 429 Too Many Requests.
+                  </div>
+                  <div class="compare-row">
+                    <span><strong>2. Leaky Bucket</strong></span>
+                    <span class="badge-pill blue">Smooths Out Flow</span>
+                  </div>
+                  <div style="font-family:'Patrick Hand'; font-size:13.5px; color:#475569; margin-bottom:4px;">
+                    Requests enter FIFO queue and processed at strictly constant rate. Drops excess requests.
+                  </div>
+                  <div class="compare-row">
+                    <span><strong>3. Sliding Window Counter</strong></span>
+                    <span class="badge-pill purple">Accurate &amp; Memory-Efficient</span>
+                  </div>
+                  <div style="font-family:'Patrick Hand'; font-size:13.5px; color:#475569;">
+                    Weights previous window + current window: <code style="font-family:'Fira Code'; font-size:12px;">prev_count × (1 - weight) + curr_count</code>.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Circuit Breaker Pattern -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num red">④</div>
+                <h2 class="section-title">Resilience: Circuit Breaker State Machine</h2>
+              </div>
+              <div class="three-col">
+                <div class="hand-box glow-green" style="text-align:center;">
+                  <div class="box-title" style="justify-content:center; color:#15803d;">🟢 CLOSED (Normal)</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155;">
+                    All requests pass through.<br/>Failures counted over rolling time window.
+                  </div>
+                  <div class="flow-arrow-down" style="margin-top:6px;">If failures &gt; Threshold (e.g. 50%) →</div>
+                </div>
+                <div class="hand-box glow-amber" style="text-align:center;">
+                  <div class="box-title" style="justify-content:center; color:#b45309;">🟡 HALF-OPEN (Testing)</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155;">
+                    Allows canary sample requests.<br/>If success → <strong>CLOSED</strong><br/>If failure → <strong>OPEN</strong>
+                  </div>
+                  <div class="flow-arrow-down" style="margin-top:6px;">← Timeout expires (e.g. 30s)</div>
+                </div>
+                <div class="hand-box" style="text-align:center; border-color:#fca5a5; background:#fef2f2;">
+                  <div class="box-title" style="justify-content:center; color:#b91c1c;">🔴 OPEN (Tripped)</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155;">
+                    Fails immediately (Fast-Fail) or returns fallback cache response. Protects downstream service!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Box -->
+            <div class="remember-box">
+              <div class="remember-header">⭐ Golden Rule for Consistent Hashing</div>
+              <div class="remember-content">
+                ✓ Standard hash (<code style="font-family:'Fira Code';">hash(key) % N</code>) causes <strong>99% cache misses</strong> when cluster size $N$ changes! Consistent hashing with <strong>Virtual Nodes (100-300 per physical server)</strong> prevents Hotspots and ensures uniform load distribution.
+              </div>
+            </div>
+
+            <!-- Interview Tip -->
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff / Senior Interview Tip</div>
+              <div class="interview-body">
+                <strong>Q: How do you prevent Thundering Herd on cache invalidation or server restart?</strong><br/>
+                <strong>A:</strong> Use <strong>Mutex / Singleflight locks</strong> (only 1 thread fetches from DB while others wait), <strong>Probabilistic Early Expiration (XFetch algorithm)</strong>, and <strong>Randomized TTL Jitter</strong> so millions of cached keys don't expire simultaneously at the top of the hour.
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 2 of 8</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 3: Distributed Caching & Invalidation
+           ========================================================= -->
+      <article class="notebook-page" id="page-3">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">3/8</span>
+            </div>
+
+            <h1 class="page-title">
+              Distributed <span class="highlight-green">Caching</span> &amp; Invalidation Strategies
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: Caching Patterns -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">①</div>
+                <h2 class="section-title">4 Core Caching Patterns (Where &amp; How Writes Occur)</h2>
+              </div>
+              <div class="four-col">
+                <div class="feature-card">
+                  <div class="card-icon">📖</div>
+                  <div class="card-title">Cache-Aside (Lazy)</div>
+                  <div class="card-desc">
+                    • App reads Cache first.<br/>
+                    • If Miss → Read DB → Write to Cache.<br/>
+                    <span class="highlight-blue">✓ Only caches requested data.</span><br/>
+                    <span class="highlight-red">✗ Cache misses have 3x latency.</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">✍️</div>
+                  <div class="card-title">Write-Through</div>
+                  <div class="card-desc">
+                    • App writes to Cache.<br/>
+                    • Cache synchronously writes to DB.<br/>
+                    <span class="highlight-green">✓ High data consistency.</span><br/>
+                    <span class="highlight-red">✗ Higher write latency.</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">⚡</div>
+                  <div class="card-title">Write-Back (Behind)</div>
+                  <div class="card-desc">
+                    • App writes to Cache immediately.<br/>
+                    • Cache async flushes to DB in batches.<br/>
+                    <span class="highlight-purple">✓ Extreme write throughput.</span><br/>
+                    <span class="highlight-red">✗ Data loss risk if cache dies.</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🔄</div>
+                  <div class="card-title">Write-Around</div>
+                  <div class="card-desc">
+                    • App writes directly to DB.<br/>
+                    • Bypasses Cache completely.<br/>
+                    <span class="highlight-yellow">✓ Prevents cache pollution.</span><br/>
+                    <span class="highlight-red">✗ Fresh writes trigger cache miss.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Cache Anomalies & Defense Mechanisms -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num red">②</div>
+                <h2 class="section-title">Cache Production Pitfalls &amp; Battle-Tested Fixes</h2>
+              </div>
+              <div class="three-col">
+                <div class="hand-box" style="border-color:#fca5a5; background:#fff5f5;">
+                  <div class="box-title" style="color:#b91c1c;">🌊 Cache Avalanche</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14.5px; color:#334155; line-height:1.4;">
+                    <strong>Problem:</strong> Massive number of keys expire at the exact same second, causing DB CPU to spike to 100%.<br/><br/>
+                    <strong class="highlight-green">Solution:</strong><br/>
+                    • Add <strong>Random TTL Jitter</strong> (<code style="font-family:'Fira Code'; font-size:12px;">TTL = base_ttl + rand(1, 300)s</code>).<br/>
+                    • Multi-region distributed cache deployment.
+                  </div>
+                </div>
+                <div class="hand-box" style="border-color:#fde68a; background:#fffbeb;">
+                  <div class="box-title" style="color:#b45309;">🕳️ Cache Penetration</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14.5px; color:#334155; line-height:1.4;">
+                    <strong>Problem:</strong> Attackers query non-existent keys (e.g. <code style="font-family:'Fira Code'; font-size:12px;">user_id = -999</code>). Misses bypass cache and hit DB directly.<br/><br/>
+                    <strong class="highlight-blue">Solution:</strong><br/>
+                    • <strong>Bloom Filter</strong> in front of Cache (O(1) space/time to check existence).<br/>
+                    • Cache empty/null results with short TTL (60s).
+                  </div>
+                </div>
+                <div class="hand-box" style="border-color:#d8b4fe; background:#faf5ff;">
+                  <div class="box-title" style="color:#7e22ce;">💥 Cache Breakdown / Stampede</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14.5px; color:#334155; line-height:1.4;">
+                    <strong>Problem:</strong> A single viral "hot key" (e.g. World Cup score) expires; 50,000 concurrent threads hit DB.<br/><br/>
+                    <strong class="highlight-purple">Solution:</strong><br/>
+                    • <strong>Distributed Mutex (Redis SETNX)</strong>: only 1 worker regenerates cache.<br/>
+                    • Background async pre-warm cron job.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Redis vs Memcached & Eviction -->
+            <div class="two-col">
+              <div class="section-block">
+                <div class="section-head">
+                  <div class="sec-num blue">③</div>
+                  <h2 class="section-title">Redis vs Memcached</h2>
+                </div>
+                <div class="compare-container">
+                  <div class="compare-vs-badge">VS</div>
+                  <div class="compare-grid">
+                    <div class="compare-col">
+                      <div class="compare-head blue">Redis</div>
+                      <div class="compare-row"><span>Data Types: Strings, Hashes, Lists, Sets, Sorted Sets (ZSET), Bitmaps, HyperLogLog, Streams</span></div>
+                      <div class="compare-row"><span>Threading: Single-threaded event loop (I/O multiplexing epoll) + Multi-threaded I/O in v6+</span></div>
+                      <div class="compare-row"><span>Persistence: RDB snapshots + AOF write log</span></div>
+                      <div class="compare-row"><span>Replication: Native Master-Replica + Sentinel + Cluster (16,384 Hash Slots)</span></div>
+                    </div>
+                    <div class="compare-col">
+                      <div class="compare-head green">Memcached</div>
+                      <div class="compare-row"><span>Data Types: Pure Key-Value byte strings only</span></div>
+                      <div class="compare-row"><span>Threading: True Multi-threaded architecture (scales linearly with CPU cores)</span></div>
+                      <div class="compare-row"><span>Persistence: None (Pure in-memory, volatile)</span></div>
+                      <div class="compare-row"><span>Replication: No native clustering (client-side consistent hashing required)</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-block">
+                <div class="section-head">
+                  <div class="sec-num purple">④</div>
+                  <h2 class="section-title">Cache Eviction Algorithms</h2>
+                </div>
+                <div class="hand-box glow-purple">
+                  <div class="box-title">🗑️ Eviction Policy Cheatsheet</div>
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-blue">LRU (Least Recently Used):</span> Evicts keys not read for the longest time. <em>(Standard choice; implemented via Doubly Linked List + Hash Map in O(1)).</em></li>
+                    <li><span class="highlight-green">LFU (Least Frequently Used):</span> Tracks access counters. Evicts least popular items. Great for static catalog access.</li>
+                    <li><span class="highlight-yellow">FIFO:</span> First-In-First-Out queue order. Simple but suboptimal.</li>
+                    <li><span class="highlight-purple">2Q / ARC (Adaptive Replacement Cache):</span> Balances recency and frequency dynamically.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Box -->
+            <div class="remember-box">
+              <div class="remember-header">⭐ Dual-Write Problem: Invalidate vs Update</div>
+              <div class="remember-content">
+                ✓ Never update cache directly on DB write due to race conditions (e.g. Thread A writes DB, Thread B writes DB, Thread B updates Cache, Thread A updates Cache $\to$ <strong>Stale Cache!</strong>).<br/>
+                ✓ <strong>Standard Pattern:</strong> Write to DB first $\to$ <strong>Delete (Invalidate)</strong> from Cache.
+              </div>
+            </div>
+
+            <!-- Interview Tip -->
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff / Senior Interview Tip</div>
+              <div class="interview-body">
+                <strong>Q: How do you achieve 100% cache-DB consistency without race conditions?</strong><br/>
+                <strong>A:</strong> Use <strong>Change Data Capture (CDC via Debezium)</strong> connected to the Database Write-Ahead Log (WAL). DB commits the transaction $\to$ Debezium publishes change to Kafka $\to$ Dedicated consumer service invalidates Redis cache asynchronously with retry guarantees.
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 3 of 8</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 4: Databases: SQL vs NoSQL, Sharding & CAP
+           ========================================================= -->
+      <article class="notebook-page" id="page-4">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">4/8</span>
+            </div>
+
+            <h1 class="page-title">
+              Databases: <span class="highlight-blue">SQL vs NoSQL</span>, Sharding &amp; CAP
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: SQL vs NoSQL Decision Matrix -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num blue">①</div>
+                <h2 class="section-title">SQL (Relational) vs NoSQL Taxonomy</h2>
+              </div>
+              <div class="four-col">
+                <div class="feature-card">
+                  <div class="card-icon">🗄️</div>
+                  <div class="card-title">Relational (SQL)</div>
+                  <div class="card-desc">
+                    • <strong>Postgres, MySQL</strong><br/>
+                    • ACID transactions, strict schema, complex JOINs.<br/>
+                    • Storage: B+ Tree indexes.
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">📄</div>
+                  <div class="card-title">Document (NoSQL)</div>
+                  <div class="card-desc">
+                    • <strong>MongoDB, Couchbase</strong><br/>
+                    • Flexible JSON/BSON schema, nested sub-objects.<br/>
+                    • Great for Catalogs, User profiles.
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">📊</div>
+                  <div class="card-title">Wide-Column (NoSQL)</div>
+                  <div class="card-desc">
+                    • <strong>Cassandra, ScyllaDB, HBase</strong><br/>
+                    • High write throughput, LSM-Tree.<br/>
+                    • Great for Time-series, IoT, Chat.
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🕸️</div>
+                  <div class="card-title">Graph DB</div>
+                  <div class="card-desc">
+                    • <strong>Neo4j, Amazon Neptune</strong><br/>
+                    • Nodes, Edges &amp; Properties.<br/>
+                    • Social networks, Fraud detection.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: CAP & PACELC Theorem -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">②</div>
+                <h2 class="section-title">CAP Theorem &amp; The Realistic PACELC Theorem</h2>
+              </div>
+              <div class="two-col">
+                <div class="hand-box glow-purple">
+                  <div class="box-title">🔺 CAP Theorem (Pick Any 2 during network partition)</div>
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-blue">Consistency (C):</span> Every read receives the most recent write or an error.</li>
+                    <li><span class="highlight-green">Availability (A):</span> Every non-failing node returns a non-error response (without guarantee of latest data).</li>
+                    <li><span class="highlight-red">Partition Tolerance (P):</span> System continues operating despite network drops between nodes. <em>(Mandatory in distributed systems!).</em></li>
+                    <li><strong class="highlight-purple">CP Systems:</strong> Google Spanner, HBase, ZooKeeper.</li>
+                    <li><strong class="highlight-green">AP Systems:</strong> Apache Cassandra, CouchDB, DynamoDB.</li>
+                  </ul>
+                </div>
+                <div class="hand-box glow-blue">
+                  <div class="box-title">⚖️ PACELC Theorem (Extended Real-World Model)</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155; line-height:1.4;">
+                    If there is a <strong>Partition (P)</strong>, trade off <strong>Availability (A)</strong> vs <strong>Consistency (C)</strong>;<br/>
+                    <strong>Else (E)</strong> (normal operation), trade off <strong>Latency (L)</strong> vs <strong>Consistency (C)</strong>.<br/><br/>
+                    • <strong>PA/EL:</strong> Cassandra, DynamoDB (Low latency favored over strong consistency in normal state).<br/>
+                    • <strong>PC/EC:</strong> Google Spanner, CockroachDB (Strong consistency always prioritized).
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Database Sharding & Partitioning -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">③</div>
+                <h2 class="section-title">Database Sharding Strategies &amp; Challenges</h2>
+              </div>
+              <div class="three-col">
+                <div class="hand-box glow-green">
+                  <div class="box-title">1. Range-Based Sharding</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155;">
+                    Sharded by key ranges (e.g. Users A-D on Shard 1, E-H on Shard 2).<br/>
+                    <span class="highlight-green">✓ Range queries easy.</span><br/>
+                    <span class="highlight-red">✗ Hotspot risk (Celebrity 'J' overloads Shard 3).</span>
+                  </div>
+                </div>
+                <div class="hand-box glow-blue">
+                  <div class="box-title">2. Hash-Based Sharding</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155;">
+                    <code style="font-family:'Fira Code'; font-size:12px;">Shard = hash(user_id) % N</code>.<br/>
+                    <span class="highlight-green">✓ Uniform data distribution.</span><br/>
+                    <span class="highlight-red">✗ Range queries require scatter-gather across all shards.</span>
+                  </div>
+                </div>
+                <div class="hand-box glow-amber">
+                  <div class="box-title">3. Directory / Lookup-Based</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155;">
+                    Lookup service maps partition key to shard ID.<br/>
+                    <span class="highlight-green">✓ Flexible dynamic re-sharding.</span><br/>
+                    <span class="highlight-red">✗ Lookup service is single point of failure / latency hop.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Box -->
+            <div class="remember-box">
+              <div class="remember-header">⭐ Storage Engine Tradeoff: B-Tree vs LSM-Tree</div>
+              <div class="remember-content">
+                ✓ <strong>B+ Tree (Postgres/MySQL):</strong> In-place updates, <strong>faster reads (O(log N))</strong>, higher write amplification.<br/>
+                ✓ <strong>LSM-Tree (Log-Structured Merge-Tree - Cassandra/RocksDB):</strong> Sequential append-only writes to MemTable + WAL, background SSTable compaction. <strong>Massive write throughput!</strong>
+              </div>
+            </div>
+
+            <!-- Interview Tip -->
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff / Senior Interview Tip</div>
+              <div class="interview-body">
+                <strong>Q: How do you handle Cross-Shard Transactions without blocking the entire database?</strong><br/>
+                <strong>A:</strong> Avoid distributed 2-Phase Commit (2PC) in high-throughput systems because coordinator locks cause high tail latency. Instead, co-locate related records using a shared <strong>Composite Partition Key</strong> (e.g., <code style="font-family:'Fira Code'; font-size:12px;">tenant_id:user_id</code>), or use an asynchronous <strong>Saga Orchestration Pattern</strong>.
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 4 of 8</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 5: Asynchronous Messaging & Distributed Transactions
+           ========================================================= -->
+      <article class="notebook-page" id="page-5">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">5/8</span>
+            </div>
+
+            <h1 class="page-title">
+              Asynchronous <span class="highlight-purple">Messaging</span> &amp; Distributed Transactions
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: Kafka vs RabbitMQ -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">①</div>
+                <h2 class="section-title">Apache Kafka vs RabbitMQ Deep Comparison</h2>
+              </div>
+              <div class="compare-container">
+                <div class="compare-vs-badge">VS</div>
+                <div class="compare-grid">
+                  <div class="compare-col">
+                    <div class="compare-head purple">Apache Kafka (Distributed Event Streaming)</div>
+                    <div class="compare-row"><span><strong>Model:</strong></span><span>Distributed Commit Log (Partitioned append-only file)</span></div>
+                    <div class="compare-row"><span><strong>Consumption:</strong></span><span class="highlight-green">Pull model (Consumers track own offset pointer)</span></div>
+                    <div class="compare-row"><span><strong>Message Retention:</strong></span><span>Time/Size based (e.g. 7 days). Replayable!</span></div>
+                    <div class="compare-row"><span><strong>Throughput:</strong></span><span class="highlight-purple">Millions msg/sec (Zero-Copy OS page cache)</span></div>
+                    <div class="compare-row"><span><strong>Ordering:</strong></span><span>Strict ordering <em>guaranteed within a single partition</em></span></div>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-head blue">RabbitMQ (Traditional Message Broker)</div>
+                    <div class="compare-row"><span><strong>Model:</strong></span><span>AMQP Broker with Exchanges (Direct, Fanout, Topic)</span></div>
+                    <div class="compare-row"><span><strong>Consumption:</strong></span><span>Push model (Broker pushes to consumers)</span></div>
+                    <div class="compare-row"><span><strong>Message Retention:</strong></span><span>Deleted immediately after consumer ACK</span></div>
+                    <div class="compare-row"><span><strong>Throughput:</strong></span><span>Tens of thousands msg/sec</span></div>
+                    <div class="compare-row"><span><strong>Features:</strong></span><span class="highlight-blue">Complex routing, priority queues, Dead Letter Exchanges</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Delivery Guarantees & Idempotency -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num blue">②</div>
+                <h2 class="section-title">Delivery Semantics &amp; Idempotency Pattern</h2>
+              </div>
+              <div class="three-col">
+                <div class="feature-card">
+                  <div class="card-icon">⚡</div>
+                  <div class="card-title">At-Most-Once</div>
+                  <div class="card-desc">
+                    Commit offset before processing.<br/>
+                    <span class="highlight-yellow">• Messages never reprocessed.</span><br/>
+                    <span class="highlight-red">• Data loss if consumer crashes!</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🔄</div>
+                  <div class="card-title">At-Least-Once</div>
+                  <div class="card-desc">
+                    Commit offset after DB processing.<br/>
+                    <span class="highlight-green">• Zero data loss.</span><br/>
+                    <span class="highlight-purple">• Duplicates possible on crash.</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🎯</div>
+                  <div class="card-title">Exactly-Once (Effective)</div>
+                  <div class="card-desc">
+                    <strong>At-Least-Once + Idempotency:</strong><br/>
+                    Unique <code style="font-family:'Fira Code'; font-size:12px;">idempotency_key</code> stored in DB deduplication table.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Transactional Outbox & Saga Pattern -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">③</div>
+                <h2 class="section-title">Distributed Transactions: Outbox Pattern &amp; Sagas</h2>
+              </div>
+              <div class="two-col">
+                <div class="hand-box glow-green">
+                  <div class="box-title">📦 Transactional Outbox Pattern</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155; line-height:1.4;">
+                    <strong>Problem:</strong> Updating DB and publishing to Kafka is NOT atomic (one can fail).<br/><br/>
+                    <strong>Solution Flow:</strong><br/>
+                    1. App saves business entity + message into <code style="font-family:'Fira Code'; font-size:12px;">outbox_table</code> in the <strong>same local DB transaction</strong>.<br/>
+                    2. CDC engine (Debezium) reads DB WAL log and publishes to Kafka.<br/>
+                    <span class="highlight-green">✓ 100% atomic dual-write guarantee without distributed locks.</span>
+                  </div>
+                </div>
+                <div class="hand-box glow-purple">
+                  <div class="box-title">🎭 Saga Pattern for Distributed Workflows</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155; line-height:1.4;">
+                    Replaces slow blocking Two-Phase Commit (2PC) across microservices:<br/><br/>
+                    • <strong>Choreography:</strong> Services listen to domain events and execute local transactions independently.<br/>
+                    • <strong>Orchestration:</strong> Central orchestrator (Temporal / AWS Step Functions) coordinates workflow.<br/>
+                    • On failure, executes explicit <strong>Compensating Transactions</strong> (e.g. Refund Payment).
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Box -->
+            <div class="remember-box">
+              <div class="remember-header">⭐ Kafka Partitioning Law</div>
+              <div class="remember-content">
+                ✓ In Kafka, <strong>1 partition can only be read by 1 consumer thread</strong> in a consumer group at any time! To scale consumer throughput, you must increase the number of partitions. Setting partition key = <code style="font-family:'Fira Code';">user_id</code> guarantees all events for that user arrive in exact chronological order.
+              </div>
+            </div>
+
+            <!-- Interview Tip -->
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff / Senior Interview Tip</div>
+              <div class="interview-body">
+                <strong>Q: How do you prevent Poison Pill messages from blocking an entire Kafka partition?</strong><br/>
+                <strong>A:</strong> Implement a <strong>Dead Letter Queue (DLQ) with Exponential Backoff + Jitter</strong>. On message deserialization or unrecoverable error, write the payload + stack trace to a <code style="font-family:'Fira Code'; font-size:12px;">order-events-dlq</code> topic after $N$ retry attempts, alert on-call, and commit the partition offset so valid customer messages continue processing.
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 5 of 8</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 6: Storage Systems, CDNs & Media Pipelines
+           ========================================================= -->
+      <article class="notebook-page" id="page-6">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">6/8</span>
+            </div>
+
+            <h1 class="page-title">
+              Storage Systems, <span class="highlight-blue">CDNs</span> &amp; Media Pipelines
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: Storage Types -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num blue">①</div>
+                <h2 class="section-title">Storage Types: Block vs File vs Object Storage</h2>
+              </div>
+              <div class="three-col">
+                <div class="feature-card">
+                  <div class="card-icon">🧱</div>
+                  <div class="card-title">Block Storage (EBS, SAN)</div>
+                  <div class="card-desc">
+                    • Raw disk blocks without metadata.<br/>
+                    • Ultra-low latency IOPS.<br/>
+                    • Attached to single instance.<br/>
+                    <span class="highlight-blue">Best for: Databases, OS boot disks.</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">📁</div>
+                  <div class="card-title">File Storage (EFS, NFS)</div>
+                  <div class="card-desc">
+                    • Hierarchical folder structure.<br/>
+                    • Shared across multiple servers.<br/>
+                    • POSIX compliant file locks.<br/>
+                    <span class="highlight-green">Best for: Shared configs, Legacy apps.</span>
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🪣</div>
+                  <div class="card-title">Object Storage (S3, GCS)</div>
+                  <div class="card-desc">
+                    • Flat namespace with metadata.<br/>
+                    • Immutable files accessed via HTTP API.<br/>
+                    • 99.999999999% (11 9's) durability.<br/>
+                    <span class="highlight-purple">Best for: Videos, Images, Backups.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: CDN Architecture -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">②</div>
+                <h2 class="section-title">Content Delivery Networks (CDN): Push vs Pull</h2>
+              </div>
+              <div class="compare-container">
+                <div class="compare-vs-badge">VS</div>
+                <div class="compare-grid">
+                  <div class="compare-col">
+                    <div class="compare-head blue">Pull CDN (Origin Fetch - Default)</div>
+                    <div class="compare-row"><span><strong>Workflow:</strong> Edge PoP fetches content from Origin server on first user request (Cache Miss), then caches it for TTL.</span></div>
+                    <div class="compare-row"><span><strong>Storage Cost:</strong> <span class="highlight-green">Minimal (only popular cached assets stored at edge)</span></span></div>
+                    <div class="compare-row"><span><strong>Maintenance:</strong> Zero origin management; automatic eviction.</span></div>
+                    <div class="compare-row"><span><strong>Best For:</strong> High-traffic web apps, blogs, YouTube thumbnails.</span></div>
+                  </div>
+                  <div class="compare-col">
+                    <div class="compare-head green">Push CDN (Proactive Upload)</div>
+                    <div class="compare-row"><span><strong>Workflow:</strong> Origin server pushes all new/updated content to edge servers proactively prior to user requests.</span></div>
+                    <div class="compare-row"><span><strong>Storage Cost:</strong> Higher (all assets distributed to all edge locations).</span></div>
+                    <div class="compare-row"><span><strong>Latency:</strong> <span class="highlight-green">0ms origin miss latency for all users.</span></span></div>
+                    <div class="compare-row"><span><strong>Best For:</strong> Large software updates (iOS updates, game patches).</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Large File Upload Pipeline -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">③</div>
+                <h2 class="section-title">Large Video / File Upload Pipeline (e.g. YouTube, Google Drive)</h2>
+              </div>
+              <div class="arch-pipeline">
+                <div class="pipeline-step blue">
+                  <span>1. Client requests upload signature from API</span>
+                  <span class="badge-pill blue">Pre-Signed S3 URL (5-min expiry)</span>
+                </div>
+                <div class="flow-arrow-down">↓ Direct Client-to-S3 bypasses API Servers</div>
+                <div class="pipeline-step purple">
+                  <span>2. Client uploads file in 5MB chunks in parallel</span>
+                  <span class="badge-pill purple">S3 Multipart Upload / TUS Protocol</span>
+                </div>
+                <div class="flow-arrow-down">↓ S3 Object Created Event Trigger</div>
+                <div class="pipeline-step green">
+                  <span>3. S3 triggers SNS/SQS Transcoding Queue</span>
+                  <span class="badge-pill green">Event-Driven Pipeline</span>
+                </div>
+                <div class="flow-arrow-down">↓ Distributed Worker Cluster (FFmpeg on GPU)</div>
+                <div class="pipeline-step red">
+                  <span>4. Workers encode video into HLS / DASH (1080p, 720p, 480p)</span>
+                  <span class="badge-pill red">HLS .m3u8 manifests + .ts segments</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Box -->
+            <div class="remember-box">
+              <div class="remember-header">⭐ Never Stream Large Files Through App Servers!</div>
+              <div class="remember-content">
+                ✓ Streaming 2GB video uploads through your API Gateway / Node.js servers exhausts thread pools and network bandwidth immediately! Always generate an <strong>Amazon S3 Pre-Signed Upload URL</strong> or use the <strong>TUS open resumable upload protocol</strong> for direct client-to-storage transfers.
+              </div>
+            </div>
+
+            <!-- Interview Tip -->
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff / Senior Interview Tip</div>
+              <div class="interview-body">
+                <strong>Q: How do you search across billions of text records in sub-50ms?</strong><br/>
+                <strong>A:</strong> Use an <strong>Inverted Index (Elasticsearch / OpenSearch)</strong>. Unlike relational DBs that scan rows, an inverted index maps every unique word/token to a sorted list of Document IDs (Posting List). Combining multiple terms uses fast bitwise AND / OR operations across posting lists.
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 6 of 8</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 7: Distributed Consensus, Coordination & ID Gen
+           ========================================================= -->
+      <article class="notebook-page" id="page-7">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">7/8</span>
+            </div>
+
+            <h1 class="page-title">
+              Distributed <span class="highlight-purple">Consensus</span>, Coordination &amp; ID Gen
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: Consistency Hierarchy -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num blue">①</div>
+                <h2 class="section-title">Consistency Models Spectrum (Strongest to Weakest)</h2>
+              </div>
+              <div class="four-col">
+                <div class="feature-card">
+                  <div class="card-icon">🔒</div>
+                  <div class="card-title">1. Linearizable (Strict)</div>
+                  <div class="card-desc">
+                    • <strong>1. Linearizable (Strict)</strong><br/>
+                    All operations appear instantaneous on a global real-time clock. Total global order.
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">⚡</div>
+                  <div class="card-title">2. Sequential</div>
+                  <div class="card-desc">
+                    • <strong>2. Sequential</strong><br/>
+                    All operations seen in the same order by all nodes; may lag real physical clock.
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">👤</div>
+                  <div class="card-title">3. Read-Your-Own-Writes</div>
+                  <div class="card-desc">
+                    • <strong>3. Read-Your-Own-Writes</strong><br/>
+                    A user always sees their own updates immediately. Other users see it eventually.
+                  </div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon">🌊</div>
+                  <div class="card-title">4. Eventual Consistency</div>
+                  <div class="card-desc">
+                    • <strong>4. Eventual Consistency</strong><br/>
+                    If no new updates, all replicas eventually converge to identical state.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Consensus (Raft/Paxos) & Distributed Locks -->
+            <div class="two-col">
+              <div class="section-block">
+                <div class="section-head">
+                  <div class="sec-num purple">②</div>
+                  <h2 class="section-title">Consensus (Raft Algorithm)</h2>
+                </div>
+                <div class="hand-box glow-purple">
+                  <div class="box-title">🗳️ Raft Core Mechanics (etcd, Consul)</div>
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-blue">Leader Election:</span> Randomized election timers (150-300ms) prevent split-vote deadlocks.</li>
+                    <li><span class="highlight-green">Quorum Rule:</span> Requires majority vote (Q = ⌊N/2⌋ + 1). A 5-node cluster survives 2 node failures.</li>
+                    <li><span class="highlight-purple">Log Replication:</span> Leader appends entry → replicates to followers → commits once majority ACKs.</li>
+                    <li><span class="highlight-red">Split-Brain Proof:</span> Only 1 partition can have a majority quorum.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="section-block">
+                <div class="section-head">
+                  <div class="sec-num red">③</div>
+                  <h2 class="section-title">Distributed Locks &amp; Fencing Tokens</h2>
+                </div>
+                <div class="hand-box glow-amber">
+                  <div class="box-title">⚠️ The Dangerous Distributed Lock Trap</div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#334155; line-height:1.4;">
+                    Client 1 acquires lock → JVM triggers Full GC pause for 15s → Lock TTL expires → Client 2 acquires lock → Client 1 wakes up and writes to DB → <strong class="highlight-red">Data Corruption!</strong><br/><br/>
+                    <strong class="highlight-green">Mandatory Fix: Fencing Tokens</strong><br/>
+                    Lock service issues monotonically increasing token (e.g. 33, 34, 35). Storage engine rejects writes with token &lt; current highest token.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Distributed ID Generation (Snowflake) -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">④</div>
+                <h2 class="section-title">Twitter Snowflake 64-Bit Unique ID Generator</h2>
+              </div>
+              <div class="hand-box glow-blue">
+                <div class="box-title">❄️ 64-bit Binary Bit Layout (Roughly Time-Sorted)</div>
+                <div style="display:flex; gap:4px; margin: 8px 0; overflow-x:auto;">
+                  <div style="flex:1; background:#fee2e2; border:1.5px solid #f87171; padding:6px; text-align:center; border-radius:6px; font-family:'Patrick Hand'; font-size:13px;">
+                    <strong>1 Bit</strong><br/>Sign (0)
+                  </div>
+                  <div style="flex:4; background:#dbeafe; border:1.5px solid #60a5fa; padding:6px; text-align:center; border-radius:6px; font-family:'Patrick Hand'; font-size:13px;">
+                    <strong>41 Bits: Timestamp</strong><br/>Epoch ms (69 yrs)
+                  </div>
+                  <div style="flex:2; background:#dcfce7; border:1.5px solid #4ade80; padding:6px; text-align:center; border-radius:6px; font-family:'Patrick Hand'; font-size:13px;">
+                    <strong>10 Bits: Machine ID</strong><br/>1024 workers
+                  </div>
+                  <div style="flex:2; background:#f3e8ff; border:1.5px solid #c084fc; padding:6px; text-align:center; border-radius:6px; font-family:'Patrick Hand'; font-size:13px;">
+                    <strong>12 Bits: Sequence</strong><br/>4096 IDs/ms/node
+                  </div>
+                </div>
+                <div style="font-family:'Patrick Hand'; font-size:14.5px; color:#334155;">
+                  • Generates <span class="highlight-purple">4,096,000 unique sortable IDs per second per server</span> without cross-network synchronization!
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Box -->
+            <div class="remember-box">
+              <div class="remember-header">⭐ NTP Clock Drift is Real</div>
+              <div class="remember-content">
+                ✓ Physical server clocks drift via NTP adjustments or leap seconds. Never rely on wall-clock time for strict distributed ordering. Use <strong>Logical Clocks (Lamport Timestamps / Vector Clocks)</strong> or hardware atomic clocks with bounded uncertainty intervals (<strong>Google Spanner TrueTime API</strong>).
+              </div>
+            </div>
+
+            <!-- Interview Tip -->
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff / Senior Interview Tip</div>
+              <div class="interview-body">
+                <strong>Q: Why is Redis Redlock controversial for distributed locking?</strong><br/>
+                <strong>A:</strong> Distributed systems expert Martin Kleppmann showed that Redlock relies on synchrony assumptions (bounded network delays and monotonic physical clocks). If a process experiences an unpredicted GC pause or VM migration, Redlock can grant two clients the lock simultaneously. For safety-critical state, always use <strong>etcd / ZooKeeper linearizable sessions with fencing tokens</strong>.
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 7 of 8</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 8: FAANG Blueprints & 8+ YoE Staff Strategy
+           ========================================================= -->
+      <article class="notebook-page" id="page-8">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">8/8</span>
+            </div>
+
+            <h1 class="page-title">
+              FAANG <span class="highlight-yellow">Blueprints</span> &amp; 8+ YoE Staff Playbook
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: 6 Classic System Blueprints -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num yellow">①</div>
+                <h2 class="section-title">6 Core Product System Blueprints (Cheat Sheet)</h2>
+              </div>
+              <div class="three-col">
+                <div class="feature-card" style="text-align:left;">
+                  <div class="card-title">1. TinyURL / Bitly</div>
+                  <div class="card-desc">
+                    • <strong>Encoding:</strong> Base62 (a-z, A-Z, 0-9). 7 chars = 3.5 Trillion URLs.<br/>
+                    • <strong>KGS:</strong> Pre-generate unique keys to avoid DB collision loops.<br/>
+                    • <strong>Ratio:</strong> 100:1 read-heavy → 95% served from Redis.
+                  </div>
+                </div>
+                <div class="feature-card" style="text-align:left;">
+                  <div class="card-title">2. WhatsApp / Slack Chat</div>
+                  <div class="card-desc">
+                    • <strong>Protocol:</strong> Full-duplex WebSockets.<br/>
+                    • <strong>Session:</strong> Presence Servers maintain connection map.<br/>
+                    • <strong>Storage:</strong> HBase / Cassandra (LSM-Tree for chat history).
+                  </div>
+                </div>
+                <div class="feature-card" style="text-align:left;">
+                  <div class="card-title">3. Twitter / Instagram Feed</div>
+                  <div class="card-desc">
+                    • <strong>Hybrid Fanout:</strong><br/>
+                    - Regular users: <em>Fanout-on-Write (Push)</em>.<br/>
+                    - Celebrities (&gt;100K followers): <em>Fanout-on-Read (Pull)</em> merged dynamically at query time.
+                  </div>
+                </div>
+                <div class="feature-card" style="text-align:left;">
+                  <div class="card-title">4. Distributed Rate Limiter</div>
+                  <div class="card-desc">
+                    • <strong>Storage:</strong> Redis Cluster.<br/>
+                    • <strong>Script:</strong> Atomic <strong>Lua Script</strong> executes Sliding Window Counter in 1 roundtrip.<br/>
+                    • <strong>Sync:</strong> Local In-memory cache + async Redis sync.
+                  </div>
+                </div>
+                <div class="feature-card" style="text-align:left;">
+                  <div class="card-title">5. Multi-Channel Notifications</div>
+                  <div class="card-desc">
+                    • <strong>Channels:</strong> APNs (iOS), FCM (Android), SMS, Email.<br/>
+                    • <strong>Priority Queues:</strong> High (OTP) vs Low (Promo).<br/>
+                    • <strong>Deduplication:</strong> 5-min sliding window check.
+                  </div>
+                </div>
+                <div class="feature-card" style="text-align:left;">
+                  <div class="card-title">6. Distributed Web Crawler</div>
+                  <div class="card-desc">
+                    • <strong>URL Frontier:</strong> Priority + Politeness FIFO queue.<br/>
+                    • <strong>Deduplication:</strong> Bloom Filter for visited URLs.<br/>
+                    • <strong>Parser:</strong> Distributed HTML scrapers + S3 storage.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: 8+ YoE Staff Competency Pillars -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">②</div>
+                <h2 class="section-title">What Distinguishes an 8+ YoE Senior/Staff Candidate?</h2>
+              </div>
+              <div class="two-col">
+                <div class="hand-box glow-green">
+                  <div class="box-title">🎯 Mid-Level vs Senior / Staff Behaviors</div>
+                  <div class="compare-row"><span><strong>Area</strong></span><span><strong>Senior / Staff Engineer Mindset</strong></span></div>
+                  <div class="compare-row"><span><strong>Ambiguity:</strong></span><span>Asks targeted clarifying questions, states assumptions explicitly.</span></div>
+                  <div class="compare-row"><span><strong>Trade-offs:</strong></span><span>Never says "X is best". Explains <em>why</em> X fits this workload despite its downsides.</span></div>
+                  <div class="compare-row"><span><strong>Failure Modes:</strong></span><span>Designs proactively for hardware crashes, split-brains, network partitions.</span></div>
+                  <div class="compare-row"><span><strong>Operational:</strong></span><span>Considers observability (OpenTelemetry), deployment strategy &amp; AWS cloud cost.</span></div>
+                </div>
+                <div class="hand-box glow-blue">
+                  <div class="box-title">📊 Observability Pillar (Metrics, Logs, Traces)</div>
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-blue">Golden Signals:</span> Latency (p50/p95/p99), Traffic (QPS), Errors (5xx rate), Saturation (CPU/Memory/Disk I/O).</li>
+                    <li><span class="highlight-green">Distributed Tracing:</span> Trace ID &amp; Span ID propagated across all microservices headers (W3C TraceContext / Jaeger).</li>
+                    <li><span class="highlight-purple">Graceful Degradation:</span> Serve cached / read-only content if write path is impaired.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Box -->
+            <div class="remember-box">
+              <div class="remember-header">⭐ The Ultimate Interview Checklist</div>
+              <div class="remember-content">
+                ✓ <strong>1. Functional:</strong> Top 2-3 core user journeys.<br/>
+                ✓ <strong>2. Non-Functional:</strong> Scale, Availability (99.99%), Latency (p99 &lt; 100ms), Consistency.<br/>
+                ✓ <strong>3. Data Model:</strong> SQL vs NoSQL, Primary/Foreign keys, Access patterns.<br/>
+                ✓ <strong>4. Deep Dive:</strong> Cache invalidation, Kafka partitions, DB sharding, Lock safety.<br/>
+                ✓ <strong>5. Resiliency:</strong> Circuit breakers, Dead letter queues, Zero Single Points of Failure (SPOF).
+              </div>
+            </div>
+
+            <!-- Interview Tip -->
+            <div class="interview-tip">
+              <div class="interview-header">💡 Final Staff Interview Wisdom</div>
+              <div class="interview-body">
+                <strong>"System design is not about memorizing architectures; it is the art of balancing trade-offs under constraints."</strong> Always drive the conversation, defend your design decisions with data, and guide the interviewer through bottlenecks before they even have to point them out!
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 8 of 8</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
