@@ -15,6 +15,11 @@
     href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Fira+Code:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
+  <script>
+    if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
+      window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+    }
+  </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 

@@ -29,12 +29,13 @@ Each note module is built as an interactive web application styled to look like 
   - Table of Contents (`Index`) popup modal.
   - Touch swipe gestures on iPad / mobile devices.
   - One-click **Download PDF** print stylesheet export.
+- 🛠️ **Smart URL Path Routing**: Automatic trailing-slash redirection script in every module's `<head>` to guarantee CSS asset loading regardless of whether the URL is accessed with or without a trailing slash (`/kubernetes-notes` vs `/kubernetes-notes/`).
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. View in Browser
+### 1. View in Browser Direct
 Simply double-click [`index.html`](file:///c:/Users/amitm/source/repos/Notes/index.html) or any module's `index.html` file to view directly in your web browser.
 
 ### 2. Run Local Development Server
@@ -44,7 +45,12 @@ To serve locally using `npx serve` or Live Server:
 npx serve .
 ```
 
-Then open `http://localhost:3000` in your browser.
+Then navigate to:
+- Master Hub: `http://localhost:3000/`
+- AI Notes: `http://localhost:3000/ai-notes/`
+- System Design Notes: `http://localhost:3000/system-design-notes/`
+- Kubernetes Notes: `http://localhost:3000/kubernetes-notes/`
+- Docker Notes: `http://localhost:3000/docker-notes/`
 
 ---
 
@@ -53,12 +59,11 @@ Then open `http://localhost:3000` in your browser.
 ```
 Notes/
 ├── index.html                           # Master Hub Landing Page
-├── README.md                            # Repository Documentation
+├── README.md                            # Master Repository Documentation
 ├── ai-notes/                            # The Evolution of AI Notes
-│   ├── index.html                       # AI Notebook Web App
-│   ├── styles.css                       # Notebook CSS Stylesheet
+│   ├── index.html                       # AI Notebook Web App (with Trailing-Slash Redirect)
+│   ├── styles.css                       # Notebook CSS Stylesheet & Print Media Query
 │   ├── script.js                        # Navigation & Interactivity Script
-│   ├── README.md                        # AI Notes Documentation
 │   └── AI-Handwritten-Notes.pdf         # Exported PDF Document
 ├── system-design-notes/                 # System Design Master Notes
 │   ├── index.html
@@ -79,12 +84,22 @@ Notes/
 
 ---
 
-## 📄 Exporting to PDF
+## 📄 Exporting & Printing PDF Notes
 
-To generate or update the PDF documents:
+All notebook web applications include `@media print` rules tailored for A4 portrait export:
+
 1. Open the desired note in Chrome / Edge (`index.html`).
 2. Click **Download PDF** in the top navigation bar (or press `Ctrl + P`).
-3. Select **Save as PDF** with headers/footers disabled and margins set to *None*.
+3. Set destination to **Save as PDF**.
+4. Set layout to **Portrait**, margins to **None** or **Default**, and check **Background graphics**.
+
+---
+
+## 🛠️ Troubleshooting & Server Notes
+
+### Unstyled Plain Text when visiting local URLs
+If a page renders as unstyled plain text (e.g. `http://localhost:3000/kubernetes-notes`), the browser might be requesting relative CSS paths from the root domain.  
+All `index.html` files contain an auto-redirect snippet that automatically normalizes `/module-name` to `/module-name/`, resolving CSS stylesheets properly.
 
 ---
 
