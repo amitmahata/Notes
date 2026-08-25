@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Evolution of AI - Handwritten Notes</title>
+  <meta name="description"
+    content="Beautiful handwritten-style study notes covering the Evolution of AI — from Turing Test (1950) and Deep Blue (1997) to Transformers, LLMs, and Generative AI." />
+
+  <!-- Handwritten & Code Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Fira+Code:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="brand-icon">🧠</span>
+        <span class="topbar-title">The Evolution of AI <span class="author-pill">by Amit Mahata • Handwritten
+            Notes</span></span>
+      </div>
+      <div class="topbar-center">
+        <span class="page-indicator" id="pageIndicator">Page 1 / 3</span>
+      </div>
+      <div class="topbar-right">
+        <button class="nav-btn toc-btn" onclick="toggleTOC(true)" title="Table of Contents">📋 Index</button>
+        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 Download
+          PDF</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page">← Prev</button>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
+      </div>
+    </header>
+
+    <!-- Dot Navigation -->
+    <div class="dot-nav" id="dotNav"></div>
+
+    <!-- Table of Contents Modal -->
+    <div class="toc-modal" id="tocModal">
+      <div class="toc-card">
+        <div class="toc-header">
+          <h3>Table of Contents (AI Master Notes)</h3>
+          <button class="toc-close" onclick="toggleTOC(false)">&times;</button>
+        </div>
+        <div class="toc-list">
+          <div class="toc-item" onclick="goToPage(1)">
+            <span>Page 1: Early Foundations (1950 – 1997)</span>
+            <span style="color: var(--ink-red); font-weight: bold;">(Your Note)</span>
+          </div>
+          <div class="toc-item" onclick="goToPage(2)">
+            <span>Page 2: Deep Learning &amp; LLM Era (2006 – 2026)</span>
+            <span style="color: var(--ink-blue);">Modern AI</span>
+          </div>
+          <div class="toc-item" onclick="goToPage(3)">
+            <span>Page 3: Have Machines Become Smarter Than Humans?</span>
+            <span style="color: var(--ink-green);">Analysis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notebook Pages Container -->
+    <main class="notebook-container" id="notebookContainer">
+
+      <!-- =========================================================
+           PAGE 1: Exact High-Fidelity Digitized Handwritten Note
+           ========================================================= -->
+      <article class="notebook-page active" id="page-1">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+
+            <!-- iPad Top Meta Bar Header -->
+            <div class="ipad-note-header">
+              <span>◀ Siri &nbsp; 2:15 PM Tue 25 Aug</span>
+              <span>Note Title: <strong>The Evolution of AI</strong></span>
+              <span>25 August 2026 at 2:15 PM</span>
+            </div>
+
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">1/3</span>
+            </div>
+
+            <!-- Red Title from Note -->
+            <h1 class="note-title-red">
+              What is Artificial Intellegence?
+            </h1>
+
+            <!-- Blue Definition from Note -->
+            <p class="note-def-blue">
+              AI is a science of making machins perform tasks that normally require human intellegence.
+            </p>
+
+            <!-- 1950 Timeline Block -->
+            <div class="timeline-block">
+              <div class="timeline-year">
+                <span>1950</span> &ndash; <span class="question">Can machine think?</span>
+              </div>
+              <div class="timeline-detail">
+                Alan Turing <span class="timeline-arrow">&rarr;</span> The turing test
+              </div>
+            </div>
+
+            <!-- 1955 Timeline Block -->
+            <div class="timeline-block">
+              <div class="timeline-year">
+                <span>1955</span> &ndash; <span>John McCarthy (Artificial Intellegence)</span>
+              </div>
+              <div class="timeline-detail">
+                Researchers came together with an ambitios belief <span class="timeline-arrow">&rarr;</span>
+              </div>
+            </div>
+
+            <!-- Red Quote Box from Note -->
+            <div class="quote-box-red">
+              &ldquo; Every aspect of learning and intelligence could, in principle, be described precisely enough for a
+              machine to simulate.
+            </div>
+
+            <!-- Yellow Banner: AI Winter -->
+            <div class="yellow-callout">
+              ★ After 1955 AI winter were there for a long period.
+            </div>
+
+            <!-- 1986 Timeline Block -->
+            <div class="timeline-block">
+              <div class="timeline-year">
+                <span>1986</span> <span class="timeline-arrow">&rarr;</span> <span>Synthetic Intellegence</span>
+              </div>
+            </div>
+
+            <!-- 1997 Timeline Block (Deep Blue vs Kasparov) -->
+            <div class="chess-block">
+              <div class="chess-title">
+                <span>1997</span> <span class="timeline-arrow">&rarr;</span>
+                <span class="underline-blue">Deep blue</span> defeated
+                <span style="color: var(--ink-blue); text-decoration: underline;">Garry Kasparov</span>.
+              </div>
+
+              <div class="kasparov-annotations">
+                <div class="anno-left">
+                  IBM developed
+                </div>
+                <div class="anno-right">
+                  Best chess player that time
+                </div>
+              </div>
+            </div>
+
+            <!-- Green Closing Question -->
+            <div class="closing-question-green">
+              Have machines become smarter than human?
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 2: Deep Learning & LLM Revolution (1997 - 2026)
+           ========================================================= -->
+      <article class="notebook-page" id="page-2">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">2/3</span>
+            </div>
+
+            <h1 class="note-title-red" style="color: var(--ink-blue-dark);">
+              Part 2: The Deep Learning &amp; Generative AI Era
+            </h1>
+
+            <p class="note-def-blue" style="border-left-color: var(--ink-red);">
+              Following the early milestones, AI evolved from rules-based engines to statistical pattern recognition and
+              large language models.
+            </p>
+
+            <div class="cards-grid">
+              <div class="handwritten-card" style="--rand: 0.2;">
+                <span class="card-tag" style="background: var(--bg-purple); color: var(--ink-purple);">2006 - Deep
+                  Learning</span>
+                <div class="card-title">Neural Net Revival</div>
+                <div class="card-body">
+                  Geoffrey Hinton &amp; team popularized Deep Belief Networks &amp; Backpropagation training for deep
+                  architectures.
+                </div>
+              </div>
+
+              <div class="handwritten-card" style="--rand: 0.8;">
+                <span class="card-tag" style="background: var(--bg-blue); color: var(--ink-blue);">2012 - AlexNet</span>
+                <div class="card-title">GPU Computer Vision</div>
+                <div class="card-body">
+                  Alex Krizhevsky used NVIDIA GPUs for ImageNet competition &mdash; reducing error rates from 26% to
+                  15%.
+                </div>
+              </div>
+
+              <div class="handwritten-card" style="--rand: 0.4;">
+                <span class="card-tag" style="background: var(--bg-green); color: var(--ink-green);">2017 -
+                  Transformers</span>
+                <div class="card-title">Attention Is All You Need</div>
+                <div class="card-body">
+                  Google introduced the Transformer architecture, replacing RNNs/LSTMs with Self-Attention mechanisms.
+                </div>
+              </div>
+
+              <div class="handwritten-card" style="--rand: 0.7;">
+                <span class="card-tag" style="background: var(--bg-red); color: var(--ink-red);">2022+ - Generative
+                  AI</span>
+                <div class="card-title">LLMs &amp; Diffusion</div>
+                <div class="card-body">
+                  ChatGPT, Claude, Gemini &amp; Midjourney bring AGI-level natural language reasoning and creative
+                  generation to millions.
+                </div>
+              </div>
+            </div>
+
+            <div class="quote-box-red"
+              style="border-left-color: var(--ink-blue); background: var(--bg-blue); color: var(--ink-blue-dark);">
+              &ldquo; Scaling Laws showed that adding parameters, data, and compute predictably increases model
+              reasoning capability.
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 3: Have Machines Become Smarter Than Humans?
+           ========================================================= -->
+      <article class="notebook-page" id="page-3">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="author-tag">✍️ Notes by Amit Mahata</span>
+              <span class="page-num">3/3</span>
+            </div>
+
+            <h1 class="note-title-red" style="color: var(--ink-green);">
+              Analysis: Are Machines Smarter Than Humans?
+            </h1>
+
+            <p class="note-def-blue" style="border-left-color: var(--ink-green);">
+              The answer depends on whether we measure <strong>Narrow Specialization</strong> vs <strong>General
+                Intelligence (AGI)</strong>.
+            </p>
+
+            <table class="handwritten-table">
+              <thead>
+                <tr>
+                  <th>Dimension</th>
+                  <th>Human Brain 🧠</th>
+                  <th>AI Systems 🤖</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Processing Speed</strong></td>
+                  <td>~100 Hz signal transmission</td>
+                  <td><span style="color: var(--ink-blue); font-weight: bold;">GigaFLOPS / TeraFLOPS parallel
+                      compute</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Memory Capacity</strong></td>
+                  <td>Selective, associative memory</td>
+                  <td><span style="color: var(--ink-blue); font-weight: bold;">Petabytes of lossless retrieval</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Specialized Tasks (Chess/Math/Code)</strong></td>
+                  <td>Human champions surpassed</td>
+                  <td><span style="color: var(--ink-green); font-weight: bold;">Superhuman performance (DeepBlue,
+                      AlphaGo)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Generalization &amp; Empathy</strong></td>
+                  <td><span style="color: var(--ink-red); font-weight: bold;">Unmatched emotional, physical &amp;
+                      common-sense reasoning</span></td>
+                  <td>Hallucinations, lacks true biological experience</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="closing-question-green"
+              style="background: var(--bg-yellow); border-color: var(--ink-yellow); color: var(--ink-yellow);">
+              Conclusion: Machines excel at specialized computation &amp; scale; humans excel at consciousness, empathy
+              &amp; novel reasoning!
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
