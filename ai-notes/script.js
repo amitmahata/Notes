@@ -3,7 +3,7 @@
 // script.js - Navigation, TOC, and Interactivity
 // =========================================
 
-const TOTAL_PAGES = 3;
+const TOTAL_PAGES = 6;
 let currentPage = 1;
 
 // Build dot navigation
@@ -35,7 +35,6 @@ function goToPage(num) {
 
   const next = document.getElementById(`page-${currentPage}`);
   if (next) {
-    // Trigger fade transition
     next.classList.add('active');
   }
 

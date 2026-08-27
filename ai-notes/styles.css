@@ -246,12 +246,14 @@ body::before {
   background-image: linear-gradient(var(--paper-lines) 1px, transparent 1px);
   background-size: 100% 28px;
   width: 100%;
-  max-width: 550px;
+  max-width: 600px;
   border-radius: 16px;
   padding: 28px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
   border: 3px solid #d6d3d1;
   position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .toc-header {
@@ -280,11 +282,11 @@ body::before {
 
 .toc-item {
   font-family: 'Kalam', cursive;
-  font-size: 18px;
+  font-size: 17px;
   padding: 10px 14px;
   margin-bottom: 8px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   border: 1px solid rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -310,7 +312,7 @@ body::before {
 .notebook-page {
   display: none;
   width: 92%;
-  max-width: 880px;
+  max-width: 900px;
   background: var(--paper-bg);
   border-radius: 12px;
   box-shadow: var(--shadow-notebook);
@@ -399,7 +401,7 @@ body::before {
   border-radius: 12px;
 }
 
-/* Title styling matching user image */
+/* Title styling matching handwritten notes */
 .ipad-note-header {
   background: rgba(255, 255, 255, 0.6);
   border: 1px dashed rgba(0, 0, 0, 0.12);
@@ -422,7 +424,19 @@ body::before {
   line-height: 1.2;
   margin-bottom: 12px;
   letter-spacing: 0.5px;
-  transform: rotate(-0.5deg);
+  transform: rotate(-0.4deg);
+}
+
+.note-section-red {
+  font-family: 'Caveat', cursive;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--ink-red);
+  margin: 28px 0 12px 0;
+  transform: rotate(-0.3deg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .note-def-blue {
@@ -431,14 +445,47 @@ body::before {
   font-weight: 400;
   color: var(--ink-blue);
   line-height: 1.6;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
   padding-left: 8px;
   border-left: 3px solid var(--bg-blue);
 }
 
-/* Section / Timeline Blocks */
+.handwritten-blue-text {
+  font-family: 'Kalam', cursive;
+  font-size: 21px;
+  color: var(--ink-blue);
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.handwritten-dark-text {
+  font-family: 'Kalam', cursive;
+  font-size: 20px;
+  color: var(--ink-dark);
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.handwritten-yellow-text {
+  font-family: 'Kalam', cursive;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink-yellow);
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.handwritten-green-text {
+  font-family: 'Kalam', cursive;
+  font-size: 21px;
+  color: var(--ink-green);
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+/* Timeline Blocks */
 .timeline-block {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   position: relative;
 }
 
@@ -471,13 +518,13 @@ body::before {
   font-weight: bold;
 }
 
-/* Red Quote Box from uploaded image */
+/* Red Quote Box from handwritten notes */
 .quote-box-red {
   background: var(--bg-red);
   border-left: 4px solid var(--ink-red);
   border-radius: 0 12px 12px 0;
   padding: 16px 20px;
-  margin: 18px 0 26px 0;
+  margin: 16px 0 24px 0;
   font-family: 'Caveat', cursive;
   font-size: 24px;
   font-weight: 600;
@@ -497,7 +544,7 @@ body::before {
   padding: 10px 16px;
   border-radius: 8px;
   border: 1px dashed var(--ink-yellow);
-  margin: 22px 0;
+  margin: 20px 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -510,7 +557,7 @@ body::before {
   border: 2px solid rgba(30, 41, 59, 0.15);
   border-radius: 12px;
   padding: 16px 22px;
-  margin: 24px 0;
+  margin: 22px 0;
 }
 
 .chess-title {
@@ -557,59 +604,272 @@ body::before {
 /* Closing Green Question */
 .closing-question-green {
   font-family: 'Caveat', cursive;
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--ink-green);
   text-align: center;
-  margin-top: 36px;
-  padding: 16px 12px;
+  margin: 24px 0;
+  padding: 14px 12px;
   background: var(--bg-green);
   border-radius: 12px;
   border: 2px dashed var(--ink-green);
   box-shadow: 0 4px 16px rgba(5, 150, 105, 0.12);
-  transform: rotate(-0.5deg);
+  transform: rotate(-0.4deg);
 }
 
-/* Cards & Tables for Pages 2 & 3 */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin: 20px 0;
-}
-
-.handwritten-card {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transform: rotate(-0.5deg);
-}
-
-.card-tag {
-  display: inline-block;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 13px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.card-title {
+/* Handwritten comparison badge (Rules vs Examples) */
+.rule-vs-examples {
+  display: flex;
+  align-items: center;
+  gap: 24px;
   font-family: 'Caveat', cursive;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
+  margin: 10px 0 16px 0;
+}
+
+.strike-rules {
+  color: var(--ink-red);
+  background: var(--bg-red);
+  padding: 4px 14px;
+  border-radius: 8px;
+  border: 1px dashed var(--ink-red);
+}
+
+.check-examples {
+  color: var(--ink-green);
+  background: var(--bg-green);
+  padding: 4px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--ink-green);
+}
+
+/* Pill tags grid for ML / DL concepts */
+.pills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.green-pill-item {
+  font-family: 'Kalam', cursive;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink-green);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid var(--ink-green);
+  border-radius: 8px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.08);
+}
+
+.green-pill-item::before {
+  content: '>';
+  font-weight: 700;
+  color: var(--ink-green);
+}
+
+/* AlexNet bracket group */
+.bracket-group {
+  border-left: 3px solid var(--ink-dark);
+  padding-left: 16px;
+  margin: 14px 0 18px 8px;
+  font-family: 'Kalam', cursive;
+  font-size: 20px;
   color: var(--ink-dark);
+  line-height: 1.6;
+}
+
+.bracket-group div {
+  margin-bottom: 4px;
+}
+
+/* NLP ambiguity quote box */
+.nlp-quotes-box {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px dashed rgba(29, 78, 216, 0.3);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+}
+
+.nlp-quote-line {
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--ink-blue);
   margin-bottom: 6px;
 }
 
-.card-body {
+.nlp-quote-explanation {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 16px;
+  color: #64748b;
+  margin-bottom: 8px;
+  padding-left: 12px;
+}
+
+/* NLP numbered steps list */
+.nlp-steps-list {
+  margin: 14px 0;
+  padding-left: 12px;
+}
+
+.nlp-step-item {
   font-family: 'Kalam', cursive;
-  font-size: 17px;
-  color: #334155;
-  line-height: 1.5;
+  font-size: 20px;
+  color: var(--ink-dark);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.nlp-step-item .step-num {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--ink-red);
+}
+
+/* Attention mechanism visualizer */
+.attention-demo {
+  background: #ffffff;
+  border: 2px solid var(--ink-blue);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 18px 0;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.1);
+}
+
+.attention-sentence {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink-blue);
+  line-height: 1.6;
+}
+
+.attention-circle {
+  border: 2px solid var(--ink-dark);
+  border-radius: 50%;
+  padding: 1px 8px;
+  display: inline-block;
+  color: var(--ink-dark);
+  position: relative;
+}
+
+.attention-arrow-indicator {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 16px;
+  color: var(--ink-yellow);
+  font-weight: bold;
+  margin-top: 8px;
+  padding-left: 6px;
+}
+
+/* Paradigm shift brackets (Old vs Modern AI) */
+.paradigm-shift-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.paradigm-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.paradigm-card.old {
+  border-left: 4px solid #64748b;
+}
+
+.paradigm-card.modern {
+  border-left: 4px solid var(--ink-green);
+  background: var(--bg-green);
+}
+
+.paradigm-title {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.paradigm-title.old { color: #475569; }
+.paradigm-title.modern { color: var(--ink-green); }
+
+/* Modality pill tags */
+.modality-tags-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 20px 0;
+}
+
+.modality-tag {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1.5px solid var(--ink-blue);
+  color: var(--ink-blue);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Capabilities 2-Column Grid (The AI Today) */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.capability-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(29, 78, 216, 0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.capability-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--ink-blue);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.15);
+}
+
+.capability-star {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink-blue);
+}
+
+.capability-text {
+  font-family: 'Kalam', cursive;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink-dark);
+}
+
+.capability-desc {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 14px;
+  color: #64748b;
 }
 
 /* Comparison Table */
@@ -635,7 +895,24 @@ body::before {
   color: var(--ink-blue-dark);
 }
 
-/* PDF Print Styles for Clean Portrait Pages */
+/* Summary timeline footer */
+.summary-timeline-bar {
+  background: var(--bg-yellow);
+  border: 2px dashed var(--ink-yellow);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink-yellow);
+}
+
+/* PDF Print Styles for Clean Multi-Page Document */
 @media print {
   @page {
     size: A4 portrait;
@@ -718,6 +995,9 @@ body::before {
   .note-title-red {
     font-size: 28px;
   }
+  .note-section-red {
+    font-size: 26px;
+  }
   .note-def-blue {
     font-size: 18px;
   }
@@ -726,5 +1006,8 @@ body::before {
   }
   .timeline-detail {
     font-size: 18px;
+  }
+  .paradigm-shift-container {
+    grid-template-columns: 1fr;
   }
 }
