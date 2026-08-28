@@ -67,6 +67,54 @@ function toggleTOC(show) {
   }
 }
 
+// Sidebar Drawer Controls
+function toggleSidebar(show) {
+  const drawer = document.getElementById('sidebarDrawer');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (drawer && backdrop) {
+    if (show) {
+      drawer.classList.add('open');
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      const searchInput = document.getElementById('topicSearchInput');
+      if (searchInput && window.innerWidth >= 768) {
+        setTimeout(() => searchInput.focus(), 150);
+      }
+    } else {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+}
+
+// Filter topics in sidebar
+function filterSidebarTopics(query) {
+  const q = (query || '').toLowerCase().trim();
+  const items = document.querySelectorAll('.sidebar-topic-item');
+  const clearBtn = document.getElementById('clearSearchBtn');
+  if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
+  
+  items.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    const keywords = (item.dataset.keywords || '').toLowerCase();
+    if (!q || text.includes(q) || keywords.includes(q)) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+function clearTopicSearch() {
+  const input = document.getElementById('topicSearchInput');
+  if (input) {
+    input.value = '';
+    filterSidebarTopics('');
+    input.focus();
+  }
+}
+
 // Go to a specific page
 function goToPage(num) {
   if (num < 1 || num > TOTAL_PAGES) return;
@@ -90,6 +138,7 @@ function goToPage(num) {
   }
 
   updateUI();
+  toggleSidebar(false);
 }
 
 // Public function for prev/next buttons
@@ -117,6 +166,12 @@ function updateUI() {
     d.classList.toggle('active', i + 1 === currentPage);
   });
 
+  const topicItems = document.querySelectorAll('.sidebar-topic-item');
+  topicItems.forEach(item => {
+    const pageNum = parseInt(item.dataset.page, 10);
+    item.classList.toggle('active', pageNum === currentPage);
+  });
+
   // Scroll smoothly to top of notebook
   const container = document.getElementById('notebookContainer');
   if (container) {
@@ -126,16 +181,26 @@ function updateUI() {
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
-  // Check if modal is open
-  const modal = document.getElementById('tocModal');
-  if (modal && modal.classList.contains('open')) {
-    if (e.key === 'Escape') toggleTOC(false);
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+    if (e.key === 'Escape') toggleSidebar(false);
+    return;
+  }
+
+  if (e.key === 'Escape') {
+    toggleSidebar(false);
+    toggleTOC(false);
     return;
   }
 
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
   if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
-  if (e.key === 't' || e.key === 'T') toggleTOC();
+  if (e.key === 't' || e.key === 'T') {
+    const drawer = document.getElementById('sidebarDrawer');
+    if (drawer) {
+      const isOpen = drawer.classList.contains('open');
+      toggleSidebar(!isOpen);
+    }
+  }
 
   // Numeric page jumps 1-8
   const num = parseInt(e.key, 10);
@@ -154,9 +219,11 @@ document.addEventListener('touchstart', (e) => {
 }, { passive: true });
 
 document.addEventListener('touchend', (e) => {
+  const drawer = document.getElementById('sidebarDrawer');
+  if (drawer && drawer.classList.contains('open')) return;
+
   const dx = e.changedTouches[0].clientX - touchStartX;
   const dy = e.changedTouches[0].clientY - touchStartY;
-  // Horizontal swipe
   if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
     if (dx < 0) changePage(1);
     else         changePage(-1);

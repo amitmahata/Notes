@@ -37,19 +37,158 @@
     <!-- Top Navigation Bar -->
     <header class="topbar">
       <div class="topbar-left">
+        <button class="nav-btn drawer-toggle-btn" onclick="toggleSidebar(true)" title="Topic Index & Notebook Switcher">☰ Topics</button>
+        <a href="../index.html" class="home-link-btn" title="Back to All Notes Hub">🏠 Hub</a>
         <span class="brand-icon">🧠</span>
         <span class="topbar-title">The Evolution of AI <span class="author-pill">by Amit Mahata • Handwritten Notes</span></span>
       </div>
       <div class="topbar-center">
-        <span class="page-indicator" id="pageIndicator">Page 1 / 6</span>
-      </div>
-      <div class="topbar-right">
-        <button class="nav-btn toc-btn" onclick="toggleTOC(true)" title="Table of Contents">📋 Index</button>
-        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 Download PDF</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page">← Prev</button>
+        <span class="page-indicator" id="pageIndicator">Page 1 / 6</span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
       </div>
+      <div class="topbar-right">
+        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 PDF</button>
+      </div>
     </header>
+
+    <!-- Topic Sidenav Drawer -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar(false)"></div>
+    <aside class="sidebar-drawer" id="sidebarDrawer" aria-label="Topic Sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <a href="../index.html" class="sidebar-home-link" title="Return to Main Hub">
+            <span class="home-icon">🏠</span>
+            <span class="brand-text">Notes Hub</span>
+          </a>
+        </div>
+        <button class="sidebar-close-btn" onclick="toggleSidebar(false)" aria-label="Close Sidebar">&times;</button>
+      </div>
+
+      <!-- Notebook Quick Switcher -->
+      <div class="sidebar-section">
+        <div class="section-label">SWITCH NOTEBOOK</div>
+        <nav class="notebook-switcher-grid">
+          <a href="../ai-notes/index.html" class="switcher-card active" title="AI Notes">
+            <span class="switcher-icon">🧠</span>
+            <div class="switcher-info">
+              <span class="switcher-title">AI Evolution</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../system-design-notes/index.html" class="switcher-card" title="System Design Notes">
+            <span class="switcher-icon">📐</span>
+            <div class="switcher-info">
+              <span class="switcher-title">System Design</span>
+              <span class="switcher-pages">8 Pages</span>
+            </div>
+          </a>
+          <a href="../kubernetes-notes/index.html" class="switcher-card" title="Kubernetes Notes">
+            <span class="switcher-icon">⎈</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Kubernetes</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../docker-notes/index.html" class="switcher-card" title="Docker Notes">
+            <span class="switcher-icon">🐳</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Docker</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Search Filter -->
+      <div class="sidebar-section">
+        <div class="section-label">TOPIC EXPLORER (PRESS 'T')</div>
+        <div class="sidebar-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="topicSearchInput" placeholder="Search topics (e.g. Turing, CNN, LLM)..." oninput="filterSidebarTopics(this.value)" autocomplete="off" />
+          <button class="clear-search-btn" id="clearSearchBtn" onclick="clearTopicSearch()" style="display:none;">&times;</button>
+        </div>
+      </div>
+
+      <!-- Topics Tree / List -->
+      <div class="sidebar-topics-list" id="sidebarTopicsList">
+        <div class="sidebar-topic-item active" data-page="1" data-keywords="turing mccarthy 1950 1955 1986 rule based expert systems spam chess" onclick="goToPage(1)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P1</span>
+            <div class="topic-info">
+              <span class="topic-title">Early Foundations &amp; Rule-Based AI</span>
+              <span class="topic-subtitle">Turing Test (1950), McCarthy, Chess &amp; Rules</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #fee2e2; color: #dc2626;">Origins</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="2" data-keywords="machine learning deep learning neural networks backpropagation weights data" onclick="goToPage(2)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P2</span>
+            <div class="topic-info">
+              <span class="topic-title">ML &amp; Deep Learning Revolution</span>
+              <span class="topic-subtitle">Paradigm Shift, Features vs Neural Weights</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #dbeafe; color: #1d4ed8;">ML &amp; DL</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="3" data-keywords="alexnet imagenet cnn computer vision nlp word2vec rnn lstm attention" onclick="goToPage(3)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P3</span>
+            <div class="topic-info">
+              <span class="topic-title">Vision (AlexNet) &amp; NLP Evolution</span>
+              <span class="topic-subtitle">ImageNet 2012, Word2Vec, Attention Mechanism</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #ede9fe; color: #7c3aed;">Vision &amp; NLP</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="4" data-keywords="transformers attention is all you need gpt bert generative ai llm pre-training rlhf" onclick="goToPage(4)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P4</span>
+            <div class="topic-info">
+              <span class="topic-title">Generative AI &amp; LLMs (Transformers)</span>
+              <span class="topic-subtitle">Attention Is All You Need, GPT, Pre-training &amp; RLHF</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #fef3c7; color: #d97706;">GenAI</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="5" data-keywords="multimodal gpt-4v gemini autonomous agents tools memory react reflection multi-agent" onclick="goToPage(5)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P5</span>
+            <div class="topic-info">
+              <span class="topic-title">Multimodal AI &amp; Autonomous Agents</span>
+              <span class="topic-subtitle">Vision-Language, Tool Use, Memory &amp; Multi-Agent</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #dcfce7; color: #059669;">Agents</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="6" data-keywords="future frontier reasoning agi timeline summary comparison cheat sheet" onclick="goToPage(6)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P6</span>
+            <div class="topic-info">
+              <span class="topic-title">Future Frontiers &amp; Master Cheat Sheet</span>
+              <span class="topic-subtitle">Timeline Comparison, Paradigm Matrix &amp; Key Takeaways</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #f1f5f9; color: #334155;">Summary</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <button class="sidebar-action-btn pdf-btn" onclick="window.print(); toggleSidebar(false)">
+          <span>📥 Download AI Notes PDF</span>
+        </button>
+        <a href="../index.html" class="sidebar-action-btn home-btn">
+          <span>🏠 Return to All Notebooks Hub</span>
+        </a>
+      </div>
+    </aside>
 
     <!-- Dot Navigation -->
     <div class="dot-nav" id="dotNav"></div>

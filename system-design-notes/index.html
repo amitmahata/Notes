@@ -29,19 +29,180 @@
     <!-- Top Navigation Bar -->
     <header class="topbar">
       <div class="topbar-left">
+        <button class="nav-btn drawer-toggle-btn" onclick="toggleSidebar(true)" title="Topic Index & Notebook Switcher">☰ Topics</button>
+        <a href="../index.html" class="home-link-btn" title="Back to All Notes Hub">🏠 Hub</a>
         <span class="brand-icon">📐</span>
         <span class="topbar-title">System Design Notes <span class="author-pill">by Amit Mahata • 8+ YoE</span></span>
       </div>
       <div class="topbar-center">
-        <span class="page-indicator" id="pageIndicator">Page 1 / 8</span>
-      </div>
-      <div class="topbar-right">
-        <button class="nav-btn toc-btn" onclick="toggleTOC(true)" title="Table of Contents">📋 Index</button>
-        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 Download PDF</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page">← Prev</button>
+        <span class="page-indicator" id="pageIndicator">Page 1 / 8</span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
       </div>
+      <div class="topbar-right">
+        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 PDF</button>
+      </div>
     </header>
+
+    <!-- Topic Sidenav Drawer -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar(false)"></div>
+    <aside class="sidebar-drawer" id="sidebarDrawer" aria-label="Topic Sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <a href="../index.html" class="sidebar-home-link" title="Return to Main Hub">
+            <span class="home-icon">🏠</span>
+            <span class="brand-text">Notes Hub</span>
+          </a>
+        </div>
+        <button class="sidebar-close-btn" onclick="toggleSidebar(false)" aria-label="Close Sidebar">&times;</button>
+      </div>
+
+      <!-- Notebook Quick Switcher -->
+      <div class="sidebar-section">
+        <div class="section-label">SWITCH NOTEBOOK</div>
+        <nav class="notebook-switcher-grid">
+          <a href="../ai-notes/index.html" class="switcher-card" title="AI Notes">
+            <span class="switcher-icon">🧠</span>
+            <div class="switcher-info">
+              <span class="switcher-title">AI Evolution</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../system-design-notes/index.html" class="switcher-card active" title="System Design Notes">
+            <span class="switcher-icon">📐</span>
+            <div class="switcher-info">
+              <span class="switcher-title">System Design</span>
+              <span class="switcher-pages">8 Pages</span>
+            </div>
+          </a>
+          <a href="../kubernetes-notes/index.html" class="switcher-card" title="Kubernetes Notes">
+            <span class="switcher-icon">⎈</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Kubernetes</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../docker-notes/index.html" class="switcher-card" title="Docker Notes">
+            <span class="switcher-icon">🐳</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Docker</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Search Filter -->
+      <div class="sidebar-section">
+        <div class="section-label">TOPIC EXPLORER (PRESS 'T')</div>
+        <div class="sidebar-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="topicSearchInput" placeholder="Search topics (e.g. Cache, Kafka, CAP, Sharding)..." oninput="filterSidebarTopics(this.value)" autocomplete="off" />
+          <button class="clear-search-btn" id="clearSearchBtn" onclick="clearTopicSearch()" style="display:none;">&times;</button>
+        </div>
+      </div>
+
+      <!-- Topics Tree / List -->
+      <div class="sidebar-topics-list" id="sidebarTopicsList">
+        <div class="sidebar-topic-item active" data-page="1" data-keywords="interview framework 4 step requirements functional non functional estimation rps throughput bandwidth high level deep dive" onclick="goToPage(1)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P1</span>
+            <div class="topic-info">
+              <span class="topic-title">Interview Framework &amp; Scoping</span>
+              <span class="topic-subtitle">4-Step Framework, Back-of-the-Envelope Math</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #e0f2fe; color: #0369a1;">Framework</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="2" data-keywords="scaling load balancing vertical horizontal layer 4 7 round robin least connections consistent hashing reverse proxy" onclick="goToPage(2)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P2</span>
+            <div class="topic-info">
+              <span class="topic-title">Scaling &amp; Load Balancing</span>
+              <span class="topic-subtitle">Vertical vs Horizontal, Algorithms &amp; Reverse Proxies</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #dbeafe; color: #1e40af;">Scaling</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="3" data-keywords="caching cache strategies cdn write through write back cache aside redis memcached eviction lru lfu" onclick="goToPage(3)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P3</span>
+            <div class="topic-info">
+              <span class="topic-title">Caching Strategies &amp; CDN</span>
+              <span class="topic-subtitle">Cache Invalidation, Write-through &amp; Eviction Policies</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #fef3c7; color: #b45309;">Caching</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="4" data-keywords="databases sql nosql sharding partition replication acid cap theorem pacelc document key-value graph columnar" onclick="goToPage(4)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P4</span>
+            <div class="topic-info">
+              <span class="topic-title">Databases: SQL, NoSQL &amp; CAP</span>
+              <span class="topic-subtitle">Sharding, Master-Replica, ACID &amp; CAP Theorem</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #dcfce7; color: #15803d;">Databases</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="5" data-keywords="message queues async kafka rabbitmq event driven pub sub streaming backpressure consumer group offset" onclick="goToPage(5)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P5</span>
+            <div class="topic-info">
+              <span class="topic-title">Message Queues &amp; Event-Driven</span>
+              <span class="topic-subtitle">Kafka vs RabbitMQ, Pub/Sub &amp; Backpressure</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #ede9fe; color: #6d28d9;">Async &amp; Queues</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="6" data-keywords="microservices api gateway rate limiting circuit breaker service mesh envoy resilience token bucket leaky bucket" onclick="goToPage(6)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P6</span>
+            <div class="topic-info">
+              <span class="topic-title">Microservices &amp; API Gateways</span>
+              <span class="topic-subtitle">Rate Limiting Algorithms, Circuit Breakers &amp; Mesh</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #fee2e2; color: #b91c1c;">Microservices</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="7" data-keywords="distributed systems consensus raft paxos 2pc two phase commit distributed transactions event sourcing cqrs saga" onclick="goToPage(7)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P7</span>
+            <div class="topic-info">
+              <span class="topic-title">Consensus &amp; Distributed Transactions</span>
+              <span class="topic-subtitle">Raft, Paxos, 2PC, Saga Pattern &amp; Event Sourcing</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #e0e7ff; color: #3730a3;">Distributed</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="8" data-keywords="cheat sheet latency numbers formula interview quick reference trade offs summary" onclick="goToPage(8)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P8</span>
+            <div class="topic-info">
+              <span class="topic-title">System Design Master Cheat Sheet</span>
+              <span class="topic-subtitle">Latency Numbers, Math Formulas &amp; Design Trade-offs</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #f1f5f9; color: #334155;">Cheat Sheet</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <button class="sidebar-action-btn pdf-btn" onclick="window.print(); toggleSidebar(false)">
+          <span>📥 Download System Design PDF</span>
+        </button>
+        <a href="../index.html" class="sidebar-action-btn home-btn">
+          <span>🏠 Return to All Notebooks Hub</span>
+        </a>
+      </div>
+    </aside>
 
     <!-- Dot Navigation -->
     <div class="dot-nav" id="dotNav"></div>

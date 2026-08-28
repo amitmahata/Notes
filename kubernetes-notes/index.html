@@ -30,18 +30,158 @@
     <!-- Top Bar -->
     <header class="topbar">
       <div class="topbar-left">
+        <button class="nav-btn drawer-toggle-btn" onclick="toggleSidebar(true)" title="Topic Index & Notebook Switcher">☰ Topics</button>
+        <a href="../index.html" class="home-link-btn" title="Back to All Notes Hub">🏠 Hub</a>
         <span class="k8s-logo">⎈</span>
         <span class="topbar-title">Kubernetes Study Notes <span class="author-pill">by Amit Mahata</span></span>
       </div>
       <div class="topbar-center">
-        <span class="page-indicator" id="pageIndicator">Page 1 / 6</span>
-      </div>
-      <div class="topbar-right">
-        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 Download PDF</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">&#8592; Prev</button>
+        <span class="page-indicator" id="pageIndicator">Page 1 / 6</span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next &#8594;</button>
       </div>
+      <div class="topbar-right">
+        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 PDF</button>
+      </div>
     </header>
+
+    <!-- Topic Sidenav Drawer -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar(false)"></div>
+    <aside class="sidebar-drawer" id="sidebarDrawer" aria-label="Topic Sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <a href="../index.html" class="sidebar-home-link" title="Return to Main Hub">
+            <span class="home-icon">🏠</span>
+            <span class="brand-text">Notes Hub</span>
+          </a>
+        </div>
+        <button class="sidebar-close-btn" onclick="toggleSidebar(false)" aria-label="Close Sidebar">&times;</button>
+      </div>
+
+      <!-- Notebook Quick Switcher -->
+      <div class="sidebar-section">
+        <div class="section-label">SWITCH NOTEBOOK</div>
+        <nav class="notebook-switcher-grid">
+          <a href="../ai-notes/index.html" class="switcher-card" title="AI Notes">
+            <span class="switcher-icon">🧠</span>
+            <div class="switcher-info">
+              <span class="switcher-title">AI Evolution</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../system-design-notes/index.html" class="switcher-card" title="System Design Notes">
+            <span class="switcher-icon">📐</span>
+            <div class="switcher-info">
+              <span class="switcher-title">System Design</span>
+              <span class="switcher-pages">8 Pages</span>
+            </div>
+          </a>
+          <a href="../kubernetes-notes/index.html" class="switcher-card active" title="Kubernetes Notes">
+            <span class="switcher-icon">⎈</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Kubernetes</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../docker-notes/index.html" class="switcher-card" title="Docker Notes">
+            <span class="switcher-icon">🐳</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Docker</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Search Filter -->
+      <div class="sidebar-section">
+        <div class="section-label">TOPIC EXPLORER (PRESS 'T')</div>
+        <div class="sidebar-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="topicSearchInput" placeholder="Search topics (e.g. Pod, Service, Ingress)..." oninput="filterSidebarTopics(this.value)" autocomplete="off" />
+          <button class="clear-search-btn" id="clearSearchBtn" onclick="clearTopicSearch()" style="display:none;">&times;</button>
+        </div>
+      </div>
+
+      <!-- Topics Tree / List -->
+      <div class="sidebar-topics-list" id="sidebarTopicsList">
+        <div class="sidebar-topic-item active" data-page="1" data-keywords="what is kubernetes architecture control plane apiserver etcd scheduler controller-manager worker kubelet kube-proxy container runtime" onclick="goToPage(1)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P1</span>
+            <div class="topic-info">
+              <span class="topic-title">What is Kubernetes &amp; Architecture</span>
+              <span class="topic-subtitle">Control Plane vs Worker Nodes, Core Daemons</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #e0f2fe; color: #0369a1;">Architecture</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="2" data-keywords="pods deployment replicaset daemonset statefulset job cronjob scaling rollouts self-healing" onclick="goToPage(2)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P2</span>
+            <div class="topic-info">
+              <span class="topic-title">Pods, Deployments &amp; Controllers</span>
+              <span class="topic-subtitle">Pod Anatomy, ReplicaSets, Rolling Updates &amp; Scaling</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #dbeafe; color: #1e40af;">Workloads</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="3" data-keywords="services networking clusterip nodeport loadbalancer ingress service mesh cni dns core-dns" onclick="goToPage(3)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P3</span>
+            <div class="topic-info">
+              <span class="topic-title">Services &amp; Ingress Networking</span>
+              <span class="topic-subtitle">ClusterIP, NodePort, LoadBalancer &amp; Ingress Controller</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #ede9fe; color: #6d28d9;">Networking</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="4" data-keywords="storage persistent volume pv pvc storageclass accessmodes csi volume binding dynamic provisioning" onclick="goToPage(4)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P4</span>
+            <div class="topic-info">
+              <span class="topic-title">Storage: PV, PVC &amp; StorageClass</span>
+              <span class="topic-subtitle">Dynamic Provisioning, Access Modes &amp; CSI Plugins</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #dcfce7; color: #15803d;">Storage</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="5" data-keywords="configmap secret namespace rbac security env config file tls certs isolation" onclick="goToPage(5)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P5</span>
+            <div class="topic-info">
+              <span class="topic-title">ConfigMaps, Secrets &amp; Security</span>
+              <span class="topic-subtitle">App Configuration, Base64 Secrets &amp; Namespaces</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #fef3c7; color: #b45309;">Config &amp; Sec</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="6" data-keywords="kubectl cheat sheet commands get apply delete logs exec port-forward describe context" onclick="goToPage(6)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P6</span>
+            <div class="topic-info">
+              <span class="topic-title">Kubectl Master Cheat Sheet</span>
+              <span class="topic-subtitle">Essential CLI Commands, Debugging &amp; Aliases</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #fee2e2; color: #b91c1c;">Cheat Sheet</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <button class="sidebar-action-btn pdf-btn" onclick="window.print(); toggleSidebar(false)">
+          <span>📥 Download Kubernetes Notes PDF</span>
+        </button>
+        <a href="../index.html" class="sidebar-action-btn home-btn">
+          <span>🏠 Return to All Notebooks Hub</span>
+        </a>
+      </div>
+    </aside>
 
     <!-- Dot navigation -->
     <div class="dot-nav" id="dotNav"></div>
