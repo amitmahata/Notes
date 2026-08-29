@@ -619,6 +619,264 @@ const NOTES_SEARCH_DATABASE = [
         content: "99% (2 nines) = 3.65 days downtime/year. 99.9% (3 nines) = 8.76 hours/year. 99.99% (4 nines) = 52.6 minutes/year. 99.999% (5 nines) = 5.26 minutes/year."
       }
     ]
+  },
+
+  // --- DSA MASTER NOTES (12 Pages) ---
+  {
+    id: "dsa-p1",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 1,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Strategy",
+    title: "Page 1: Multi-Tier Strategy & 6-Week Master Roadmap",
+    sections: [
+      {
+        heading: "Senior (8+ YoE) Interview Realities: Tier 1 vs Tier 2 vs Tier 3",
+        content: "Tier 1 (Meta, Google, Uber, Netflix, Stripe) expects 2 medium/hard problems solved cleanly in 45 minutes with zero bugs. Tier 2 (Salesforce, Adobe, Atlassian, Intuit, PayPal) emphasizes modular clean OOP code, custom data structure design (LRU/LFU), and concurrency. Tier 3 & Enterprises focus on fundamental data structures and passing 100% of Online Assessment (OA) test cases."
+      },
+      {
+        heading: "The 45-Minute Live Coding Interview Time Budget",
+        content: "0-5m Clarify constraints & custom test cases. 5-15m Formulate naive vs optimal Big-O trade-offs. 15-35m Write clean modular production code. 35-45m Systematic manual dry run and distributed scaling follow-ups."
+      },
+      {
+        heading: "Constraint-to-Pattern Meta Decision Matrix",
+        content: "N <= 12 -> O(N!) Permutations. N <= 25 -> O(2^N) Subsets / Bitmask DP. N <= 500 -> O(N^3) Floyd-Warshall. N <= 5000 -> O(N^2) Matrix DP / Two Pointers. N <= 10^6 -> O(N log N) or O(N) Binary Search, Sorting, Heaps, Sliding Window, Monotonic Stack, DSU."
+      }
+    ]
+  },
+  {
+    id: "dsa-p2",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 2,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Cheat Sheet",
+    title: "Page 2: Master Complexity Cheat Sheet & Sorting Deep Dive",
+    sections: [
+      {
+        heading: "Core Data Structure Big-O Complexity Matrix",
+        content: "Dynamic Array O(1) access O(N) search. Doubly Linked List O(1) insertion/deletion with node pointer. HashMap O(1) average lookup/insert. Balanced BST O(log N). Priority Queue Binary Heap O(1) peek O(log N) push/pop. Trie O(L). Disjoint Set Union O(alpha(N)) approx O(1)."
+      },
+      {
+        heading: "Sorting Algorithms: In-Place vs Stable Trade-offs",
+        content: "QuickSort O(N log N) avg in-place unstable. MergeSort O(N log N) stable O(N) auxiliary space. HeapSort O(N log N) in-place unstable. Counting/Radix Sort O(N + K) stable non-comparative. CPU cache locality benefits arrays over linked nodes."
+      }
+    ]
+  },
+  {
+    id: "dsa-p3",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 3,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Arrays",
+    title: "Page 3: Arrays, Strings, Hash Maps & Matrix Manipulations",
+    sections: [
+      {
+        heading: "Prefix Sum & Difference Array Techniques",
+        content: "Prefix sum enables O(1) range sum queries. Subarray Sum Equals K uses HashMap of prefix sums to achieve O(N) time and O(N) space. Difference array allows O(1) range updates [L, R] by modifying D[L] += V and D[R+1] -= V."
+      },
+      {
+        heading: "Matrix In-Place Manipulations",
+        content: "Rotate Image 90 degrees clockwise by transposing matrix then reversing each row in-place O(N^2) time O(1) space. Spiral matrix traversal with 4 directional boundary pointers (top, bottom, left, right)."
+      }
+    ]
+  },
+  {
+    id: "dsa-p4",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 4,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Pointers",
+    title: "Page 4: Two Pointers, Fast & Slow, and Sliding Window Patterns",
+    sections: [
+      {
+        heading: "Two Pointer Paradigms & Invariants",
+        content: "Opposite directional pointers: 2Sum II, 3Sum, Trapping Rain Water, Container With Most Water. Fast & Slow Floyd's cycle detection algorithm for linked lists and Happy Number."
+      },
+      {
+        heading: "Universal Sliding Window Master Template",
+        content: "Expand right pointer to satisfy constraint, shrink left pointer while window invariant is invalid. Minimum Window Substring, Longest Substring Without Repeating Characters, Max Consecutive Ones III."
+      }
+    ]
+  },
+  {
+    id: "dsa-p5",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 5,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Design DS",
+    title: "Page 5: Linked Lists & Custom Data Structure Design (LRU/LFU)",
+    sections: [
+      {
+        heading: "LRU Cache Architecture (HashMap + Doubly Linked List)",
+        content: "O(1) get and put operations. Doubly linked list maintains access recency order with dummy head and tail sentinel nodes. HashMap stores key to DLL node references for O(1) lookups and eviction."
+      },
+      {
+        heading: "LFU Cache, Design Twitter & Insert Delete GetRandom O(1)",
+        content: "LFU Cache uses frequency hash map and doubly linked lists. Insert Delete GetRandom O(1) combines dynamic array with hash map of indices. Design Twitter merges user tweets using Min-Heap priority queue."
+      }
+    ]
+  },
+  {
+    id: "dsa-p6",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 6,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Binary Search",
+    title: "Page 6: Binary Search & Monotonic Answer Space",
+    sections: [
+      {
+        heading: "Binary Search Invariants & Rotated Sorted Arrays",
+        content: "low <= high invariant with mid = low + (high - low) // 2 overflow protection. Rotated sorted array search checks which half is strictly sorted."
+      },
+      {
+        heading: "Binary Search on Monotonic Answer Space (check(mid))",
+        content: "When feasibility function check(mid) is monotonic, binary search directly over answer range [1, max(values)]. Koko Eating Bananas, Capacity to Ship Packages Within D Days, Split Array Largest Sum."
+      }
+    ]
+  },
+  {
+    id: "dsa-p7",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 7,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Stack & Heap",
+    title: "Page 7: Monotonic Stack, Deque & Priority Queue / Heaps",
+    sections: [
+      {
+        heading: "Monotonic Stack Pattern (O(N) Next Greater Element)",
+        content: "Monotonic decreasing stack pops smaller elements to find Next Greater Element, Daily Temperatures, Largest Rectangle in Histogram, and Asteroid Collision in O(N) time."
+      },
+      {
+        heading: "Monotonic Deque & Two Heaps (Median from Data Stream)",
+        content: "Monotonic deque solves Sliding Window Maximum in O(N) amortized time. Two Heaps pattern uses Max-Heap for lower half and Min-Heap for upper half to compute streaming median in O(1) time."
+      }
+    ]
+  },
+  {
+    id: "dsa-p8",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 8,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Trees & Tries",
+    title: "Page 8: Trees, BST, Lowest Common Ancestor (LCA) & Tries",
+    sections: [
+      {
+        heading: "Tree DFS & Lowest Common Ancestor (LCA)",
+        content: "Bottom-up post-order recursion computes Tree Diameter and Maximum Path Sum. LCA returns split node where left and right recursion both return non-null in O(N) time."
+      },
+      {
+        heading: "Trie (Prefix Tree) Master Template & Word Search II",
+        content: "TrieNode with children dictionary and is_word boolean. Autocomplete, prefix matching in O(L) time. Word Search II combines Trie with 2D Board DFS Backtracking and Trie pruning."
+      }
+    ]
+  },
+  {
+    id: "dsa-p9",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 9,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Graphs",
+    title: "Page 9: Graph Algorithms: BFS, DFS, TopoSort, DSU & Shortest Paths",
+    sections: [
+      {
+        heading: "Topological Sort (Kahn's BFS In-Degree Algorithm)",
+        content: "Calculates in-degrees for all V vertices. Push 0 in-degree nodes to queue, decrement neighbors. Detects cycles and resolves task dependencies (Course Schedule I & II, Alien Dictionary)."
+      },
+      {
+        heading: "Disjoint Set Union (Union-Find) & Dijkstra's Algorithm",
+        content: "DSU with Path Compression and Union by Rank achieves O(alpha(N)) near O(1) operations for Number of Provinces and Redundant Connection. Dijkstra uses Min-Heap priority queue for shortest paths in weighted graphs in O((V + E) log V)."
+      }
+    ]
+  },
+  {
+    id: "dsa-p10",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 10,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "DP",
+    title: "Page 10: Dynamic Programming & Backtracking Masterclass",
+    sections: [
+      {
+        heading: "The 5-Step DP Formulation Framework",
+        content: "1. State Definition dp[i][j]. 2. Choice & Recurrence transition. 3. Base Cases. 4. Order of computation. 5. Rolling array space optimization from O(N^2) to O(N)."
+      },
+      {
+        heading: "Classic DP Patterns & Backtracking Pruning",
+        content: "1D Array DP (House Robber, Coin Change, LIS), 2D Grid DP (Unique Paths, Edit Distance, LCS), 0/1 Knapsack (Partition Equal Subset Sum), and Backtracking template with state pruning (Subsets, Permutations, N-Queens)."
+      }
+    ]
+  },
+  {
+    id: "dsa-p11",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 11,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Greedy",
+    title: "Page 11: Intervals, Greedy, Bit Manipulation & Concurrency",
+    sections: [
+      {
+        heading: "Intervals Patterns: Sort by Start Time",
+        content: "Merge Overlapping Intervals in O(N log N). Meeting Rooms II uses Min-Heap of meeting end times to calculate minimum conference rooms required."
+      },
+      {
+        heading: "Bit Manipulation Tricks & Thread-Safe Data Structures",
+        content: "XOR cancellation x ^ x = 0 solves Single Number. n & (n - 1) clears lowest set bit. Thread-safe bounded queue uses mutex lock with not_full and not_empty condition variables in while loops."
+      }
+    ]
+  },
+  {
+    id: "dsa-p12",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 12,
+    url: "../dsa-notes/index.html",
+    rootUrl: "dsa-notes/index.html",
+    tag: "Interview Playbook",
+    title: "Page 12: Tier 1/2/3 Rubrics, OA Guide & Live Interview Protocol",
+    sections: [
+      {
+        heading: "The 6-Step Live Interview Protocol",
+        content: "1. Clarify constraints & edge cases. 2. Propose naive vs optimal approach. 3. State Big-O complexity upfront. 4. Write clean modular production code. 5. Systematic manual dry-run trace table. 6. Answer follow-up scaling questions."
+      },
+      {
+        heading: "Top Senior Red Flags to Avoid in Coding Rounds",
+        content: "Never code in silence for 10 minutes. Avoid cryptic 1-letter variables. Never ignore interviewer hints. Always perform a manual dry run before declaring code complete."
+      }
+    ]
   }
 ];
 
@@ -755,26 +1013,28 @@ function initSearchModalUI() {
         </div>
 
         <div class="search-modal-filters">
-          <button class="search-filter-chip active" data-filter="all" onclick="setSearchFilter('all')">🌐 All Notebooks (26 Pages)</button>
+          <button class="search-filter-chip active" data-filter="all" onclick="setSearchFilter('all')">🌐 All Notebooks (38 Pages)</button>
           <button class="search-filter-chip" data-filter="ai-notes" onclick="setSearchFilter('ai-notes')">🧠 AI Evolution</button>
           <button class="search-filter-chip" data-filter="system-design-notes" onclick="setSearchFilter('system-design-notes')">📐 System Design</button>
           <button class="search-filter-chip" data-filter="kubernetes-notes" onclick="setSearchFilter('kubernetes-notes')">⎈ Kubernetes</button>
           <button class="search-filter-chip" data-filter="docker-notes" onclick="setSearchFilter('docker-notes')">🐳 Docker</button>
+          <button class="search-filter-chip" data-filter="dsa-notes" onclick="setSearchFilter('dsa-notes')">💻 DSA Master</button>
         </div>
 
         <div class="search-modal-results" id="searchModalResults">
           <div class="search-empty-state">
             <div class="search-suggestions-title">💡 Popular Search Topics</div>
             <div class="search-suggestions-tags">
-              <span class="suggestion-tag" onclick="quickFillSearch('Turing Test')">🧠 Turing Test</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('LRU Cache')">⚡ LRU Cache</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('Dijkstra')">🛣️ Dijkstra</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('Monotonic Stack')">🥞 Monotonic Stack</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('Sliding Window')">🪟 Sliding Window</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('Trie Prefix')">🌳 Trie Prefix</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('Knapsack DP')">🎒 Knapsack DP</span>
               <span class="suggestion-tag" onclick="quickFillSearch('AlexNet CNN')">🖼️ AlexNet CNN</span>
-              <span class="suggestion-tag" onclick="quickFillSearch('Transformers Attention')">⚡ Transformers</span>
-              <span class="suggestion-tag" onclick="quickFillSearch('Autonomous Agents')">🤖 Autonomous Agents</span>
               <span class="suggestion-tag" onclick="quickFillSearch('Consistent Hashing')">🔄 Consistent Hashing</span>
-              <span class="suggestion-tag" onclick="quickFillSearch('Kafka vs RabbitMQ')">📬 Kafka & Queues</span>
               <span class="suggestion-tag" onclick="quickFillSearch('Raft Consensus')">🤝 Raft Consensus</span>
-              <span class="suggestion-tag" onclick="quickFillSearch('Multi-stage Dockerfile')">🐳 Multi-stage Dockerfile</span>
-              <span class="suggestion-tag" onclick="quickFillSearch('Kubernetes Ingress')">⎈ K8s Ingress & PV</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('Kubernetes Ingress')">⎈ K8s Ingress</span>
             </div>
           </div>
         </div>
@@ -1326,10 +1586,194 @@ function initTopbarProgressBar() {
   }
 }
 
+/**
+ * Theme Configurations
+ */
+const NOTES_THEMES = [
+  {
+    id: "warm-paper",
+    name: "Classic Paper",
+    icon: "📄",
+    color: "#fdfbf7",
+    desc: "Warm ivory ruled paper"
+  },
+  {
+    id: "dark",
+    name: "Dark Obsidian",
+    icon: "🌙",
+    color: "#0f172a",
+    desc: "Eye-friendly dark slate"
+  },
+  {
+    id: "sepia",
+    name: "Vintage Sepia",
+    icon: "📜",
+    color: "#f4ebd0",
+    desc: "Aged engineer's journal"
+  },
+  {
+    id: "blueprint",
+    name: "Tech Blueprint",
+    icon: "📐",
+    color: "#09223e",
+    desc: "Cyan architectural grid"
+  }
+];
+
+/**
+ * Get current theme from localStorage (defaults to "warm-paper")
+ */
+function getCurrentTheme() {
+  return localStorage.getItem("notes_theme") || "warm-paper";
+}
+
+/**
+ * Set and apply active theme
+ */
+function setTheme(themeId) {
+  const selectedTheme = NOTES_THEMES.find(t => t.id === themeId) || NOTES_THEMES[0];
+  document.documentElement.setAttribute("data-theme", selectedTheme.id);
+  document.body.setAttribute("data-theme", selectedTheme.id);
+  localStorage.setItem("notes_theme", selectedTheme.id);
+
+  // Update Topbar button display if present
+  const themeDot = document.getElementById("topbarThemeDot");
+  const themeBtnText = document.getElementById("topbarThemeBtnText");
+  if (themeDot) themeDot.style.color = selectedTheme.color;
+  if (themeBtnText) themeBtnText.textContent = selectedTheme.icon;
+
+  // Update active states in Popover items
+  document.querySelectorAll(".theme-option-item").forEach(item => {
+    item.classList.toggle("active", item.dataset.theme === selectedTheme.id);
+  });
+
+  // Update active states in Drawer cards
+  document.querySelectorAll(".drawer-theme-card").forEach(card => {
+    card.classList.toggle("active", card.dataset.theme === selectedTheme.id);
+  });
+}
+
+/**
+ * Toggle Theme Popover Menu open/close
+ */
+function toggleThemePopover(e) {
+  if (e) e.stopPropagation();
+  const popover = document.getElementById("themePopoverMenu");
+  if (popover) {
+    popover.classList.toggle("open");
+  }
+}
+
+/**
+ * Close Theme Popover Menu
+ */
+function closeThemePopover() {
+  const popover = document.getElementById("themePopoverMenu");
+  if (popover) {
+    popover.classList.remove("open");
+  }
+}
+
+/**
+ * Initialize Theme Switcher in Topbar and Topic Sidenav Drawer
+ */
+function initThemeSystem() {
+  // Apply stored theme immediately
+  const activeTheme = getCurrentTheme();
+  setTheme(activeTheme);
+
+  // 1. Inject Theme Switcher into Topbar (if topbar exists and not already injected)
+  const topbarRight = document.querySelector(".topbar-right");
+  if (topbarRight && !document.getElementById("topbarThemeWrapper")) {
+    const currentT = NOTES_THEMES.find(t => t.id === activeTheme) || NOTES_THEMES[0];
+    
+    const wrapper = document.createElement("div");
+    wrapper.className = "topbar-theme-wrapper";
+    wrapper.id = "topbarThemeWrapper";
+
+    let popoverItemsHtml = "";
+    NOTES_THEMES.forEach(t => {
+      popoverItemsHtml += `
+        <div class="theme-option-item ${t.id === activeTheme ? 'active' : ''}" data-theme="${t.id}" onclick="setTheme('${t.id}'); closeThemePopover();">
+          <div class="theme-option-left">
+            <span class="theme-swatch-circle" style="background: ${t.color};"></span>
+            <span>${t.icon} ${t.name}</span>
+          </div>
+          <span class="theme-check-icon">✓</span>
+        </div>
+      `;
+    });
+
+    wrapper.innerHTML = `
+      <button class="topbar-theme-btn" onclick="toggleThemePopover(event)" title="Choose Theme Palette">
+        <span class="theme-active-dot" id="topbarThemeDot" style="color: ${currentT.color};"></span>
+        <span id="topbarThemeBtnText">${currentT.icon}</span>
+        <span style="font-size: 11px; opacity: 0.7;">▼</span>
+      </button>
+      <div class="theme-popover-menu" id="themePopoverMenu">
+        <div class="theme-popover-title">Reading Palette</div>
+        ${popoverItemsHtml}
+      </div>
+    `;
+
+    // Insert before the PDF button or search button
+    const pdfBtn = topbarRight.querySelector(".pdf-btn");
+    if (pdfBtn) {
+      topbarRight.insertBefore(wrapper, pdfBtn);
+    } else {
+      topbarRight.appendChild(wrapper);
+    }
+  }
+
+  // 2. Inject Theme Cards into Topic Sidenav Drawer
+  const drawerHeader = document.querySelector(".sidebar-header");
+  const switcherSection = document.querySelector(".sidebar-section");
+  if (drawerHeader && switcherSection && !document.getElementById("drawerThemeSection")) {
+    const themeSection = document.createElement("div");
+    themeSection.className = "drawer-theme-section";
+    themeSection.id = "drawerThemeSection";
+
+    let drawerCardsHtml = "";
+    NOTES_THEMES.forEach(t => {
+      drawerCardsHtml += `
+        <div class="drawer-theme-card ${t.id === activeTheme ? 'active' : ''}" data-theme="${t.id}" onclick="setTheme('${t.id}')">
+          <span class="theme-swatch-circle" style="background: ${t.color}; width: 14px; height: 14px;"></span>
+          <span>${t.name}</span>
+        </div>
+      `;
+    });
+
+    themeSection.innerHTML = `
+      <div class="section-label">THEME PALETTE</div>
+      <div class="drawer-theme-grid">
+        ${drawerCardsHtml}
+      </div>
+    `;
+
+    // Insert right after the notebook switcher section
+    switcherSection.parentNode.insertBefore(themeSection, switcherSection.nextSibling);
+  }
+
+  // Close popover when clicking anywhere outside
+  document.addEventListener("click", (e) => {
+    const wrapper = document.getElementById("topbarThemeWrapper");
+    if (wrapper && !wrapper.contains(e.target)) {
+      closeThemePopover();
+    }
+  });
+}
+
 // Auto-initialize when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   initSearchModalUI();
   handleSearchNavigation();
   enhanceTopicDrawerSearch();
   initTopbarProgressBar();
+  initThemeSystem();
 });
+
+// Immediate early theme application before rendering to prevent flash
+(function earlyThemeInit() {
+  const theme = localStorage.getItem("notes_theme") || "warm-paper";
+  document.documentElement.setAttribute("data-theme", theme);
+})();

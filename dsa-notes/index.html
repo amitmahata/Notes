@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Master Preparation & Patterns (Tier 1, 2, 3) - Amit Mahata</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="description" content="Interactive handwritten study notes for Data Structures & Algorithms patterns, cheat sheet, custom data structure design, and interview strategies for 8+ YoE senior engineers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <script>
+    if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
+      window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+    }
+  </script>
+  
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../shared-search.css" />
+</head>
+<body>
+
+  <!-- App Shell -->
+  <div class="app">
+
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="nav-btn drawer-toggle-btn" onclick="toggleSidebar(true)" title="Topic Index & Notebook Switcher">☰ Topics</button>
+        <a href="../index.html" class="home-link-btn" title="Back to All Notes Hub">🏠 Hub</a>
+        <span class="brand-icon">💻</span>
+        <span class="topbar-title">DSA Master Notes <span class="author-pill">Tier 1, 2, 3 • 8+ YoE Guide</span></span>
+      </div>
+      <div class="topbar-center">
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page">← Prev</button>
+        <span class="page-indicator" id="pageIndicator">Page 1 / 12</span>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-search-btn" onclick="openSearchModal()" title="Search All Notes (Ctrl+K)">
+          <span>🔍 Search</span>
+          <span class="kbd-hint">Ctrl+K</span>
+        </button>
+        <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 PDF</button>
+      </div>
+    </header>
+
+    <!-- Topic Sidenav Drawer -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar(false)"></div>
+    <aside class="sidebar-drawer" id="sidebarDrawer" aria-label="Topic Sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <a href="../index.html" class="sidebar-home-link" title="Return to Main Hub">
+            <span class="home-icon">🏠</span>
+            <span class="brand-text">Notes Hub</span>
+          </a>
+        </div>
+        <button class="sidebar-close-btn" onclick="toggleSidebar(false)" aria-label="Close Sidebar">&times;</button>
+      </div>
+
+      <!-- Notebook Quick Switcher -->
+      <div class="sidebar-section">
+        <div class="section-label">SWITCH NOTEBOOK</div>
+        <nav class="notebook-switcher-grid">
+          <a href="../ai-notes/index.html" class="switcher-card" title="AI Notes">
+            <span class="switcher-icon">🧠</span>
+            <div class="switcher-info">
+              <span class="switcher-title">AI Evolution</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../system-design-notes/index.html" class="switcher-card" title="System Design Notes">
+            <span class="switcher-icon">📐</span>
+            <div class="switcher-info">
+              <span class="switcher-title">System Design</span>
+              <span class="switcher-pages">8 Pages</span>
+            </div>
+          </a>
+          <a href="../kubernetes-notes/index.html" class="switcher-card" title="Kubernetes Notes">
+            <span class="switcher-icon">⎈</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Kubernetes</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../docker-notes/index.html" class="switcher-card" title="Docker Notes">
+            <span class="switcher-icon">🐳</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Docker</span>
+              <span class="switcher-pages">6 Pages</span>
+            </div>
+          </a>
+          <a href="../dsa-notes/index.html" class="switcher-card active" title="DSA Notes">
+            <span class="switcher-icon">💻</span>
+            <div class="switcher-info">
+              <span class="switcher-title">DSA Master</span>
+              <span class="switcher-pages">12 Pages</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+
+      <!-- In-Drawer Topic Search -->
+      <div class="sidebar-section">
+        <div class="sidebar-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="sidebarSearch" placeholder="Search topics (e.g. Dijkstra, LRU, DP)..." oninput="filterSidebarTopics()" />
+          <button class="clear-search-btn" onclick="clearSidebarSearch()" title="Clear">✕</button>
+        </div>
+      </div>
+
+      <!-- Topic List -->
+      <div class="sidebar-topics-list" id="sidebarTopicsList">
+        <div class="sidebar-topic-item active" data-page="1" onclick="goToPage(1); toggleSidebar(false);">
+          <div class="topic-badge-circle">P1</div>
+          <div class="topic-info">
+            <span class="topic-title">Multi-Tier Strategy &amp; 6-Wk Plan</span>
+            <span class="topic-subtitle">8+ YoE Prep, 45-min Budget, Pattern Meta</span>
+          </div>
+          <span class="topic-tag-pill">Strategy</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="2" onclick="goToPage(2); toggleSidebar(false);">
+          <div class="topic-badge-circle">P2</div>
+          <div class="topic-info">
+            <span class="topic-title">Complexity Cheat Sheet &amp; Sorting</span>
+            <span class="topic-subtitle">Big-O Matrix, Sorting Tradeoffs, CPU Cache</span>
+          </div>
+          <span class="topic-tag-pill">Cheat Sheet</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="3" onclick="goToPage(3); toggleSidebar(false);">
+          <div class="topic-badge-circle">P3</div>
+          <div class="topic-info">
+            <span class="topic-title">Arrays, Strings &amp; Matrix Tricks</span>
+            <span class="topic-subtitle">Prefix Sums, Anagrams, Matrix Rotations</span>
+          </div>
+          <span class="topic-tag-pill">Arrays</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="4" onclick="goToPage(4); toggleSidebar(false);">
+          <div class="topic-badge-circle">P4</div>
+          <div class="topic-info">
+            <span class="topic-title">Two Pointers &amp; Sliding Window</span>
+            <span class="topic-subtitle">Trapping Rain, Min Window Substring</span>
+          </div>
+          <span class="topic-tag-pill">Pointers</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="5" onclick="goToPage(5); toggleSidebar(false);">
+          <div class="topic-badge-circle">P5</div>
+          <div class="topic-info">
+            <span class="topic-title">Linked Lists &amp; Custom DS Design</span>
+            <span class="topic-subtitle">LRU Cache, LFU Cache, Twitter, O(1) Set</span>
+          </div>
+          <span class="topic-tag-pill">Design DS</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="6" onclick="goToPage(6); toggleSidebar(false);">
+          <div class="topic-badge-circle">P6</div>
+          <div class="topic-info">
+            <span class="topic-title">Binary Search on Answer Space</span>
+            <span class="topic-subtitle">Monotonic Predicate check(mid), Rotated Arrays</span>
+          </div>
+          <span class="topic-tag-pill">Binary Search</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="7" onclick="goToPage(7); toggleSidebar(false);">
+          <div class="topic-badge-circle">P7</div>
+          <div class="topic-info">
+            <span class="topic-title">Monotonic Stack, Deque &amp; Heaps</span>
+            <span class="topic-subtitle">Histogram, Sliding Window Max, Two Heaps</span>
+          </div>
+          <span class="topic-tag-pill">Stack &amp; Heap</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="8" onclick="goToPage(8); toggleSidebar(false);">
+          <div class="topic-badge-circle">P8</div>
+          <div class="topic-info">
+            <span class="topic-title">Trees, BST, LCA &amp; Trie Patterns</span>
+            <span class="topic-subtitle">DFS/BFS, Tree DP, Autocomplete, Word Search II</span>
+          </div>
+          <span class="topic-tag-pill">Trees &amp; Tries</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="9" onclick="goToPage(9); toggleSidebar(false);">
+          <div class="topic-badge-circle">P9</div>
+          <div class="topic-info">
+            <span class="topic-title">Graphs: BFS, DFS, TopoSort, DSU</span>
+            <span class="topic-subtitle">Connected Components, Cycle Detection, Dijkstra</span>
+          </div>
+          <span class="topic-tag-pill">Graphs</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="10" onclick="goToPage(10); toggleSidebar(false);">
+          <div class="topic-badge-circle">P10</div>
+          <div class="topic-info">
+            <span class="topic-title">DP &amp; Backtracking Masterclass</span>
+            <span class="topic-subtitle">5-Step DP Framework, 0/1 Knapsack, Pruning</span>
+          </div>
+          <span class="topic-tag-pill">DP</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="11" onclick="goToPage(11); toggleSidebar(false);">
+          <div class="topic-badge-circle">P11</div>
+          <div class="topic-info">
+            <span class="topic-title">Intervals, Greedy &amp; Concurrency</span>
+            <span class="topic-subtitle">Merge Intervals, Gas Station, Thread-safe DS</span>
+          </div>
+          <span class="topic-tag-pill">Greedy</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="12" onclick="goToPage(12); toggleSidebar(false);">
+          <div class="topic-badge-circle">P12</div>
+          <div class="topic-info">
+            <span class="topic-title">Tier 1/2/3 Rubrics &amp; Live Protocol</span>
+            <span class="topic-subtitle">OA Clearing Guide, 6-Step Protocol, Red Flags</span>
+          </div>
+          <span class="topic-tag-pill">Interview Playbook</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Notebook Paper Container -->
+    <main class="notebook-wrapper">
+
+      <!-- =========================================
+           PAGE 1: Multi-Tier Strategy & 6-Week Plan
+           ========================================= -->
+      <article class="notebook-page active" id="page-1">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 01 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Multi-Tier Strategy &amp; <span class="hl-indigo">6-Week Master Roadmap</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Senior (8+ YoE) Interview Realities: Tier 1 vs Tier 2 vs Tier 3</h2>
+            <ul class="handwritten-list">
+              <li><strong class="hl-red">Tier 1 (Meta, Google, Uber, Netflix, Stripe)</strong>: Expects high speed &amp; algorithmic precision. You must solve <strong>2 Medium/Hard problems in 45 minutes</strong> or 1 hard problem with full mathematical trade-off proofs and zero bugs.</li>
+              <li><strong class="hl-blue">Tier 2 (Salesforce, Adobe, Atlassian, Intuit, PayPal, Oracle)</strong>: Focuses heavily on <strong>Clean Modular OOP &amp; Custom Data Structure Design</strong> (e.g. LRU/LFU cache, Rate Limiter algorithms) + concurrency safety.</li>
+              <li><strong class="hl-green">Tier 3 &amp; High-Growth Enterprises (Walmart, Fintechs, Scale-ups)</strong>: Tests core fundamentals (Arrays, Strings, HashMaps, Trees, Sorting), plus passing 100% of <strong>Online Assessment (OA)</strong> hidden test cases on HackerRank/Codility.</li>
+            </ul>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">The 45-Minute Live Interview Time Budget</h2>
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="feature-icon">⏱️ 0-5 min</div>
+                <div class="feature-label">1. Clarify &amp; Edge Cases</div>
+                <div class="feature-desc">Ask constraint bounds ($N$, data types, duplicates, negatives, streaming inputs). Write 2 custom edge test cases.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">🧠 5-15 min</div>
+                <div class="feature-label">2. Formulate &amp; Trade-offs</div>
+                <div class="feature-desc">State brute-force ($O(N^2)$), then optimize to $O(N \log N)$ or $O(N)$. State Time &amp; Space Big-O upfront before coding!</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">💻 15-35 min</div>
+                <div class="feature-label">3. Clean Modular Code</div>
+                <div class="feature-desc">Write production-grade code with descriptive variable names, helper functions, and early guard clauses.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">🔍 35-45 min</div>
+                <div class="feature-label">4. Dry-Run &amp; Scale</div>
+                <div class="feature-desc">Manually step through code line-by-line with sample input. Answer follow-up questions on memory / distributed scale.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">Constraint-to-Pattern Meta Decision Matrix</h2>
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Input Size ($N$)</th>
+                  <th>Target Time Complexity</th>
+                  <th>Primary DSA Patterns to Match</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>$N \le 12$</td>
+                  <td>$O(N!)$ or $O(N^2 \cdot 2^N)$</td>
+                  <td>Backtracking Permutations, Traveling Salesperson, TSP DP</td>
+                </tr>
+                <tr>
+                  <td>$N \le 20 \dots 25$</td>
+                  <td>$O(2^N)$</td>
+                  <td>Subsets, Combination Sum, Bitmask DP</td>
+                </tr>
+                <tr>
+                  <td>$N \le 100 \dots 500$</td>
+                  <td>$O(N^3)$ or $O(N^4)$</td>
+                  <td>Floyd-Warshall, Matrix Chain Multiplication, 3D Dynamic Programming</td>
+                </tr>
+                <tr>
+                  <td>$N \le 2\,000 \dots 5\,000$</td>
+                  <td>$O(N^2)$</td>
+                  <td>2D Matrix DP, Nested Two Pointers, All-Pairs Check</td>
+                </tr>
+                <tr>
+                  <td>$N \le 10^5 \dots 10^6$</td>
+                  <td>$O(N \log N)$ or $O(N)$</td>
+                  <td>Sorting, Binary Search on Answer, Heaps, Sliding Window, Monotonic Stack, DSU</td>
+                </tr>
+                <tr>
+                  <td>$N \ge 10^9$</td>
+                  <td>$O(\log N)$ or $O(1)$</td>
+                  <td>Pure Binary Search, Matrix Exponentiation, Math / Bitwise Hacks</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="remember-box">
+            <div class="remember-title">💡 Senior Golden Rule: Never Code in Silence!</div>
+            <div class="remember-item">Interviewers at Tier 1 companies evaluate your thought process more than rote syntax. Think aloud, explain why you rejected an approach, and confirm alignment before typing.</div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 1 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 2: Complexity Cheat Sheet & Sorting
+           ========================================= -->
+      <article class="notebook-page" id="page-2">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 02 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Master Complexity <span class="hl-blue">Cheat Sheet &amp; Sorting</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Core Data Structure Time &amp; Space Complexity Matrix</h2>
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Data Structure</th>
+                  <th>Access / Search</th>
+                  <th>Insertion</th>
+                  <th>Deletion</th>
+                  <th>Space</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Dynamic Array / Vector</strong></td>
+                  <td>$O(1)$ / $O(N)$</td>
+                  <td>$O(1)$ Amortized</td>
+                  <td>$O(N)$</td>
+                  <td>$O(N)$</td>
+                </tr>
+                <tr>
+                  <td><strong>Doubly Linked List</strong></td>
+                  <td>$O(N)$ / $O(N)$</td>
+                  <td>$O(1)$ (with node ptr)</td>
+                  <td>$O(1)$ (with node ptr)</td>
+                  <td>$O(N)$</td>
+                </tr>
+                <tr>
+                  <td><strong>Hash Map / Hash Set</strong></td>
+                  <td>$O(1)$ Avg, $O(N)$ Worst</td>
+                  <td>$O(1)$ Avg</td>
+                  <td>$O(1)$ Avg</td>
+                  <td>$O(N)$</td>
+                </tr>
+                <tr>
+                  <td><strong>Binary Search Tree (Balanced)</strong></td>
+                  <td>$O(\log N)$</td>
+                  <td>$O(\log N)$</td>
+                  <td>$O(\log N)$</td>
+                  <td>$O(N)$</td>
+                </tr>
+                <tr>
+                  <td><strong>Binary Heap (Priority Queue)</strong></td>
+                  <td>$O(1)$ Peek, $O(N)$ Search</td>
+                  <td>$O(\log N)$ Push</td>
+                  <td>$O(\log N)$ Pop</td>
+                  <td>$O(N)$</td>
+                </tr>
+                <tr>
+                  <td><strong>Trie (Prefix Tree)</strong></td>
+                  <td>$O(L)$ (where $L$ = word len)</td>
+                  <td>$O(L)$</td>
+                  <td>$O(L)$</td>
+                  <td>$O(N \cdot L \cdot \Sigma)$</td>
+                </tr>
+                <tr>
+                  <td><strong>Disjoint Set (Union-Find)</strong></td>
+                  <td>$O(\alpha(N)) \approx O(1)$</td>
+                  <td>$O(\alpha(N)) \approx O(1)$</td>
+                  <td>—</td>
+                  <td>$O(N)$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Sorting Algorithms Comparison: In-Place vs Stable</h2>
+            <div class="two-col">
+              <div class="feature-card">
+                <div class="feature-label">⚡ QuickSort ($O(N \log N)$ avg, $O(N^2)$ worst)</div>
+                <div class="feature-desc">
+                  <strong>In-Place</strong> ($O(\log N)$ stack), <strong>Unstable</strong>. Uses partition (Hoare's vs Lomuto). Standard for primitive types in standard libraries.
+                </div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">🥞 MergeSort ($O(N \log N)$ always)</div>
+                <div class="feature-desc">
+                  <strong>Stable</strong>, requires $O(N)$ auxiliary memory. Preferred for sorting Linked Lists ($O(1)$ space) and external storage streams.
+                </div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">🏔️ HeapSort ($O(N \log N)$ always)</div>
+                <div class="feature-desc">
+                  <strong>In-Place</strong> ($O(1)$ aux memory), <strong>Unstable</strong>. Builds heap in $O(N)$ via `heapify`, extracts min/max in $O(\log N)$.
+                </div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">🔢 Counting / Radix Sort ($O(N + K)$)</div>
+                <div class="feature-desc">
+                  <strong>Non-comparative, Stable</strong>. Ideal when integers lie in known range $K \ll N$. Used for sorting fixed-length strings/integers.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-title">⚡ Senior Architectural Nuance: CPU Cache Locality</div>
+            <div class="tip-content">Arrays beat Linked Lists in real systems by a factor of 5-10x because sequential array elements reside in contiguous CPU L1/L2 cache lines, minimizing cache misses. Mentioning this in Tier 1/2 interviews demonstrates senior systems depth!</div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 2 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 3: Arrays, Strings, Hash Maps & Matrix
+           ========================================= -->
+      <article class="notebook-page" id="page-3">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 03 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Arrays, Strings &amp; <span class="hl-green">Matrix Manipulations</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Prefix Sum &amp; Difference Array Techniques</h2>
+            <ul class="handwritten-list">
+              <li><strong>Prefix Sum</strong>: Query sum in range $[L, R]$ in $O(1)$ after $O(N)$ precomputation: $\text{sum}(L, R) = P[R] - P[L-1]$.</li>
+              <li><strong>HashMap + Prefix Sum (Subarray Sum Equals K)</strong>: Maintain running prefix sum `curr_sum`. If `curr_sum - K` exists in map, add its frequency count. Solves contiguous subarray sum in $O(N)$ time &amp; $O(N)$ space.</li>
+              <li><strong>Difference Array (Range Updates in $O(1)$)</strong>: To add $V$ to all indices in $[L, R]$, set $D[L] \mathrel{+}= V$ and $D[R+1] \mathrel{-}= V$. Take prefix sum of $D$ at the end.</li>
+            </ul>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Classic Matrix In-Place Transformations</h2>
+            <div class="two-col">
+              <div class="feature-card">
+                <div class="feature-label">🔄 Rotate Image 90° Clockwise</div>
+                <div class="feature-desc">
+                  <strong>Algorithm</strong>: 1. Transpose matrix ($M[i][j] \leftrightarrow M[j][i]$). 2. Reverse each row horizontally. Achieves $O(N^2)$ time, $O(1)$ in-place space!
+                </div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">🌀 Spiral Matrix Traversal</div>
+                <div class="feature-desc">
+                  Maintain 4 boundaries: `top`, `bottom`, `left`, `right`. Traverse top row $\to$ right col $\to$ bottom row $\to$ left col, incrementing/decrementing bounds until crossed.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">Code Template: Subarray Sum Equals K (C# &amp; JavaScript)</h2>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# (.NET 8) Implementation</span></div>
+<pre><code><span class="code-kw">public int</span> <span class="code-fn">SubarraySum</span>(<span class="code-kw">int</span>[] nums, <span class="code-kw">int</span> k) {
+    <span class="code-kw">var</span> prefixMap = <span class="code-kw">new</span> Dictionary&lt;<span class="code-kw">int</span>, <span class="code-kw">int</span>&gt; { [<span class="code-num">0</span>] = <span class="code-num">1</span> };
+    <span class="code-kw">int</span> currSum = <span class="code-num">0</span>, count = <span class="code-num">0</span>;
+    <span class="code-kw">foreach</span> (<span class="code-kw">int</span> x <span class="code-kw">in</span> nums) {
+        currSum += x;
+        <span class="code-kw">if</span> (prefixMap.TryGetValue(currSum - k, <span class="code-kw">out int</span> freq)) {
+            count += freq;
+        }
+        prefixMap[currSum] = prefixMap.GetValueOrDefault(currSum, <span class="code-num">0</span>) + <span class="code-num">1</span>;
+    }
+    <span class="code-kw">return</span> count;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 3 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 4: Two Pointers & Sliding Window
+           ========================================= -->
+      <article class="notebook-page" id="page-4">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 04 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Two Pointers &amp; <span class="hl-cyan">Sliding Window Mastery</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">The 3 Two-Pointer Paradigms</h2>
+            <div class="three-col">
+              <div class="feature-card">
+                <div class="feature-label">1. Opposite Directional</div>
+                <div class="feature-desc">`left=0`, `right=N-1`. Move inward based on comparison (2Sum II, 3Sum, Trapping Rain Water, Container With Most Water).</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">2. Fast &amp; Slow (Floyd's)</div>
+                <div class="feature-desc">`slow=head`, `fast=head.next`. Detect cycle, find middle element of Linked List, or Happy Number in $O(N)$ time, $O(1)$ space.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">3. Sliding Window</div>
+                <div class="feature-desc">`L=0`, `R=0`. Expand `R` to satisfy constraint, shrink `L` when window invariant is violated.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Universal Sliding Window Master Template (C# &amp; JavaScript)</h2>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# Sliding Window Invariant Template</span></div>
+<pre><code><span class="code-kw">public int</span> <span class="code-fn">LengthOfLongestSubstring</span>(<span class="code-kw">string</span> s) {
+    <span class="code-kw">var</span> lastSeen = <span class="code-kw">new</span> Dictionary&lt;<span class="code-kw">char</span>, <span class="code-kw">int</span>&gt;();
+    <span class="code-kw">int</span> left = <span class="code-num">0</span>, maxLen = <span class="code-num">0</span>;
+    <span class="code-kw">for</span> (<span class="code-kw">int</span> right = <span class="code-num">0</span>; right &lt; s.Length; right++) {
+        <span class="code-kw">char</span> c = s[right];
+        <span class="code-kw">if</span> (lastSeen.ContainsKey(c) &amp;&amp; lastSeen[c] &gt;= left) {
+            left = lastSeen[c] + <span class="code-num">1</span>; <span class="code-cm">// Shrink/jump left boundary</span>
+        }
+        lastSeen[c] = right;
+        maxLen = Math.Max(maxLen, right - left + <span class="code-num">1</span>);
+    }
+    <span class="code-kw">return</span> maxLen;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-title">⚡ Classic Must-Know Problems for Tier 1</div>
+            <div class="tip-content">
+              1. <strong>Minimum Window Substring</strong> (Meta/Google Top 5).<br />
+              2. <strong>Longest Substring Without Repeating Characters</strong>.<br />
+              3. <strong>Trapping Rain Water</strong> (Two pointers with `leftMax` and `rightMax` in $O(N)$ time, $O(1)$ space).
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 4 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 5: Linked Lists & Custom DS Design
+           ========================================= -->
+      <article class="notebook-page" id="page-5">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 05 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Custom Data Structures &amp; <span class="hl-red">LRU / LFU Cache</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">LRU Cache: HashMap + Doubly Linked List</h2>
+            <ul class="handwritten-list">
+              <li><strong>Requirement</strong>: $O(1)$ time for both `Get(key)` and `Put(key, value)`. When capacity exceeded, evict the Least Recently Used item.</li>
+              <li><strong>Architecture</strong>:
+                <br />• <strong>Doubly Linked List (DLL)</strong>: Maintains access order. Most recently accessed at `head`, least recently accessed at `tail`. Allows $O(1)$ node removal and insertion.
+                <br />• <strong>Dictionary (HashMap)</strong>: Maps `key` $\to$ `Node` reference. Allows $O(1)$ node lookup.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">LRU Cache Implementation Architecture (C#)</h2>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# Production-Grade LRU Cache</span></div>
+<pre><code><span class="code-kw">public class</span> <span class="code-fn">LRUCache</span> {
+    <span class="code-kw">private class</span> <span class="code-fn">Node</span> {
+        <span class="code-kw">public int</span> Key, Val;
+        <span class="code-kw">public</span> Node Prev, Next;
+        <span class="code-kw">public</span> Node(<span class="code-kw">int</span> k = <span class="code-num">0</span>, <span class="code-kw">int</span> v = <span class="code-num">0</span>) { Key = k; Val = v; }
+    }
+
+    <span class="code-kw">private readonly int</span> _cap;
+    <span class="code-kw">private readonly</span> Dictionary&lt;<span class="code-kw">int</span>, Node&gt; _map;
+    <span class="code-kw">private readonly</span> Node _head, _tail;
+
+    <span class="code-kw">public</span> LRUCache(<span class="code-kw">int</span> capacity) {
+        _cap = capacity;
+        _map = <span class="code-kw">new</span> Dictionary&lt;<span class="code-kw">int</span>, Node&gt;();
+        _head = <span class="code-kw">new</span> Node(); _tail = <span class="code-kw">new</span> Node();
+        _head.Next = _tail; _tail.Prev = _head;
+    }
+
+    <span class="code-kw">public int</span> <span class="code-fn">Get</span>(<span class="code-kw">int</span> key) {
+        <span class="code-kw">if</span> (!_map.TryGetValue(key, <span class="code-kw">out var</span> node)) <span class="code-kw">return</span> -<span class="code-num">1</span>;
+        Remove(node);
+        InsertHead(node);
+        <span class="code-kw">return</span> node.Val;
+    }
+
+    <span class="code-kw">public void</span> <span class="code-fn">Put</span>(<span class="code-kw">int</span> key, <span class="code-kw">int</span> value) {
+        <span class="code-kw">if</span> (_map.TryGetValue(key, <span class="code-kw">out var</span> existing)) {
+            Remove(existing);
+        } <span class="code-kw">else if</span> (_map.Count == _cap) {
+            <span class="code-kw">var</span> lru = _tail.Prev;
+            Remove(lru);
+            _map.Remove(lru.Key);
+        }
+        <span class="code-kw">var</span> fresh = <span class="code-kw">new</span> Node(key, value);
+        InsertHead(fresh);
+        _map[key] = fresh;
+    }
+
+    <span class="code-kw">private void</span> <span class="code-fn">Remove</span>(Node n) { n.Prev.Next = n.Next; n.Next.Prev = n.Prev; }
+    <span class="code-kw">private void</span> <span class="code-fn">InsertHead</span>(Node n) {
+        n.Next = _head.Next; n.Prev = _head;
+        _head.Next.Prev = n; _head.Next = n;
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">Other Must-Know Custom Data Structure Designs (Tier 2 Favorites)</h2>
+            <div class="two-col">
+              <div class="feature-card">
+                <div class="feature-label">🎲 Insert Delete GetRandom O(1)</div>
+                <div class="feature-desc">Use `List&lt;int&gt;` for $O(1)$ random indexing + `Dictionary&lt;int, int&gt;` (val $\to$ index). On delete, swap target with last element in $O(1)$.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">🐦 Design Twitter / News Feed</div>
+                <div class="feature-desc">`Dictionary&lt;int, List&lt;Tweet&gt;&gt;` + `PriorityQueue&lt;Tweet, int&gt;` for K-way merging the recent tweets of followed users in $O(K \log F)$.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 5 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 6: Binary Search on Answer Space
+           ========================================= -->
+      <article class="notebook-page" id="page-6">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 06 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Binary Search &amp; <span class="hl-yellow">Monotonic Answer Space</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Binary Search Invariant Templates (C#)</h2>
+            <ul class="handwritten-list">
+              <li><strong>Standard Invariant</strong>: `low = 0, high = N - 1`. While `low <= high`, `mid = low + (high - low) / 2` (prevents integer overflow in C#).</li>
+              <li><strong>Rotated Sorted Array Search</strong>: At least one half (`[low, mid]` or `[mid, high]`) is always strictly sorted. Check if target lies in the sorted half to determine which boundary to discard.</li>
+            </ul>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Binary Search on Answer Space (`check(mid)` Framework)</h2>
+            <div class="feature-card">
+              <div class="feature-label">When to use: "Find the Minimum X such that condition is satisfied"</div>
+              <div class="feature-desc">
+                If `check(mid)` is <strong>Monotonic</strong> (i.e. if feasible for $K$, then feasible for all values $> K$), we binary search directly over the range of possible answers $[1, \max(\text{values})]$ in $O(N \log(\text{Range}))$.
+              </div>
+            </div>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# Koko Eating Bananas / Ship Packages Master Template</span></div>
+<pre><code><span class="code-kw">public int</span> <span class="code-fn">MinEatingSpeed</span>(<span class="code-kw">int</span>[] piles, <span class="code-kw">int</span> h) {
+    <span class="code-kw">bool</span> <span class="code-fn">CanFinish</span>(<span class="code-kw">int</span> speed) {
+        <span class="code-kw">long</span> totalHours = <span class="code-num">0</span>;
+        <span class="code-kw">foreach</span> (<span class="code-kw">int</span> p <span class="code-kw">in</span> piles) {
+            totalHours += (p + speed - <span class="code-num">1L</span>) / speed; <span class="code-cm">// Ceiling division</span>
+        }
+        <span class="code-kw">return</span> totalHours &lt;= h;
+    }
+
+    <span class="code-kw">int</span> low = <span class="code-num">1</span>, high = piles.Max();
+    <span class="code-kw">int</span> ans = high;
+    <span class="code-kw">while</span> (low &lt;= high) {
+        <span class="code-kw">int</span> mid = low + (high - low) / <span class="code-num">2</span>;
+        <span class="code-kw">if</span> (CanFinish(mid)) {
+            ans = mid;
+            high = mid - <span class="code-num">1</span>; <span class="code-cm">// Feasible! Try finding a smaller speed</span>
+        } <span class="code-kw">else</span> {
+            low = mid + <span class="code-num">1</span>;  <span class="code-cm">// Too slow, increase speed</span>
+        }
+    }
+    <span class="code-kw">return</span> ans;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 6 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 7: Monotonic Stack, Deque & Heaps
+           ========================================= -->
+      <article class="notebook-page" id="page-7">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 07 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Monotonic Stack, Deque &amp; <span class="hl-purple">Priority Queues</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Monotonic Stack: Next Greater Element in $O(N)$ (C#)</h2>
+            <ul class="handwritten-list">
+              <li><strong>Concept</strong>: Maintain stack elements in strictly increasing or decreasing order. When a new element violates the monotonicity, pop elements and process their answers!</li>
+              <li><strong>Key Applications</strong>: Daily Temperatures, Next Greater Element, Largest Rectangle in Histogram, Trapping Rain Water, Asteroid Collision.</li>
+            </ul>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# Daily Temperatures with Stack&lt;int&gt;</span></div>
+<pre><code><span class="code-kw">public int</span>[] <span class="code-fn">DailyTemperatures</span>(<span class="code-kw">int</span>[] temperatures) {
+    <span class="code-kw">int</span> n = temperatures.Length;
+    <span class="code-kw">var</span> res = <span class="code-kw">new int</span>[n];
+    <span class="code-kw">var</span> stack = <span class="code-kw">new</span> Stack&lt;<span class="code-kw">int</span>&gt;(); <span class="code-cm">// Stores indices</span>
+    
+    <span class="code-kw">for</span> (<span class="code-kw">int</span> i = <span class="code-num">0</span>; i &lt; n; i++) {
+        <span class="code-kw">while</span> (stack.Count &gt; <span class="code-num">0</span> &amp;&amp; temperatures[i] &gt; temperatures[stack.Peek()]) {
+            <span class="code-kw">int</span> prevIdx = stack.Pop();
+            res[prevIdx] = i - prevIdx;
+        }
+        stack.Push(i);
+    }
+    <span class="code-kw">return</span> res;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Two Heaps: Median from Data Stream (C# .NET 8 PriorityQueue)</h2>
+            <div class="two-col">
+              <div class="feature-card">
+                <div class="feature-label">Max-Heap (Left Half)</div>
+                <div class="feature-desc">`PriorityQueue&lt;int, int&gt;` with negative priority for Max-Heap behavior. Root has maximum of smaller half.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">Min-Heap (Right Half)</div>
+                <div class="feature-desc">`PriorityQueue&lt;int, int&gt;` with natural priority. Root has minimum of larger half.</div>
+              </div>
+            </div>
+            <div class="tip-box">
+              <div class="tip-title">⚡ Median Invariant</div>
+              <div class="tip-content">Maintain size property: `maxHeap.Count == minHeap.Count` or `maxHeap.Count == minHeap.Count + 1`. Median is either `maxHeap.Peek()` or average of both roots in $O(1)$ time!</div>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 7 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 8: Trees, BST, LCA & Tries
+           ========================================= -->
+      <article class="notebook-page" id="page-8">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 08 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Trees, BST, LCA &amp; <span class="hl-indigo">Trie (Prefix Trees)</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Tree DFS: Lowest Common Ancestor (C#)</h2>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# LCA in Binary Tree</span></div>
+<pre><code><span class="code-kw">public</span> TreeNode <span class="code-fn">LowestCommonAncestor</span>(TreeNode root, TreeNode p, TreeNode q) {
+    <span class="code-kw">if</span> (root == <span class="code-kw">null</span> || root == p || root == q) <span class="code-kw">return</span> root;
+    <span class="code-kw">var</span> left = LowestCommonAncestor(root.left, p, q);
+    <span class="code-kw">var</span> right = LowestCommonAncestor(root.right, p, q);
+    <span class="code-kw">if</span> (left != <span class="code-kw">null</span> &amp;&amp; right != <span class="code-kw">null</span>) <span class="code-kw">return</span> root; <span class="code-cm">// Split point</span>
+    <span class="code-kw">return</span> left ?? right;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Trie (Prefix Tree) Master Template (C#)</h2>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# Trie Implementation</span></div>
+<pre><code><span class="code-kw">public class</span> <span class="code-fn">TrieNode</span> {
+    <span class="code-kw">public</span> Dictionary&lt;<span class="code-kw">char</span>, TrieNode&gt; Children = <span class="code-kw">new</span>();
+    <span class="code-kw">public bool</span> IsWord = <span class="code-kw">false</span>;
+}
+
+<span class="code-kw">public class</span> <span class="code-fn">Trie</span> {
+    <span class="code-kw">private readonly</span> TrieNode _root = <span class="code-kw">new</span>();
+
+    <span class="code-kw">public void</span> <span class="code-fn">Insert</span>(<span class="code-kw">string</span> word) {
+        <span class="code-kw">var</span> node = _root;
+        <span class="code-kw">foreach</span> (<span class="code-kw">char</span> c <span class="code-kw">in</span> word) {
+            <span class="code-kw">if</span> (!node.Children.ContainsKey(c)) node.Children[c] = <span class="code-kw">new</span> TrieNode();
+            node = node.Children[c];
+        }
+        node.IsWord = <span class="code-kw">true</span>;
+    }
+
+    <span class="code-kw">public bool</span> <span class="code-fn">StartsWith</span>(<span class="code-kw">string</span> prefix) {
+        <span class="code-kw">var</span> node = _root;
+        <span class="code-kw">foreach</span> (<span class="code-kw">char</span> c <span class="code-kw">in</span> prefix) {
+            <span class="code-kw">if</span> (!node.Children.TryGetValue(c, <span class="code-kw">out node</span>)) <span class="code-kw">return false</span>;
+        }
+        <span class="code-kw">return true</span>;
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 8 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 9: Graph Algorithms: BFS/DFS, Topo, DSU
+           ========================================= -->
+      <article class="notebook-page" id="page-9">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 09 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Graph Algorithms: <span class="hl-blue">BFS, DFS, TopoSort &amp; DSU</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Topological Sort (Kahn's In-Degree Algorithm in C#)</h2>
+            <ul class="handwritten-list">
+              <li><strong>When to use</strong>: Build order, task scheduling with dependencies, course prerequisites, cycle detection in DAGs.</li>
+              <li><strong>Algorithm</strong>: 1. Calculate in-degrees for all $V$ nodes. 2. Push nodes with `in_degree == 0` to `Queue&lt;int&gt;`. 3. While queue not empty, pop $u$, decrement neighbors' in-degree. If neighbor becomes 0, push to queue. If processed count $< V$, a cycle exists!</li>
+            </ul>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Union-Find (DSU) with Path Compression &amp; Rank (C#)</h2>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# Disjoint Set Union O(α(N)) Template</span></div>
+<pre><code><span class="code-kw">public class</span> <span class="code-fn">UnionFind</span> {
+    <span class="code-kw">private readonly int</span>[] _parent;
+    <span class="code-kw">private readonly int</span>[] _rank;
+
+    <span class="code-kw">public</span> UnionFind(<span class="code-kw">int</span> n) {
+        _parent = <span class="code-kw">new int</span>[n];
+        _rank = <span class="code-kw">new int</span>[n];
+        <span class="code-kw">for</span> (<span class="code-kw">int</span> i = <span class="code-num">0</span>; i &lt; n; i++) { _parent[i] = i; _rank[i] = <span class="code-num">1</span>; }
+    }
+
+    <span class="code-kw">public int</span> <span class="code-fn">Find</span>(<span class="code-kw">int</span> i) {
+        <span class="code-kw">if</span> (_parent[i] != i) {
+            _parent[i] = Find(_parent[i]); <span class="code-cm">// Path compression</span>
+        }
+        <span class="code-kw">return</span> _parent[i];
+    }
+
+    <span class="code-kw">public bool</span> <span class="code-fn">Union</span>(<span class="code-kw">int</span> i, <span class="code-kw">int</span> j) {
+        <span class="code-kw">int</span> rootI = Find(i), rootJ = Find(j);
+        <span class="code-kw">if</span> (rootI == rootJ) <span class="code-kw">return false</span>; <span class="code-cm">// Cycle detected!</span>
+        <span class="code-kw">if</span> (_rank[rootI] &lt; _rank[rootJ]) (rootI, rootJ) = (rootJ, rootI);
+        _parent[rootJ] = rootI;
+        _rank[rootI] += _rank[rootJ];
+        <span class="code-kw">return true</span>;
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">Dijkstra's Shortest Path Algorithm (C#)</h2>
+            <ul class="handwritten-list">
+              <li><strong>Min-Heap PriorityQueue</strong>: Tracks `(node, dist)`. Initialize `dist[start] = 0`, all others $\infty$. Process min node, relax edges in $O((V + E) \log V)$ using `PriorityQueue&lt;int, int&gt;`. Note: Dijkstra fails on negative weight edges (use Bellman-Ford).</li>
+            </ul>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 9 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 10: Dynamic Programming & Backtracking
+           ========================================= -->
+      <article class="notebook-page" id="page-10">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 10 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Dynamic Programming &amp; <span class="hl-red">Backtracking</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">The 5-Step DP Formulation Framework</h2>
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="feature-label">1. State Definition</div>
+                <div class="feature-desc">`dp[i][j]` = optimal answer for subarray $0 \dots i$ with constraint $j$.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">2. Choice &amp; Recurrence</div>
+                <div class="feature-desc">Formulate transition: `dp[i] = min(dp[i - c] + 1)` (e.g. Coin Change).</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">3. Base Cases</div>
+                <div class="feature-desc">Identify known starting values (e.g. `dp[0] = 0`, empty string states).</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">4. Rolling Array Optimization</div>
+                <div class="feature-desc">If `dp[i]` only depends on `dp[i-1]`, reduce $O(N^2)$ space to $O(N)$!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Top 4 DP Problem Archetypes</h2>
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Pattern</th>
+                  <th>Classic Problem</th>
+                  <th>State Transition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1D Subarray / Jump</strong></td>
+                  <td>House Robber / Coin Change</td>
+                  <td>`dp[i] = max(dp[i-1], dp[i-2] + nums[i])`</td>
+                </tr>
+                <tr>
+                  <td><strong>2D Grid / Matrix</strong></td>
+                  <td>Unique Paths / Edit Distance</td>
+                  <td>`dp[i][j] = dp[i-1][j] + dp[i][j-1]`</td>
+                </tr>
+                <tr>
+                  <td><strong>Two Strings / LCS</strong></td>
+                  <td>Longest Common Subsequence</td>
+                  <td>If $s_1[i] == s_2[j] \implies dp[i-1][j-1] + 1$, else $\max(dp[i-1][j], dp[i][j-1])$</td>
+                </tr>
+                <tr>
+                  <td><strong>Knapsack 0/1</strong></td>
+                  <td>Partition Equal Subset Sum</td>
+                  <td>`dp[w] = dp[w] | dp[w - num]` (iterate backwards to avoid reuse)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">Code Template: Coin Change 1D DP (C#)</h2>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# Bottom-Up 1D Array Dynamic Programming</span></div>
+<pre><code><span class="code-kw">public int</span> <span class="code-fn">CoinChange</span>(<span class="code-kw">int</span>[] coins, <span class="code-kw">int</span> amount) {
+    <span class="code-kw">var</span> dp = <span class="code-kw">new int</span>[amount + <span class="code-num">1</span>];
+    Array.Fill(dp, amount + <span class="code-num">1</span>); <span class="code-cm">// Sentinel max value</span>
+    dp[<span class="code-num">0</span>] = <span class="code-num">0</span>;
+    
+    <span class="code-kw">for</span> (<span class="code-kw">int</span> a = <span class="code-num">1</span>; a &lt;= amount; a++) {
+        <span class="code-kw">foreach</span> (<span class="code-kw">int</span> c <span class="code-kw">in</span> coins) {
+            <span class="code-kw">if</span> (a - c &gt;= <span class="code-num">0</span>) {
+                dp[a] = Math.Min(dp[a], dp[a - c] + <span class="code-num">1</span>);
+            }
+        }
+    }
+    <span class="code-kw">return</span> dp[amount] &gt; amount ? -<span class="code-num">1</span> : dp[amount];
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 10 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 11: Intervals, Greedy & Concurrency
+           ========================================= -->
+      <article class="notebook-page" id="page-11">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 11 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Intervals, Greedy &amp; <span class="hl-yellow">Bitwise / Concurrency</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Intervals Master Framework: Sort by Start Time</h2>
+            <ul class="handwritten-list">
+              <li><strong>Merge Overlapping Intervals</strong>: Sort intervals by `start`. Iterate through list: if `curr.start <= prev.end`, merge by updating `prev.end = max(prev.end, curr.end)`. Otherwise append new interval.</li>
+              <li><strong>Meeting Rooms II (Min Conference Rooms)</strong>: Min-Heap of end times. Sort meetings by start time. If `start >= heap.peek()`, pop room (reused). Push current end time. `len(heap)` is the room count!</li>
+            </ul>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Bit Manipulation Ninja Tricks</h2>
+            <div class="three-col">
+              <div class="feature-card">
+                <div class="feature-label">XOR Cancellation</div>
+                <div class="feature-desc">$x \oplus x = 0$, $x \oplus 0 = x$. Solves Single Number in $O(N)$ time &amp; $O(1)$ space.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">Clear Lowest Set Bit</div>
+                <div class="feature-desc">`n & (n - 1)` removes the lowest set bit. Counts set bits (Hamming weight) in $O(\text{set bits})$.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">Power of Two Check</div>
+                <div class="feature-desc">`n > 0 and (n & (n - 1)) == 0` checks if $n$ is a power of 2 in $O(1)$!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">Thread-Safe Data Structures (C# Senior / Tier 2 Focus)</h2>
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# Thread-Safe Bounded Blocking Queue</span></div>
+<pre><code><span class="code-kw">public class</span> <span class="code-fn">BoundedBlockingQueue</span> {
+    <span class="code-kw">private readonly</span> Queue&lt;<span class="code-kw">int</span>&gt; _queue = <span class="code-kw">new</span>();
+    <span class="code-kw">private readonly int</span> _capacity;
+    <span class="code-kw">private readonly object</span> _lock = <span class="code-kw">new</span>();
+
+    <span class="code-kw">public</span> BoundedBlockingQueue(<span class="code-kw">int</span> capacity) { _capacity = capacity; }
+
+    <span class="code-kw">public void</span> <span class="code-fn">Enqueue</span>(<span class="code-kw">int</span> element) {
+        <span class="code-kw">lock</span> (_lock) {
+            <span class="code-kw">while</span> (_queue.Count == _capacity) {
+                Monitor.Wait(_lock); <span class="code-cm">// Handle spurious wakeups</span>
+            }
+            _queue.Enqueue(element);
+            Monitor.PulseAll(_lock);
+        }
+    }
+
+    <span class="code-kw">public int</span> <span class="code-fn">Dequeue</span>() {
+        <span class="code-kw">lock</span> (_lock) {
+            <span class="code-kw">while</span> (_queue.Count == <span class="code-num">0</span>) {
+                Monitor.Wait(_lock);
+            }
+            <span class="code-kw">int</span> item = _queue.Dequeue();
+            Monitor.PulseAll(_lock);
+            <span class="code-kw">return</span> item;
+        }
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 11 of 12</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 12: Tier 1/2/3 Rubrics & Live Protocol
+           ========================================= -->
+      <article class="notebook-page" id="page-12">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
+            <span class="page-num">Page 12 / 12</span>
+          </div>
+
+          <h1 class="page-title">
+            Tier 1, 2, 3 Rubrics &amp; <span class="hl-indigo">Live Interview Execution</span>
+            <span class="title-underline"></span>
+          </h1>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">The 6-Step Live Interview Protocol</h2>
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="feature-label">Step 1: Clarify Constraints</div>
+                <div class="feature-desc">Array bounds, negative values, duplicates, memory limits, edge cases (empty list, 1 element).</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">Step 2: Propose Naive &amp; Optimal</div>
+                <div class="feature-desc">State brute-force ($O(N^2)$), then introduce $O(N \log N)$ or $O(N)$ with data structure rationale.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">Step 3: State Big-O First</div>
+                <div class="feature-desc">State Time and Space complexity upfront to get interviewer nod before writing code!</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">Step 4: Clean Production Code</div>
+                <div class="feature-desc">Write clean, idiomatic code with helper functions, meaningful variable names, and early guards.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">Step 5: Systematic Dry Run</div>
+                <div class="feature-desc">Trace pointers (`L`, `R`, `mid`, `stack`) with a small table against a sample input. Catch bugs yourself!</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">Step 6: Follow-up Scale</div>
+                <div class="feature-desc">Explain streaming data handling, disk spilling, and distributed parallelization.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">Top 10 Senior Red Flags to Avoid in Coding Rounds</h2>
+            <ul class="handwritten-list">
+              <li>❌ <strong>Jumping straight into code</strong> without explaining your approach or confirming alignment.</li>
+              <li>❌ <strong>Coding in complete silence</strong> for 10 minutes without thinking aloud.</li>
+              <li>❌ <strong>Using cryptic 1-letter variables</strong> ($a, b, c, x, y$) instead of clean domain names (`left_max`, `in_degree`).</li>
+              <li>❌ <strong>Ignoring interviewer hints</strong> — hints are deliberate alignment tests, not deductions.</li>
+              <li>❌ <strong>Saying "My code works!"</strong> without running a structured manual dry-run trace.</li>
+            </ul>
+          </div>
+
+          <div class="remember-box">
+            <div class="remember-title">🎯 Final Takeaway for 8+ YoE Candidates</div>
+            <div class="remember-item">Seniors are hired for sound engineering judgment, code clarity, and architectural composure under pressure. Master these 15 core patterns, communicate with confidence, and crush your interviews across all tiers!</div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 12 of 12</div>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Dot Navigation -->
+    <nav class="dot-nav" id="dotNav" aria-label="Page Navigation Dots"></nav>
+
+    <!-- Table of Contents Modal -->
+    <div class="toc-modal" id="tocModal" onclick="toggleTOC(false)">
+      <div class="toc-box" onclick="event.stopPropagation()">
+        <div class="toc-header">
+          <span class="toc-title">📖 DSA Master Table of Contents</span>
+          <button class="sidebar-close-btn" onclick="toggleTOC(false)">&times;</button>
+        </div>
+        <div class="toc-list" id="tocList"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script src="../shared-search.js"></script>
+</body>
+</html>

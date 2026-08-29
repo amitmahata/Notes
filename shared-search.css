@@ -714,3 +714,384 @@ mark.page-search-highlight {
   from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
+
+/* =========================================
+   UNIVERSAL THEME SWITCHER & PALETTES
+   ========================================= */
+
+/* Topbar Theme Switcher Pill */
+.topbar-theme-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.topbar-theme-btn {
+  font-family: 'Caveat', cursive !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 9999px !important;
+  padding: 5px 13px !important;
+  color: #f8fafc !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.topbar-theme-btn:hover {
+  background: rgba(168, 85, 247, 0.22) !important;
+  border-color: rgba(168, 85, 247, 0.5) !important;
+  color: #d8b4fe !important;
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.35) !important;
+}
+
+.theme-active-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* Theme Dropdown Popover */
+.theme-popover-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: linear-gradient(180deg, #0f172a 0%, #090d16 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 8px;
+  min-width: 220px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(168, 85, 247, 0.2);
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: popoverFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-popover-menu.open {
+  display: flex;
+}
+
+@keyframes popoverFadeIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.theme-popover-title {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  padding: 4px 10px 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 2px;
+}
+
+.theme-option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
+  color: #cbd5e1;
+  border: 1px solid transparent;
+}
+
+.theme-option-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+}
+
+.theme-option-item.active {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.theme-option-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-swatch-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.theme-check-icon {
+  font-size: 14px;
+  color: #a855f7;
+  display: none;
+}
+
+.theme-option-item.active .theme-check-icon {
+  display: block;
+}
+
+/* Topic Drawer Theme Selector Grid */
+.drawer-theme-section {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawer-theme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.drawer-theme-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.drawer-theme-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.drawer-theme-card.active {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: rgba(168, 85, 247, 0.6);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* =========================================
+   THEME PALETTE OVERRIDES:
+   1. [data-theme="warm-paper"] (Classic Default)
+   2. [data-theme="dark"] (Dark Obsidian / Chalkboard)
+   3. [data-theme="sepia"] (Vintage Sepia Parchment)
+   4. [data-theme="blueprint"] (Tech Blueprint Grid)
+   ========================================= */
+
+/* --- 1. CLASSIC WARM PAPER --- */
+html[data-theme="warm-paper"], body[data-theme="warm-paper"] {
+  --paper-bg: #fdfbf7;
+  --paper-lines: rgba(180, 160, 130, 0.28);
+  --paper-margin-line: rgba(220, 38, 38, 0.25);
+  --ink-dark: #1e293b;
+  --ink-medium: #334155;
+  --hole-bg: #1e293b;
+  --spiral-metal: #78716c;
+  --spiral-ring: #d6d3d1;
+}
+
+/* --- 2. DARK OBSIDIAN / CHALKBOARD --- */
+html[data-theme="dark"], body[data-theme="dark"] {
+  --paper-bg: #0f172a;
+  --paper-lines: rgba(255, 255, 255, 0.08);
+  --paper-margin-line: rgba(244, 63, 94, 0.35);
+  --hole-bg: #020617;
+  --spiral-metal: #475569;
+  --spiral-ring: #64748b;
+  --ink-dark: #f8fafc;
+  --ink-medium: #cbd5e1;
+  --ink-blue: #38bdf8;
+  --ink-red: #f43f5e;
+  --ink-green: #34d399;
+  --ink-yellow: #fbbf24;
+  --ink-purple: #c084fc;
+  --blue: #38bdf8;
+  --red: #f43f5e;
+  --green: #34d399;
+  --yellow: #fbbf24;
+  --purple: #c084fc;
+  --bg-blue: rgba(56, 189, 248, 0.15);
+  --bg-red: rgba(244, 63, 94, 0.15);
+  --bg-green: rgba(52, 211, 153, 0.15);
+  --bg-yellow: rgba(251, 191, 36, 0.15);
+  --bg-purple: rgba(192, 132, 252, 0.15);
+}
+
+html[data-theme="dark"] .notebook-page,
+body[data-theme="dark"] .notebook-page {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.1) !important;
+}
+
+html[data-theme="dark"] .notebook-inner,
+body[data-theme="dark"] .notebook-inner {
+  background-image: 
+    linear-gradient(90deg, transparent 56px, rgba(244, 63, 94, 0.35) 56px, rgba(244, 63, 94, 0.35) 58px, transparent 58px),
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px) !important;
+}
+
+/* Dark mode card, diagram & table cell translucency */
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .remember-box,
+html[data-theme="dark"] .tip-box,
+html[data-theme="dark"] .diagram-box,
+html[data-theme="dark"] .section-block,
+html[data-theme="dark"] .compare-table,
+html[data-theme="dark"] .timeline-card,
+html[data-theme="dark"] .definition-card,
+html[data-theme="dark"] .step-card,
+html[data-theme="dark"] .rule-card,
+html[data-theme="dark"] .flow-node,
+html[data-theme="dark"] .arch-node,
+html[data-theme="dark"] .summary-card {
+  background-color: rgba(30, 41, 59, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .compare-cell,
+html[data-theme="dark"] .compare-row,
+html[data-theme="dark"] th,
+html[data-theme="dark"] td {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] .handwritten-dark-text,
+html[data-theme="dark"] .col-left,
+html[data-theme="dark"] .col-right {
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] .page-footer {
+  color: #64748b !important;
+}
+
+/* --- 3. VINTAGE SEPIA PARCHMENT --- */
+html[data-theme="sepia"], body[data-theme="sepia"] {
+  --paper-bg: #f4ebd0;
+  --paper-lines: rgba(160, 130, 90, 0.25);
+  --paper-margin-line: rgba(180, 80, 50, 0.3);
+  --hole-bg: #1c140c;
+  --spiral-metal: #8c7355;
+  --spiral-ring: #b8a287;
+  --ink-dark: #2c1d11;
+  --ink-medium: #4a3728;
+  --ink-blue: #1c528a;
+  --ink-red: #a82020;
+  --ink-green: #2d663b;
+  --ink-yellow: #a86208;
+  --ink-purple: #5c357a;
+  --blue: #1c528a;
+  --red: #a82020;
+  --green: #2d663b;
+  --yellow: #a86208;
+  --purple: #5c357a;
+}
+
+html[data-theme="sepia"] .notebook-page,
+body[data-theme="sepia"] .notebook-page {
+  background-color: #f4ebd0 !important;
+  color: #2c1d11 !important;
+  box-shadow: 0 20px 50px rgba(44, 29, 17, 0.45) !important;
+}
+
+html[data-theme="sepia"] .notebook-inner,
+body[data-theme="sepia"] .notebook-inner {
+  background-image: 
+    linear-gradient(90deg, transparent 56px, rgba(180, 80, 50, 0.3) 56px, rgba(180, 80, 50, 0.3) 58px, transparent 58px),
+    linear-gradient(rgba(160, 130, 90, 0.25) 1px, transparent 1px) !important;
+}
+
+html[data-theme="sepia"] .feature-card,
+html[data-theme="sepia"] .remember-box,
+html[data-theme="sepia"] .tip-box,
+html[data-theme="sepia"] .diagram-box,
+html[data-theme="sepia"] .compare-table {
+  background-color: rgba(255, 250, 235, 0.85) !important;
+  border-color: rgba(160, 130, 90, 0.3) !important;
+  color: #2c1d11 !important;
+}
+
+/* --- 4. TECH BLUEPRINT GRID --- */
+html[data-theme="blueprint"], body[data-theme="blueprint"] {
+  --paper-bg: #09223e;
+  --paper-lines: rgba(56, 189, 248, 0.16);
+  --paper-margin-line: rgba(56, 189, 248, 0.45);
+  --hole-bg: #030b14;
+  --spiral-metal: #1e3a5f;
+  --spiral-ring: #38bdf8;
+  --ink-dark: #f0f9ff;
+  --ink-medium: #bae6fd;
+  --ink-blue: #38bdf8;
+  --ink-red: #fb7185;
+  --ink-green: #4ade80;
+  --ink-yellow: #fde047;
+  --ink-purple: #a78bfa;
+  --blue: #38bdf8;
+  --red: #fb7185;
+  --green: #4ade80;
+  --yellow: #fde047;
+  --purple: #a78bfa;
+  --bg-blue: rgba(56, 189, 248, 0.18);
+  --bg-red: rgba(251, 113, 133, 0.18);
+  --bg-green: rgba(74, 222, 128, 0.18);
+  --bg-yellow: rgba(253, 224, 71, 0.18);
+  --bg-purple: rgba(167, 139, 250, 0.18);
+}
+
+html[data-theme="blueprint"] .notebook-page,
+body[data-theme="blueprint"] .notebook-page {
+  background-color: #09223e !important;
+  color: #f0f9ff !important;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.2) !important;
+}
+
+html[data-theme="blueprint"] .notebook-inner,
+body[data-theme="blueprint"] .notebook-inner {
+  background-image: 
+    linear-gradient(90deg, transparent 56px, rgba(56, 189, 248, 0.45) 56px, rgba(56, 189, 248, 0.45) 58px, transparent 58px),
+    linear-gradient(rgba(56, 189, 248, 0.16) 1px, transparent 1px) !important;
+}
+
+html[data-theme="blueprint"] .feature-card,
+html[data-theme="blueprint"] .remember-box,
+html[data-theme="blueprint"] .tip-box,
+html[data-theme="blueprint"] .diagram-box,
+html[data-theme="blueprint"] .compare-table {
+  background-color: rgba(15, 35, 60, 0.9) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  color: #f0f9ff !important;
+}
+
+html[data-theme="blueprint"] p,
+html[data-theme="blueprint"] li,
+html[data-theme="blueprint"] .handwritten-dark-text,
+html[data-theme="blueprint"] .col-left,
+html[data-theme="blueprint"] .col-right {
+  color: #e0f2fe !important;
+}
