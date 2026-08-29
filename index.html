@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amit Mahata - Handwritten Study Notes Hub</title>
   <meta name="description" content="Interactive handwritten-style engineering study notes for System Design, AI Evolution, Kubernetes, and Docker." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
@@ -130,12 +131,22 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="shared-search.css" />
 </head>
 <body>
 
   <div class="header">
     <h1 class="title">✍️ Amit Mahata's Handwritten Notes</h1>
     <p class="subtitle">Interactive Digital Notebook Hub for Software Engineering &amp; AI</p>
+  </div>
+
+  <!-- Hero Full-Text Search Bar -->
+  <div class="hub-search-container">
+    <div class="hub-search-box" onclick="openSearchModal()">
+      <span class="hub-search-icon">🔍</span>
+      <span class="hub-search-placeholder">Search 26+ pages of handwritten notes (e.g. AlexNet, Kafka, Raft, Dockerfile)...</span>
+      <span class="hub-search-badge">Press Ctrl+K</span>
+    </div>
   </div>
 
   <div class="grid">
@@ -182,5 +193,6 @@
 
   </div>
 
+  <script src="shared-search.js"></script>
 </body>
 </html>
