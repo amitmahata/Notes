@@ -353,7 +353,15 @@
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 
-    /* Bento Grid Column Spans */
+    :root {
+      --ai-glow: rgba(244, 63, 94, 0.25);
+      --sd-glow: rgba(59, 130, 246, 0.25);
+      --k8s-glow: rgba(16, 185, 129, 0.25);
+      --docker-glow: rgba(245, 158, 11, 0.25);
+      --dsa-glow: rgba(99, 102, 241, 0.35);
+    }
+
+    /* Asymmetric Bento Span Layout: Row 1 = AI (7) + DSA (5), Row 2 = SD (4) + K8s (4) + Docker (4) */
     .bento-ai {
       grid-column: span 7;
       border-color: rgba(244, 63, 94, 0.25);
@@ -363,8 +371,18 @@
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--ai-glow);
     }
 
-    .bento-sd {
+    .bento-dsa {
       grid-column: span 5;
+      border-color: rgba(99, 102, 241, 0.35);
+      background: linear-gradient(135deg, rgba(30, 27, 75, 0.75) 0%, rgba(15, 23, 42, 0.7) 100%);
+    }
+    .bento-dsa:hover {
+      border-color: rgba(129, 140, 248, 0.8);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 45px var(--dsa-glow);
+    }
+
+    .bento-sd {
+      grid-column: span 4;
       border-color: rgba(59, 130, 246, 0.25);
     }
     .bento-sd:hover {
@@ -373,7 +391,7 @@
     }
 
     .bento-k8s {
-      grid-column: span 5;
+      grid-column: span 4;
       border-color: rgba(16, 185, 129, 0.25);
     }
     .bento-k8s:hover {
@@ -382,7 +400,7 @@
     }
 
     .bento-docker {
-      grid-column: span 7;
+      grid-column: span 4;
       border-color: rgba(245, 158, 11, 0.25);
     }
     .bento-docker:hover {
@@ -541,7 +559,7 @@
        RESPONSIVE MOBILE STYLES
        ========================================= */
     @media (max-width: 900px) {
-      .bento-ai, .bento-sd, .bento-k8s, .bento-docker {
+      .bento-dsa, .bento-ai, .bento-sd, .bento-k8s, .bento-docker {
         grid-column: span 12;
       }
       .stats-strip {
@@ -604,17 +622,17 @@
     <div class="header">
       <div class="hero-badge">
         <span class="pulse-dot"></span>
-        <span>✨ 26 Interactive Pages • Full-Text Searchable</span>
+        <span>✨ 38 Interactive Pages • 5 Core Engineering Topics</span>
       </div>
       <h1 class="title">✍️ Amit Mahata's Handwritten Notes</h1>
-      <p class="subtitle">Interactive Digital Notebook Hub for Software Engineering, Architecture &amp; AI Evolution</p>
+      <p class="subtitle">Interactive Digital Notebook Hub for Software Engineering, Architecture, AI &amp; DSA</p>
     </div>
 
     <!-- Hero Full-Text Search Bar with Glassmorphic Spatial Glow -->
     <div class="hub-search-container">
       <div class="hub-search-box" onclick="openSearchModal()">
         <span class="hub-search-icon">🔍</span>
-        <span class="hub-search-placeholder">Search 26+ pages (e.g. AlexNet, Kafka, Raft, Dockerfile, etcd)...</span>
+        <span class="hub-search-placeholder">Search 38+ pages (e.g. AlexNet, LRU Cache, Dijkstra, Kafka, Raft, Dockerfile)...</span>
         <span class="hub-search-badge"><kbd style="font-family: inherit;">Ctrl</kbd> + <kbd style="font-family: inherit;">K</kbd></span>
       </div>
     </div>
@@ -622,7 +640,7 @@
     <!-- Spatial Bento Grid -->
     <div class="bento-grid">
       
-      <!-- Bento 1: AI Notes (Featured 7 cols) -->
+      <!-- Bento 1 (Top Left, 7 cols): AI Evolution Master Note -->
       <a href="ai-notes/index.html" class="bento-card bento-ai">
         <div class="card-sheen"></div>
         <div>
@@ -653,7 +671,39 @@
         </div>
       </a>
 
-      <!-- Bento 2: System Design (5 cols) -->
+      <!-- Bento 2 (Top Right, 5 cols): DSA Master Notes -->
+      <a href="dsa-notes/index.html" class="bento-card bento-dsa">
+        <div class="card-sheen"></div>
+        <div>
+          <div class="card-top">
+            <span class="card-badge" style="background: rgba(99, 102, 241, 0.2); color: #c7d2fe; border: 1px solid rgba(99, 102, 241, 0.4);">
+              💻 Senior / Staff • C# &amp; JS
+            </span>
+            <span class="card-page-count">12 Pages</span>
+          </div>
+          <div class="card-icon-title">
+            <span class="card-icon">💻</span>
+            <h2 class="card-title" style="color: #a5b4fc;">DSA Master Notes</h2>
+          </div>
+          <p class="card-desc">
+            15 core patterns in C# &amp; JS for 8+ YoE senior rounds: LRU/LFU cache, Monotonic Stack, Sliding Window, Trees, Graphs, Dijkstra, DP &amp; Tier-1 protocols.
+          </p>
+          <div class="card-tags">
+            <span class="topic-pill">6-Wk Plan</span>
+            <span class="topic-pill">LRU Cache</span>
+            <span class="topic-pill">Sliding Window</span>
+            <span class="topic-pill">Monotonic Stack</span>
+            <span class="topic-pill">Dijkstra &amp; DSU</span>
+            <span class="topic-pill">Knapsack DP</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link" style="color: #a5b4fc;">Open Notebook</span>
+          <span class="card-arrow" style="color: #a5b4fc;">&rarr;</span>
+        </div>
+      </a>
+
+      <!-- Bento 3: System Design (4 cols) -->
       <a href="system-design-notes/index.html" class="bento-card bento-sd">
         <div class="card-sheen"></div>
         <div>
@@ -683,7 +733,7 @@
         </div>
       </a>
 
-      <!-- Bento 3: Kubernetes Notes (5 cols) -->
+      <!-- Bento 4: Kubernetes Notes (4 cols) -->
       <a href="kubernetes-notes/index.html" class="bento-card bento-k8s">
         <div class="card-sheen"></div>
         <div>
@@ -713,7 +763,7 @@
         </div>
       </a>
 
-      <!-- Bento 4: Docker Master Notes (7 cols) -->
+      <!-- Bento 5: Docker Master Notes (4 cols) -->
       <a href="docker-notes/index.html" class="bento-card bento-docker">
         <div class="card-sheen"></div>
         <div>
@@ -748,11 +798,11 @@
     <!-- Bottom Quick Stats Bento Strip -->
     <div class="stats-strip">
       <div class="stat-box">
-        <div class="stat-number">26+</div>
+        <div class="stat-number">38+</div>
         <div class="stat-label">Handcrafted Pages</div>
       </div>
       <div class="stat-box">
-        <div class="stat-number">4</div>
+        <div class="stat-number">5</div>
         <div class="stat-label">Core Engineering Topics</div>
       </div>
       <div class="stat-box">
@@ -760,8 +810,8 @@
         <div class="stat-label">Global Search (Ctrl+K)</div>
       </div>
       <div class="stat-box">
-        <div class="stat-number">📱 100%</div>
-        <div class="stat-label">Mobile &amp; Touch Friendly</div>
+        <div class="stat-number">🎨 4 Themes</div>
+        <div class="stat-label">Paper, Dark, Sepia &amp; Blueprint</div>
       </div>
     </div>
 
