@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>System Design Handwritten Notes - 8+ YoE Senior Edition</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>" />
   <meta name="description" content="Comprehensive, handwritten-style System Design study notes tailored for Senior / Staff Software Engineers preparing for top product companies." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,6 +22,7 @@
   <script defer src="/_vercel/insights/script.js"></script>
   
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../shared-search.css" />
 </head>
 <body>
 
@@ -40,6 +42,10 @@
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
       </div>
       <div class="topbar-right">
+        <button class="topbar-search-btn" onclick="openSearchModal()" title="Search All Notes (Ctrl+K)">
+          <span>🔍 Search</span>
+          <span class="kbd-hint">Ctrl+K</span>
+        </button>
         <button class="nav-btn pdf-btn" id="pdfBtn" onclick="window.print()" title="Export or Print as PDF">📥 PDF</button>
       </div>
     </header>
@@ -1534,5 +1540,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="../shared-search.js"></script>
 </body>
 </html>
