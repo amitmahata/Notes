@@ -18,116 +18,567 @@
   
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark: #070b14;
+      --card-glass: rgba(15, 23, 42, 0.7);
+      --card-glass-hover: rgba(30, 41, 59, 0.85);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --card-border-hover: rgba(56, 189, 248, 0.4);
+      --ai-accent: #f43f5e;
+      --ai-glow: rgba(244, 63, 94, 0.25);
+      --sd-accent: #3b82f6;
+      --sd-glow: rgba(59, 130, 246, 0.25);
+      --k8s-accent: #10b981;
+      --k8s-glow: rgba(16, 185, 129, 0.25);
+      --docker-accent: #f59e0b;
+      --docker-glow: rgba(245, 158, 11, 0.25);
+    }
+
     body {
-      font-family: 'Kalam', cursive;
-      background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 65%, #020617 100%);
+      font-family: 'Patrick Hand', cursive;
+      background-color: var(--bg-dark);
       color: #f8fafc;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      padding: 40px 20px 60px;
+      overflow-x: hidden;
+      position: relative;
     }
+
+    /* =========================================
+       SPATIAL BACKGROUND & AURORA GLOW ORBS
+       ========================================= */
+    .bg-mesh-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Subtle blueprint / notebook grid overlay */
+    .bg-grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
+    }
+
+    /* Fluid Aurora Liquid Glow Blobs */
+    .aurora-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+      mix-blend-mode: screen;
+      animation: floatAurora 18s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .aurora-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #ec4899 0%, #8b5cf6 60%, transparent 100%);
+      top: -100px;
+      left: 10%;
+      animation-duration: 16s;
+    }
+
+    .aurora-2 {
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, #06b6d4 0%, #3b82f6 60%, transparent 100%);
+      top: 15%;
+      right: 5%;
+      animation-duration: 22s;
+      animation-delay: -5s;
+    }
+
+    .aurora-3 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, #10b981 0%, #0284c7 60%, transparent 100%);
+      bottom: 5%;
+      left: 15%;
+      animation-duration: 20s;
+      animation-delay: -9s;
+    }
+
+    .aurora-4 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #f59e0b 0%, #ef4444 60%, transparent 100%);
+      bottom: 10%;
+      right: 20%;
+      animation-duration: 24s;
+      animation-delay: -13s;
+    }
+
+    @keyframes floatAurora {
+      0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+      }
+      50% {
+        transform: translate(60px, 40px) scale(1.12) rotate(120deg);
+      }
+      100% {
+        transform: translate(-50px, 80px) scale(0.92) rotate(240deg);
+      }
+    }
+
+    /* Spatial Mouse Follower Spotlight */
+    .spatial-spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(139, 92, 246, 0.05) 40%, transparent 70%);
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Main Container Content */
+    .hub-content-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1080px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* =========================================
+       HEADER & BADGE
+       ========================================= */
     .header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .hero-badge:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(255, 255, 255, 0.09);
+      color: #e2e8f0;
+      transform: translateY(-2px);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulseGlow 2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
     .title {
       font-family: 'Caveat', cursive;
-      font-size: 48px;
+      font-size: 56px;
       font-weight: 700;
-      color: #fbbf24;
-      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffffff 20%, #fef08a 60%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+      text-shadow: 0 10px 30px rgba(251, 191, 36, 0.15);
+      letter-spacing: 0.5px;
     }
+
     .subtitle {
       font-family: 'Patrick Hand', cursive;
-      font-size: 20px;
-      color: #cbd5e1;
+      font-size: 21px;
+      color: #94a3b8;
+      max-width: 620px;
+      line-height: 1.4;
     }
-    .grid {
+
+    /* =========================================
+       HERO SEARCH BAR (Glassmorphism + Glow)
+       ========================================= */
+    .hub-search-container {
+      width: 100%;
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    .hub-search-box {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hub-search-box:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+      background: rgba(30, 41, 59, 0.85);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .hub-search-icon {
+      font-size: 20px;
+      color: #38bdf8;
+    }
+
+    .hub-search-placeholder {
+      flex: 1;
+      font-family: 'Patrick Hand', cursive;
+      font-size: 18px;
+      color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hub-search-badge {
+      font-family: 'Patrick Hand', cursive;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 3px 10px;
+      border-radius: 8px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* =========================================
+       BENTO GRID NOTEBOOK CARDS (Spatial Liquid Glass)
+       ========================================= */
+    .bento-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(12, 1fr);
       gap: 24px;
       width: 100%;
-      max-width: 960px;
     }
-    .card {
-      background: #fdfbf7;
-      border-radius: 16px;
-      padding: 28px;
-      color: #1e293b;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+
+    /* Spatial Liquid Glass Bento Card Base */
+    .bento-card {
+      position: relative;
+      background: var(--card-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 30px 28px;
       text-decoration: none;
-      transition: all 0.3s ease;
+      color: #f8fafc;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 3px solid #e2e8f0;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-      border-color: #38bdf8;
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
     }
+
+    /* Light beam reflection overlay */
+    .card-sheen {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      transform: rotate(25deg);
+    }
+
+    .bento-card:hover .card-sheen {
+      opacity: 1;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-6px);
+      background: var(--card-glass-hover);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    /* Bento Grid Column Spans */
+    .bento-ai {
+      grid-column: span 7;
+      border-color: rgba(244, 63, 94, 0.25);
+    }
+    .bento-ai:hover {
+      border-color: rgba(244, 63, 94, 0.6);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--ai-glow);
+    }
+
+    .bento-sd {
+      grid-column: span 5;
+      border-color: rgba(59, 130, 246, 0.25);
+    }
+    .bento-sd:hover {
+      border-color: rgba(59, 130, 246, 0.6);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--sd-glow);
+    }
+
+    .bento-k8s {
+      grid-column: span 5;
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+    .bento-k8s:hover {
+      border-color: rgba(16, 185, 129, 0.6);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--k8s-glow);
+    }
+
+    .bento-docker {
+      grid-column: span 7;
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+    .bento-docker:hover {
+      border-color: rgba(245, 158, 11, 0.6);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--docker-glow);
+    }
+
+    /* Card Elements */
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
     .card-badge {
       font-family: 'Patrick Hand', cursive;
-      font-size: 13px;
-      padding: 3px 10px;
+      font-size: 14px;
+      padding: 4px 12px;
       border-radius: 12px;
-      background: #dbeafe;
-      color: #1d4ed8;
-      width: fit-content;
-      margin-bottom: 12px;
-    }
-    .card-title {
-      font-family: 'Caveat', cursive;
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-    .card-desc {
-      font-size: 17px;
-      color: #475569;
-      line-height: 1.4;
-      margin-bottom: 20px;
-    }
-    .card-link {
-      font-family: 'Caveat', cursive;
-      font-size: 22px;
-      font-weight: 700;
-      color: #dc2626;
-      display: flex;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
     }
+
+    .card-page-count {
+      font-family: 'Patrick Hand', cursive;
+      font-size: 14px;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+
+    .card-icon-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-icon {
+      font-size: 34px;
+      line-height: 1;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    }
+
+    .card-title {
+      font-family: 'Caveat', cursive;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .card-desc {
+      font-size: 17px;
+      color: #cbd5e1;
+      line-height: 1.45;
+      margin-bottom: 22px;
+    }
+
+    /* Topic Tags inside Bento Cards */
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .topic-pill {
+      font-size: 13px;
+      padding: 3px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      transition: all 0.2s ease;
+    }
+
+    .bento-card:hover .topic-pill {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Card Footer Action */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-link {
+      font-family: 'Caveat', cursive;
+      font-size: 23px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .bento-card:hover .card-link {
+      transform: translateX(4px);
+    }
+
+    .card-arrow {
+      font-size: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .bento-card:hover .card-arrow {
+      transform: translateX(4px);
+    }
+
+    /* =========================================
+       QUICK STATS STRIP (Bottom Bento Element)
+       ========================================= */
+    .stats-strip {
+      margin-top: 28px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-box {
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 16px 20px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-number {
+      font-family: 'Caveat', cursive;
+      font-size: 32px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 2px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    /* =========================================
+       RESPONSIVE MOBILE STYLES
+       ========================================= */
+    @media (max-width: 900px) {
+      .bento-ai, .bento-sd, .bento-k8s, .bento-docker {
+        grid-column: span 12;
+      }
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 600px) {
       body {
-        padding: 24px 14px;
-      }
-      .header {
-        margin-bottom: 24px;
+        padding: 24px 14px 40px;
       }
       .title {
-        font-size: 32px;
+        font-size: 36px;
       }
       .subtitle {
         font-size: 17px;
       }
-      .grid {
-        grid-template-columns: 1fr;
+      .bento-grid {
         gap: 16px;
       }
-      .card {
-        padding: 20px 18px;
+      .bento-card {
+        padding: 22px 18px;
+        border-radius: 20px;
       }
       .card-title {
-        font-size: 26px;
+        font-size: 28px;
       }
       .card-desc {
         font-size: 15px;
+        margin-bottom: 16px;
+      }
+      .stats-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .stat-number {
+        font-size: 26px;
       }
     }
   </style>
@@ -135,63 +586,197 @@
 </head>
 <body>
 
-  <div class="header">
-    <h1 class="title">✍️ Amit Mahata's Handwritten Notes</h1>
-    <p class="subtitle">Interactive Digital Notebook Hub for Software Engineering &amp; AI</p>
+  <!-- Dynamic Spatial Mesh Canvas & Aurora Background -->
+  <div class="bg-mesh-canvas">
+    <div class="bg-grid-pattern"></div>
+    <div class="aurora-blob aurora-1"></div>
+    <div class="aurora-blob aurora-2"></div>
+    <div class="aurora-blob aurora-3"></div>
+    <div class="aurora-blob aurora-4"></div>
   </div>
 
-  <!-- Hero Full-Text Search Bar -->
-  <div class="hub-search-container">
-    <div class="hub-search-box" onclick="openSearchModal()">
-      <span class="hub-search-icon">🔍</span>
-      <span class="hub-search-placeholder">Search 26+ pages of handwritten notes (e.g. AlexNet, Kafka, Raft, Dockerfile)...</span>
-      <span class="hub-search-badge">Press Ctrl+K</span>
-    </div>
-  </div>
+  <!-- Interactive Mouse Spotlight -->
+  <div class="spatial-spotlight" id="spatialSpotlight"></div>
 
-  <div class="grid">
+  <!-- Main Content Wrapper -->
+  <div class="hub-content-wrap">
     
-    <!-- AI Notes -->
-    <a href="ai-notes/index.html" class="card" style="border-top: 6px solid #dc2626;">
-      <div>
-        <div class="card-badge" style="background: #fee2e2; color: #dc2626;">✨ 6-PAGE MASTER NOTE</div>
-        <div class="card-title" style="color: #dc2626;">🧠 The Evolution of AI</div>
-        <div class="card-desc">Handwritten journey from Turing Test (1950), Rule-based Systems, ML vs DL, AlexNet, NLP &amp; Transformers to LLMs, Multimodal AI &amp; Autonomous Agents.</div>
+    <div class="header">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>✨ 26 Interactive Pages • Full-Text Searchable</span>
       </div>
-      <div class="card-link">Open Notebook &rarr;</div>
-    </a>
+      <h1 class="title">✍️ Amit Mahata's Handwritten Notes</h1>
+      <p class="subtitle">Interactive Digital Notebook Hub for Software Engineering, Architecture &amp; AI Evolution</p>
+    </div>
 
-    <!-- System Design Notes -->
-    <a href="system-design-notes/index.html" class="card" style="border-top: 6px solid #2563eb;">
-      <div>
-        <div class="card-badge" style="background: #dbeafe; color: #1d4ed8;">Senior / Staff Edition</div>
-        <div class="card-title" style="color: #1d4ed8;">📐 System Design Notes</div>
-        <div class="card-desc">4-step interview framework, distributed caching, databases, rate limiting, and system architectures.</div>
+    <!-- Hero Full-Text Search Bar with Glassmorphic Spatial Glow -->
+    <div class="hub-search-container">
+      <div class="hub-search-box" onclick="openSearchModal()">
+        <span class="hub-search-icon">🔍</span>
+        <span class="hub-search-placeholder">Search 26+ pages (e.g. AlexNet, Kafka, Raft, Dockerfile, etcd)...</span>
+        <span class="hub-search-badge"><kbd style="font-family: inherit;">Ctrl</kbd> + <kbd style="font-family: inherit;">K</kbd></span>
       </div>
-      <div class="card-link" style="color: #1d4ed8;">Open Notebook &rarr;</div>
-    </a>
+    </div>
 
-    <!-- Kubernetes Notes -->
-    <a href="kubernetes-notes/index.html" class="card" style="border-top: 6px solid #059669;">
-      <div>
-        <div class="card-badge" style="background: #dcfce7; color: #059669;">Cloud Native</div>
-        <div class="card-title" style="color: #059669;">⎈ Kubernetes Study Notes</div>
-        <div class="card-desc">Pods, Deployments, Services, Ingress, Control Plane architecture, and cluster concepts.</div>
-      </div>
-      <div class="card-link" style="color: #059669;">Open Notebook &rarr;</div>
-    </a>
+    <!-- Spatial Bento Grid -->
+    <div class="bento-grid">
+      
+      <!-- Bento 1: AI Notes (Featured 7 cols) -->
+      <a href="ai-notes/index.html" class="bento-card bento-ai">
+        <div class="card-sheen"></div>
+        <div>
+          <div class="card-top">
+            <span class="card-badge" style="background: rgba(244, 63, 94, 0.15); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.3);">
+              🧠 AI &amp; LLM Master Note
+            </span>
+            <span class="card-page-count">6 Pages</span>
+          </div>
+          <div class="card-icon-title">
+            <span class="card-icon">🧠</span>
+            <h2 class="card-title" style="color: #f43f5e;">The Evolution of AI</h2>
+          </div>
+          <p class="card-desc">
+            Handwritten journey from Turing Test (1950), Rule-based Systems, ML vs DL, AlexNet CNN, NLP &amp; Transformers to LLMs, Multimodal AI &amp; Autonomous Agents.
+          </p>
+          <div class="card-tags">
+            <span class="topic-pill">Turing 1950</span>
+            <span class="topic-pill">AlexNet</span>
+            <span class="topic-pill">Transformers</span>
+            <span class="topic-pill">LLMs</span>
+            <span class="topic-pill">Autonomous Agents</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link" style="color: #f43f5e;">Open Notebook</span>
+          <span class="card-arrow" style="color: #f43f5e;">&rarr;</span>
+        </div>
+      </a>
 
-    <!-- Docker Notes -->
-    <a href="docker-notes/index.html" class="card" style="border-top: 6px solid #d97706;">
-      <div>
-        <div class="card-badge" style="background: #fef3c7; color: #d97706;">Containerization</div>
-        <div class="card-title" style="color: #d97706;">🐳 Docker Master Notes</div>
-        <div class="card-desc">Containers, Images, Dockerfiles, Volumes, Networks, and Docker Compose workflows.</div>
+      <!-- Bento 2: System Design (5 cols) -->
+      <a href="system-design-notes/index.html" class="bento-card bento-sd">
+        <div class="card-sheen"></div>
+        <div>
+          <div class="card-top">
+            <span class="card-badge" style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3);">
+              📐 Senior / Staff Edition
+            </span>
+            <span class="card-page-count">8 Pages</span>
+          </div>
+          <div class="card-icon-title">
+            <span class="card-icon">📐</span>
+            <h2 class="card-title" style="color: #60a5fa;">System Design Notes</h2>
+          </div>
+          <p class="card-desc">
+            4-step interview framework, distributed caching, databases, rate limiting, Kafka queues, and Raft consensus.
+          </p>
+          <div class="card-tags">
+            <span class="topic-pill">Interview Framework</span>
+            <span class="topic-pill">Consistent Hashing</span>
+            <span class="topic-pill">Kafka</span>
+            <span class="topic-pill">Raft</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link" style="color: #60a5fa;">Open Notebook</span>
+          <span class="card-arrow" style="color: #60a5fa;">&rarr;</span>
+        </div>
+      </a>
+
+      <!-- Bento 3: Kubernetes Notes (5 cols) -->
+      <a href="kubernetes-notes/index.html" class="bento-card bento-k8s">
+        <div class="card-sheen"></div>
+        <div>
+          <div class="card-top">
+            <span class="card-badge" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3);">
+              ⎈ Cloud Native
+            </span>
+            <span class="card-page-count">6 Pages</span>
+          </div>
+          <div class="card-icon-title">
+            <span class="card-icon">⎈</span>
+            <h2 class="card-title" style="color: #34d399;">Kubernetes Notes</h2>
+          </div>
+          <p class="card-desc">
+            Pods, Deployments, Services, Ingress, Control Plane (etcd, apiserver), Storage PV/PVC, and Kubectl cheat sheet.
+          </p>
+          <div class="card-tags">
+            <span class="topic-pill">Control Plane</span>
+            <span class="topic-pill">etcd</span>
+            <span class="topic-pill">Ingress</span>
+            <span class="topic-pill">PV &amp; Storage</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link" style="color: #34d399;">Open Notebook</span>
+          <span class="card-arrow" style="color: #34d399;">&rarr;</span>
+        </div>
+      </a>
+
+      <!-- Bento 4: Docker Master Notes (7 cols) -->
+      <a href="docker-notes/index.html" class="bento-card bento-docker">
+        <div class="card-sheen"></div>
+        <div>
+          <div class="card-top">
+            <span class="card-badge" style="background: rgba(245, 158, 11, 0.15); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.3);">
+              🐳 Containerization
+            </span>
+            <span class="card-page-count">6 Pages</span>
+          </div>
+          <div class="card-icon-title">
+            <span class="card-icon">🐳</span>
+            <h2 class="card-title" style="color: #fbbf24;">Docker Master Notes</h2>
+          </div>
+          <p class="card-desc">
+            Containers vs VMs, Images, Multi-stage Dockerfile optimizations, Volumes, Bridge/Host Networks, and Compose workflows.
+          </p>
+          <div class="card-tags">
+            <span class="topic-pill">Dockerfile</span>
+            <span class="topic-pill">Multi-stage</span>
+            <span class="topic-pill">Volumes</span>
+            <span class="topic-pill">Compose</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link" style="color: #fbbf24;">Open Notebook</span>
+          <span class="card-arrow" style="color: #fbbf24;">&rarr;</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Bottom Quick Stats Bento Strip -->
+    <div class="stats-strip">
+      <div class="stat-box">
+        <div class="stat-number">26+</div>
+        <div class="stat-label">Handcrafted Pages</div>
       </div>
-      <div class="card-link" style="color: #d97706;">Open Notebook &rarr;</div>
-    </a>
+      <div class="stat-box">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Core Engineering Topics</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">⚡ Fast</div>
+        <div class="stat-label">Global Search (Ctrl+K)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">📱 100%</div>
+        <div class="stat-label">Mobile &amp; Touch Friendly</div>
+      </div>
+    </div>
 
   </div>
+
+  <!-- Interactive Spatial Mouse Follower Script -->
+  <script>
+    const spotlight = document.getElementById('spatialSpotlight');
+    if (spotlight && window.matchMedia('(pointer: fine)').matches) {
+      window.addEventListener('pointermove', (e) => {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      });
+    }
+  </script>
 
   <script src="shared-search.js"></script>
 </body>
