@@ -1274,9 +1274,62 @@ function updateSelectedCard(cards) {
   });
 }
 
+/**
+ * Initialize dynamic reading progress bar attached to topbar
+ */
+function initTopbarProgressBar() {
+  const topbar = document.querySelector(".topbar");
+  if (!topbar || topbar.querySelector(".topbar-progress-track")) return;
+
+  const track = document.createElement("div");
+  track.className = "topbar-progress-track";
+  const bar = document.createElement("div");
+  bar.className = "topbar-progress-bar";
+  bar.id = "topbarProgressBar";
+  track.appendChild(bar);
+  topbar.appendChild(track);
+
+  // Update progress bar based on current page indicator text (e.g. "Page 2 / 6")
+  const updateProgress = () => {
+    const indicator = document.getElementById("pageIndicator");
+    if (!indicator) return;
+    const text = indicator.textContent || "";
+    const match = text.match(/Page\s+(\d+)\s*\/\s*(\d+)/i);
+    if (match) {
+      const current = parseInt(match[1], 10);
+      const total = parseInt(match[2], 10);
+      if (total > 0) {
+        const pct = Math.min(100, Math.max(0, (current / total) * 100));
+        bar.style.width = pct + "%";
+      }
+    }
+  };
+
+  // Initial update
+  updateProgress();
+
+  // Observe page indicator changes
+  const indicator = document.getElementById("pageIndicator");
+  if (indicator) {
+    const observer = new MutationObserver(updateProgress);
+    observer.observe(indicator, { childList: true, characterData: true, subtree: true });
+  }
+
+  // Also hook into window.goToPage if available
+  const origGoToPage = window.goToPage;
+  if (typeof origGoToPage === "function") {
+    window.goToPage = function(...args) {
+      const res = origGoToPage.apply(this, args);
+      setTimeout(updateProgress, 50);
+      return res;
+    };
+  }
+}
+
 // Auto-initialize when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   initSearchModalUI();
   handleSearchNavigation();
   enhanceTopicDrawerSearch();
+  initTopbarProgressBar();
 });
