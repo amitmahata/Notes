@@ -1716,13 +1716,7 @@ function initThemeSystem() {
       </div>
     `;
 
-    // Insert before the PDF button or search button
-    const pdfBtn = topbarRight.querySelector(".pdf-btn");
-    if (pdfBtn) {
-      topbarRight.insertBefore(wrapper, pdfBtn);
-    } else {
-      topbarRight.appendChild(wrapper);
-    }
+    topbarRight.appendChild(wrapper);
   }
 
   // 2. Inject Theme Cards into Topic Sidenav Drawer
