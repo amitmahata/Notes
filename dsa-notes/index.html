@@ -8,7 +8,7 @@
   <meta name="description" content="Interactive handwritten study notes for Data Structures & Algorithms patterns, cheat sheet, custom data structure design, and interview strategies for 8+ YoE senior engineers." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Fira+Code:wght@400;500;600&family=Shantell+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet" />
   
   <script>
     if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
@@ -242,52 +242,105 @@
           </div>
 
           <div class="page-header">
-            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 01 / 12</span>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="cloud-pill">Slide 01/12</span>
+              <span class="author-tag">✍️ @amitmahata • Staff Series</span>
+            </div>
+            <span class="stamp-tag">Tier 1, 2, 3 Prep 🎯</span>
           </div>
 
           <h1 class="page-title">
-            Multi-Tier Strategy &amp; <span class="hl-indigo">6-Week Master Roadmap</span>
+            Multi-Tier Strategy &amp; <mark class="hl-yellow">6-Week Master Roadmap</mark>
             <span class="title-underline"></span>
           </h1>
-
-          <div class="section-block">
-            <span class="section-num-circle">1</span>
-            <h2 class="section-title">Senior (8+ YoE) Interview Realities: Tier 1 vs Tier 2 vs Tier 3</h2>
-            <ul class="handwritten-list">
-              <li><strong class="hl-red">Tier 1 (Meta, Google, Uber, Netflix, Stripe)</strong>: Expects high speed &amp; algorithmic precision. You must solve <strong>2 Medium/Hard problems in 45 minutes</strong> or 1 hard problem with full mathematical trade-off proofs and zero bugs.</li>
-              <li><strong class="hl-blue">Tier 2 (Salesforce, Adobe, Atlassian, Intuit, PayPal, Oracle)</strong>: Focuses heavily on <strong>Clean Modular OOP &amp; Custom Data Structure Design</strong> (e.g. LRU/LFU cache, Rate Limiter algorithms) + concurrency safety.</li>
-              <li><strong class="hl-green">Tier 3 &amp; High-Growth Enterprises (Walmart, Fintechs, Scale-ups)</strong>: Tests core fundamentals (Arrays, Strings, HashMaps, Trees, Sorting), plus passing 100% of <strong>Online Assessment (OA)</strong> hidden test cases on HackerRank/Codility.</li>
-            </ul>
+          <div style="font-family:'Patrick Hand'; font-size:17px; color:#64748b; margin-top:-14px; margin-bottom:20px;">
+            Targeted preparation framework for Senior &amp; Staff (8+ YoE) algorithmic interviews
           </div>
 
+          <!-- Section 1: 3-Tier Persona Columns -->
           <div class="section-block">
-            <span class="section-num-circle">2</span>
-            <h2 class="section-title">The 45-Minute Live Interview Time Budget</h2>
-            <div class="feature-grid">
-              <div class="feature-card">
-                <div class="feature-icon">⏱️ 0-5 min</div>
-                <div class="feature-label">1. Clarify &amp; Edge Cases</div>
-                <div class="feature-desc">Ask constraint bounds ($N$, data types, duplicates, negatives, streaming inputs). Write 2 custom edge test cases.</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <div>
+                <span class="section-num-circle">1</span>
+                <h2 class="section-title">Senior Interview Realities: Tier 1 vs Tier 2 vs Tier 3</h2>
               </div>
-              <div class="feature-card">
-                <div class="feature-icon">🧠 5-15 min</div>
-                <div class="feature-label">2. Formulate &amp; Trade-offs</div>
-                <div class="feature-desc">State brute-force ($O(N^2)$), then optimize to $O(N \log N)$ or $O(N)$. State Time &amp; Space Big-O upfront before coding!</div>
+              <span style="font-family:'Patrick Hand'; font-size:14px; color:#4338ca; background:#e0e7ff; padding:2px 10px; border-radius:12px; font-weight:600;">Know Your Audience</span>
+            </div>
+            <div class="persona-grid">
+              <!-- Tier 1 -->
+              <div class="persona-col tier-1">
+                <div class="persona-avatar-wrap">🚀</div>
+                <div class="persona-pill">Tier 1: Big Tech</div>
+                <div style="font-family:'Patrick Hand'; font-size:13px; color:#dc2626; margin-top:-6px; margin-bottom:10px; text-align:center;">Meta • Google • Uber • Stripe</div>
+                <ul class="persona-list">
+                  <li><strong>Format:</strong> 2 Medium/Hard in 45 mins</li>
+                  <li><strong>Bar:</strong> Zero bugs + Big-O trade-offs</li>
+                  <li><strong>Focus:</strong> Speed, edge cases, optimal proofs</li>
+                  <li><strong>Key:</strong> Monotonic Stack, Graphs, Hard DP</li>
+                </ul>
               </div>
-              <div class="feature-card">
-                <div class="feature-icon">💻 15-35 min</div>
-                <div class="feature-label">3. Clean Modular Code</div>
-                <div class="feature-desc">Write production-grade code with descriptive variable names, helper functions, and early guard clauses.</div>
+
+              <!-- Tier 2 -->
+              <div class="persona-col tier-2">
+                <div class="persona-avatar-wrap">🏗️</div>
+                <div class="persona-pill">Tier 2: Product Giants</div>
+                <div style="font-family:'Patrick Hand'; font-size:13px; color:#2563eb; margin-top:-6px; margin-bottom:10px; text-align:center;">Salesforce • Atlassian • Adobe • Intuit</div>
+                <ul class="persona-list">
+                  <li><strong>Format:</strong> 1 Hard or Custom DS design</li>
+                  <li><strong>Bar:</strong> Clean modular OOP &amp; abstractions</li>
+                  <li><strong>Focus:</strong> Concurrency safety &amp; clarity</li>
+                  <li><strong>Key:</strong> LRU/LFU Cache, Rate Limiters, Feeds</li>
+                </ul>
               </div>
-              <div class="feature-card">
-                <div class="feature-icon">🔍 35-45 min</div>
-                <div class="feature-label">4. Dry-Run &amp; Scale</div>
-                <div class="feature-desc">Manually step through code line-by-line with sample input. Answer follow-up questions on memory / distributed scale.</div>
+
+              <!-- Tier 3 -->
+              <div class="persona-col tier-3">
+                <div class="persona-avatar-wrap">⚡</div>
+                <div class="persona-pill">Tier 3: Rapid Scale-ups</div>
+                <div style="font-family:'Patrick Hand'; font-size:13px; color:#059669; margin-top:-6px; margin-bottom:10px; text-align:center;">Walmart • Scale-ups • Fintechs</div>
+                <ul class="persona-list">
+                  <li><strong>Format:</strong> 100% Online Assessment pass</li>
+                  <li><strong>Bar:</strong> Pass hidden boundary test cases</li>
+                  <li><strong>Focus:</strong> Pragmatic code &amp; core libs</li>
+                  <li><strong>Key:</strong> Arrays, Strings, HashMaps, Trees</li>
+                </ul>
               </div>
             </div>
           </div>
 
+          <!-- Section 2: 45-Min Budget with Sketch Cards -->
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">The 45-Minute Live Interview Time Budget</h2>
+            <div class="feature-grid">
+              <div class="sketch-card card-pink">
+                <div class="feature-icon">⏱️</div>
+                <div class="feature-label"><mark class="hl-pink">0 - 5 min</mark></div>
+                <div style="font-weight:700; color:#9d174d; margin-bottom:4px; font-size:15px;">1. Clarify &amp; Edge Cases</div>
+                <div class="feature-desc">Clarify bounds ($N$, data types, duplicates, negatives). Write 2 custom edge cases before coding!</div>
+              </div>
+              <div class="sketch-card card-yellow">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-label"><mark class="hl-yellow">5 - 15 min</mark></div>
+                <div style="font-weight:700; color:#b45309; margin-bottom:4px; font-size:15px;">2. Formulate &amp; Trade-offs</div>
+                <div class="feature-desc">State brute-force ($O(N^2)$), then optimize to $O(N \log N)$ or $O(N)$. Confirm Big-O alignment first!</div>
+              </div>
+              <div class="sketch-card card-blue">
+                <div class="feature-icon">💻</div>
+                <div class="feature-label"><mark class="hl-cyan">15 - 35 min</mark></div>
+                <div style="font-weight:700; color:#0369a1; margin-bottom:4px; font-size:15px;">3. Clean Modular Code</div>
+                <div class="feature-desc">Write production-grade code with descriptive names, helper functions, and early guard clauses.</div>
+              </div>
+              <div class="sketch-card card-green">
+                <div class="feature-icon">🔍</div>
+                <div class="feature-label"><mark class="hl-green">35 - 45 min</mark></div>
+                <div style="font-weight:700; color:#15803d; margin-bottom:4px; font-size:15px;">4. Dry-Run &amp; Scale</div>
+                <div class="feature-desc">Step through code line-by-line with sample input. Answer follow-ups on memory &amp; concurrency.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Constraint-to-Pattern Decision Matrix -->
           <div class="section-block">
             <span class="section-num-circle">3</span>
             <h2 class="section-title">Constraint-to-Pattern Meta Decision Matrix</h2>
@@ -301,42 +354,56 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>$N \le 12$</td>
-                  <td>$O(N!)$ or $O(N^2 \cdot 2^N)$</td>
+                  <td><strong>$N \le 12$</strong></td>
+                  <td><mark class="hl-pink">$O(N!)$ or $O(N^2 \cdot 2^N)$</mark></td>
                   <td>Backtracking Permutations, Traveling Salesperson, TSP DP</td>
                 </tr>
                 <tr>
-                  <td>$N \le 20 \dots 25$</td>
-                  <td>$O(2^N)$</td>
+                  <td><strong>$N \le 20 \dots 25$</strong></td>
+                  <td><mark class="hl-orange">$O(2^N)$</mark></td>
                   <td>Subsets, Combination Sum, Bitmask DP</td>
                 </tr>
                 <tr>
-                  <td>$N \le 100 \dots 500$</td>
-                  <td>$O(N^3)$ or $O(N^4)$</td>
+                  <td><strong>$N \le 100 \dots 500$</strong></td>
+                  <td><mark class="hl-yellow">$O(N^3)$ or $O(N^4)$</mark></td>
                   <td>Floyd-Warshall, Matrix Chain Multiplication, 3D Dynamic Programming</td>
                 </tr>
                 <tr>
-                  <td>$N \le 2\,000 \dots 5\,000$</td>
-                  <td>$O(N^2)$</td>
+                  <td><strong>$N \le 2\,000 \dots 5\,000$</strong></td>
+                  <td><mark class="hl-cyan">$O(N^2)$</mark></td>
                   <td>2D Matrix DP, Nested Two Pointers, All-Pairs Check</td>
                 </tr>
                 <tr>
-                  <td>$N \le 10^5 \dots 10^6$</td>
-                  <td>$O(N \log N)$ or $O(N)$</td>
+                  <td><strong>$N \le 10^5 \dots 10^6$</strong></td>
+                  <td><mark class="hl-green">$O(N \log N)$ or $O(N)$</mark></td>
                   <td>Sorting, Binary Search on Answer, Heaps, Sliding Window, Monotonic Stack, DSU</td>
                 </tr>
                 <tr>
-                  <td>$N \ge 10^9$</td>
-                  <td>$O(\log N)$ or $O(1)$</td>
+                  <td><strong>$N \ge 10^9$</strong></td>
+                  <td><mark class="hl-purple">$O(\log N)$ or $O(1)$</mark></td>
                   <td>Pure Binary Search, Matrix Exponentiation, Math / Bitwise Hacks</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div class="remember-box">
-            <div class="remember-title">💡 Senior Golden Rule: Never Code in Silence!</div>
-            <div class="remember-item">Interviewers at Tier 1 companies evaluate your thought process more than rote syntax. Think aloud, explain why you rejected an approach, and confirm alignment before typing.</div>
+          <!-- Key Takeaway Box -->
+          <div class="takeaway-card">
+            <div class="washi-tape"></div>
+            <div class="takeaway-badge">🎯 Key Takeaway</div>
+            <div class="takeaway-inner-pink">
+              <p>"Senior interviews evaluate your decision framework &amp; trade-offs, not rote syntax!"</p>
+            </div>
+            <p class="takeaway-quote">
+              "Never code in silence — interviewers want to see how you formulate hypotheses, think out loud, and pivot when stuck." 😊
+            </p>
+          </div>
+
+          <!-- Social Engagement Banner -->
+          <div class="social-banner">
+            <span class="social-banner-pill">💡 Tier 1, 2, 3 Strategy</span>
+            <span class="social-banner-pill">✍️ Follow @amitmahata</span>
+            <span class="social-banner-pill">🔖 Save for later!</span>
           </div>
 
           <div class="page-footer">DSA Master Notes • Page 1 of 12</div>
@@ -557,62 +624,154 @@
           </div>
 
           <div class="page-header">
-            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 04 / 12</span>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="cloud-pill">Slide 04/12</span>
+              <span class="author-tag">✍️ @amitmahata • Staff Series</span>
+            </div>
+            <span class="stamp-tag">Pointers &amp; Windows ⚡</span>
           </div>
 
           <h1 class="page-title">
-            Two Pointers &amp; <span class="hl-cyan">Sliding Window Mastery</span>
+            Two Pointers &amp; <mark class="hl-cyan">Sliding Window Mastery</mark>
             <span class="title-underline"></span>
           </h1>
+          <div style="font-family:'Patrick Hand'; font-size:17px; color:#64748b; margin-top:-14px; margin-bottom:20px;">
+            Convert nested $O(N^2)$ loops into blazing fast linear $O(N)$ passes
+          </div>
 
+          <!-- Section 1: The 3 Paradigms in Sketch Cards -->
           <div class="section-block">
             <span class="section-num-circle">1</span>
             <h2 class="section-title">The 3 Two-Pointer Paradigms</h2>
             <div class="three-col">
-              <div class="feature-card">
+              <div class="sketch-card card-blue">
                 <div class="feature-label">1. Opposite Directional</div>
-                <div class="feature-desc">`left=0`, `right=N-1`. Move inward based on comparison (2Sum II, 3Sum, Trapping Rain Water, Container With Most Water).</div>
+                <div class="feature-desc">
+                  `left = 0`, `right = N - 1`. Move inward based on target comparison.<br/>
+                  <mark class="hl-cyan">2Sum II, 3Sum, Trapping Rain</mark>
+                </div>
               </div>
-              <div class="feature-card">
+              <div class="sketch-card card-purple">
                 <div class="feature-label">2. Fast &amp; Slow (Floyd's)</div>
-                <div class="feature-desc">`slow=head`, `fast=head.next`. Detect cycle, find middle element of Linked List, or Happy Number in $O(N)$ time, $O(1)$ space.</div>
+                <div class="feature-desc">
+                  `slow = head`, `fast = head.next`. Move `fast` at 2x speed.<br/>
+                  <mark class="hl-purple">Cycle Detection, Middle of List</mark>
+                </div>
               </div>
-              <div class="feature-card">
+              <div class="sketch-card card-green">
                 <div class="feature-label">3. Sliding Window</div>
-                <div class="feature-desc">`L=0`, `R=0`. Expand `R` to satisfy constraint, shrink `L` when window invariant is violated.</div>
+                <div class="feature-desc">
+                  `L = 0`, `R = 0`. Expand `R` to capture, shrink `L` to restore invariant.<br/>
+                  <mark class="hl-green">Min Window, Longest Substring</mark>
+                </div>
               </div>
             </div>
           </div>
 
+          <!-- Visual Sliding Window Diagram -->
+          <div class="sketch-diagram-wrap">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+              <span style="font-family:'Caveat'; font-size:22px; font-weight:bold; color:#0f172a;">
+                🔍 Visualizing the Window Invariant:
+              </span>
+              <span style="font-family:'Patrick Hand'; font-size:14px; color:#0369a1; background:#e0f2fe; padding:2px 10px; border-radius:12px;">Expand R ➔ Shrink L</span>
+            </div>
+            
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin:16px 0; flex-wrap:wrap;">
+              <div style="text-align:center;">
+                <span style="font-family:'Patrick Hand'; font-size:13px; color:#64748b;">i=0</span>
+                <div style="width:48px; height:48px; border:2px solid #cbd5e1; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; background:#fff;">a</div>
+                <span style="font-size:12px; color:#64748b;">(past)</span>
+              </div>
+              
+              <!-- Window bracket start -->
+              <div style="font-size:32px; color:#3b82f6; font-weight:bold;">[</div>
+
+              <div style="text-align:center;">
+                <span style="font-family:'Patrick Hand'; font-size:14px; color:#2563eb; font-weight:bold;">L ⬇</span>
+                <div style="width:48px; height:48px; border:2.5px solid #2563eb; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:20px; background:#dbeafe; color:#1d4ed8;">b</div>
+                <span style="font-size:11px; color:#2563eb; font-weight:bold;">Window</span>
+              </div>
+
+              <div style="text-align:center;">
+                <span style="font-family:'Patrick Hand'; font-size:13px; color:#64748b;">i=2</span>
+                <div style="width:48px; height:48px; border:2.5px solid #2563eb; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:20px; background:#dbeafe; color:#1d4ed8;">c</div>
+                <span style="font-size:11px; color:#2563eb; font-weight:bold;">Window</span>
+              </div>
+
+              <div style="text-align:center;">
+                <span style="font-family:'Patrick Hand'; font-size:14px; color:#dc2626; font-weight:bold;">R ⬇</span>
+                <div style="width:48px; height:48px; border:2.5px solid #dc2626; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:20px; background:#fee2e2; color:#b91c1c;">a</div>
+                <span style="font-size:11px; color:#dc2626; font-weight:bold;">New Item</span>
+              </div>
+
+              <!-- Window bracket end -->
+              <div style="font-size:32px; color:#3b82f6; font-weight:bold;">]</div>
+
+              <div style="text-align:center;">
+                <span style="font-family:'Patrick Hand'; font-size:13px; color:#64748b;">i=4</span>
+                <div style="width:48px; height:48px; border:2px dashed #cbd5e1; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px; background:#f8fafc; color:#94a3b8;">b</div>
+                <span style="font-size:12px; color:#64748b;">(unseen)</span>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px dashed #cbd5e1; padding-top:8px;">
+              <span style="font-family:'Patrick Hand'; font-size:14.5px; color:#0369a1;">
+                📏 <strong>Window Length</strong>: `R - L + 1` = <mark class="hl-cyan">3 elements</mark>
+              </span>
+              <span style="font-family:'Patrick Hand'; font-size:14.5px; color:#dc2626;">
+                ⚠️ If duplicate found: jump `L` forward to `lastSeen[c] + 1`
+              </span>
+            </div>
+          </div>
+
+          <!-- Section 2: Universal Sliding Window Master Template (macOS Window) -->
           <div class="section-block">
             <span class="section-num-circle">2</span>
-            <h2 class="section-title">Universal Sliding Window Master Template (C# &amp; JavaScript)</h2>
-            <div class="code-box">
-              <div class="code-title"><span>💻 C# Sliding Window Invariant Template</span></div>
+            <h2 class="section-title">Universal Sliding Window Master Template</h2>
+            <div class="mac-window">
+              <div class="mac-win-header">
+                <span class="win-dot red"></span>
+                <span class="win-dot yellow"></span>
+                <span class="win-dot green"></span>
+                <span class="mac-win-title">LengthOfLongestSubstring.cs — C# (.NET 8)</span>
+              </div>
+              <div class="mac-win-body">
 <pre><code><span class="code-kw">public int</span> <span class="code-fn">LengthOfLongestSubstring</span>(<span class="code-kw">string</span> s) {
     <span class="code-kw">var</span> lastSeen = <span class="code-kw">new</span> Dictionary&lt;<span class="code-kw">char</span>, <span class="code-kw">int</span>&gt;();
     <span class="code-kw">int</span> left = <span class="code-num">0</span>, maxLen = <span class="code-num">0</span>;
+    
     <span class="code-kw">for</span> (<span class="code-kw">int</span> right = <span class="code-num">0</span>; right &lt; s.Length; right++) {
         <span class="code-kw">char</span> c = s[right];
+        <span class="code-cm">// Invariant Check: Shrink or jump left boundary if violated</span>
         <span class="code-kw">if</span> (lastSeen.ContainsKey(c) &amp;&amp; lastSeen[c] &gt;= left) {
-            left = lastSeen[c] + <span class="code-num">1</span>; <span class="code-cm">// Shrink/jump left boundary</span>
+            left = lastSeen[c] + <span class="code-num">1</span>;
         }
         lastSeen[c] = right;
         maxLen = Math.Max(maxLen, right - left + <span class="code-num">1</span>);
     }
     <span class="code-kw">return</span> maxLen;
 }</code></pre>
+              </div>
             </div>
           </div>
 
-          <div class="tip-box">
-            <div class="tip-title">⚡ Classic Must-Know Problems for Tier 1</div>
-            <div class="tip-content">
-              1. <strong>Minimum Window Substring</strong> (Meta/Google Top 5).<br />
-              2. <strong>Longest Substring Without Repeating Characters</strong>.<br />
-              3. <strong>Trapping Rain Water</strong> (Two pointers with `leftMax` and `rightMax` in $O(N)$ time, $O(1)$ space).
+          <!-- Key Takeaway Box -->
+          <div class="takeaway-card">
+            <div class="washi-tape"></div>
+            <div class="takeaway-badge">🎯 Key Takeaway</div>
+            <div class="takeaway-inner-pink">
+              <p>"Both pointers together visit each element at most TWICE ➔ Strict $O(N)$ Time!"</p>
             </div>
+            <p class="takeaway-quote">
+              "Never write nested while loops with separate index resets — maintain the window invariant and slide forward." 😊
+            </p>
+          </div>
+
+          <div class="social-banner">
+            <span class="social-banner-pill">⚡ Sliding Window Meta</span>
+            <span class="social-banner-pill">✍️ Follow @amitmahata</span>
+            <span class="social-banner-pill">🔖 Save for later!</span>
           </div>
 
           <div class="page-footer">DSA Master Notes • Page 4 of 12</div>
@@ -631,32 +790,89 @@
           </div>
 
           <div class="page-header">
-            <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 05 / 12</span>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="cloud-pill">Slide 05/12</span>
+              <span class="author-tag">✍️ @amitmahata • Staff Series</span>
+            </div>
+            <span class="stamp-tag">Custom DS Design 🏗️</span>
           </div>
 
           <h1 class="page-title">
-            Custom Data Structures &amp; <span class="hl-red">LRU / LFU Cache</span>
+            Custom Data Structures &amp; <mark class="hl-pink">LRU / LFU Cache</mark>
             <span class="title-underline"></span>
           </h1>
-
-          <div class="section-block">
-            <span class="section-num-circle">1</span>
-            <h2 class="section-title">LRU Cache: HashMap + Doubly Linked List</h2>
-            <ul class="handwritten-list">
-              <li><strong>Requirement</strong>: $O(1)$ time for both `Get(key)` and `Put(key, value)`. When capacity exceeded, evict the Least Recently Used item.</li>
-              <li><strong>Architecture</strong>:
-                <br />• <strong>Doubly Linked List (DLL)</strong>: Maintains access order. Most recently accessed at `head`, least recently accessed at `tail`. Allows $O(1)$ node removal and insertion.
-                <br />• <strong>Dictionary (HashMap)</strong>: Maps `key` $\to$ `Node` reference. Allows $O(1)$ node lookup.
-              </li>
-            </ul>
+          <div style="font-family:'Patrick Hand'; font-size:17px; color:#64748b; margin-top:-14px; margin-bottom:20px;">
+            The #1 Tier 2 interview favorite: combine primitives to achieve strict $O(1)$ operations
           </div>
 
+          <!-- Section 1: Architecture with Visual DLL Diagram -->
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">LRU Cache Architecture: HashMap + Doubly Linked List</h2>
+
+            <div class="sketch-diagram-wrap">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                <span style="font-family:'Caveat'; font-size:22px; font-weight:bold; color:#0f172a;">
+                  📐 Internal Architecture: HashMap + Doubly Linked List (DLL)
+                </span>
+                <span style="font-family:'Patrick Hand'; font-size:14px; color:#15803d; background:#dcfce7; padding:2px 10px; border-radius:12px;">All Operations $O(1)$</span>
+              </div>
+
+              <!-- Visual DLL Nodes -->
+              <div style="display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; padding:10px 0;">
+                <div class="sketch-card card-blue" style="padding:10px 14px; text-align:center; min-width:90px;">
+                  <span style="font-size:11px; color:#0369a1; font-weight:bold;">SENTINEL</span><br/>
+                  <strong style="font-size:16px;">dummy head</strong>
+                </div>
+                <span style="font-size:20px; color:#64748b; font-weight:bold;">⇄</span>
+                <div class="sketch-card card-green" style="padding:10px 14px; text-align:center; min-width:110px;">
+                  <span style="font-size:11px; color:#15803d; font-weight:bold;">MOST RECENT</span><br/>
+                  <strong>[K: 1, V: "A"]</strong>
+                </div>
+                <span style="font-size:20px; color:#64748b; font-weight:bold;">⇄</span>
+                <div class="sketch-card card-yellow" style="padding:10px 14px; text-align:center; min-width:110px;">
+                  <span style="font-size:11px; color:#b45309; font-weight:bold;">IN-BETWEEN</span><br/>
+                  <strong>[K: 2, V: "B"]</strong>
+                </div>
+                <span style="font-size:20px; color:#64748b; font-weight:bold;">⇄</span>
+                <div class="sketch-card card-pink" style="padding:10px 14px; text-align:center; min-width:120px;">
+                  <span style="font-size:11px; color:#9d174d; font-weight:bold;">LEAST RECENT (LRU)</span><br/>
+                  <strong>[K: 3, V: "C"]</strong>
+                </div>
+                <span style="font-size:20px; color:#64748b; font-weight:bold;">⇄</span>
+                <div class="sketch-card card-blue" style="padding:10px 14px; text-align:center; min-width:90px;">
+                  <span style="font-size:11px; color:#0369a1; font-weight:bold;">SENTINEL</span><br/>
+                  <strong style="font-size:16px;">dummy tail</strong>
+                </div>
+              </div>
+
+              <!-- Flow descriptions -->
+              <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px dashed #cbd5e1; padding-top:10px; margin-top:8px; flex-wrap:wrap; gap:8px;">
+                <span style="font-family:'Patrick Hand'; font-size:14.5px; color:#059669;">
+                  ⚡ <strong>Get(k) / Put(k, v)</strong>: Move node to <mark class="hl-green">head.next</mark> in $O(1)$
+                </span>
+                <span style="font-family:'Patrick Hand'; font-size:14.5px; color:#dc2626;">
+                  🗑️ <strong>Evict on Full</strong>: Remove node before <mark class="hl-pink">tail.prev</mark> in $O(1)$
+                </span>
+                <span style="font-family:'Patrick Hand'; font-size:14.5px; color:#2563eb;">
+                  🗺️ <strong>HashMap</strong>: `map[key] ➔ Node` reference
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: LRU Cache Implementation (macOS Window) -->
           <div class="section-block">
             <span class="section-num-circle">2</span>
-            <h2 class="section-title">LRU Cache Implementation Architecture (C#)</h2>
-            <div class="code-box">
-              <div class="code-title"><span>💻 C# Production-Grade LRU Cache</span></div>
+            <h2 class="section-title">Production-Grade C# LRU Cache Implementation</h2>
+            <div class="mac-window">
+              <div class="mac-win-header">
+                <span class="win-dot red"></span>
+                <span class="win-dot yellow"></span>
+                <span class="win-dot green"></span>
+                <span class="mac-win-title">LRUCache.cs — Sentinel Nodes Pattern</span>
+              </div>
+              <div class="mac-win-body">
 <pre><code><span class="code-kw">public class</span> <span class="code-fn">LRUCache</span> {
     <span class="code-kw">private class</span> <span class="code-fn">Node</span> {
         <span class="code-kw">public int</span> Key, Val;
@@ -666,7 +882,7 @@
 
     <span class="code-kw">private readonly int</span> _cap;
     <span class="code-kw">private readonly</span> Dictionary&lt;<span class="code-kw">int</span>, Node&gt; _map;
-    <span class="code-kw">private readonly</span> Node _head, _tail;
+    <span class="code-kw">private readonly</span> Node _head, _tail; <span class="code-cm">// Dummy boundary sentinels</span>
 
     <span class="code-kw">public</span> LRUCache(<span class="code-kw">int</span> capacity) {
         _cap = capacity;
@@ -678,7 +894,7 @@
     <span class="code-kw">public int</span> <span class="code-fn">Get</span>(<span class="code-kw">int</span> key) {
         <span class="code-kw">if</span> (!_map.TryGetValue(key, <span class="code-kw">out var</span> node)) <span class="code-kw">return</span> -<span class="code-num">1</span>;
         Remove(node);
-        InsertHead(node);
+        InsertHead(node); <span class="code-cm">// Mark as Most Recently Used</span>
         <span class="code-kw">return</span> node.Val;
     }
 
@@ -686,7 +902,7 @@
         <span class="code-kw">if</span> (_map.TryGetValue(key, <span class="code-kw">out var</span> existing)) {
             Remove(existing);
         } <span class="code-kw">else if</span> (_map.Count == _cap) {
-            <span class="code-kw">var</span> lru = _tail.Prev;
+            <span class="code-kw">var</span> lru = _tail.Prev; <span class="code-cm">// Evict least recently used</span>
             Remove(lru);
             _map.Remove(lru.Key);
         }
@@ -701,7 +917,26 @@
         _head.Next.Prev = n; _head.Next = n;
     }
 }</code></pre>
+              </div>
             </div>
+          </div>
+
+          <!-- Key Takeaway Box -->
+          <div class="takeaway-card">
+            <div class="washi-tape"></div>
+            <div class="takeaway-badge">🎯 Key Takeaway</div>
+            <div class="takeaway-inner-pink">
+              <p>"Dummy Head &amp; Tail sentinels eliminate 100% of null checks &amp; edge case bugs in live interviews!"</p>
+            </div>
+            <p class="takeaway-quote">
+              "Never write special conditions for inserting into an empty list — sentinels guarantee head.Next and tail.Prev always exist." 😊
+            </p>
+          </div>
+
+          <div class="social-banner">
+            <span class="social-banner-pill">🏗️ Custom DS Design</span>
+            <span class="social-banner-pill">✍️ Follow @amitmahata</span>
+            <span class="social-banner-pill">🔖 Save for later!</span>
           </div>
 
           <div class="section-block">
