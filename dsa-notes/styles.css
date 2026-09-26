@@ -3,7 +3,7 @@
    8+ YoE Senior / Staff Engineer Guide (Tier 1, 2, 3)
    ========================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Fira+Code:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Fira+Code:wght@400;500;600&family=Shantell+Sans:ital,wght@0,300..700;1,300..700&display=swap');
 
 :root {
   /* Paper & Binder Palette */
@@ -50,7 +50,7 @@ html {
 }
 
 body {
-  font-family: 'Kalam', cursive;
+  font-family: 'Shantell Sans', 'Patrick Hand', cursive, sans-serif;
   background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 65%, #020617 100%);
   min-height: 100vh;
   color: var(--ink-dark);
@@ -59,6 +59,7 @@ body {
   align-items: center;
   overflow-x: hidden;
   position: relative;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Subtle background glowing spots */
@@ -695,17 +696,18 @@ body::before {
 
 .handwritten-list {
   list-style: none;
-  margin: 12px 0;
-  padding-left: 6px;
+  margin: 14px 0;
+  padding-left: 2px;
 }
 
 .handwritten-list li {
-  font-family: 'Kalam', cursive;
-  font-size: 19px;
-  line-height: 1.6;
-  margin-bottom: 8px;
+  font-family: 'Shantell Sans', cursive, sans-serif;
+  font-size: 15.5px;
+  line-height: 1.65;
+  margin-bottom: 10px;
   position: relative;
-  padding-left: 24px;
+  padding-left: 28px;
+  color: #1e293b;
 }
 
 .handwritten-list li::before {
@@ -713,10 +715,54 @@ body::before {
   position: absolute;
   left: 0;
   top: 1px;
-  font-size: 15px;
+  font-size: 16px;
 }
 
-/* Highlight text colors */
+/* =========================================
+   VISUAL SKETCH-NOTE UI TOOLKIT
+   ========================================= */
+
+/* Highlighters with real marker stroke look */
+mark, .marker {
+  padding: 1px 6px;
+  border-radius: 4px;
+  display: inline;
+  font-weight: 600;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+mark.hl-yellow, .marker-yellow {
+  background: #fef08a;
+  color: #713f12;
+}
+
+mark.hl-pink, .marker-pink {
+  background: #fbcfe8;
+  color: #9d174d;
+}
+
+mark.hl-cyan, mark.hl-blue, .marker-cyan {
+  background: #bae6fd;
+  color: #0369a1;
+}
+
+mark.hl-green, .marker-green {
+  background: #bbf7d0;
+  color: #14532d;
+}
+
+mark.hl-orange, .marker-orange {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+mark.hl-purple, .marker-purple {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+
+/* Text color helpers */
 .hl-blue { color: var(--ink-blue); font-weight: bold; }
 .hl-red { color: var(--ink-red); font-weight: bold; }
 .hl-green { color: var(--ink-green); font-weight: bold; }
@@ -725,7 +771,359 @@ body::before {
 .hl-indigo { color: var(--ink-indigo); font-weight: bold; }
 .hl-cyan { color: var(--ink-cyan); font-weight: bold; }
 
-/* 2-Column Responsive Layout */
+/* Cloud Slide Badge */
+.cloud-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  background: #fce7f3;
+  color: #9d174d;
+  border: 2px dashed #f472b6;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  font-weight: 700;
+  transform: rotate(-1.5deg);
+  box-shadow: 2px 2px 0 rgba(219, 39, 119, 0.2);
+}
+
+/* Stamp Tag (Top-right pill) */
+.stamp-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  background: #ede9fe;
+  color: #4338ca;
+  border: 2px solid #a5b4fc;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
+  font-weight: 700;
+  transform: rotate(1.5deg);
+}
+
+/* Washi Tape Strip */
+.washi-tape {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 90px;
+  height: 20px;
+  background: rgba(254, 240, 138, 0.8);
+  border: 1px dashed rgba(202, 138, 4, 0.45);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Sketch Cards with Hand-Drawn Wobbly Borders */
+.sketch-card {
+  background: #ffffff;
+  border: 2.2px solid #1e293b;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 4px 0 #1e293b;
+  padding: 18px 20px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sketch-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 6px 0 #1e293b;
+}
+
+.sketch-card.card-blue {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  box-shadow: 3px 4px 0 #0284c7;
+}
+
+.sketch-card.card-green {
+  background: #f0fdf4;
+  border-color: #16a34a;
+  box-shadow: 3px 4px 0 #16a34a;
+}
+
+.sketch-card.card-yellow {
+  background: #fefce8;
+  border-color: #ca8a04;
+  box-shadow: 3px 4px 0 #ca8a04;
+}
+
+.sketch-card.card-pink {
+  background: #fdf2f8;
+  border-color: #db2777;
+  box-shadow: 3px 4px 0 #db2777;
+}
+
+.sketch-card.card-purple {
+  background: #faf5ff;
+  border-color: #9333ea;
+  box-shadow: 3px 4px 0 #9333ea;
+}
+
+/* Stakeholder / Tier Persona Columns (Matching Reference Image 2) */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.persona-col {
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.persona-col:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.persona-col.tier-1 { border-top: 4px solid #ef4444; border-bottom: 2px solid #ef4444; }
+.persona-col.tier-2 { border-top: 4px solid #3b82f6; border-bottom: 2px solid #3b82f6; }
+.persona-col.tier-3 { border-top: 4px solid #10b981; border-bottom: 2px solid #10b981; }
+
+.persona-avatar-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 8px;
+  border: 2px solid #1e293b;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.persona-col.tier-1 .persona-avatar-wrap { background: #fee2e2; border-color: #ef4444; }
+.persona-col.tier-2 .persona-avatar-wrap { background: #dbeafe; border-color: #3b82f6; }
+.persona-col.tier-3 .persona-avatar-wrap { background: #dcfce7; border-color: #10b981; }
+
+.persona-pill {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 3px 14px;
+  border-radius: 12px;
+  border: 1.5px solid;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.persona-col.tier-1 .persona-pill { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+.persona-col.tier-2 .persona-pill { background: #dbeafe; border-color: #3b82f6; color: #1d4ed8; }
+.persona-col.tier-3 .persona-pill { background: #dcfce7; border-color: #10b981; color: #15803d; }
+
+.persona-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.persona-list li {
+  font-family: 'Shantell Sans', cursive, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #334155;
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+}
+
+.persona-list li::before {
+  content: '•';
+  color: #6366f1;
+  font-size: 18px;
+  position: absolute;
+  left: 4px;
+  top: -2px;
+}
+
+/* Retro macOS App Window (Matching Reference Image 1 HTTP 429 Box) */
+.mac-window {
+  background: #ffffff;
+  border: 2.2px solid #334155;
+  border-radius: 14px;
+  box-shadow: 3px 4px 0 #334155;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.mac-win-header {
+  background: #f1f5f9;
+  border-bottom: 1.5px solid #cbd5e1;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.win-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+.win-dot.red { background: #ef4444; }
+.win-dot.yellow { background: #f59e0b; }
+.win-dot.green { background: #10b981; }
+
+.mac-win-title {
+  margin-left: 8px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.mac-win-body {
+  padding: 14px 18px;
+  font-family: 'Fira Code', monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #1e293b;
+  background: #fafafa;
+  overflow-x: auto;
+}
+
+/* Checklist with circle check badges */
+.sketch-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.sketch-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Shantell Sans', cursive, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #1e293b;
+  margin-bottom: 9px;
+}
+
+.chk-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #10b981;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 1px;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+/* Key Takeaway Card (Matching Reference Image 1) */
+.takeaway-card {
+  background: #f0fdf4;
+  border: 2.2px solid #0284c7;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 4px 0 #0284c7;
+  padding: 18px 22px;
+  margin: 22px 0;
+  position: relative;
+}
+
+.takeaway-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1.5px solid #38bdf8;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.takeaway-inner-pink {
+  background: #ffffff;
+  border: 2px dashed #f472b6;
+  border-radius: 12px;
+  padding: 12px 18px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.takeaway-inner-pink p {
+  font-family: 'Shantell Sans', cursive, sans-serif;
+  font-size: 17.5px;
+  font-weight: 700;
+  color: #9d174d;
+  margin: 0;
+}
+
+.takeaway-quote {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 17px;
+  color: #15803d;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Social & Engagement Footer Banner (Matching Reference Image) */
+.social-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 10px 18px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social-banner-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  background: #fdf4ff;
+  border: 1.5px solid #d946ef;
+  border-radius: 20px;
+  color: #a21caf;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Visual Diagram Containers */
+.sketch-diagram-wrap {
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+/* 2-Column and 3-Column Responsive Layout */
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -749,18 +1147,18 @@ body::before {
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 2px solid rgba(99, 102, 241, 0.2);
-  border-radius: 12px;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0 #cbd5e1;
   padding: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: var(--ink-indigo);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 4px 5px 0 var(--ink-indigo);
 }
 
 .feature-icon {
@@ -777,22 +1175,23 @@ body::before {
 }
 
 .feature-desc {
-  font-size: 15px;
+  font-family: 'Shantell Sans', cursive, sans-serif;
+  font-size: 14px;
   color: #475569;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* Code Snippet Box */
 .code-box {
   background: #0f172a;
   color: #f8fafc;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 14px 18px;
   font-family: 'Fira Code', monospace;
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.5;
   margin: 14px 0;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   overflow-x: auto;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
@@ -819,11 +1218,11 @@ body::before {
 .remember-box {
   background: var(--bg-yellow);
   border: 2px dashed #f59e0b;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 16px 20px;
   margin: 20px 0;
   transform: rotate(-0.5deg);
-  box-shadow: 3px 6px 15px rgba(245, 158, 11, 0.15);
+  box-shadow: 3px 5px 0 #d97706;
 }
 
 .remember-title {
@@ -835,8 +1234,9 @@ body::before {
 }
 
 .remember-item {
-  font-size: 17px;
-  line-height: 1.5;
+  font-family: 'Shantell Sans', cursive, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.55;
   color: #78350f;
   margin-bottom: 4px;
 }
@@ -844,11 +1244,11 @@ body::before {
 .tip-box {
   background: var(--bg-green);
   border: 2px solid #10b981;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 16px 20px;
   margin: 20px 0;
   transform: rotate(0.4deg);
-  box-shadow: 3px 6px 15px rgba(16, 185, 129, 0.15);
+  box-shadow: 3px 5px 0 #059669;
 }
 
 .tip-title {
@@ -860,8 +1260,9 @@ body::before {
 }
 
 .tip-content {
-  font-size: 17px;
-  line-height: 1.5;
+  font-family: 'Shantell Sans', cursive, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.55;
   color: #064e3b;
 }
 
@@ -870,9 +1271,10 @@ body::before {
   width: 100%;
   border-collapse: collapse;
   margin: 16px 0;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.85);
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -881,16 +1283,26 @@ body::before {
   padding: 10px 14px;
   text-align: left;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 16px;
-  line-height: 1.4;
+  font-family: 'Shantell Sans', cursive, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.compare-table tbody tr:nth-child(even) {
+  background: #fafaf9;
+}
+
+.compare-table tbody tr:hover {
+  background: #f0f9ff;
 }
 
 .compare-table th {
-  background: rgba(99, 102, 241, 0.15);
+  background: #e0e7ff;
   font-family: 'Caveat', cursive;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
   color: var(--ink-indigo);
+  border-bottom: 2px solid #818cf8;
 }
 
 /* Page Footer */
@@ -1022,8 +1434,12 @@ body::before {
   .section-title {
     font-size: 24px;
   }
-  .two-col, .three-col {
+  .two-col, .three-col, .persona-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+  .compare-table {
+    display: block;
+    overflow-x: auto;
   }
 }
