@@ -3,7 +3,7 @@
 // Interactive controls, TOC modal, navigation & sidebar
 // =========================================
 
-const TOTAL_PAGES = 12;
+const TOTAL_PAGES = 14;
 let currentPage = 1;
 
 // Page Title mapping for Table of Contents
@@ -19,7 +19,9 @@ const PAGE_TITLES = [
   "9. Graphs: BFS, DFS, TopoSort, DSU & Shortest Paths",
   "10. Dynamic Programming & Backtracking Masterclass",
   "11. Intervals, Greedy, Bit Manipulation & Concurrency",
-  "12. Tier 1/2/3 Rubrics, OA Guide & Live Interview Protocol"
+  "12. Tier 1/2/3 Rubrics, OA Guide & Live Interview Protocol",
+  "13. Backtracking & Recursion Trees",
+  "14. Pattern Picker Flowchart & Revision Sheet"
 ];
 
 // Build dot navigation

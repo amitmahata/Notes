@@ -24,6 +24,7 @@
   
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="../shared-search.css" />
+  <link rel="stylesheet" href="../sketch-kit.css" />
 </head>
 <body>
 
@@ -40,7 +41,7 @@
       </div>
       <div class="topbar-center">
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page">← Prev</button>
-        <span class="page-indicator" id="pageIndicator">Page 1 / 12</span>
+        <span class="page-indicator" id="pageIndicator">Page 1 / 14</span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
       </div>
       <div class="topbar-right">
@@ -79,7 +80,7 @@
             <span class="switcher-icon">📐</span>
             <div class="switcher-info">
               <span class="switcher-title">System Design</span>
-              <span class="switcher-pages">8 Pages</span>
+              <span class="switcher-pages">10 Pages</span>
             </div>
           </a>
           <a href="../kubernetes-notes/index.html" class="switcher-card" title="Kubernetes Notes">
@@ -100,7 +101,7 @@
             <span class="switcher-icon">💻</span>
             <div class="switcher-info">
               <span class="switcher-title">DSA Master</span>
-              <span class="switcher-pages">12 Pages</span>
+              <span class="switcher-pages">14 Pages</span>
             </div>
           </a>
         </nav>
@@ -224,6 +225,24 @@
           </div>
           <span class="topic-tag-pill">Interview Playbook</span>
         </div>
+
+        <div class="sidebar-topic-item" data-page="13" onclick="goToPage(13); toggleSidebar(false);">
+          <div class="topic-badge-circle">P13</div>
+          <div class="topic-info">
+            <span class="topic-title">Backtracking &amp; Recursion Trees</span>
+            <span class="topic-subtitle">Subsets, Permutations, N-Queens, Pruning</span>
+          </div>
+          <span class="topic-tag-pill">Backtracking</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="14" onclick="goToPage(14); toggleSidebar(false);">
+          <div class="topic-badge-circle">P14</div>
+          <div class="topic-info">
+            <span class="topic-title">Pattern Picker &amp; Revision Sheet</span>
+            <span class="topic-subtitle">"Which pattern?" Flowchart, One-line Templates</span>
+          </div>
+          <span class="topic-tag-pill">Revision</span>
+        </div>
       </div>
     </aside>
 
@@ -243,7 +262,7 @@
 
           <div class="page-header">
             <div style="display:flex; align-items:center; gap:10px;">
-              <span class="cloud-pill">Slide 01/12</span>
+              <span class="cloud-pill">Slide 01/14</span>
               <span class="author-tag">✍️ @amitmahata • Staff Series</span>
             </div>
             <span class="stamp-tag">Tier 1, 2, 3 Prep 🎯</span>
@@ -387,6 +406,78 @@
             </table>
           </div>
 
+          <!-- Section 4: Hand-drawn 6-Week Roadmap -->
+          <div class="section-block">
+            <span class="section-num-circle">4</span>
+            <h2 class="section-title">The 6-Week Roadmap (sketched)</h2>
+            <figure class="sk-figure">
+              <svg class="sk-svg" viewBox="0 0 800 250" role="img" aria-label="Six week DSA roadmap drawn as a winding road with weekly milestones">
+                <path class="s m dash" d="M15,120 Q47,98 80,120 T145,120 T210,120 T275,120 T340,120 T405,120 T470,120 T535,120 T600,120 T665,120 T730,120 T790,120"/>
+                <text x="8" y="160" class="xs m">START</text>
+                <path class="s r" d="M772,120 L772,72 M772,72 L796,80 L772,90"/>
+                <text x="748" y="62" class="sm r">offer!</text>
+
+                <circle class="s b fb" cx="80" cy="120" r="23"/><text x="68" y="127" class="b">W1</text>
+                <text x="80" y="76" text-anchor="middle">Arrays &amp; Hash</text>
+                <text x="80" y="168" text-anchor="middle" class="sm m">Two Pointers</text>
+                <text x="80" y="188" text-anchor="middle" class="sm m">Sliding Window</text>
+
+                <circle class="s g fg" cx="210" cy="120" r="23"/><text x="197" y="127" class="g">W2</text>
+                <text x="210" y="76" text-anchor="middle">Search &amp; Stacks</text>
+                <text x="210" y="168" text-anchor="middle" class="sm m">Binary Search</text>
+                <text x="210" y="188" text-anchor="middle" class="sm m">Monotonic Stack</text>
+
+                <circle class="s y fy" cx="340" cy="120" r="23"/><text x="327" y="127" class="y">W3</text>
+                <text x="340" y="76" text-anchor="middle">Trees &amp; Heaps</text>
+                <text x="340" y="168" text-anchor="middle" class="sm m">BST · Trie</text>
+                <text x="340" y="188" text-anchor="middle" class="sm m">Top-K · Two Heaps</text>
+
+                <circle class="s p fv" cx="470" cy="120" r="23"/><text x="457" y="127" class="p">W4</text>
+                <text x="470" y="76" text-anchor="middle">Graphs</text>
+                <text x="470" y="168" text-anchor="middle" class="sm m">BFS/DFS · Topo</text>
+                <text x="470" y="188" text-anchor="middle" class="sm m">DSU · Dijkstra</text>
+
+                <circle class="s r fp" cx="600" cy="120" r="23"/><text x="587" y="127" class="r">W5</text>
+                <text x="600" y="76" text-anchor="middle">DP &amp; Backtrack</text>
+                <text x="600" y="168" text-anchor="middle" class="sm m">Knapsack · LCS</text>
+                <text x="600" y="188" text-anchor="middle" class="sm m">Subsets · Queens</text>
+
+                <circle class="s fy" cx="730" cy="120" r="23"/><text x="717" y="127">W6</text>
+                <text x="730" y="168" text-anchor="middle" class="sm m">LRU · Threads</text>
+                <text x="730" y="188" text-anchor="middle" class="sm m">2 mocks/wk</text>
+                <text x="722" y="76" text-anchor="middle">Mocks</text>
+
+                <path class="s y thin" d="M60,222 Q400,236 740,218"/>
+                <text x="400" y="246" text-anchor="middle" class="sm y">~3 problems/day · 2 new + 1 revisit · ≈ 120 problems total</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 1.1 — <b>learn patterns, not problems</b>: each week unlocks a family of ~20 problems</figcaption>
+            </figure>
+
+            <div class="sk-stickies">
+              <div class="sk-sticky">
+                <h4>🔁 Spaced repetition</h4>
+                <ul>
+                  <li>Re-solve on day <strong>1 → 3 → 7 → 21</strong></li>
+                  <li>If you can't code it in 20 min, it goes back in the queue</li>
+                </ul>
+              </div>
+              <div class="sk-sticky pink">
+                <h4>📓 Pattern journal</h4>
+                <ul>
+                  <li>1 line per problem: <em>"trigger words → pattern → trick"</em></li>
+                  <li>e.g. "longest substring w/o repeat → window + lastSeen map"</li>
+                </ul>
+              </div>
+              <div class="sk-sticky blue">
+                <h4>⏲️ Timebox rule</h4>
+                <ul>
+                  <li>Stuck 25 min? Read the hint, not the solution</li>
+                  <li>Stuck 40 min? Study it, then re-code from memory tomorrow</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <!-- Key Takeaway Box -->
           <div class="takeaway-card">
             <div class="washi-tape"></div>
@@ -406,7 +497,7 @@
             <span class="social-banner-pill">🔖 Save for later!</span>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 1 of 12</div>
+          <div class="page-footer">DSA Master Notes • Page 1 of 14</div>
         </div>
       </article>
 
@@ -423,7 +514,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 02 / 12</span>
+            <span class="page-num">Page 02 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -529,12 +620,70 @@
             </div>
           </div>
 
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">How Fast Do the Curves Blow Up? (sketch)</h2>
+            <figure class="sk-figure tape-pink">
+              <svg class="sk-svg" viewBox="0 0 800 320" role="img" aria-label="Hand-drawn Big-O growth curves from constant to exponential">
+                <rect class="fg" x="62" y="200" width="690" height="62" opacity="0.7"/>
+                <rect class="fp" x="62" y="18" width="690" height="80" opacity="0.7"/>
+                <text x="540" y="236" class="sm g">✅ fits 1-sec budget at n = 10⁶</text>
+                <text x="75" y="50" class="sm r">💀 TLE zone — only for tiny n</text>
+
+                <path class="s a" d="M60,280 L60,14"/>
+                <path class="s a" d="M50,270 L770,270"/>
+                <text x="18" y="30" class="sm m">ops</text>
+                <text x="740" y="296" class="sm m">n →</text>
+
+                <path class="s g" d="M62,252 L740,250"/>
+                <text x="745" y="256" class="sm g">O(1)</text>
+                <path class="s b" d="M62,262 C150,228 330,214 740,204"/>
+                <text x="745" y="208" class="sm b">O(log n)</text>
+                <path class="s p" d="M62,268 L740,140"/>
+                <text x="745" y="144" class="sm p">O(n)</text>
+                <path class="s y" d="M62,268 C320,226 560,150 700,52"/>
+                <text x="684" y="44" class="sm y">O(n log n)</text>
+                <path class="s r" d="M62,268 C250,262 400,170 470,22"/>
+                <text x="478" y="26" class="sm r">O(n²)</text>
+                <path class="s r thick" d="M62,268 C210,266 270,210 296,20"/>
+                <text x="250" y="20" class="sm r">O(2ⁿ)</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 2.1 — rule of thumb: <b>~10⁸ simple ops ≈ 1 second</b> (C#/Java/C++) · Python ≈ 10⁷</figcaption>
+            </figure>
+
+            <div class="sk-stickies">
+              <div class="sk-sticky">
+                <h4>📐 Master theorem (cheat)</h4>
+                <ul>
+                  <li>$T(n) = T(n/2) + O(1)$ → $O(\log n)$ (binary search)</li>
+                  <li>$T(n) = 2T(n/2) + O(1)$ → $O(n)$ (tree DFS)</li>
+                  <li>$T(n) = 2T(n/2) + O(n)$ → $O(n \log n)$ (merge sort)</li>
+                </ul>
+              </div>
+              <div class="sk-sticky green">
+                <h4>🧮 Space gotchas</h4>
+                <ul>
+                  <li>Recursion depth counts! DFS on skewed tree = $O(n)$ stack</li>
+                  <li>String concat in a loop = $O(n^2)$ → use StringBuilder</li>
+                  <li>Sorting in C# (introsort) uses $O(\log n)$ stack</li>
+                </ul>
+              </div>
+              <div class="sk-sticky purple">
+                <h4>⚖️ Amortized ≠ average</h4>
+                <ul>
+                  <li>List.Add doubles capacity → copy cost spread out = $O(1)$ amortized</li>
+                  <li>Hash map is $O(1)$ <em>average</em>; adversarial keys → $O(n)$</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <div class="tip-box">
             <div class="tip-title">⚡ Senior Architectural Nuance: CPU Cache Locality</div>
             <div class="tip-content">Arrays beat Linked Lists in real systems by a factor of 5-10x because sequential array elements reside in contiguous CPU L1/L2 cache lines, minimizing cache misses. Mentioning this in Tier 1/2 interviews demonstrates senior systems depth!</div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 2 of 12</div>
+          <div class="page-footer">DSA Master Notes • Page 2 of 14</div>
         </div>
       </article>
 
@@ -551,7 +700,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 03 / 12</span>
+            <span class="page-num">Page 03 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -608,7 +757,107 @@
             </div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 3 of 12</div>
+          <div class="section-block">
+            <span class="section-num-circle">4</span>
+            <h2 class="section-title">Picture It: Prefix Sums &amp; In-Place Rotation</h2>
+            <div class="sk-grid-2">
+              <figure class="sk-figure">
+                <svg class="sk-svg" viewBox="0 0 400 230" role="img" aria-label="Prefix sum array with a range query bracket">
+                  <text x="6" y="52" class="sm m">nums</text>
+                  <rect class="s fw" x="70" y="28" width="56" height="40"/><text x="92" y="56">3</text>
+                  <rect class="s fb" x="130" y="28" width="56" height="40"/><text x="146" y="56" class="b">-1</text>
+                  <rect class="s fb" x="190" y="28" width="56" height="40"/><text x="212" y="56" class="b">4</text>
+                  <rect class="s fb" x="250" y="28" width="56" height="40"/><text x="272" y="56" class="b">2</text>
+                  <rect class="s fw" x="310" y="28" width="56" height="40"/><text x="332" y="56">5</text>
+                  <text x="94" y="20" class="xs m">0</text><text x="154" y="20" class="xs m">1</text><text x="214" y="20" class="xs m">2</text><text x="274" y="20" class="xs m">3</text><text x="334" y="20" class="xs m">4</text>
+                  <path class="s b" d="M132,76 Q218,98 304,76"/>
+                  <text x="160" y="104" class="sm b">sum(1..3) = 5</text>
+
+                  <text x="6" y="160" class="sm m">P</text>
+                  <rect class="s fy" x="40" y="136" width="50" height="40"/><text x="58" y="164">0</text>
+                  <rect class="s fg" x="94" y="136" width="50" height="40"/><text x="112" y="164" class="g">3</text>
+                  <rect class="s fw" x="148" y="136" width="50" height="40"/><text x="166" y="164">2</text>
+                  <rect class="s fw" x="202" y="136" width="50" height="40"/><text x="220" y="164">6</text>
+                  <rect class="s fg" x="256" y="136" width="50" height="40"/><text x="274" y="164" class="g">8</text>
+                  <rect class="s fw" x="310" y="136" width="50" height="40"/><text x="324" y="164">13</text>
+                  <text x="40" y="208" class="sm g">P[4] − P[1] = 8 − 3 = 5 ✓  (one subtraction!)</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 3.1 — P has <b>n+1</b> slots; P[0] = 0 kills the off-by-one</figcaption>
+              </figure>
+
+              <figure class="sk-figure tape-blue">
+                <svg class="sk-svg" viewBox="0 0 400 230" role="img" aria-label="Rotate a 3 by 3 matrix: transpose then reverse each row">
+                  <g>
+                    <rect class="s" x="12" y="40" width="96" height="96"/>
+                    <path class="s thin m" d="M44,40 V136 M76,40 V136 M12,72 H108 M12,104 H108"/>
+                    <text x="22" y="64">1</text><text x="54" y="64">2</text><text x="86" y="64">3</text>
+                    <text x="22" y="96">4</text><text x="54" y="96">5</text><text x="86" y="96">6</text>
+                    <text x="22" y="128">7</text><text x="54" y="128">8</text><text x="86" y="128">9</text>
+                    <path class="s r dash" d="M16,44 L104,132"/>
+                  </g>
+                  <path class="s a b" d="M116,88 L148,88"/>
+                  <text x="124" y="78" class="sm b">①</text>
+                  <g>
+                    <rect class="s" x="154" y="40" width="96" height="96"/>
+                    <path class="s thin m" d="M186,40 V136 M218,40 V136 M154,72 H250 M154,104 H250"/>
+                    <text x="164" y="64">1</text><text x="196" y="64" class="b">4</text><text x="228" y="64" class="b">7</text>
+                    <text x="164" y="96" class="b">2</text><text x="196" y="96">5</text><text x="228" y="96" class="b">8</text>
+                    <text x="164" y="128" class="b">3</text><text x="196" y="128" class="b">6</text><text x="228" y="128">9</text>
+                  </g>
+                  <path class="s a g" d="M258,88 L290,88"/>
+                  <text x="266" y="78" class="sm g">②</text>
+                  <g>
+                    <rect class="s g" x="296" y="40" width="96" height="96"/>
+                    <path class="s thin m" d="M328,40 V136 M360,40 V136 M296,72 H392 M296,104 H392"/>
+                    <text x="306" y="64" class="g">7</text><text x="338" y="64" class="g">4</text><text x="370" y="64" class="g">1</text>
+                    <text x="306" y="96" class="g">8</text><text x="338" y="96" class="g">5</text><text x="370" y="96" class="g">2</text>
+                    <text x="306" y="128" class="g">9</text><text x="338" y="128" class="g">6</text><text x="370" y="128" class="g">3</text>
+                  </g>
+                  <text x="20" y="180" class="sm">90° clockwise = <tspan class="tb">① transpose</tspan> + <tspan class="tg">② reverse rows</tspan></text>
+                  <text x="20" y="206" class="sm m">counter-clockwise = transpose + reverse columns</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 3.2 — two cheap passes, zero extra matrix</figcaption>
+              </figure>
+            </div>
+
+            <h3 class="section-title" style="font-size:20px;">✏️ Dry run: SubarraySum([1, 2, 3], k = 3)</h3>
+            <div class="sk-trace-wrap">
+              <table class="sk-trace">
+                <thead><tr><th>x</th><th>currSum</th><th>need = currSum − k</th><th>map before</th><th>count</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>1</td><td class="miss">−2 ✗</td><td class="mono">{0:1}</td><td>0</td></tr>
+                  <tr><td>2</td><td>3</td><td class="hit">0 ✓ (freq 1)</td><td class="mono">{0:1, 1:1}</td><td>1 → [1,2]</td></tr>
+                  <tr><td>3</td><td>6</td><td class="hit">3 ✓ (freq 1)</td><td class="mono">{0:1, 1:1, 3:1}</td><td>2 → [3]</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="sk-bugs">
+              <div class="sk-bugs-title">Bugs I keep making 🐞</div>
+              <ul>
+                <li>Forgetting the seed `map[0] = 1` → misses subarrays that start at index 0</li>
+                <li>Using a sliding window when the array has <strong>negative numbers</strong> — the window invariant breaks; use prefix sum + map</li>
+                <li>Prefix sums overflowing `int` for $n = 10^5$, values $10^9$ → use `long`</li>
+              </ul>
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set — tick them off</div>
+              <ul>
+                <li>303 · Range Sum Query <span class="sk-diff e">Easy</span></li>
+                <li>560 · Subarray Sum Equals K <span class="sk-diff m">Med</span></li>
+                <li>238 · Product of Array Except Self <span class="sk-diff m">Med</span></li>
+                <li>1094 · Car Pooling (difference array) <span class="sk-diff m">Med</span></li>
+                <li>48 · Rotate Image <span class="sk-diff m">Med</span></li>
+                <li>54 · Spiral Matrix <span class="sk-diff m">Med</span></li>
+                <li>49 · Group Anagrams <span class="sk-diff m">Med</span></li>
+                <li>128 · Longest Consecutive Sequence <span class="sk-diff m">Med</span></li>
+                <li>41 · First Missing Positive <span class="sk-diff h">Hard</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 3 of 14</div>
         </div>
       </article>
 
@@ -625,7 +874,7 @@
 
           <div class="page-header">
             <div style="display:flex; align-items:center; gap:10px;">
-              <span class="cloud-pill">Slide 04/12</span>
+              <span class="cloud-pill">Slide 04/14</span>
               <span class="author-tag">✍️ @amitmahata • Staff Series</span>
             </div>
             <span class="stamp-tag">Pointers &amp; Windows ⚡</span>
@@ -768,13 +1017,101 @@
             </p>
           </div>
 
+          <!-- Section 3: Trapping Rain Water sketch -->
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">Opposite Pointers in Action: Trapping Rain Water</h2>
+            <figure class="sk-figure tape-blue">
+              <svg class="sk-svg" viewBox="0 0 800 300" role="img" aria-label="Elevation bars with trapped water and two pointers moving inward">
+                <!-- water: h=[0,1,0,2,1,0,1,3,2,1,2,1] -> water=[0,0,1,0,1,2,1,0,0,1,0,0] -->
+                <rect class="fb" x="202" y="200" width="46" height="50"/>
+                <rect class="fb" x="302" y="150" width="46" height="50"/>
+                <rect class="fb" x="352" y="150" width="46" height="100"/>
+                <rect class="fb" x="402" y="150" width="46" height="50"/>
+                <rect class="fb" x="552" y="150" width="46" height="50"/>
+
+                <rect class="s fw" x="152" y="200" width="46" height="50"/>
+                <rect class="s fw" x="252" y="150" width="46" height="100"/>
+                <rect class="s fw" x="302" y="200" width="46" height="50"/>
+                <rect class="s fw" x="402" y="200" width="46" height="50"/>
+                <rect class="s fy" x="452" y="100" width="46" height="150"/>
+                <rect class="s fw" x="502" y="150" width="46" height="100"/>
+                <rect class="s fw" x="552" y="200" width="46" height="50"/>
+                <rect class="s fw" x="602" y="150" width="46" height="100"/>
+                <rect class="s fw" x="652" y="200" width="46" height="50"/>
+                <path class="s" d="M90,250 H720"/>
+
+                <text x="118" y="244" class="xs m">0</text>
+                <text x="215" y="232" class="sm b">1</text><text x="315" y="182" class="sm b">1</text>
+                <text x="365" y="210" class="sm b">2</text><text x="415" y="182" class="sm b">1</text>
+                <text x="565" y="182" class="sm b">1</text>
+                <text x="460" y="92" class="sm y">max = 3</text>
+
+                <text x="96" y="285" class="b">L →</text>
+                <text x="676" y="285" class="r">← R</text>
+                <path class="s a b" d="M130,278 L190,278"/>
+                <path class="s a r" d="M668,278 L610,278"/>
+
+                <text x="20" y="40">water[i] = min(maxLeft, maxRight) − h[i]</text>
+                <text x="20" y="70" class="sm m">total = 1 + 1 + 2 + 1 + 1 = <tspan class="tb">6 units</tspan></text>
+                <text x="560" y="40" class="sm r">move the side with the</text>
+                <text x="560" y="62" class="sm r">SMALLER max — it's the</text>
+                <text x="560" y="84" class="sm r">bottleneck for that cell</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 4.1 — heights <b>[0,1,0,2,1,0,1,3,2,1,2,1]</b> → 6 units, $O(n)$ time, $O(1)$ space</figcaption>
+            </figure>
+
+            <div class="sk-stickies">
+              <div class="sk-sticky">
+                <h4>🔎 Trigger words</h4>
+                <ul>
+                  <li>"sorted" + "pair/triplet" → opposite pointers</li>
+                  <li>"contiguous" + "longest / shortest / at most K" → sliding window</li>
+                  <li>"cycle", "middle", "k-th from end" → fast &amp; slow</li>
+                </ul>
+              </div>
+              <div class="sk-sticky green">
+                <h4>🪟 Window flavours</h4>
+                <ul>
+                  <li><strong>Fixed</strong> size k: add right, drop `i - k`</li>
+                  <li><strong>Variable</strong>: grow R, `while (invalid)` shrink L</li>
+                  <li>"exactly K" = atMost(K) − atMost(K − 1)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sk-bugs">
+              <div class="sk-bugs-title">Common slips</div>
+              <ul>
+                <li>Shrinking with `if` instead of `while` — one shrink is rarely enough</li>
+                <li>Sliding window on arrays with negatives (sum isn't monotonic) → switch to prefix sums</li>
+                <li>3Sum: forgetting to skip duplicates after a match → duplicate triplets</li>
+              </ul>
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set</div>
+              <ul>
+                <li>167 · Two Sum II <span class="sk-diff m">Med</span></li>
+                <li>15 · 3Sum <span class="sk-diff m">Med</span></li>
+                <li>11 · Container With Most Water <span class="sk-diff m">Med</span></li>
+                <li>141 · Linked List Cycle <span class="sk-diff e">Easy</span></li>
+                <li>3 · Longest Substring w/o Repeat <span class="sk-diff m">Med</span></li>
+                <li>424 · Longest Repeating Char Replacement <span class="sk-diff m">Med</span></li>
+                <li>992 · Subarrays with K Distinct <span class="sk-diff h">Hard</span></li>
+                <li>42 · Trapping Rain Water <span class="sk-diff h">Hard</span></li>
+                <li>76 · Minimum Window Substring <span class="sk-diff h">Hard</span></li>
+              </ul>
+            </div>
+          </div>
+
           <div class="social-banner">
             <span class="social-banner-pill">⚡ Sliding Window Meta</span>
             <span class="social-banner-pill">✍️ Follow @amitmahata</span>
             <span class="social-banner-pill">🔖 Save for later!</span>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 4 of 12</div>
+          <div class="page-footer">DSA Master Notes • Page 4 of 14</div>
         </div>
       </article>
 
@@ -791,7 +1128,7 @@
 
           <div class="page-header">
             <div style="display:flex; align-items:center; gap:10px;">
-              <span class="cloud-pill">Slide 05/12</span>
+              <span class="cloud-pill">Slide 05/14</span>
               <span class="author-tag">✍️ @amitmahata • Staff Series</span>
             </div>
             <span class="stamp-tag">Custom DS Design 🏗️</span>
@@ -954,7 +1291,83 @@
             </div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 5 of 12</div>
+          <div class="section-block">
+            <span class="section-num-circle">4</span>
+            <h2 class="section-title">Trace It: LRU with capacity = 2</h2>
+            <div class="sk-trace-wrap">
+              <table class="sk-trace">
+                <thead><tr><th>op</th><th>returns</th><th>list (MRU → LRU)</th><th>note</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">put(1, A)</td><td>—</td><td class="mono">[1]</td><td>insert at head</td></tr>
+                  <tr><td class="mono">put(2, B)</td><td>—</td><td class="mono">[2, 1]</td><td>cache now full</td></tr>
+                  <tr><td class="mono">get(1)</td><td class="hit">A</td><td class="mono">[1, 2]</td><td>hit → move 1 to head</td></tr>
+                  <tr><td class="mono">put(3, C)</td><td>—</td><td class="mono">[3, 1]</td><td class="miss">evict tail.Prev = 2</td></tr>
+                  <tr><td class="mono">get(2)</td><td class="miss">−1</td><td class="mono">[3, 1]</td><td>2 was evicted</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">5</span>
+            <h2 class="section-title">LFU Cache: Frequency Buckets + minFreq Pointer</h2>
+            <figure class="sk-figure tape-pink">
+              <svg class="sk-svg" viewBox="0 0 800 270" role="img" aria-label="LFU cache drawn as frequency buckets each holding an LRU list">
+                <text x="20" y="32" class="sm m">freqMap : freq → LRU list of nodes</text>
+
+                <rect class="s fp" x="20" y="54" width="80" height="44"/><text x="34" y="83" class="r">f = 1</text>
+                <path class="s a m" d="M104,76 L150,76"/>
+                <rect class="s fw" x="156" y="54" width="96" height="44"/><text x="170" y="83">k5 : E</text>
+                <text x="262" y="83" class="m">⇄</text>
+                <rect class="s fw" x="286" y="54" width="96" height="44"/><text x="300" y="83">k4 : D</text>
+                <text x="396" y="83" class="sm r">← evict from here (LRU of min freq)</text>
+
+                <rect class="s fy" x="20" y="120" width="80" height="44"/><text x="34" y="149" class="y">f = 2</text>
+                <path class="s a m" d="M104,142 L150,142"/>
+                <rect class="s fw" x="156" y="120" width="96" height="44"/><text x="170" y="149">k2 : B</text>
+
+                <rect class="s fg" x="20" y="186" width="80" height="44"/><text x="34" y="215" class="g">f = 3</text>
+                <path class="s a m" d="M104,208 L150,208"/>
+                <rect class="s fw" x="156" y="186" width="96" height="44"/><text x="170" y="215">k1 : A</text>
+
+                <path class="s a r" d="M620,40 C560,40 520,60 500,66"/>
+                <text x="628" y="46" class="r">minFreq = 1</text>
+
+                <path class="s a b" d="M306,176 C292,160 280,150 258,144"/>
+                <text x="310" y="192" class="sm b">get(k2) → unlink from f=2,</text>
+                <text x="310" y="214" class="sm b">push to head of f=3; if f=2 list empties</text>
+                <text x="310" y="236" class="sm b">and minFreq was 2 → minFreq++</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 5.1 — two maps: <b>key → node</b> and <b>freq → DLL</b>. Every op stays $O(1)$</figcaption>
+            </figure>
+
+            <div class="sk-bugs">
+              <div class="sk-bugs-title">Design-round slips</div>
+              <ul>
+                <li>Evicting the node from the list but forgetting `_map.Remove(key)` → ghost entries</li>
+                <li>`Put` on an existing key that updates the value but doesn't bump recency/frequency</li>
+                <li>Not handling `capacity == 0` (LFU) — the first `Put` must be a no-op</li>
+                <li>On a new insert in LFU, forgetting to reset `minFreq = 1`</li>
+              </ul>
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set</div>
+              <ul>
+                <li>206 · Reverse Linked List <span class="sk-diff e">Easy</span></li>
+                <li>21 · Merge Two Sorted Lists <span class="sk-diff e">Easy</span></li>
+                <li>155 · Min Stack <span class="sk-diff m">Med</span></li>
+                <li>146 · LRU Cache <span class="sk-diff m">Med</span></li>
+                <li>380 · Insert Delete GetRandom O(1) <span class="sk-diff m">Med</span></li>
+                <li>355 · Design Twitter <span class="sk-diff m">Med</span></li>
+                <li>138 · Copy List with Random Pointer <span class="sk-diff m">Med</span></li>
+                <li>460 · LFU Cache <span class="sk-diff h">Hard</span></li>
+                <li>432 · All O'one Data Structure <span class="sk-diff h">Hard</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 5 of 14</div>
         </div>
       </article>
 
@@ -971,7 +1384,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 06 / 12</span>
+            <span class="page-num">Page 06 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -1024,7 +1437,99 @@
             </div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 6 of 12</div>
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">The Mental Picture: find the first ✓ in F F F F ✓ ✓ ✓</h2>
+            <figure class="sk-figure">
+              <svg class="sk-svg" viewBox="0 0 800 230" role="img" aria-label="Monotonic predicate row of false then true with low mid high pointers">
+                <text x="20" y="34" class="sm m">speed k →</text>
+                <text x="20" y="96" class="sm m">canFinish(k)</text>
+                <g>
+                  <rect class="s fp" x="130" y="64" width="54" height="46"/><text x="150" y="95" class="r">✗</text>
+                  <rect class="s fp" x="190" y="64" width="54" height="46"/><text x="210" y="95" class="r">✗</text>
+                  <rect class="s fp" x="250" y="64" width="54" height="46"/><text x="270" y="95" class="r">✗</text>
+                  <rect class="s fg thick" x="310" y="64" width="54" height="46"/><text x="330" y="95" class="g">✓</text>
+                  <rect class="s fg" x="370" y="64" width="54" height="46"/><text x="390" y="95" class="g">✓</text>
+                  <rect class="s fg" x="430" y="64" width="54" height="46"/><text x="450" y="95" class="g">✓</text>
+                  <rect class="s fg" x="490" y="64" width="54" height="46"/><text x="510" y="95" class="g">✓</text>
+                  <rect class="s fg" x="550" y="64" width="54" height="46"/><text x="570" y="95" class="g">✓</text>
+                  <rect class="s fg" x="610" y="64" width="54" height="46"/><text x="630" y="95" class="g">✓</text>
+                  <rect class="s fg" x="670" y="64" width="54" height="46"/><text x="690" y="95" class="g">✓</text>
+                </g>
+                <text x="150" y="44" class="xs m">1</text><text x="210" y="44" class="xs m">2</text><text x="270" y="44" class="xs m">3</text>
+                <text x="330" y="44" class="xs g">4</text><text x="390" y="44" class="xs m">5</text><text x="450" y="44" class="xs m">6</text>
+                <text x="510" y="44" class="xs m">7</text><text x="570" y="44" class="xs m">8</text><text x="630" y="44" class="xs m">9</text><text x="684" y="44" class="xs m">10</text>
+
+                <path class="s a b" d="M157,150 L157,118"/><text x="134" y="172" class="b">low</text>
+                <path class="s a p" d="M457,150 L457,118"/><text x="438" y="172" class="p">mid</text>
+                <path class="s a r" d="M697,150 L697,118"/><text x="676" y="172" class="r">high</text>
+                <path class="s g" d="M300,124 Q337,140 374,124"/>
+                <text x="268" y="204" class="g">answer = first ✓ (boundary)</text>
+                <text x="500" y="204" class="sm m">✓ at mid → keep it, go left</text>
+                <text x="500" y="224" class="sm m">✗ at mid → discard, go right</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 6.1 — if the predicate flips <b>exactly once</b>, binary search works — no sorted array needed</figcaption>
+            </figure>
+
+            <h3 class="section-title" style="font-size:20px;">✏️ Dry run: piles = [3, 6, 7, 11], h = 8</h3>
+            <div class="sk-trace-wrap">
+              <table class="sk-trace">
+                <thead><tr><th>low</th><th>high</th><th>mid</th><th>hours = Σ ⌈p / mid⌉</th><th>≤ 8 ?</th><th>action</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>11</td><td>6</td><td>1+1+2+2 = 6</td><td class="hit">✓</td><td>ans = 6, high = 5</td></tr>
+                  <tr><td>1</td><td>5</td><td>3</td><td>1+2+3+4 = 10</td><td class="miss">✗</td><td>low = 4</td></tr>
+                  <tr><td>4</td><td>5</td><td>4</td><td>1+2+2+3 = 8</td><td class="hit">✓</td><td>ans = 4, high = 3</td></tr>
+                  <tr><td>4</td><td>3</td><td colspan="3">low &gt; high → stop</td><td class="hit">return 4</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="sk-stickies">
+              <div class="sk-sticky blue">
+                <h4>🧭 Which loop?</h4>
+                <ul>
+                  <li>`lo &lt;= hi` + `ans` variable → safest, never infinite</li>
+                  <li>`lo &lt; hi` + `hi = mid` → lower-bound style, returns `lo`</li>
+                  <li>Searching max-feasible? flip: `lo = mid` needs `mid = lo + (hi - lo + 1) / 2`</li>
+                </ul>
+              </div>
+              <div class="sk-sticky">
+                <h4>🎯 Answer-space smells</h4>
+                <ul>
+                  <li>"minimum largest…", "maximum minimum…"</li>
+                  <li>"within D days", "at most H hours"</li>
+                  <li>huge answer range (10⁹) but cheap $O(n)$ check</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sk-bugs">
+              <div class="sk-bugs-title">Off-by-one graveyard</div>
+              <ul>
+                <li>Starting `low = 0` for a speed/capacity → divide-by-zero inside `check`</li>
+                <li>`lo = mid` with floor-mid → infinite loop when `hi = lo + 1`</li>
+                <li>Rotated array: comparing with `nums[0]` instead of `nums[lo]` after narrowing</li>
+              </ul>
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set</div>
+              <ul>
+                <li>704 · Binary Search <span class="sk-diff e">Easy</span></li>
+                <li>35 · Search Insert Position <span class="sk-diff e">Easy</span></li>
+                <li>74 · Search a 2D Matrix <span class="sk-diff m">Med</span></li>
+                <li>33 · Search in Rotated Sorted Array <span class="sk-diff m">Med</span></li>
+                <li>153 · Find Min in Rotated Array <span class="sk-diff m">Med</span></li>
+                <li>162 · Find Peak Element <span class="sk-diff m">Med</span></li>
+                <li>875 · Koko Eating Bananas <span class="sk-diff m">Med</span></li>
+                <li>1011 · Ship Packages in D Days <span class="sk-diff m">Med</span></li>
+                <li>410 · Split Array Largest Sum <span class="sk-diff h">Hard</span></li>
+                <li>4 · Median of Two Sorted Arrays <span class="sk-diff h">Hard</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 6 of 14</div>
         </div>
       </article>
 
@@ -1041,7 +1546,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 07 / 12</span>
+            <span class="page-num">Page 07 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -1094,7 +1599,105 @@
             </div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 7 of 12</div>
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">✏️ Dry run: DailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73])</h2>
+            <div class="sk-trace-wrap">
+              <table class="sk-trace">
+                <thead><tr><th>i</th><th>temp</th><th>pops (answer filled)</th><th>stack after (idx:temp)</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>73</td><td>—</td><td class="mono">[0:73]</td></tr>
+                  <tr><td>1</td><td>74</td><td class="hit">0 → res[0] = 1</td><td class="mono">[1:74]</td></tr>
+                  <tr><td>2</td><td>75</td><td class="hit">1 → res[1] = 1</td><td class="mono">[2:75]</td></tr>
+                  <tr><td>3</td><td>71</td><td>—</td><td class="mono">[2:75, 3:71]</td></tr>
+                  <tr><td>4</td><td>69</td><td>—</td><td class="mono">[2:75, 3:71, 4:69]</td></tr>
+                  <tr><td>5</td><td>72</td><td class="hit">4 → 1, 3 → 2</td><td class="mono">[2:75, 5:72]</td></tr>
+                  <tr><td>6</td><td>76</td><td class="hit">5 → 1, 2 → 4</td><td class="mono">[6:76]</td></tr>
+                  <tr><td>7</td><td>73</td><td>—</td><td class="mono">[6:76, 7:73]</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="sk-scribble">
+              <span class="sk-scribble-icon">↳</span>
+              <span>Result <strong>[1, 1, 4, 2, 1, 1, 0, 0]</strong> — the stack is always <span class="sk-circle">decreasing</span>; every index is pushed once &amp; popped once ⇒ $O(n)$</span>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">4</span>
+            <h2 class="section-title">A Heap is Just an Array Wearing a Tree Costume</h2>
+            <figure class="sk-figure tape-green">
+              <svg class="sk-svg" viewBox="0 0 800 300" role="img" aria-label="Min-heap drawn as a tree and as the backing array with parent and child index formulas">
+                <path class="s m thin" d="M200,52 L130,112 M200,52 L270,112 M130,112 L90,182 M130,112 L170,182 M270,112 L230,182"/>
+                <circle class="s g fg" cx="200" cy="48" r="22"/><text x="194" y="55" class="g">1</text>
+                <circle class="s fw" cx="130" cy="114" r="22"/><text x="124" y="121">3</text>
+                <circle class="s fw" cx="270" cy="114" r="22"/><text x="264" y="121">2</text>
+                <circle class="s fw" cx="90" cy="184" r="22"/><text x="84" y="191">7</text>
+                <circle class="s fw" cx="170" cy="184" r="22"/><text x="164" y="191">4</text>
+                <circle class="s fw" cx="230" cy="184" r="22"/><text x="224" y="191">5</text>
+                <text x="60" y="250" class="sm g">root = min · Peek O(1)</text>
+
+                <text x="420" y="40" class="sm m">backing array</text>
+                <rect class="s fg" x="420" y="56" width="52" height="44"/><text x="440" y="85" class="g">1</text>
+                <rect class="s fw" x="476" y="56" width="52" height="44"/><text x="496" y="85">3</text>
+                <rect class="s fw" x="532" y="56" width="52" height="44"/><text x="552" y="85">2</text>
+                <rect class="s fw" x="588" y="56" width="52" height="44"/><text x="608" y="85">7</text>
+                <rect class="s fw" x="644" y="56" width="52" height="44"/><text x="664" y="85">4</text>
+                <rect class="s fw" x="700" y="56" width="52" height="44"/><text x="720" y="85">5</text>
+                <text x="442" y="120" class="xs m">0</text><text x="498" y="120" class="xs m">1</text><text x="554" y="120" class="xs m">2</text>
+                <text x="610" y="120" class="xs m">3</text><text x="666" y="120" class="xs m">4</text><text x="722" y="120" class="xs m">5</text>
+                <path class="s a b" d="M502,128 Q560,170 610,128"/>
+                <path class="s a b" d="M502,128 Q590,190 666,128"/>
+                <text x="430" y="200" class="b">children(i) = 2i + 1, 2i + 2</text>
+                <text x="430" y="230" class="p">parent(i) = (i − 1) / 2</text>
+                <text x="430" y="262" class="sm m">push: append + sift-up · pop: swap last to root + sift-down</text>
+                <text x="430" y="284" class="sm m">both O(log n) · heapify an array: O(n)</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 7.1 — complete binary tree ⇒ no pointers needed, perfect cache locality</figcaption>
+            </figure>
+
+            <div class="sk-stickies">
+              <div class="sk-sticky">
+                <h4>🏆 Top-K trick</h4>
+                <ul>
+                  <li>K largest → keep a <strong>min</strong>-heap of size K</li>
+                  <li>pop when size &gt; K ⇒ $O(n \log K)$, not $O(n \log n)$</li>
+                </ul>
+              </div>
+              <div class="sk-sticky pink">
+                <h4>🪟 Sliding window max</h4>
+                <ul>
+                  <li>Deque of indices, values decreasing</li>
+                  <li>Pop front if index left the window; pop back while smaller</li>
+                </ul>
+              </div>
+              <div class="sk-sticky blue">
+                <h4>🔀 K-way merge</h4>
+                <ul>
+                  <li>Heap holds (value, listId, idx) — one head per list</li>
+                  <li>Merge K sorted lists in $O(N \log K)$</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set</div>
+              <ul>
+                <li>20 · Valid Parentheses <span class="sk-diff e">Easy</span></li>
+                <li>739 · Daily Temperatures <span class="sk-diff m">Med</span></li>
+                <li>496 · Next Greater Element I <span class="sk-diff e">Easy</span></li>
+                <li>215 · Kth Largest Element <span class="sk-diff m">Med</span></li>
+                <li>347 · Top K Frequent Elements <span class="sk-diff m">Med</span></li>
+                <li>621 · Task Scheduler <span class="sk-diff m">Med</span></li>
+                <li>84 · Largest Rectangle in Histogram <span class="sk-diff h">Hard</span></li>
+                <li>239 · Sliding Window Maximum <span class="sk-diff h">Hard</span></li>
+                <li>295 · Find Median from Data Stream <span class="sk-diff h">Hard</span></li>
+                <li>23 · Merge K Sorted Lists <span class="sk-diff h">Hard</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 7 of 14</div>
         </div>
       </article>
 
@@ -1111,7 +1714,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 08 / 12</span>
+            <span class="page-num">Page 08 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -1167,7 +1770,112 @@
             </div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 8 of 12</div>
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">See the Recursion: LCA Bubbling Up &amp; a Trie of Words</h2>
+            <div class="sk-grid-2">
+              <figure class="sk-figure">
+                <svg class="sk-svg" viewBox="0 0 400 290" role="img" aria-label="Binary tree where the lowest common ancestor of 6 and 4 is 5">
+                  <path class="s m thin" d="M200,40 L120,100 M200,40 L290,100 M120,100 L70,165 M120,100 L170,165 M290,100 L250,165 M290,100 L335,165 M170,165 L140,228 M170,165 L205,228"/>
+                  <path class="s r thick" d="M70,165 L120,100 M205,228 L170,165 L120,100"/>
+                  <circle class="s fw" cx="200" cy="38" r="19"/><text x="194" y="45">3</text>
+                  <circle class="s r fp thick" cx="120" cy="100" r="21"/><text x="114" y="107" class="r">5</text>
+                  <circle class="s fw" cx="290" cy="100" r="19"/><text x="284" y="107">1</text>
+                  <circle class="s b fb" cx="70" cy="165" r="19"/><text x="64" y="172" class="b">6</text>
+                  <circle class="s fw" cx="170" cy="165" r="19"/><text x="164" y="172">2</text>
+                  <circle class="s fw" cx="250" cy="165" r="19"/><text x="244" y="172">0</text>
+                  <circle class="s fw" cx="335" cy="165" r="19"/><text x="329" y="172">8</text>
+                  <circle class="s fw" cx="140" cy="228" r="19"/><text x="134" y="235">7</text>
+                  <circle class="s b fb" cx="205" cy="228" r="19"/><text x="199" y="235" class="b">4</text>
+                  <text x="20" y="62" class="sm r">left ≠ null &amp;&amp;</text>
+                  <text x="20" y="80" class="sm r">right ≠ null ⇒ me!</text>
+                  <text x="236" y="236" class="sm m">returns 4 ↑</text>
+                  <text x="20" y="276" class="sm">LCA(6, 4) = <tspan class="tr">5</tspan> · O(n) time, O(h) stack</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 8.1 — each call returns "the p/q I found below me"</figcaption>
+              </figure>
+
+              <figure class="sk-figure tape-pink">
+                <svg class="sk-svg" viewBox="0 0 400 290" role="img" aria-label="Trie containing the words cat, car, cart and dog">
+                  <circle class="s fy" cx="200" cy="34" r="18"/><text x="187" y="40" class="xs">root</text>
+                  <path class="s m thin" d="M190,50 L120,92 M210,50 L290,92 M120,112 L120,150 M120,190 L80,226 M120,190 L165,226 M290,112 L290,150 M290,190 L290,226"/>
+                  <circle class="s fw" cx="120" cy="100" r="16"/><text x="114" y="107">c</text>
+                  <circle class="s fw" cx="120" cy="170" r="16"/><text x="114" y="177">a</text>
+                  <circle class="s g fg" cx="80" cy="240" r="16"/><text x="75" y="247" class="g">t</text>
+                  <circle class="s g fg" cx="165" cy="240" r="16"/><text x="160" y="247" class="g">r</text>
+                  <path class="s m thin" d="M180,248 L222,262"/>
+                  <circle class="s g fg" cx="236" cy="268" r="14"/><text x="231" y="274" class="g sm">t</text>
+                  <circle class="s fw" cx="290" cy="100" r="16"/><text x="284" y="107">d</text>
+                  <circle class="s fw" cx="290" cy="170" r="16"/><text x="284" y="177">o</text>
+                  <circle class="s g fg" cx="290" cy="240" r="16"/><text x="284" y="247" class="g">g</text>
+                  <text x="20" y="30" class="sm m">cat, car, cart, dog</text>
+                  <text x="310" y="180" class="xs g">● = IsWord</text>
+                  <text x="20" y="140" class="sm b">"ca" shared</text>
+                  <text x="20" y="158" class="sm b">→ stored once</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 8.2 — lookup cost depends on word length $L$, not on how many words</figcaption>
+              </figure>
+            </div>
+
+            <div class="code-box">
+              <div class="code-title"><span>💻 C# BFS Level-Order Template (Right Side View, Zigzag, Min Depth…)</span></div>
+<pre><code><span class="code-kw">public</span> List&lt;List&lt;<span class="code-kw">int</span>&gt;&gt; <span class="code-fn">LevelOrder</span>(TreeNode root) {
+    <span class="code-kw">var</span> res = <span class="code-kw">new</span> List&lt;List&lt;<span class="code-kw">int</span>&gt;&gt;();
+    <span class="code-kw">if</span> (root == <span class="code-kw">null</span>) <span class="code-kw">return</span> res;
+    <span class="code-kw">var</span> q = <span class="code-kw">new</span> Queue&lt;TreeNode&gt;();
+    q.Enqueue(root);
+    <span class="code-kw">while</span> (q.Count &gt; <span class="code-num">0</span>) {
+        <span class="code-kw">int</span> size = q.Count;          <span class="code-cm">// freeze the level size first!</span>
+        <span class="code-kw">var</span> level = <span class="code-kw">new</span> List&lt;<span class="code-kw">int</span>&gt;(size);
+        <span class="code-kw">for</span> (<span class="code-kw">int</span> i = <span class="code-num">0</span>; i &lt; size; i++) {
+            <span class="code-kw">var</span> node = q.Dequeue();
+            level.Add(node.val);
+            <span class="code-kw">if</span> (node.left != <span class="code-kw">null</span>) q.Enqueue(node.left);
+            <span class="code-kw">if</span> (node.right != <span class="code-kw">null</span>) q.Enqueue(node.right);
+        }
+        res.Add(level);
+    }
+    <span class="code-kw">return</span> res;
+}</code></pre>
+            </div>
+
+            <div class="sk-stickies">
+              <div class="sk-sticky">
+                <h4>🌳 Traversal cheat</h4>
+                <ul>
+                  <li><strong>Pre</strong>order → copy/serialize a tree</li>
+                  <li><strong>In</strong>order of a BST → sorted output</li>
+                  <li><strong>Post</strong>order → "answer needs both children" (height, diameter, tree DP)</li>
+                  <li><strong>Level</strong>order → shortest depth, views</li>
+                </ul>
+              </div>
+              <div class="sk-sticky green">
+                <h4>🧪 Validate BST</h4>
+                <ul>
+                  <li>Pass bounds `(min, max)` down — comparing only with the parent is the classic bug</li>
+                  <li>Use `long` bounds for `int.MinValue` nodes</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set</div>
+              <ul>
+                <li>104 · Max Depth of Binary Tree <span class="sk-diff e">Easy</span></li>
+                <li>543 · Diameter of Binary Tree <span class="sk-diff e">Easy</span></li>
+                <li>102 · Level Order Traversal <span class="sk-diff m">Med</span></li>
+                <li>98 · Validate BST <span class="sk-diff m">Med</span></li>
+                <li>236 · LCA of Binary Tree <span class="sk-diff m">Med</span></li>
+                <li>230 · Kth Smallest in BST <span class="sk-diff m">Med</span></li>
+                <li>208 · Implement Trie <span class="sk-diff m">Med</span></li>
+                <li>124 · Binary Tree Max Path Sum <span class="sk-diff h">Hard</span></li>
+                <li>297 · Serialize / Deserialize <span class="sk-diff h">Hard</span></li>
+                <li>212 · Word Search II <span class="sk-diff h">Hard</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 8 of 14</div>
         </div>
       </article>
 
@@ -1184,7 +1892,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 09 / 12</span>
+            <span class="page-num">Page 09 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -1203,17 +1911,17 @@
 
           <div class="section-block">
             <span class="section-num-circle">2</span>
-            <h2 class="section-title">Union-Find (DSU) with Path Compression &amp; Rank (C#)</h2>
+            <h2 class="section-title">Union-Find (DSU) with Path Compression &amp; Union by Size (C#)</h2>
             <div class="code-box">
               <div class="code-title"><span>💻 C# Disjoint Set Union O(α(N)) Template</span></div>
 <pre><code><span class="code-kw">public class</span> <span class="code-fn">UnionFind</span> {
     <span class="code-kw">private readonly int</span>[] _parent;
-    <span class="code-kw">private readonly int</span>[] _rank;
+    <span class="code-kw">private readonly int</span>[] _size;
 
     <span class="code-kw">public</span> UnionFind(<span class="code-kw">int</span> n) {
         _parent = <span class="code-kw">new int</span>[n];
-        _rank = <span class="code-kw">new int</span>[n];
-        <span class="code-kw">for</span> (<span class="code-kw">int</span> i = <span class="code-num">0</span>; i &lt; n; i++) { _parent[i] = i; _rank[i] = <span class="code-num">1</span>; }
+        _size = <span class="code-kw">new int</span>[n];
+        <span class="code-kw">for</span> (<span class="code-kw">int</span> i = <span class="code-num">0</span>; i &lt; n; i++) { _parent[i] = i; _size[i] = <span class="code-num">1</span>; }
     }
 
     <span class="code-kw">public int</span> <span class="code-fn">Find</span>(<span class="code-kw">int</span> i) {
@@ -1226,9 +1934,9 @@
     <span class="code-kw">public bool</span> <span class="code-fn">Union</span>(<span class="code-kw">int</span> i, <span class="code-kw">int</span> j) {
         <span class="code-kw">int</span> rootI = Find(i), rootJ = Find(j);
         <span class="code-kw">if</span> (rootI == rootJ) <span class="code-kw">return false</span>; <span class="code-cm">// Cycle detected!</span>
-        <span class="code-kw">if</span> (_rank[rootI] &lt; _rank[rootJ]) (rootI, rootJ) = (rootJ, rootI);
+        <span class="code-kw">if</span> (_size[rootI] &lt; _size[rootJ]) (rootI, rootJ) = (rootJ, rootI); <span class="code-cm">// union by size</span>
         _parent[rootJ] = rootI;
-        _rank[rootI] += _rank[rootJ];
+        _size[rootI] += _size[rootJ];
         <span class="code-kw">return true</span>;
     }
 }</code></pre>
@@ -1243,7 +1951,108 @@
             </ul>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 9 of 12</div>
+          <div class="code-box">
+            <div class="code-title"><span>💻 C# Dijkstra with .NET 6+ PriorityQueue (lazy deletion)</span></div>
+<pre><code><span class="code-kw">public int</span>[] <span class="code-fn">Dijkstra</span>(List&lt;(<span class="code-kw">int</span> to, <span class="code-kw">int</span> w)&gt;[] adj, <span class="code-kw">int</span> src) {
+    <span class="code-kw">var</span> dist = <span class="code-kw">new int</span>[adj.Length];
+    Array.Fill(dist, <span class="code-kw">int</span>.MaxValue);
+    dist[src] = <span class="code-num">0</span>;
+    <span class="code-kw">var</span> pq = <span class="code-kw">new</span> PriorityQueue&lt;<span class="code-kw">int</span>, <span class="code-kw">int</span>&gt;();   <span class="code-cm">// (node, priority = dist)</span>
+    pq.Enqueue(src, <span class="code-num">0</span>);
+
+    <span class="code-kw">while</span> (pq.TryDequeue(<span class="code-kw">out int</span> u, <span class="code-kw">out int</span> d)) {
+        <span class="code-kw">if</span> (d &gt; dist[u]) <span class="code-kw">continue</span>;           <span class="code-cm">// stale entry — skip</span>
+        <span class="code-kw">foreach</span> (<span class="code-kw">var</span> (v, w) <span class="code-kw">in</span> adj[u]) {
+            <span class="code-kw">if</span> (d + w &lt; dist[v]) {
+                dist[v] = d + w;                    <span class="code-cm">// relax</span>
+                pq.Enqueue(v, dist[v]);
+            }
+        }
+    }
+    <span class="code-kw">return</span> dist;
+}</code></pre>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">4</span>
+            <h2 class="section-title">Sketches: BFS Ripples &amp; the DSU Forest</h2>
+            <div class="sk-grid-2">
+              <figure class="sk-figure tape-blue">
+                <svg class="sk-svg" viewBox="0 0 400 280" role="img" aria-label="Graph explored by BFS in rings of distance 0, 1, 2 and 3 from the source">
+                  <circle class="s b thin dash" cx="80" cy="140" r="52"/>
+                  <path class="s p thin dash" d="M121,25 A122,122 0 0 1 121,255"/>
+                  <path class="s g thin dash" d="M255,15 A215,215 0 0 1 255,265"/>
+                  <path class="s m" d="M80,140 L150,80 M80,140 L150,200 M150,80 L240,60 M150,80 L230,140 M150,200 L230,140 M150,200 L240,230 M240,60 L330,110 M230,140 L330,110"/>
+                  <circle class="s fy thick" cx="80" cy="140" r="18"/><text x="74" y="147">A</text>
+                  <circle class="s b fb" cx="150" cy="80" r="17"/><text x="144" y="87" class="b">B</text>
+                  <circle class="s b fb" cx="150" cy="200" r="17"/><text x="144" y="207" class="b">C</text>
+                  <circle class="s p fv" cx="240" cy="60" r="17"/><text x="234" y="67" class="p">D</text>
+                  <circle class="s p fv" cx="230" cy="140" r="17"/><text x="225" y="147" class="p">E</text>
+                  <circle class="s p fv" cx="240" cy="230" r="17"/><text x="235" y="237" class="p">F</text>
+                  <circle class="s g fg" cx="330" cy="110" r="17"/><text x="324" y="117" class="g">G</text>
+                  <text x="20" y="30" class="sm">dist: <tspan class="tb">1</tspan> · <tspan class="tp">2</tspan> · <tspan class="tg">3</tspan></text>
+                  <text x="20" y="268" class="sm m">first time you reach a node = shortest path (unweighted)</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 9.1 — BFS expands in rings; mark visited <b>when enqueued</b></figcaption>
+              </figure>
+
+              <figure class="sk-figure tape-green">
+                <svg class="sk-svg" viewBox="0 0 400 280" role="img" aria-label="Union-find forest before and after path compression">
+                  <text x="20" y="28" class="sm m">before Find(4)</text>
+                  <path class="s m" d="M70,60 L70,110 M70,130 L70,180 M70,200 L70,236"/>
+                  <circle class="s fy" cx="70" cy="50" r="15"/><text x="65" y="56" class="sm">0</text>
+                  <circle class="s fw" cx="70" cy="120" r="15"/><text x="65" y="126" class="sm">1</text>
+                  <circle class="s fw" cx="70" cy="190" r="15"/><text x="65" y="196" class="sm">2</text>
+                  <circle class="s r fp" cx="70" cy="250" r="15"/><text x="65" y="256" class="sm r">4</text>
+                  <path class="s a m" d="M150,150 L200,150"/>
+                  <text x="128" y="134" class="xs m">path compression</text>
+
+                  <text x="232" y="28" class="sm g">after Find(4)</text>
+                  <path class="s g" d="M300,64 L240,140 M300,64 L300,140 M300,64 L360,140"/>
+                  <circle class="s fy" cx="300" cy="50" r="15"/><text x="295" y="56" class="sm">0</text>
+                  <circle class="s fw" cx="240" cy="150" r="15"/><text x="235" y="156" class="sm">1</text>
+                  <circle class="s fw" cx="300" cy="150" r="15"/><text x="295" y="156" class="sm">2</text>
+                  <circle class="s g fg" cx="360" cy="150" r="15"/><text x="355" y="156" class="sm g">4</text>
+                  <text x="210" y="210" class="sm">everyone points at the</text>
+                  <text x="210" y="230" class="sm">root → next Find is ~O(1)</text>
+                  <text x="210" y="262" class="xs m">(+ union by size keeps trees flat)</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 9.2 — amortized $O(\alpha(n))$ ≈ constant</figcaption>
+              </figure>
+            </div>
+
+            <div class="sk-mnemonic">
+              🧭 <strong>Which graph algorithm?</strong> unweighted shortest → <strong>BFS</strong> · non-negative weights → <strong>Dijkstra</strong> · negative edges / ≤ K stops → <strong>Bellman-Ford</strong> · all-pairs, n ≤ 400 → <strong>Floyd-Warshall</strong> · dependencies → <strong>Topo sort</strong> · "are they connected?" (online) → <strong>DSU</strong> · cheapest wiring → <strong>Kruskal / Prim (MST)</strong>
+            </div>
+
+            <div class="sk-bugs">
+              <div class="sk-bugs-title">Graph bugs that cost offers</div>
+              <ul>
+                <li>Marking visited on <em>dequeue</em> instead of enqueue → the same node queued many times (TLE on grids)</li>
+                <li>Directed-graph cycle detection with a single `visited` set — you need 3 colours (white / grey / black)</li>
+                <li>Grid BFS: checking bounds <em>after</em> indexing → IndexOutOfRange</li>
+              </ul>
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set</div>
+              <ul>
+                <li>200 · Number of Islands <span class="sk-diff m">Med</span></li>
+                <li>133 · Clone Graph <span class="sk-diff m">Med</span></li>
+                <li>994 · Rotting Oranges <span class="sk-diff m">Med</span></li>
+                <li>207 · Course Schedule <span class="sk-diff m">Med</span></li>
+                <li>210 · Course Schedule II <span class="sk-diff m">Med</span></li>
+                <li>684 · Redundant Connection <span class="sk-diff m">Med</span></li>
+                <li>743 · Network Delay Time <span class="sk-diff m">Med</span></li>
+                <li>787 · Cheapest Flights K Stops <span class="sk-diff m">Med</span></li>
+                <li>1584 · Min Cost to Connect Points <span class="sk-diff m">Med</span></li>
+                <li>127 · Word Ladder <span class="sk-diff h">Hard</span></li>
+                <li>269 · Alien Dictionary <span class="sk-diff h">Hard</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 9 of 14</div>
         </div>
       </article>
 
@@ -1260,7 +2069,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 10 / 12</span>
+            <span class="page-num">Page 10 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -1287,6 +2096,10 @@
               <div class="feature-card">
                 <div class="feature-label">4. Rolling Array Optimization</div>
                 <div class="feature-desc">If `dp[i]` only depends on `dp[i-1]`, reduce $O(N^2)$ space to $O(N)$!</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-label">5. Fill Order &amp; Answer Cell</div>
+                <div class="feature-desc">Iterate so every dependency is computed first (left→right, or backwards for 0/1 knapsack). Know where the answer lives: `dp[n]`, `dp[n][m]` or `max(dp)`.</div>
               </div>
             </div>
           </div>
@@ -1349,7 +2162,85 @@
             </div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 10 of 12</div>
+          <div class="section-block">
+            <span class="section-num-circle">4</span>
+            <h2 class="section-title">Why Memoization Works: the Recursion Tree Collapses</h2>
+            <figure class="sk-figure tape-pink">
+              <svg class="sk-svg" viewBox="0 0 800 280" role="img" aria-label="Recursion tree of fib 5 with repeated subproblems crossed out because they are memoized">
+                <path class="s m thin" d="M400,48 L240,104 M400,48 L560,104 M240,104 L150,164 M240,104 L330,164 M560,104 L500,164 M560,104 L620,164 M150,164 L100,224 M150,164 L200,224"/>
+                <path class="s m thin dash" d="M330,164 L300,224 M330,164 L360,224"/>
+                <rect class="s fy" x="368" y="28" width="64" height="36" rx="8"/><text x="378" y="54">f(5)</text>
+                <rect class="s fw" x="208" y="86" width="64" height="36" rx="8"/><text x="218" y="112">f(4)</text>
+                <rect class="s r fp" x="528" y="86" width="64" height="36" rx="8"/><text x="538" y="112" class="r">f(3)</text>
+                <rect class="s fw" x="118" y="146" width="64" height="36" rx="8"/><text x="128" y="172">f(3)</text>
+                <rect class="s r fp" x="298" y="146" width="64" height="36" rx="8"/><text x="308" y="172" class="r">f(2)</text>
+                <rect class="s fw" x="468" y="146" width="64" height="36" rx="8"/><text x="478" y="172" class="m">f(2)</text>
+                <rect class="s fw" x="588" y="146" width="64" height="36" rx="8"/><text x="598" y="172" class="m">f(1)</text>
+                <rect class="s fw" x="68" y="206" width="64" height="36" rx="8"/><text x="78" y="232">f(2)</text>
+                <rect class="s fw" x="168" y="206" width="64" height="36" rx="8"/><text x="178" y="232">f(1)</text>
+
+                <path class="s r thick" d="M520,84 L600,124 M600,84 L520,124"/>
+                <path class="s r thick" d="M292,144 L368,184 M368,144 L292,184"/>
+                <text x="604" y="70" class="sm r">memo hit → O(1)</text>
+                <text x="380" y="214" class="sm r">pruned subtree</text>
+                <text x="460" y="238" class="sm m">without memo: ~2ⁿ calls · with memo: n distinct states</text>
+                <text x="460" y="262" class="sm b">time = #states × work per state = O(n) × O(1)</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 10.1 — <b>overlapping subproblems</b> + <b>optimal substructure</b> = DP. Crossed boxes are cache hits</figcaption>
+            </figure>
+
+            <h3 class="section-title" style="font-size:20px;">✏️ Fill the table: LCS("abcde", "ace") = 3</h3>
+            <div class="sk-trace-wrap">
+              <table class="sk-trace" style="text-align:center;">
+                <thead><tr><th></th><th>""</th><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th></tr></thead>
+                <tbody>
+                  <tr><th>""</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><th>a</th><td>0</td><td class="hit">1 ↘</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+                  <tr><th>c</th><td>0</td><td>1</td><td>1</td><td class="hit">2 ↘</td><td>2</td><td>2</td></tr>
+                  <tr><th>e</th><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td><td class="hit">3 ↘</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="sk-scribble blue">
+              <span class="sk-scribble-icon">✎</span>
+              <span>Green ↘ = characters match → take diagonal + 1. Otherwise copy the bigger of ← and ↑. Only the previous row is ever read ⇒ roll it into one array.</span>
+            </div>
+
+            <div class="sk-stickies">
+              <div class="sk-sticky">
+                <h4>🔁 Top-down or bottom-up?</h4>
+                <ul>
+                  <li>Interview: start <strong>top-down + memo</strong> — easiest to get right</li>
+                  <li>Convert to bottom-up when asked about stack depth or space</li>
+                </ul>
+              </div>
+              <div class="sk-sticky purple">
+                <h4>🧩 State-design hint</h4>
+                <ul>
+                  <li>"What do I need to know to make the remaining decisions?" → that's your state</li>
+                  <li>index + capacity, i + j, mask, (pos, holding-stock)…</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set (backtracking lives on page 13 ➜)</div>
+              <ul>
+                <li>70 · Climbing Stairs <span class="sk-diff e">Easy</span></li>
+                <li>198 · House Robber <span class="sk-diff m">Med</span></li>
+                <li>322 · Coin Change <span class="sk-diff m">Med</span></li>
+                <li>300 · Longest Increasing Subsequence <span class="sk-diff m">Med</span></li>
+                <li>1143 · Longest Common Subsequence <span class="sk-diff m">Med</span></li>
+                <li>416 · Partition Equal Subset Sum <span class="sk-diff m">Med</span></li>
+                <li>139 · Word Break <span class="sk-diff m">Med</span></li>
+                <li>62 · Unique Paths <span class="sk-diff m">Med</span></li>
+                <li>72 · Edit Distance <span class="sk-diff h">Hard</span></li>
+                <li>312 · Burst Balloons <span class="sk-diff h">Hard</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 10 of 14</div>
         </div>
       </article>
 
@@ -1366,7 +2257,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 11 / 12</span>
+            <span class="page-num">Page 11 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -1438,7 +2329,74 @@
             </div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 11 of 12</div>
+          <div class="section-block">
+            <span class="section-num-circle">4</span>
+            <h2 class="section-title">Merge Intervals on a Number Line</h2>
+            <figure class="sk-figure">
+              <svg class="sk-svg" viewBox="0 0 800 250" role="img" aria-label="Intervals 1-3, 2-6, 8-10, 15-18 merged into 1-6, 8-10, 15-18">
+                <path class="s" d="M40,200 L770,200"/>
+                <g class="sm m">
+                  <text x="76" y="228" class="sm m">1</text><text x="128" y="228" class="sm m">3</text><text x="206" y="228" class="sm m">6</text><text x="258" y="228" class="sm m">8</text><text x="306" y="228" class="sm m">10</text><text x="436" y="228" class="sm m">15</text><text x="514" y="228" class="sm m">18</text></g>
+                <path class="s thin m" d="M80,194 V206 M132,194 V206 M210,194 V206 M262,194 V206 M314,194 V206 M444,194 V206 M522,194 V206"/>
+                <!-- x = 54 + 26*v -->
+                <rect class="s b fb" x="80" y="40" width="52" height="22" rx="6"/><text x="90" y="34" class="xs b">[1,3]</text>
+                <rect class="s b fb" x="106" y="78" width="104" height="22" rx="6"/><text x="140" y="72" class="xs b">[2,6]</text>
+                <rect class="s fw" x="262" y="40" width="52" height="22" rx="6"/><text x="270" y="34" class="xs">[8,10]</text>
+                <rect class="s fw" x="444" y="40" width="78" height="22" rx="6"/><text x="456" y="34" class="xs">[15,18]</text>
+                <text x="230" y="96" class="sm r">2 ≤ 3 → overlap!</text>
+
+                <rect class="s g fg thick" x="80" y="140" width="130" height="24" rx="6"/><text x="118" y="158" class="g sm">[1, 6]</text>
+                <rect class="s g fg thick" x="262" y="140" width="52" height="24" rx="6"/><text x="266" y="158" class="g xs">[8,10]</text>
+                <rect class="s g fg thick" x="444" y="140" width="78" height="24" rx="6"/><text x="452" y="158" class="g xs">[15,18]</text>
+                <text x="560" y="58" class="sm">① sort by start</text>
+                <text x="560" y="84" class="sm">② if start ≤ last.end → extend</text>
+                <text x="560" y="110" class="sm">③ else push new interval</text>
+                <text x="560" y="158" class="sm g">result: O(n log n)</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 11.1 — after sorting, only the <b>last merged interval</b> can overlap the next one</figcaption>
+            </figure>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">5</span>
+            <h2 class="section-title">Greedy: When Is "Take the Best Now" Safe?</h2>
+            <div class="three-col">
+              <div class="sketch-card card-blue">
+                <div class="feature-label">🦘 Jump Game</div>
+                <div class="feature-desc">Track `farthest = max(farthest, i + nums[i])`. If `i &gt; farthest` you're stuck. $O(n)$.</div>
+              </div>
+              <div class="sketch-card card-green">
+                <div class="feature-label">⛽ Gas Station</div>
+                <div class="feature-desc">If total gas ≥ total cost an answer exists; reset start whenever the running tank goes negative.</div>
+              </div>
+              <div class="sketch-card card-yellow">
+                <div class="feature-label">📅 Activity Selection</div>
+                <div class="feature-desc">Sort by <strong>end</strong> time, always keep the meeting that frees the room earliest (Non-overlapping Intervals).</div>
+              </div>
+            </div>
+            <div class="sk-mnemonic">
+              🧠 <strong>Proof sketch to say out loud:</strong> "Exchange argument — take any optimal answer; swapping its first choice for my greedy choice never makes it worse, so greedy is optimal." If you can't argue that, it's probably <strong>DP</strong>.
+            </div>
+
+            <div class="sk-practice">
+              <div class="sk-practice-title">🏋️ Practice set</div>
+              <ul>
+                <li>136 · Single Number <span class="sk-diff e">Easy</span></li>
+                <li>191 · Number of 1 Bits <span class="sk-diff e">Easy</span></li>
+                <li>56 · Merge Intervals <span class="sk-diff m">Med</span></li>
+                <li>57 · Insert Interval <span class="sk-diff m">Med</span></li>
+                <li>435 · Non-overlapping Intervals <span class="sk-diff m">Med</span></li>
+                <li>253 · Meeting Rooms II <span class="sk-diff m">Med</span></li>
+                <li>55 · Jump Game <span class="sk-diff m">Med</span></li>
+                <li>134 · Gas Station <span class="sk-diff m">Med</span></li>
+                <li>763 · Partition Labels <span class="sk-diff m">Med</span></li>
+                <li>1114 · Print in Order (concurrency) <span class="sk-diff e">Easy</span></li>
+                <li>1188 · Bounded Blocking Queue <span class="sk-diff m">Med</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 11 of 14</div>
         </div>
       </article>
 
@@ -1455,7 +2413,7 @@
 
           <div class="page-header">
             <span class="author-tag">✍️ Notes by Amit Mahata • Staff Engineer Series</span>
-            <span class="page-num">Page 12 / 12</span>
+            <span class="page-num">Page 12 / 14</span>
           </div>
 
           <h1 class="page-title">
@@ -1506,12 +2464,330 @@
             </ul>
           </div>
 
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">How the Interviewer's Scorecard Actually Looks</h2>
+            <figure class="sk-figure tape-green">
+              <svg class="sk-svg" viewBox="0 0 800 260" role="img" aria-label="Interview scorecard with four rated dimensions and the target senior level on each">
+                <text x="20" y="34" class="sm m">dimension</text>
+                <text x="300" y="34" class="sm r">no hire</text><text x="470" y="34" class="sm y">lean</text><text x="610" y="34" class="sm g">strong hire</text>
+
+                <text x="20" y="80">🗣️ Communication</text>
+                <path class="s m thin" d="M280,74 H740"/>
+                <path class="s g thick" d="M280,74 H690"/><circle class="s g fg" cx="690" cy="74" r="9"/>
+                <text x="20" y="130">🧩 Problem solving</text>
+                <path class="s m thin" d="M280,124 H740"/>
+                <path class="s g thick" d="M280,124 H660"/><circle class="s g fg" cx="660" cy="124" r="9"/>
+                <text x="20" y="180">🧼 Code quality</text>
+                <path class="s m thin" d="M280,174 H740"/>
+                <path class="s y thick" d="M280,174 H560"/><circle class="s y fy" cx="560" cy="174" r="9"/>
+                <text x="20" y="230">🧪 Verification</text>
+                <path class="s m thin" d="M280,224 H740"/>
+                <path class="s y thick" d="M280,224 H520"/><circle class="s y fy" cx="520" cy="224" r="9"/>
+                <path class="s r dash" d="M640,50 V240"/>
+                <text x="648" y="252" class="xs r">senior bar</text>
+                <path class="s a b" d="M600,200 C620,190 630,180 636,176"/>
+                <text x="540" y="212" class="xs b">dry-run here!</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 12.1 — most seniors lose points on <b>verification</b>, not on the algorithm</figcaption>
+            </figure>
+
+            <div class="sk-stickies">
+              <div class="sk-sticky">
+                <h4>💬 Say this at minute 2</h4>
+                <ul>
+                  <li>"Can the input be empty? Negative? Duplicates?"</li>
+                  <li>"Let me write two quick examples, including an edge case."</li>
+                </ul>
+              </div>
+              <div class="sk-sticky blue">
+                <h4>💬 Say this before coding</h4>
+                <ul>
+                  <li>"Brute force is $O(n^2)$; with a hashmap I can get $O(n)$ time, $O(n)$ space. Shall I go with that?"</li>
+                </ul>
+              </div>
+              <div class="sk-sticky green">
+                <h4>💬 Say this when stuck</h4>
+                <ul>
+                  <li>"Let me try a smaller input by hand and look for the repeated work."</li>
+                  <li>"If it were sorted, what would change?"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <div class="remember-box">
             <div class="remember-title">🎯 Final Takeaway for 8+ YoE Candidates</div>
             <div class="remember-item">Seniors are hired for sound engineering judgment, code clarity, and architectural composure under pressure. Master these 15 core patterns, communicate with confidence, and crush your interviews across all tiers!</div>
           </div>
 
-          <div class="page-footer">DSA Master Notes • Page 12 of 12</div>
+          <div class="page-footer">DSA Master Notes • Page 12 of 14</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 13: Backtracking & Recursion Trees
+           ========================================= -->
+      <article class="notebook-page" id="page-13">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="cloud-pill">Slide 13/14</span>
+              <span class="author-tag">✍️ @amitmahata • Staff Series</span>
+            </div>
+            <span class="stamp-tag">Choose · Explore · Un-choose 🌲</span>
+          </div>
+
+          <h1 class="page-title">
+            Backtracking &amp; <mark class="hl-green">Recursion Trees</mark>
+            <span class="title-underline"></span>
+          </h1>
+          <div style="font-family:'Patrick Hand'; font-size:17px; color:#64748b; margin-top:-14px; margin-bottom:20px;">
+            One template solves subsets, combinations, permutations, N-Queens &amp; word search
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">Draw the Decision Tree First — Subsets of [1, 2, 3]</h2>
+            <figure class="sk-figure tape-green">
+              <svg class="sk-svg" viewBox="0 0 800 300" role="img" aria-label="Decision tree that generates all subsets of 1 2 3 using a start index">
+                <path class="s m thin" d="M400,58 L180,112 M400,58 L400,112 M400,58 L620,112 M180,148 L100,192 M180,148 L260,192 M400,148 L400,192 M100,228 L100,252"/>
+                <rect class="s fy" x="360" y="22" width="80" height="36" rx="10"/><text x="390" y="47">[ ]</text>
+                <rect class="s b fb" x="140" y="112" width="80" height="36" rx="10"/><text x="164" y="137" class="b">[1]</text>
+                <rect class="s b fb" x="360" y="112" width="80" height="36" rx="10"/><text x="384" y="137" class="b">[2]</text>
+                <rect class="s b fb" x="580" y="112" width="80" height="36" rx="10"/><text x="604" y="137" class="b">[3]</text>
+                <rect class="s p fv" x="56" y="192" width="88" height="36" rx="10"/><text x="70" y="217" class="p">[1,2]</text>
+                <rect class="s p fv" x="216" y="192" width="88" height="36" rx="10"/><text x="230" y="217" class="p">[1,3]</text>
+                <rect class="s p fv" x="356" y="192" width="88" height="36" rx="10"/><text x="370" y="217" class="p">[2,3]</text>
+                <rect class="s g fg" x="46" y="252" width="108" height="36" rx="10"/><text x="60" y="277" class="g">[1,2,3]</text>
+
+                <text x="250" y="78" class="xs m">i=0</text><text x="406" y="88" class="xs m">i=1</text><text x="520" y="78" class="xs m">i=2</text>
+                <text x="500" y="232" class="sm">every node = one answer → <tspan class="tg">2³ = 8</tspan></text>
+                <text x="500" y="256" class="sm m">children only pick indices &gt; start</text>
+                <text x="500" y="280" class="sm m">⇒ no duplicates like [2,1]</text>
+                <text x="584" y="170" class="sm r">no children:</text>
+                <text x="584" y="190" class="sm r">nothing after 3</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 13.1 — depth = path length, branching = remaining choices · time ≈ #nodes × cost to copy</figcaption>
+            </figure>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">The Universal Backtracking Template (C#)</h2>
+            <div class="mac-window">
+              <div class="mac-win-header">
+                <span class="win-dot red"></span>
+                <span class="win-dot yellow"></span>
+                <span class="win-dot green"></span>
+                <span class="mac-win-title">Backtrack.cs — choose / explore / un-choose</span>
+              </div>
+              <div class="mac-win-body">
+<pre><code><span class="code-kw">public</span> IList&lt;IList&lt;<span class="code-kw">int</span>&gt;&gt; <span class="code-fn">SubsetsWithDup</span>(<span class="code-kw">int</span>[] nums) {
+    Array.Sort(nums);                                 <span class="code-cm">// sort so duplicates sit together</span>
+    <span class="code-kw">var</span> res = <span class="code-kw">new</span> List&lt;IList&lt;<span class="code-kw">int</span>&gt;&gt;();
+    <span class="code-kw">var</span> path = <span class="code-kw">new</span> List&lt;<span class="code-kw">int</span>&gt;();
+
+    <span class="code-kw">void</span> <span class="code-fn">Backtrack</span>(<span class="code-kw">int</span> start) {
+        res.Add(<span class="code-kw">new</span> List&lt;<span class="code-kw">int</span>&gt;(path));             <span class="code-cm">// 1. record (copy!)</span>
+        <span class="code-kw">for</span> (<span class="code-kw">int</span> i = start; i &lt; nums.Length; i++) {
+            <span class="code-kw">if</span> (i &gt; start &amp;&amp; nums[i] == nums[i - <span class="code-num">1</span>]) <span class="code-kw">continue</span>; <span class="code-cm">// 2. prune dup branch</span>
+            path.Add(nums[i]);                        <span class="code-cm">// 3. choose</span>
+            Backtrack(i + <span class="code-num">1</span>);                         <span class="code-cm">// 4. explore (i to allow reuse)</span>
+            path.RemoveAt(path.Count - <span class="code-num">1</span>);            <span class="code-cm">// 5. un-choose</span>
+        }
+    }
+
+    Backtrack(<span class="code-num">0</span>);
+    <span class="code-kw">return</span> res;
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">3</span>
+            <h2 class="section-title">Same Skeleton, Different Knobs</h2>
+            <table class="compare-table">
+              <thead>
+                <tr><th>Problem family</th><th>Loop starts at</th><th>Record when</th><th>Extra state</th><th>Size of tree</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Subsets</strong></td><td>`start`, recurse `i + 1`</td><td>every node</td><td>—</td><td>$O(2^n)$</td></tr>
+                <tr><td><strong>Combination Sum</strong></td><td>`start`, recurse `i` (reuse)</td><td>`remain == 0`</td><td>remaining target</td><td>exponential, prune `remain &lt; 0`</td></tr>
+                <tr><td><strong>Permutations</strong></td><td>`0` every time</td><td>`path.Count == n`</td><td>`bool[] used`</td><td>$O(n!)$</td></tr>
+                <tr><td><strong>N-Queens</strong></td><td>row by row</td><td>`row == n`</td><td>cols, diag `r-c`, anti-diag `r+c` sets</td><td>$O(n!)$</td></tr>
+                <tr><td><strong>Word Search (grid)</strong></td><td>4 neighbours</td><td>`k == word.Length`</td><td>mark cell `'#'`, restore after</td><td>$O(m n \cdot 4^L)$</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="sk-stickies">
+            <div class="sk-sticky">
+              <h4>✂️ Pruning = speed</h4>
+              <ul>
+                <li>Sort first, then `break` (not `continue`) once a candidate exceeds the target</li>
+                <li>Check validity <em>before</em> recursing, not after</li>
+              </ul>
+            </div>
+            <div class="sk-sticky pink">
+              <h4>🐞 Classic bug</h4>
+              <ul>
+                <li>`res.Add(path)` without copying → every answer ends up as the same empty list</li>
+              </ul>
+            </div>
+            <div class="sk-sticky blue">
+              <h4>🔁 DP or backtracking?</h4>
+              <ul>
+                <li>"<strong>count</strong> / best" → usually DP</li>
+                <li>"<strong>list all</strong>" → backtracking (output is exponential anyway)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sk-practice">
+            <div class="sk-practice-title">🏋️ Practice set</div>
+            <ul>
+              <li>78 · Subsets <span class="sk-diff m">Med</span></li>
+              <li>90 · Subsets II <span class="sk-diff m">Med</span></li>
+              <li>39 · Combination Sum <span class="sk-diff m">Med</span></li>
+              <li>40 · Combination Sum II <span class="sk-diff m">Med</span></li>
+              <li>46 · Permutations <span class="sk-diff m">Med</span></li>
+              <li>17 · Letter Combinations of a Phone <span class="sk-diff m">Med</span></li>
+              <li>22 · Generate Parentheses <span class="sk-diff m">Med</span></li>
+              <li>79 · Word Search <span class="sk-diff m">Med</span></li>
+              <li>131 · Palindrome Partitioning <span class="sk-diff m">Med</span></li>
+              <li>51 · N-Queens <span class="sk-diff h">Hard</span></li>
+              <li>37 · Sudoku Solver <span class="sk-diff h">Hard</span></li>
+            </ul>
+          </div>
+
+          <div class="social-banner">
+            <span class="social-banner-pill">🌲 Backtracking Template</span>
+            <span class="social-banner-pill">✍️ Follow @amitmahata</span>
+            <span class="social-banner-pill">🔖 Save for later!</span>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 13 of 14</div>
+        </div>
+      </article>
+
+      <!-- =========================================
+           PAGE 14: Pattern Picker Flowchart & Revision Sheet
+           ========================================= -->
+      <article class="notebook-page" id="page-14">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-header">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="cloud-pill">Slide 14/14</span>
+              <span class="author-tag">✍️ @amitmahata • Staff Series</span>
+            </div>
+            <span class="stamp-tag">Night-Before Revision 🌙</span>
+          </div>
+
+          <h1 class="page-title">
+            "Which Pattern?" <mark class="hl-yellow">Flowchart &amp; Revision Sheet</mark>
+            <span class="title-underline"></span>
+          </h1>
+          <div style="font-family:'Patrick Hand'; font-size:17px; color:#64748b; margin-top:-14px; margin-bottom:20px;">
+            Ask these questions in order — the first "yes" is usually the intended pattern
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">1</span>
+            <h2 class="section-title">The Pattern Picker</h2>
+            <figure class="sk-figure">
+              <svg class="sk-svg" viewBox="0 0 800 680" role="img" aria-label="Flowchart of questions that map problem features to DSA patterns">
+                <rect class="s fy" x="20" y="14" width="400" height="44" rx="12"/><text x="36" y="43">📥 Read constraints → estimate target Big-O</text>
+                <path class="s a m" d="M220,58 L220,84"/>
+
+                <rect class="s b" x="20" y="88" width="400" height="44" rx="6"/><text x="36" y="117">Sorted input, or answer is monotonic?</text>
+                <path class="s a g" d="M422,110 L466,110"/><text x="428" y="102" class="xs g">yes</text>
+                <rect class="s g fg" x="470" y="88" width="310" height="44" rx="12"/><text x="484" y="117" class="sm">Binary Search · Two Pointers</text>
+                <path class="s a m" d="M220,132 L220,156"/><text x="228" y="150" class="xs m">no</text>
+
+                <rect class="s b" x="20" y="160" width="400" height="44" rx="6"/><text x="36" y="189">Contiguous subarray / substring?</text>
+                <path class="s a g" d="M422,182 L466,182"/><text x="428" y="174" class="xs g">yes</text>
+                <rect class="s g fg" x="470" y="160" width="310" height="44" rx="12"/><text x="484" y="189" class="sm">Sliding Window · Prefix Sum + Map</text>
+                <path class="s a m" d="M220,204 L220,228"/><text x="228" y="222" class="xs m">no</text>
+
+                <rect class="s b" x="20" y="232" width="400" height="44" rx="6"/><text x="36" y="261">Top-K, k-th, median, merge K lists?</text>
+                <path class="s a g" d="M422,254 L466,254"/><text x="428" y="246" class="xs g">yes</text>
+                <rect class="s g fg" x="470" y="232" width="310" height="44" rx="12"/><text x="484" y="261" class="sm">Heap / PriorityQueue</text>
+                <path class="s a m" d="M220,276 L220,300"/><text x="228" y="294" class="xs m">no</text>
+
+                <rect class="s b" x="20" y="304" width="400" height="44" rx="6"/><text x="36" y="333">Next greater / smaller, span, histogram?</text>
+                <path class="s a g" d="M422,326 L466,326"/><text x="428" y="318" class="xs g">yes</text>
+                <rect class="s g fg" x="470" y="304" width="310" height="44" rx="12"/><text x="484" y="333" class="sm">Monotonic Stack / Deque</text>
+                <path class="s a m" d="M220,348 L220,372"/><text x="228" y="366" class="xs m">no</text>
+
+                <rect class="s b" x="20" y="376" width="400" height="44" rx="6"/><text x="36" y="405">Tree, graph, grid or dependencies?</text>
+                <path class="s a g" d="M422,398 L466,398"/><text x="428" y="390" class="xs g">yes</text>
+                <rect class="s g fg" x="470" y="376" width="310" height="44" rx="12"/><text x="484" y="405" class="sm">DFS/BFS · Topo · DSU · Dijkstra</text>
+                <path class="s a m" d="M220,420 L220,444"/><text x="228" y="438" class="xs m">no</text>
+
+                <rect class="s b" x="20" y="448" width="400" height="44" rx="6"/><text x="36" y="477">Generate ALL combos / permutations?</text>
+                <path class="s a g" d="M422,470 L466,470"/><text x="428" y="462" class="xs g">yes</text>
+                <rect class="s g fg" x="470" y="448" width="310" height="44" rx="12"/><text x="484" y="477" class="sm">Backtracking + pruning</text>
+                <path class="s a m" d="M220,492 L220,516"/><text x="228" y="510" class="xs m">no</text>
+
+                <rect class="s b" x="20" y="520" width="400" height="44" rx="6"/><text x="36" y="549">Min/max/count with repeating choices?</text>
+                <path class="s a g" d="M422,542 L466,542"/><text x="428" y="534" class="xs g">yes</text>
+                <rect class="s g fg" x="470" y="520" width="310" height="44" rx="12"/><text x="484" y="549" class="sm">Dynamic Programming</text>
+                <path class="s a m" d="M220,564 L220,588"/><text x="228" y="582" class="xs m">no</text>
+
+                <rect class="s b" x="20" y="592" width="400" height="44" rx="6"/><text x="36" y="621">Intervals, meetings, scheduling?</text>
+                <path class="s a g" d="M422,614 L466,614"/><text x="428" y="606" class="xs g">yes</text>
+                <rect class="s g fg" x="470" y="592" width="310" height="44" rx="12"/><text x="484" y="621" class="sm">Sort + Sweep · Min-Heap of ends</text>
+                <path class="s m thin" d="M220,636 L220,654"/>
+                <text x="80" y="674" class="sm r">still nothing? → HashMap + brute force first, then optimise the repeated work 🙂</text>
+              </svg>
+              <figcaption class="sk-caption">Fig 14.1 — print this, stick it above your desk</figcaption>
+            </figure>
+          </div>
+
+          <div class="section-block">
+            <span class="section-num-circle">2</span>
+            <h2 class="section-title">One-Line Template Revision Sheet</h2>
+            <table class="compare-table">
+              <thead><tr><th>Pattern</th><th>Core move (say it in one breath)</th><th>Time</th><th>Page</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Prefix Sum + Map</strong></td><td>count of `sum - k` seen so far; seed `{0: 1}`</td><td>$O(n)$</td><td>3</td></tr>
+                <tr><td><strong>Sliding Window</strong></td><td>grow R, `while` invalid shrink L, update answer</td><td>$O(n)$</td><td>4</td></tr>
+                <tr><td><strong>Two Pointers</strong></td><td>move the pointer whose side can't improve the answer</td><td>$O(n)$</td><td>4</td></tr>
+                <tr><td><strong>LRU Cache</strong></td><td>map key→node + DLL with sentinels; move to head on touch</td><td>$O(1)$</td><td>5</td></tr>
+                <tr><td><strong>Binary Search on Answer</strong></td><td>monotonic `check(mid)`; ✓ → go left &amp; save</td><td>$O(n \log R)$</td><td>6</td></tr>
+                <tr><td><strong>Monotonic Stack</strong></td><td>pop while current beats top; popped item's answer = current</td><td>$O(n)$</td><td>7</td></tr>
+                <tr><td><strong>Top-K Heap</strong></td><td>min-heap of size K, pop when larger</td><td>$O(n \log k)$</td><td>7</td></tr>
+                <tr><td><strong>Tree DFS</strong></td><td>"what do I return to my parent?"</td><td>$O(n)$</td><td>8</td></tr>
+                <tr><td><strong>BFS</strong></td><td>queue + visited on enqueue; level = freeze `q.Count`</td><td>$O(V + E)$</td><td>9</td></tr>
+                <tr><td><strong>Topo Sort</strong></td><td>queue all in-degree 0; processed &lt; V ⇒ cycle</td><td>$O(V + E)$</td><td>9</td></tr>
+                <tr><td><strong>DSU</strong></td><td>find with path compression, union by size</td><td>$O(\alpha(n))$</td><td>9</td></tr>
+                <tr><td><strong>DP</strong></td><td>state → recurrence → base → order → answer cell</td><td>states × work</td><td>10</td></tr>
+                <tr><td><strong>Backtracking</strong></td><td>record, loop choices, choose / explore / un-choose</td><td>exponential</td><td>13</td></tr>
+                <tr><td><strong>Intervals</strong></td><td>sort by start; merge if `start ≤ last.end`</td><td>$O(n \log n)$</td><td>11</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="remember-box">
+            <div class="remember-title">🌙 Night-Before Checklist</div>
+            <div class="remember-item">✓ Re-type LRU, DSU, Dijkstra and the backtracking template from memory once. ✓ Skim your pattern journal, not new problems. ✓ Sleep — a rested brain debugs faster than a crammed one.</div>
+          </div>
+
+          <div class="page-footer">DSA Master Notes • Page 14 of 14</div>
         </div>
       </article>
 
@@ -1535,5 +2811,6 @@
 
   <script src="script.js"></script>
   <script src="../shared-search.js"></script>
+  <script src="../sketch-kit.js"></script>
 </body>
 </html>

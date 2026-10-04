@@ -3,7 +3,7 @@
 // Interactive controls, TOC modal, navigation & print
 // =========================================
 
-const TOTAL_PAGES = 8;
+const TOTAL_PAGES = 10;
 let currentPage = 1;
 
 // Page Title mapping for Table of Contents
@@ -15,7 +15,9 @@ const PAGE_TITLES = [
   "5. Asynchronous Messaging & Distributed Transactions",
   "6. Storage Systems, CDNs & Media Pipelines",
   "7. Distributed Consensus, Coordination & ID Gen",
-  "8. FAANG Blueprints & 8+ YoE Staff Strategy"
+  "8. FAANG Blueprints & 8+ YoE Staff Strategy",
+  "9. Case Study: Design a URL Shortener",
+  "10. Case Study: Design a Chat System"
 ];
 
 // Build dot navigation
@@ -43,7 +45,7 @@ function buildTOC() {
     const item = document.createElement('div');
     item.classList.add('toc-item');
     item.innerHTML = `
-      <div class="toc-num">#0${idx + 1}</div>
+      <div class="toc-num">#${String(idx + 1).padStart(2, '0')}</div>
       <div class="toc-text">${title}</div>
     `;
     item.addEventListener('click', () => {
@@ -202,8 +204,8 @@ document.addEventListener('keydown', (e) => {
     }
   }
 
-  // Numeric page jumps 1-8
-  const num = parseInt(e.key, 10);
+  // Numeric page jumps 1-9, 0 = page 10
+  const num = e.key === '0' ? 10 : parseInt(e.key, 10);
   if (num >= 1 && num <= TOTAL_PAGES) {
     goToPage(num);
   }
