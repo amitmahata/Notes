@@ -1,6 +1,6 @@
 # ✍️ Interactive Handwritten Study Notes Hub
 
-> **Comprehensive, digital handwritten-style study notes for Software Engineering, System Design, AI, Kubernetes, and Docker.**  
+> **Comprehensive, digital handwritten-style study notes for Software Engineering, DSA, System Design, AI, Kubernetes, and Docker.**  
 > *Created & Curated by **Amit Mahata***
 
 ---
@@ -10,7 +10,8 @@
 | Module | Topic | Web Notebook | PDF Export | Highlights |
 | :--- | :--- | :--- | :--- | :--- |
 | 🧠 **AI Evolution** | Artificial Intelligence &amp; LLMs | [`ai-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/ai-notes/index.html) | [`AI-Handwritten-Notes.pdf`](file:///c:/Users/amitm/source/repos/Notes/ai-notes/AI-Handwritten-Notes.pdf) | Turing Test (1950), Rule-based Expert Systems, ML vs DL, Computer Vision &amp; AlexNet, NLP, Transformers, LLMs, GenAI, Multimodal &amp; Autonomous AI Agents |
-| 📐 **System Design** | Distributed Systems Architecture | [`system-design-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/system-design-notes/index.html) | [`System-Design-Handwritten-Notes.pdf`](file:///c:/Users/amitm/source/repos/Notes/system-design-notes/System-Design-Handwritten-Notes.pdf) | 4-Step Senior System Design Framework, CAP Theorem, Rate Limiting, Caching, DB Sharding |
+| 📐 **System Design** (10 pages) | Distributed Systems Architecture | [`system-design-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/system-design-notes/index.html) | [`System-Design-Handwritten-Notes.pdf`](file:///c:/Users/amitm/source/repos/Notes/system-design-notes/System-Design-Handwritten-Notes.pdf) | 4-Step Framework, worked napkin math, hash ring, token bucket, cache-aside sequence, CAP triangle, Kafka partitions, Raft quorum, fencing tokens, hybrid fanout, **case studies: URL Shortener & Chat System** |
+| 💻 **DSA Master** (14 pages) | Data Structures & Algorithms Patterns | [`dsa-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/dsa-notes/index.html) | — | 6-week roadmap, Big-O curves, sliding window & rain-water sketches, LRU/LFU, binary search on answer, heaps, trees/tries, graphs (BFS, DSU, Dijkstra), DP, **backtracking**, **"which pattern?" flowchart**, dry-run traces & practice sets |
 | ⎈ **Kubernetes** | Container Orchestration | [`kubernetes-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/kubernetes-notes/index.html) | [`Kubernetes-Handwritten-Notes.pdf`](file:///c:/Users/amitm/source/repos/Notes/kubernetes-notes/Kubernetes-Handwritten-Notes.pdf) | Control Plane architecture, Pods, Deployments, Services, Ingress &amp; Storage |
 | 🐳 **Docker** | Containerization Fundamentals | [`docker-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/docker-notes/index.html) | [`Docker-Handwritten-Notes.pdf`](file:///c:/Users/amitm/source/repos/Notes/docker-notes/Docker-Handwritten-Notes.pdf) | Containers vs VMs, Dockerfile best practices, Volumes, Networks &amp; Docker Compose |
 
@@ -24,6 +25,11 @@ Each note module is built as an interactive web application styled to look like 
 - 🌀 **Spiral Binder Rings**: Realistic metallic/ring spiral visuals with punch holes.
 - 🎨 **Multi-Color Ink Palette**: Highlighting critical terms in Red, Blue, Slate, Golden Yellow, and Emerald Green.
 - ✍️ **Handwritten Typography**: Google Fonts (`Kalam`, `Caveat`, `Patrick Hand`).
+- 🖍️ **Sketch Kit (DSA & System Design)** — shared [`sketch-kit.css`](sketch-kit.css) / [`sketch-kit.js`](sketch-kit.js):
+  - Hand-drawn inline SVG diagrams with a pen-wobble filter and a "drawing" animation each time a page opens (respects reduced-motion).
+  - Sticky notes, margin scribbles, dry-run trace tables, "bugs I keep making" boxes, mnemonics and tick-off practice lists.
+  - Inline `$O(n \log n)$` math and `` `code` `` in note text are rendered as handwritten math / code chips.
+  - Theme-aware (warm paper, dark, sepia, blueprint) and phone-friendly (wide sketches scroll sideways).
 - ⚡ **Interactive Controls**:
   - `Prev` / `Next` page navigation &amp; keyboard arrow shortcuts (`←` / `→`).
   - Table of Contents (`Index`) popup modal.
@@ -49,6 +55,7 @@ Then navigate to:
 - Master Hub: `http://localhost:3000/`
 - AI Notes: `http://localhost:3000/ai-notes/`
 - System Design Notes: `http://localhost:3000/system-design-notes/`
+- DSA Notes: `http://localhost:3000/dsa-notes/`
 - Kubernetes Notes: `http://localhost:3000/kubernetes-notes/`
 - Docker Notes: `http://localhost:3000/docker-notes/`
 
@@ -65,7 +72,13 @@ Notes/
 │   ├── styles.css                       # Notebook CSS Stylesheet & Print Media Query
 │   ├── script.js                        # Navigation & Interactivity Script
 │   └── AI-Handwritten-Notes.pdf         # Exported PDF Document
-├── system-design-notes/                 # System Design Master Notes
+├── sketch-kit.css / sketch-kit.js       # Shared hand-drawn diagram & sticky-note kit (DSA + System Design)
+├── shared-search.css / shared-search.js # Ctrl+K cross-notebook search + themes
+├── dsa-notes/                           # DSA Master Notes (14 pages)
+│   ├── index.html
+│   ├── styles.css
+│   └── script.js
+├── system-design-notes/                 # System Design Master Notes (10 pages)
 │   ├── index.html
 │   ├── styles.css
 │   ├── script.js

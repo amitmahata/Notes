@@ -427,7 +427,7 @@ const NOTES_SEARCH_DATABASE = [
     ]
   },
 
-  // --- SYSTEM DESIGN NOTES (8 Pages) ---
+  // --- SYSTEM DESIGN NOTES (10 Pages) ---
   {
     id: "sd-p1",
     notebook: "system-design-notes",
@@ -446,6 +446,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Back-of-the-Envelope Estimation Formula",
         content: "1 Million requests/day ≈ 12 requests/second. 100M DAU with 10 requests/day = 1,000,000,000 req/day ≈ 11,600 RPS (Peak = 2x-3x ≈ 25,000-35,000 RPS). 86,400 seconds in a day ≈ 10^5."
+      },
+      {
+        heading: "Napkin Math Worked Example",
+        content: "50M DAU × 20 requests = 1B/day ≈ 10K QPS, peak 30K, 1K writes/s, 100 GB/day, 180 TB over 5 years, ~200 GB cache. Powers of two, per-node capacity ballparks."
       }
     ]
   },
@@ -471,6 +475,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Consistent Hashing with Virtual Nodes",
         content: "Distributes keys and server nodes on a 360° hash ring. When a server node is added or removed, only k/N keys need remapping. Virtual nodes (v-nodes) ensure uniform traffic distribution and prevent hot spots."
+      },
+      {
+        heading: "Hash Ring & Token Bucket Sketches",
+        content: "Adding node D only moves keys in the arc A → D. Virtual nodes even out load. Token bucket refill rate r, capacity b, HTTP 429 when empty, Redis Lua limiter."
       }
     ]
   },
@@ -496,6 +504,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Cache Breakdown, Avalanche & Penetration",
         content: "Cache Penetration: Non-existent keys query DB directly → Solution: Bloom Filter or caching null keys. Cache Avalanche: Thousands of keys expire at once → Solution: Random TTL jitter. Cache Breakdown (Hot Key Expiry): Mutex lock / Singleflight to let only 1 thread query DB."
+      },
+      {
+        heading: "Cache-Aside Sequence Diagram",
+        content: "GET miss, read DB, SET with TTL and jitter; write path updates DB then DEL key. Hit-ratio latency math, key versioning, what not to cache."
       }
     ]
   },
@@ -521,6 +533,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "CAP Theorem & PACELC Theorem",
         content: "CAP: In a distributed network partition (P), you can choose Consistency (C) or Availability (A). PACELC: If Partition (P) choose Availability (A) or Consistency (C); Else (E) choose Latency (L) or Consistency (C)."
+      },
+      {
+        heading: "Shards, Replicas, CAP Triangle & Isolation Levels",
+        content: "hash(user_id) % 4 shards with leader and replicas. CP etcd ZooKeeper, AP Cassandra DynamoDB. Read committed, repeatable read, serializable vs dirty read, non-repeatable read, phantom."
       }
     ]
   },
@@ -546,6 +562,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Message Delivery Guarantees & Idempotency",
         content: "At-most-once, At-least-once (most common), Exactly-once (Kafka transactional producer/consumer). Consumers must be idempotent: using unique idempotency keys or database deduplication tables."
+      },
+      {
+        heading: "Kafka Partitions & Consumer Groups",
+        content: "Key hash picks partition, ordering only within a partition, consumers beyond partitions sit idle, hot partitions, consumer lag."
       }
     ]
   },
@@ -557,20 +577,20 @@ const NOTES_SEARCH_DATABASE = [
     page: 6,
     url: "../system-design-notes/index.html?page=6",
     rootUrl: "system-design-notes/index.html?page=6",
-    tag: "Microservices",
-    title: "Page 6: Microservices, API Gateways & Rate Limiting",
+    tag: "Storage",
+    title: "Page 6: Storage Systems, CDNs & Media Pipelines",
     sections: [
       {
-        heading: "API Gateway Responsibilities",
-        content: "Single entry point for client requests handling: Dynamic routing, Authentication & JWT verification, SSL termination, Rate limiting, Request logging, Monitoring, Circuit breaking."
+        heading: "Block vs File vs Object Storage",
+        content: "Block storage (EBS, SAN) for databases, file storage (EFS, NFS) for shared POSIX access, object storage (S3, GCS) for blobs, backups and media at massive scale."
       },
       {
-        heading: "Rate Limiting Algorithms (Token Bucket, Leaky Bucket, Sliding Window)",
-        content: "1. Token Bucket (fixed capacity, tokens added at rate r; handles bursts). 2. Leaky Bucket (FIFO queue flushes at constant rate; smooths traffic). 3. Sliding Window Log / Counter (hybrid approach preventing boundary bursts, implemented with Redis sorted sets)."
+        heading: "CDN: Push vs Pull",
+        content: "Pull CDN fetches from origin on first miss; push CDN uploads proactively. Cache-Control max-age, immutable hashed assets, short TTL manifests, signed URLs for private content."
       },
       {
-        heading: "Circuit Breakers (Closed, Open, Half-Open)",
-        content: "Prevents cascading failures. Closed (normal traffic) → If failure rate exceeds threshold → Open (fails fast immediately without calling downstream) → After cooldown timeout → Half-Open (allows probe traffic to test recovery)."
+        heading: "Upload → Transcode → Stream Pipeline",
+        content: "Client asks API for a presigned URL, uploads multipart directly to S3, S3 event goes to a queue, transcoder workers produce 1080p/720p/480p HLS/DASH chunks and thumbnails, CDN serves adaptive bitrate video. Resumable uploads retry failed parts only."
       }
     ]
   },
@@ -583,19 +603,23 @@ const NOTES_SEARCH_DATABASE = [
     url: "../system-design-notes/index.html?page=7",
     rootUrl: "system-design-notes/index.html?page=7",
     tag: "Distributed",
-    title: "Page 7: Distributed Consensus & Distributed Transactions",
+    title: "Page 7: Consistency, Consensus, Locks & ID Generation",
     sections: [
       {
-        heading: "Distributed Transactions: 2PC vs. Saga Pattern",
-        content: "Two-Phase Commit (2PC): Prepare phase + Commit phase; strong consistency but blocking and high latency. Saga Pattern: Sequence of local transactions with compensating transactions on failure; Orchestration (central orchestrator) vs. Choreography (event-driven)."
+        heading: "Consistency Models Spectrum",
+        content: "Linearizable, sequential, read-your-own-writes and eventual consistency trade latency for correctness."
       },
       {
-        heading: "Distributed Consensus: Raft & Paxos",
-        content: "Raft algorithm achieves consensus via Leader Election, Log Replication, and Safety invariants. Used by etcd (Kubernetes), Consul, and CockroachDB."
+        heading: "Raft Consensus & Quorums",
+        content: "Leader election with terms, AppendEntries log replication, entry committed once a majority (3 of 5) acknowledges. Quorum rule W + R > N for read-your-writes."
       },
       {
-        heading: "Distributed Unique ID Generator (Twitter Snowflake)",
-        content: "64-bit integer: 1 sign bit + 41 bits timestamp (69 years) + 10 bits machine/datacenter ID (1024 nodes) + 12 bits sequence number (4096 IDs per ms per node)."
+        heading: "Distributed Locks & Fencing Tokens",
+        content: "A lease alone is unsafe: a GC-paused client can write after expiry. Storage must reject writes carrying an older fencing token (33 < 34)."
+      },
+      {
+        heading: "Twitter Snowflake 64-bit IDs",
+        content: "1 sign bit, 41-bit timestamp, 10-bit machine id, 12-bit sequence: roughly time-sorted unique ids without coordination. Beware NTP clock drift."
       }
     ]
   },
@@ -607,29 +631,83 @@ const NOTES_SEARCH_DATABASE = [
     page: 8,
     url: "../system-design-notes/index.html?page=8",
     rootUrl: "system-design-notes/index.html?page=8",
-    tag: "Cheat Sheet",
-    title: "Page 8: System Design Master Cheat Sheet",
+    tag: "Blueprints",
+    title: "Page 8: FAANG Blueprints & 8+ YoE Staff Playbook",
     sections: [
       {
-        heading: "Latency Numbers Every Programmer Should Know",
-        content: "L1 cache: 0.5 ns. Mutex lock/unlock: 25 ns. Main memory (RAM) reference: 100 ns. Read 1MB from memory: 3,000 ns (3 µs). SSD random read: 16,000 ns (16 µs). Read 1MB from SSD: 49,000 ns (49 µs). Datacenter roundtrip: 500,000 ns (0.5 ms). Send 1MB over 1Gbps network: 10,000,000 ns (10 ms). HDD seek: 10,000,000 ns (10 ms). Cross-continental roundtrip: 150,000,000 ns (150 ms)."
+        heading: "6 Core Product Blueprints",
+        content: "TinyURL base62 + KGS, WhatsApp chat over WebSockets, Twitter feed hybrid fanout, distributed rate limiter with Redis Lua, multi-channel notifications, web crawler with Bloom filter."
       },
       {
-        heading: "High Availability SLA Numbers (The Nines)",
-        content: "99% (2 nines) = 3.65 days downtime/year. 99.9% (3 nines) = 8.76 hours/year. 99.99% (4 nines) = 52.6 minutes/year. 99.999% (5 nines) = 5.26 minutes/year."
+        heading: "Hybrid News Feed Fanout",
+        content: "Fanout-on-write (push) into Redis timelines for normal users; celebrity posts (>100K followers) are pulled and merged at read time by the timeline service."
+      },
+      {
+        heading: "Senior / Staff Signals & Observability",
+        content: "State assumptions, explain trade-offs, design for failure, golden signals (latency, traffic, errors, saturation), distributed tracing, graceful degradation."
+      }
+    ]
+  },
+  {
+    id: "sd-p9",
+    notebook: "system-design-notes",
+    notebookName: "System Design",
+    notebookIcon: "📐",
+    page: 9,
+    url: "../system-design-notes/index.html?page=9",
+    rootUrl: "system-design-notes/index.html?page=9",
+    tag: "Case Study",
+    title: "Page 9: Case Study — Design a URL Shortener",
+    sections: [
+      {
+        heading: "Requirements & Napkin Math",
+        content: "100M new URLs per month ≈ 40 writes/s, 100:1 read ratio ≈ 4K redirects/s, 3 TB over 5 years, 62^7 ≈ 3.5 trillion codes."
+      },
+      {
+        heading: "API, Data Model & Architecture",
+        content: "POST /api/v1/urls, GET /{code} returns 302. Key-value store sharded by code, Redis cache for hot links, Kafka click events into ClickHouse analytics."
+      },
+      {
+        heading: "Key Generation & 301 vs 302",
+        content: "Hash + truncate has collisions, global counter is a hotspot, Key Generation Service leases id ranges from ZooKeeper. 301 is cached by browsers (lose analytics), 302 keeps stats accurate."
+      }
+    ]
+  },
+  {
+    id: "sd-p10",
+    notebook: "system-design-notes",
+    notebookName: "System Design",
+    notebookIcon: "📐",
+    page: 10,
+    url: "../system-design-notes/index.html?page=10",
+    rootUrl: "system-design-notes/index.html?page=10",
+    tag: "Case Study",
+    title: "Page 10: Case Study — Design a Chat System (WhatsApp / Slack)",
+    sections: [
+      {
+        heading: "Requirements & Estimates",
+        content: "500M DAU × 40 messages = 20B messages/day ≈ 200K msgs/s, 2 TB/day, ~100 WebSocket gateways holding sockets."
+      },
+      {
+        heading: "Architecture",
+        content: "Stateful WebSocket gateways, Redis session registry (user → gateway), chat service, Kafka keyed by conversation id, Cassandra message store, fanout worker, APNs/FCM push when offline, heartbeat presence."
+      },
+      {
+        heading: "Message Lifecycle & Receipts",
+        content: "clientMsgId for idempotent retries, snowflake msg_id, sent ✓, delivered ✓✓, read receipts up to msg_id. Per-conversation ordering, group fanout vs pull for large channels, multi-device sync cursors, end-to-end encryption."
       }
     ]
   },
 
-  // --- DSA MASTER NOTES (12 Pages) ---
+  // --- DSA MASTER NOTES (14 Pages) ---
   {
     id: "dsa-p1",
     notebook: "dsa-notes",
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 1,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=1",
+    rootUrl: "dsa-notes/index.html?page=1",
     tag: "Strategy",
     title: "Page 1: Multi-Tier Strategy & 6-Week Master Roadmap",
     sections: [
@@ -644,6 +722,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Constraint-to-Pattern Meta Decision Matrix",
         content: "N <= 12 -> O(N!) Permutations. N <= 25 -> O(2^N) Subsets / Bitmask DP. N <= 500 -> O(N^3) Floyd-Warshall. N <= 5000 -> O(N^2) Matrix DP / Two Pointers. N <= 10^6 -> O(N log N) or O(N) Binary Search, Sorting, Heaps, Sliding Window, Monotonic Stack, DSU."
+      },
+      {
+        heading: "Hand-drawn 6-Week Roadmap",
+        content: "Week 1 arrays, hashing, two pointers, sliding window. Week 2 binary search and stacks. Week 3 trees, tries, heaps. Week 4 graphs. Week 5 DP and backtracking. Week 6 mocks, LRU/LFU, concurrency. Spaced repetition 1-3-7-21 days, pattern journal, timebox rule."
       }
     ]
   },
@@ -653,8 +735,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 2,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=2",
+    rootUrl: "dsa-notes/index.html?page=2",
     tag: "Cheat Sheet",
     title: "Page 2: Master Complexity Cheat Sheet & Sorting Deep Dive",
     sections: [
@@ -665,6 +747,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Sorting Algorithms: In-Place vs Stable Trade-offs",
         content: "QuickSort O(N log N) avg in-place unstable. MergeSort O(N log N) stable O(N) auxiliary space. HeapSort O(N log N) in-place unstable. Counting/Radix Sort O(N + K) stable non-comparative. CPU cache locality benefits arrays over linked nodes."
+      },
+      {
+        heading: "Big-O Growth Curves & Master Theorem",
+        content: "About 10^8 simple operations per second. T(n) = 2T(n/2) + O(n) is O(n log n). Recursion depth counts as space; amortized vs average complexity."
       }
     ]
   },
@@ -674,8 +760,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 3,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=3",
+    rootUrl: "dsa-notes/index.html?page=3",
     tag: "Arrays",
     title: "Page 3: Arrays, Strings, Hash Maps & Matrix Manipulations",
     sections: [
@@ -686,6 +772,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Matrix In-Place Manipulations",
         content: "Rotate Image 90 degrees clockwise by transposing matrix then reversing each row in-place O(N^2) time O(1) space. Spiral matrix traversal with 4 directional boundary pointers (top, bottom, left, right)."
+      },
+      {
+        heading: "Prefix Sum Picture & Dry Run",
+        content: "Prefix array with P[0] = 0, range sum P[R+1] - P[L]. Rotate matrix = transpose + reverse rows. Dry run of subarray sum equals k; practice 560, 238, 1094, 48, 54, 41."
       }
     ]
   },
@@ -695,8 +785,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 4,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=4",
+    rootUrl: "dsa-notes/index.html?page=4",
     tag: "Pointers",
     title: "Page 4: Two Pointers, Fast & Slow, and Sliding Window Patterns",
     sections: [
@@ -707,6 +797,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Universal Sliding Window Master Template",
         content: "Expand right pointer to satisfy constraint, shrink left pointer while window invariant is invalid. Minimum Window Substring, Longest Substring Without Repeating Characters, Max Consecutive Ones III."
+      },
+      {
+        heading: "Trapping Rain Water Sketch",
+        content: "water[i] = min(maxLeft, maxRight) - h[i]; move the pointer with the smaller max. Trigger words for two pointers and sliding window; exactly K = atMost(K) - atMost(K-1)."
       }
     ]
   },
@@ -716,8 +810,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 5,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=5",
+    rootUrl: "dsa-notes/index.html?page=5",
     tag: "Design DS",
     title: "Page 5: Linked Lists & Custom Data Structure Design (LRU/LFU)",
     sections: [
@@ -728,6 +822,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "LFU Cache, Design Twitter & Insert Delete GetRandom O(1)",
         content: "LFU Cache uses frequency hash map and doubly linked lists. Insert Delete GetRandom O(1) combines dynamic array with hash map of indices. Design Twitter merges user tweets using Min-Heap priority queue."
+      },
+      {
+        heading: "LRU Trace & LFU Frequency Buckets",
+        content: "LRU capacity 2 trace with eviction. LFU cache uses key → node map plus freq → doubly linked list and a minFreq pointer."
       }
     ]
   },
@@ -737,8 +835,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 6,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=6",
+    rootUrl: "dsa-notes/index.html?page=6",
     tag: "Binary Search",
     title: "Page 6: Binary Search & Monotonic Answer Space",
     sections: [
@@ -749,6 +847,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Binary Search on Monotonic Answer Space (check(mid))",
         content: "When feasibility function check(mid) is monotonic, binary search directly over answer range [1, max(values)]. Koko Eating Bananas, Capacity to Ship Packages Within D Days, Split Array Largest Sum."
+      },
+      {
+        heading: "First True in a Monotonic Predicate",
+        content: "F F F T T T picture, low/mid/high, Koko eating bananas dry run, lower-bound loop variants and off-by-one pitfalls."
       }
     ]
   },
@@ -758,8 +860,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 7,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=7",
+    rootUrl: "dsa-notes/index.html?page=7",
     tag: "Stack & Heap",
     title: "Page 7: Monotonic Stack, Deque & Priority Queue / Heaps",
     sections: [
@@ -770,6 +872,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Monotonic Deque & Two Heaps (Median from Data Stream)",
         content: "Monotonic deque solves Sliding Window Maximum in O(N) amortized time. Two Heaps pattern uses Max-Heap for lower half and Min-Heap for upper half to compute streaming median in O(1) time."
+      },
+      {
+        heading: "Monotonic Stack Trace & Heap as Array",
+        content: "Daily temperatures dry run. Heap children 2i+1, 2i+2, parent (i-1)/2, heapify O(n). Top-K with min-heap of size K, sliding window maximum with deque, K-way merge."
       }
     ]
   },
@@ -779,8 +885,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 8,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=8",
+    rootUrl: "dsa-notes/index.html?page=8",
     tag: "Trees & Tries",
     title: "Page 8: Trees, BST, Lowest Common Ancestor (LCA) & Tries",
     sections: [
@@ -791,6 +897,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Trie (Prefix Tree) Master Template & Word Search II",
         content: "TrieNode with children dictionary and is_word boolean. Autocomplete, prefix matching in O(L) time. Word Search II combines Trie with 2D Board DFS Backtracking and Trie pruning."
+      },
+      {
+        heading: "LCA Recursion, Trie Sketch & BFS Level Order",
+        content: "LCA bubbles results up; trie shares prefixes. BFS level-order template freezes queue size. Traversal cheat sheet and validate BST with bounds."
       }
     ]
   },
@@ -800,8 +910,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 9,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=9",
+    rootUrl: "dsa-notes/index.html?page=9",
     tag: "Graphs",
     title: "Page 9: Graph Algorithms: BFS, DFS, TopoSort, DSU & Shortest Paths",
     sections: [
@@ -812,6 +922,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Disjoint Set Union (Union-Find) & Dijkstra's Algorithm",
         content: "DSU with Path Compression and Union by Rank achieves O(alpha(N)) near O(1) operations for Number of Provinces and Redundant Connection. Dijkstra uses Min-Heap priority queue for shortest paths in weighted graphs in O((V + E) log V)."
+      },
+      {
+        heading: "Dijkstra Code, BFS Rings & DSU Forest",
+        content: "Dijkstra with PriorityQueue and lazy deletion of stale entries. BFS marks visited on enqueue. Path compression flattens the union-find tree. Which graph algorithm to choose."
       }
     ]
   },
@@ -821,8 +935,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 10,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=10",
+    rootUrl: "dsa-notes/index.html?page=10",
     tag: "DP",
     title: "Page 10: Dynamic Programming & Backtracking Masterclass",
     sections: [
@@ -833,6 +947,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Classic DP Patterns & Backtracking Pruning",
         content: "1D Array DP (House Robber, Coin Change, LIS), 2D Grid DP (Unique Paths, Edit Distance, LCS), 0/1 Knapsack (Partition Equal Subset Sum), and Backtracking template with state pruning (Subsets, Permutations, N-Queens)."
+      },
+      {
+        heading: "Memoization Recursion Tree & LCS Table",
+        content: "Fib recursion tree collapses with memo. LCS of abcde and ace = 3 table. Top-down vs bottom-up, state design."
       }
     ]
   },
@@ -842,8 +960,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 11,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=11",
+    rootUrl: "dsa-notes/index.html?page=11",
     tag: "Greedy",
     title: "Page 11: Intervals, Greedy, Bit Manipulation & Concurrency",
     sections: [
@@ -854,6 +972,10 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Bit Manipulation Tricks & Thread-Safe Data Structures",
         content: "XOR cancellation x ^ x = 0 solves Single Number. n & (n - 1) clears lowest set bit. Thread-safe bounded queue uses mutex lock with not_full and not_empty condition variables in while loops."
+      },
+      {
+        heading: "Merge Intervals Number Line & Greedy",
+        content: "Sort by start, extend the last interval. Jump game farthest reach, gas station, activity selection, exchange argument proof."
       }
     ]
   },
@@ -863,8 +985,8 @@ const NOTES_SEARCH_DATABASE = [
     notebookName: "DSA Master",
     notebookIcon: "💻",
     page: 12,
-    url: "../dsa-notes/index.html",
-    rootUrl: "dsa-notes/index.html",
+    url: "../dsa-notes/index.html?page=12",
+    rootUrl: "dsa-notes/index.html?page=12",
     tag: "Interview Playbook",
     title: "Page 12: Tier 1/2/3 Rubrics, OA Guide & Live Interview Protocol",
     sections: [
@@ -875,6 +997,56 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Top Senior Red Flags to Avoid in Coding Rounds",
         content: "Never code in silence for 10 minutes. Avoid cryptic 1-letter variables. Never ignore interviewer hints. Always perform a manual dry run before declaring code complete."
+      },
+      {
+        heading: "Interviewer Scorecard & Phrases",
+        content: "Communication, problem solving, code quality, verification. What to say at minute 2, before coding, and when stuck."
+      }
+    ]
+  },
+  {
+    id: "dsa-p13",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 13,
+    url: "../dsa-notes/index.html?page=13",
+    rootUrl: "dsa-notes/index.html?page=13",
+    tag: "Backtracking",
+    title: "Page 13: Backtracking & Recursion Trees",
+    sections: [
+      {
+        heading: "Decision Tree for Subsets",
+        content: "Draw the recursion tree first. Every node is a subset of [1,2,3]; children only pick indices greater than start, so 2^n answers and no duplicates."
+      },
+      {
+        heading: "Universal Backtracking Template",
+        content: "Record a copy of path, loop over choices, skip duplicates after sorting, choose, explore with i + 1 (or i for reuse), un-choose with RemoveAt."
+      },
+      {
+        heading: "Subsets vs Combination Sum vs Permutations vs N-Queens",
+        content: "Permutations use a used[] array and loop from 0, n!. Combination sum recurses on i and prunes when remain < 0. N-Queens tracks columns and both diagonals. Word Search marks cells and restores them."
+      }
+    ]
+  },
+  {
+    id: "dsa-p14",
+    notebook: "dsa-notes",
+    notebookName: "DSA Master",
+    notebookIcon: "💻",
+    page: 14,
+    url: "../dsa-notes/index.html?page=14",
+    rootUrl: "dsa-notes/index.html?page=14",
+    tag: "Revision",
+    title: "Page 14: Pattern Picker Flowchart & Revision Sheet",
+    sections: [
+      {
+        heading: "Which Pattern? Flowchart",
+        content: "Sorted or monotonic → binary search / two pointers. Contiguous subarray → sliding window / prefix sum. Top-K → heap. Next greater → monotonic stack. Graph or dependencies → BFS, DFS, topological sort, DSU, Dijkstra. All combinations → backtracking. Optimal with repeating choices → dynamic programming. Intervals → sort and sweep."
+      },
+      {
+        heading: "One-Line Template Revision Sheet",
+        content: "One-breath summary of each core template with its time complexity: prefix sum + map, sliding window, LRU, binary search on answer, monotonic stack, top-K heap, BFS, topo sort, DSU, DP, backtracking, intervals."
       }
     ]
   }

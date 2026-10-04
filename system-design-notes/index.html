@@ -23,6 +23,7 @@
   
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="../shared-search.css" />
+  <link rel="stylesheet" href="../sketch-kit.css" />
 </head>
 <body>
 
@@ -38,7 +39,7 @@
       </div>
       <div class="topbar-center">
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page">← Prev</button>
-        <span class="page-indicator" id="pageIndicator">Page 1 / 8</span>
+        <span class="page-indicator" id="pageIndicator">Page 1 / 10</span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
       </div>
       <div class="topbar-right">
@@ -77,7 +78,7 @@
             <span class="switcher-icon">📐</span>
             <div class="switcher-info">
               <span class="switcher-title">System Design</span>
-              <span class="switcher-pages">8 Pages</span>
+              <span class="switcher-pages">10 Pages</span>
             </div>
           </a>
           <a href="../kubernetes-notes/index.html" class="switcher-card" title="Kubernetes Notes">
@@ -98,7 +99,7 @@
             <span class="switcher-icon">💻</span>
             <div class="switcher-info">
               <span class="switcher-title">DSA Master</span>
-              <span class="switcher-pages">12 Pages</span>
+              <span class="switcher-pages">14 Pages</span>
             </div>
           </a>
         </nav>
@@ -127,12 +128,12 @@
           <span class="topic-tag-pill" style="background: #e0f2fe; color: #0369a1;">Framework</span>
         </div>
 
-        <div class="sidebar-topic-item" data-page="2" data-keywords="scaling load balancing vertical horizontal layer 4 7 round robin least connections consistent hashing reverse proxy" onclick="goToPage(2)">
+        <div class="sidebar-topic-item" data-page="2" data-keywords="scaling load balancing layer 4 7 round robin least connections consistent hashing api gateway rate limiting token bucket leaky bucket circuit breaker" onclick="goToPage(2)">
           <div class="topic-left">
             <span class="topic-num-badge">P2</span>
             <div class="topic-info">
-              <span class="topic-title">Scaling &amp; Load Balancing</span>
-              <span class="topic-subtitle">Vertical vs Horizontal, Algorithms &amp; Reverse Proxies</span>
+              <span class="topic-title">Load Balancing, Gateways &amp; Rate Limits</span>
+              <span class="topic-subtitle">L4 vs L7, Consistent Hashing, Token Bucket, Circuit Breaker</span>
             </div>
           </div>
           <span class="topic-tag-pill" style="background: #dbeafe; color: #1e40af;">Scaling</span>
@@ -171,38 +172,61 @@
           <span class="topic-tag-pill" style="background: #ede9fe; color: #6d28d9;">Async &amp; Queues</span>
         </div>
 
-        <div class="sidebar-topic-item" data-page="6" data-keywords="microservices api gateway rate limiting circuit breaker service mesh envoy resilience token bucket leaky bucket" onclick="goToPage(6)">
+        <div class="sidebar-topic-item" data-page="6" data-keywords="storage block file object s3 cdn push pull video upload presigned url transcoding hls streaming" onclick="goToPage(6)">
           <div class="topic-left">
             <span class="topic-num-badge">P6</span>
             <div class="topic-info">
-              <span class="topic-title">Microservices &amp; API Gateways</span>
-              <span class="topic-subtitle">Rate Limiting Algorithms, Circuit Breakers &amp; Mesh</span>
+              <span class="topic-title">Storage, CDNs &amp; Media Pipelines</span>
+              <span class="topic-subtitle">Block vs Object, Push vs Pull CDN, Upload → Transcode</span>
             </div>
           </div>
-          <span class="topic-tag-pill" style="background: #fee2e2; color: #b91c1c;">Microservices</span>
+          <span class="topic-tag-pill" style="background: #fee2e2; color: #b91c1c;">Storage</span>
         </div>
 
-        <div class="sidebar-topic-item" data-page="7" data-keywords="distributed systems consensus raft paxos 2pc two phase commit distributed transactions event sourcing cqrs saga" onclick="goToPage(7)">
+        <div class="sidebar-topic-item" data-page="7" data-keywords="distributed systems consensus raft paxos quorum consistency linearizable distributed lock fencing token snowflake id clock" onclick="goToPage(7)">
           <div class="topic-left">
             <span class="topic-num-badge">P7</span>
             <div class="topic-info">
-              <span class="topic-title">Consensus &amp; Distributed Transactions</span>
-              <span class="topic-subtitle">Raft, Paxos, 2PC, Saga Pattern &amp; Event Sourcing</span>
+              <span class="topic-title">Consensus, Locks &amp; ID Generation</span>
+              <span class="topic-subtitle">Consistency Models, Raft, Fencing Tokens, Snowflake</span>
             </div>
           </div>
           <span class="topic-tag-pill" style="background: #e0e7ff; color: #3730a3;">Distributed</span>
         </div>
 
-        <div class="sidebar-topic-item" data-page="8" data-keywords="cheat sheet latency numbers formula interview quick reference trade offs summary" onclick="goToPage(8)">
+        <div class="sidebar-topic-item" data-page="8" data-keywords="blueprints tinyurl chat feed fanout rate limiter notifications crawler staff senior observability checklist" onclick="goToPage(8)">
           <div class="topic-left">
             <span class="topic-num-badge">P8</span>
             <div class="topic-info">
-              <span class="topic-title">System Design Master Cheat Sheet</span>
-              <span class="topic-subtitle">Latency Numbers, Math Formulas &amp; Design Trade-offs</span>
+              <span class="topic-title">FAANG Blueprints &amp; Staff Playbook</span>
+              <span class="topic-subtitle">6 Blueprints, Hybrid Fanout, Interview Checklist</span>
             </div>
           </div>
-          <span class="topic-tag-pill" style="background: #f1f5f9; color: #334155;">Cheat Sheet</span>
+          <span class="topic-tag-pill" style="background: #f1f5f9; color: #334155;">Blueprints</span>
         </div>
+
+        <div class="sidebar-topic-item" data-page="9" data-keywords="case study url shortener tinyurl bitly base62 key generation kgs redirect 301 302 analytics" onclick="goToPage(9)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P9</span>
+            <div class="topic-info">
+              <span class="topic-title">Case Study: URL Shortener</span>
+              <span class="topic-subtitle">Estimates, API, KGS, Cache, 301 vs 302</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #dcfce7; color: #15803d;">Case Study</span>
+        </div>
+
+        <div class="sidebar-topic-item" data-page="10" data-keywords="case study chat whatsapp slack websocket gateway presence receipts cassandra group fanout push notification" onclick="goToPage(10)">
+          <div class="topic-left">
+            <span class="topic-num-badge">P10</span>
+            <div class="topic-info">
+              <span class="topic-title">Case Study: Chat System</span>
+              <span class="topic-subtitle">WebSockets, Receipts, Ordering, Group Fanout</span>
+            </div>
+          </div>
+          <span class="topic-tag-pill" style="background: #ede9fe; color: #6d28d9;">Case Study</span>
+        </div>
+
       </div>
 
       <!-- Sidebar Footer -->
@@ -246,7 +270,7 @@
           <div class="page-content">
             <div class="page-header">
               <span class="watermark-tag">✍️ @amitmahata</span>
-              <span class="page-num">1/8</span>
+              <span class="page-num">1/10</span>
             </div>
 
             <h1 class="page-title">
@@ -399,6 +423,71 @@
               </div>
             </div>
 
+            <!-- Section 5: Napkin math worked example -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num yellow">⑤</div>
+                <h2 class="section-title">Napkin Math, Worked Out Like You Would on the Whiteboard</h2>
+              </div>
+              <figure class="sk-figure">
+                <svg class="sk-svg" viewBox="0 0 800 330" role="img" aria-label="Hand-written back of the envelope estimate for QPS, storage and cache size">
+                  <text x="20" y="34" class="m sm">given: 50M DAU · 20 requests / user / day · 10% writes · 1 KB / record</text>
+                  <path class="s m thin" d="M20,46 H600"/>
+
+                  <text x="20" y="84">requests / day = 50M × 20 = <tspan class="tb">1B</tspan></text>
+                  <text x="20" y="120">avg QPS = 1B ÷ 10⁵ s ≈ <tspan class="tb">10K QPS</tspan></text>
+                  <ellipse class="s b" cx="246" cy="113" rx="62" ry="20"/>
+                  <text x="20" y="156">peak ≈ 3 × avg ≈ <tspan class="tr">30K QPS</tspan></text>
+                  <text x="20" y="192">writes = 10% ⇒ 100M / day ≈ <tspan class="tp">1K WPS</tspan></text>
+                  <text x="20" y="228">storage = 100M × 1 KB = <tspan class="tg">100 GB / day</tspan></text>
+                  <text x="20" y="264">5 years ≈ 100 GB × 365 × 5 ≈ <tspan class="tr">180 TB</tspan> → must shard</text>
+                  <path class="s r" d="M226,272 Q262,282 298,270"/>
+                  <text x="20" y="300">cache 20% of reads ≈ 0.2 × 900M × 1 KB ≈ <tspan class="tg">~200 GB</tspan> → a few Redis nodes</text>
+
+                  <rect class="s y fy" x="560" y="96" width="220" height="92" rx="14"/>
+                  <text x="574" y="124" class="sm">app servers @ ~3K QPS each</text>
+                  <text x="574" y="150" class="sm">30K ÷ 3K = 10</text>
+                  <text x="574" y="176" class="sm r">+50% headroom → 15 pods</text>
+                  <path class="s a m" d="M500,150 C530,150 540,140 556,140"/>
+
+                  <rect class="s g fg" x="560" y="206" width="220" height="70" rx="14"/>
+                  <text x="574" y="234" class="sm">read : write = 9 : 1</text>
+                  <text x="574" y="260" class="sm g">⇒ read replicas + cache</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 1.1 — round aggressively: <b>1 day ≈ 10⁵ s</b>, 1M/day ≈ 12 QPS. Interviewers care about orders of magnitude, not decimals</figcaption>
+              </figure>
+
+              <div class="sk-stickies">
+                <div class="sk-sticky">
+                  <h4>🔢 Powers of two</h4>
+                  <ul>
+                    <li>2¹⁰ ≈ 1 thousand (KB)</li>
+                    <li>2²⁰ ≈ 1 million (MB)</li>
+                    <li>2³⁰ ≈ 1 billion (GB)</li>
+                    <li>2⁴⁰ ≈ 1 trillion (TB)</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky blue">
+                  <h4>🏋️ Ballpark per-node capacity</h4>
+                  <ul>
+                    <li>Redis: ~100K simple ops/s</li>
+                    <li>Postgres primary: a few K writes/s</li>
+                    <li>Stateless app pod: 1–5K RPS</li>
+                    <li>Kafka broker: 100+ MB/s</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky pink">
+                  <h4>❓ Ask before drawing</h4>
+                  <ul>
+                    <li>Who are the users &amp; how many?</li>
+                    <li>Read-heavy or write-heavy?</li>
+                    <li>Strong or eventual consistency?</li>
+                    <li>Latency target (p99)?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             <!-- Remember Box -->
             <div class="remember-box">
               <div class="remember-header">⭐ Senior Takeaway</div>
@@ -419,7 +508,7 @@
             <div class="page-footer">
               <span>System Design Master Series</span>
               <span>@amitmahata | Quality Insights, Better Careers!</span>
-              <span>Page 1 of 8</span>
+              <span>Page 1 of 10</span>
             </div>
 
           </div>
@@ -442,7 +531,7 @@
           <div class="page-content">
             <div class="page-header">
               <span class="watermark-tag">✍️ @amitmahata</span>
-              <span class="page-num">2/8</span>
+              <span class="page-num">2/10</span>
             </div>
 
             <h1 class="page-title">
@@ -581,6 +670,84 @@
               </div>
             </div>
 
+            <!-- Section 5: Consistent hashing ring + token bucket sketches -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num yellow">⑤</div>
+                <h2 class="section-title">Sketches: the Hash Ring &amp; the Token Bucket</h2>
+              </div>
+              <div class="sk-grid-2">
+                <figure class="sk-figure tape-blue">
+                  <svg class="sk-svg" viewBox="0 0 400 340" role="img" aria-label="Consistent hash ring with nodes A B C, a new node D, and keys moving clockwise">
+                    <circle class="s" cx="200" cy="160" r="100"/>
+                    <circle class="s b fb" cx="200" cy="60" r="16"/><text x="194" y="67" class="b">A</text>
+                    <circle class="s g fg" cx="287" cy="210" r="16"/><text x="281" y="217" class="g">B</text>
+                    <circle class="s p fv" cx="113" cy="210" r="16"/><text x="107" y="217" class="p">C</text>
+                    <circle class="s r fp dash" cx="287" cy="110" r="16"/><text x="281" y="117" class="r">D</text>
+                    <text x="310" y="104" class="sm r">new node</text>
+
+                    <circle class="s fy" cx="250" cy="73" r="6"/><text x="252" y="58" class="xs">k1</text>
+                    <circle class="s fy" cx="217" cy="258" r="6"/><text x="214" y="282" class="xs">k2</text>
+                    <circle class="s fy" cx="106" cy="126" r="6"/><text x="74" y="124" class="xs">k3</text>
+
+                    <path class="s a r" d="M256,78 Q278,86 280,96"/>
+                    <path class="s a m dash" d="M258,72 C340,90 330,170 300,198"/>
+                    <path class="s a p" d="M208,262 C170,262 140,248 124,224"/>
+                    <path class="s a b" d="M104,118 C110,80 150,62 182,58"/>
+                    <text x="20" y="292" class="xs m">k1 used to go to B …</text>
+                    <text x="20" y="310" class="xs r">… now lands on D (the only key that moves!)</text>
+                    <text x="20" y="334" class="sm">keys walk <tspan class="tb">clockwise</tspan> to the next node</text>
+                  </svg>
+                  <figcaption class="sk-caption">Fig 2.1 — adding D only steals keys in the arc <b>A → D</b>; everyone else stays put</figcaption>
+                </figure>
+
+                <figure class="sk-figure tape-pink">
+                  <svg class="sk-svg" viewBox="0 0 400 320" role="img" aria-label="Token bucket with refill tap, tokens, accepted and rejected requests">
+                    <path class="s b" d="M200,20 V52 M180,20 H232 Q244,20 244,32"/>
+                    <text x="250" y="34" class="sm b">refill r tokens/sec</text>
+                    <path class="s b dash" d="M200,60 V84"/>
+                    <path class="s thick" d="M120,90 L140,250 H260 L280,90"/>
+                    <path class="s m thin" d="M124,120 H276"/>
+                    <text x="286" y="126" class="xs m">capacity b</text>
+                    <circle class="s y fy" cx="165" cy="232" r="11"/><circle class="s y fy" cx="192" cy="232" r="11"/>
+                    <circle class="s y fy" cx="219" cy="232" r="11"/><circle class="s y fy" cx="246" cy="232" r="11"/>
+                    <circle class="s y fy" cx="178" cy="210" r="11"/><circle class="s y fy" cx="205" cy="210" r="11"/>
+                    <circle class="s y fy" cx="232" cy="210" r="11"/>
+
+                    <text x="10" y="172" class="sm">requests</text>
+                    <path class="s a" d="M20,184 L118,184"/>
+                    <path class="s a g" d="M268,190 L380,170"/>
+                    <text x="300" y="160" class="sm g">200 OK</text>
+                    <text x="292" y="210" class="xs g">(took 1 token)</text>
+                    <path class="s a r dash" d="M270,236 L380,272"/>
+                    <text x="300" y="298" class="sm r">429 if empty</text>
+                    <text x="16" y="290" class="sm m">bursts up to b,</text>
+                    <text x="16" y="310" class="sm m">long-run rate r</text>
+                  </svg>
+                  <figcaption class="sk-caption">Fig 2.2 — store only <b>(tokens, lastRefillTs)</b> per user; refill lazily on each request</figcaption>
+                </figure>
+              </div>
+
+              <div class="sk-stickies">
+                <div class="sk-sticky">
+                  <h4>🧮 Why virtual nodes?</h4>
+                  <ul>
+                    <li>3 physical nodes = 3 uneven arcs → hot spots</li>
+                    <li>100–300 vnodes each → arcs average out (±5–10%)</li>
+                    <li>Bigger machine? give it more vnodes</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky green">
+                  <h4>⚙️ Distributed limiter</h4>
+                  <ul>
+                    <li>Key: `rl:{userId}:{endpoint}` in Redis</li>
+                    <li>Lua script = read + refill + decrement atomically</li>
+                    <li>Return `X-RateLimit-Remaining` + `Retry-After`</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             <!-- Remember Box -->
             <div class="remember-box">
               <div class="remember-header">⭐ Golden Rule for Consistent Hashing</div>
@@ -601,7 +768,7 @@
             <div class="page-footer">
               <span>System Design Master Series</span>
               <span>@amitmahata | Quality Insights, Better Careers!</span>
-              <span>Page 2 of 8</span>
+              <span>Page 2 of 10</span>
             </div>
 
           </div>
@@ -624,7 +791,7 @@
           <div class="page-content">
             <div class="page-header">
               <span class="watermark-tag">✍️ @amitmahata</span>
-              <span class="page-num">3/8</span>
+              <span class="page-num">3/10</span>
             </div>
 
             <h1 class="page-title">
@@ -764,6 +931,62 @@
               </div>
             </div>
 
+            <!-- Section 5: Cache-aside sequence diagram -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">⑤</div>
+                <h2 class="section-title">Cache-Aside, Step by Step (sequence sketch)</h2>
+              </div>
+              <figure class="sk-figure">
+                <svg class="sk-svg" viewBox="0 0 800 340" role="img" aria-label="Sequence diagram of cache-aside read miss and write invalidation between app, Redis and database">
+                  <rect class="s fb" x="90" y="14" width="120" height="40" rx="10"/><text x="122" y="41">⚙️ App</text>
+                  <rect class="s fp" x="340" y="14" width="120" height="40" rx="10"/><text x="362" y="41">⚡ Redis</text>
+                  <rect class="s fg" x="590" y="14" width="120" height="40" rx="10"/><text x="625" y="41">🗄️ DB</text>
+                  <path class="s m thin dash" d="M150,56 V330 M400,56 V330 M650,56 V330"/>
+
+                  <path class="s a" d="M152,90 L396,90"/><text x="180" y="82" class="sm">① GET user:42</text>
+                  <path class="s a r dash" d="M396,120 L154,120"/><text x="250" y="114" class="sm r">② (nil) — miss</text>
+                  <path class="s a" d="M152,156 L646,156"/><text x="300" y="148" class="sm">③ SELECT * FROM users WHERE id = 42</text>
+                  <path class="s a g dash" d="M646,186 L154,186"/><text x="460" y="180" class="sm g">④ row</text>
+                  <path class="s a g" d="M152,222 L396,222"/><text x="160" y="214" class="sm g">⑤ SET user:42 EX 300 (+ jitter)</text>
+
+                  <path class="s m thin" d="M60,248 H740"/>
+                  <text x="350" y="242" class="xs m">— write path —</text>
+                  <path class="s a" d="M152,280 L646,280"/><text x="300" y="272" class="sm">⑥ UPDATE users SET … (commit first)</text>
+                  <path class="s a r" d="M152,316 L396,316"/><text x="170" y="308" class="sm r">⑦ DEL user:42</text>
+                  <text x="440" y="320" class="sm m">next read repopulates (step ①)</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 3.1 — <b>update DB, then delete the key</b>. Deleting is idempotent; "updating" the cache races</figcaption>
+              </figure>
+
+              <div class="sk-stickies">
+                <div class="sk-sticky">
+                  <h4>📈 Hit-ratio math</h4>
+                  <ul>
+                    <li>avg latency = h·0.5ms + (1 − h)·10ms</li>
+                    <li>h = 0.90 → 1.45 ms · h = 0.99 → 0.6 ms</li>
+                    <li>Every extra "9" of hit-rate ≈ halves DB load</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky blue">
+                  <h4>🔑 Key hygiene</h4>
+                  <ul>
+                    <li>Namespaced + versioned: `v2:user:42`</li>
+                    <li>Bump the version to invalidate a whole schema</li>
+                    <li>Keep values small (&lt; 100 KB) — big values block Redis' single thread</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky green">
+                  <h4>🧊 What NOT to cache</h4>
+                  <ul>
+                    <li>Balances / inventory used for a decision</li>
+                    <li>Data with a 1:1 read:write ratio</li>
+                    <li>Anything you can't afford to be stale</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             <!-- Remember Box -->
             <div class="remember-box">
               <div class="remember-header">⭐ Dual-Write Problem: Invalidate vs Update</div>
@@ -785,7 +1008,7 @@
             <div class="page-footer">
               <span>System Design Master Series</span>
               <span>@amitmahata | Quality Insights, Better Careers!</span>
-              <span>Page 3 of 8</span>
+              <span>Page 3 of 10</span>
             </div>
 
           </div>
@@ -808,7 +1031,7 @@
           <div class="page-content">
             <div class="page-header">
               <span class="watermark-tag">✍️ @amitmahata</span>
-              <span class="page-num">4/8</span>
+              <span class="page-num">4/10</span>
             </div>
 
             <h1 class="page-title">
@@ -925,6 +1148,70 @@
               </div>
             </div>
 
+            <!-- Section 4: Sharding + CAP sketches, isolation levels -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">④</div>
+                <h2 class="section-title">Sketches: Shards with Replicas &amp; the CAP Triangle</h2>
+              </div>
+              <div class="sk-grid-2">
+                <figure class="sk-figure tape-green">
+                  <svg class="sk-svg" viewBox="0 0 400 300" role="img" aria-label="Router hashing user id into four shards, each with a leader and two replicas">
+                    <rect class="s fy" x="110" y="12" width="180" height="40" rx="10"/><text x="122" y="38" class="sm">hash(user_id) % 4</text>
+                    <path class="s a m" d="M150,54 L58,98 M180,54 L152,98 M220,54 L248,98 M250,54 L342,98"/>
+                    <g>
+                      <rect class="s b fb" x="20" y="100" width="76" height="40" rx="8"/><text x="30" y="126" class="sm b">S0 lead</text>
+                      <rect class="s b fb" x="116" y="100" width="76" height="40" rx="8"/><text x="126" y="126" class="sm b">S1 lead</text>
+                      <rect class="s b fb" x="212" y="100" width="76" height="40" rx="8"/><text x="222" y="126" class="sm b">S2 lead</text>
+                      <rect class="s b fb" x="308" y="100" width="76" height="40" rx="8"/><text x="318" y="126" class="sm b">S3 lead</text>
+                    </g>
+                    <path class="s m thin dash" d="M44,142 L44,180 M72,142 L72,220 M140,142 L140,180 M168,142 L168,220 M236,142 L236,180 M264,142 L264,220 M332,142 L332,180 M360,142 L360,220"/>
+                    <g>
+                      <rect class="s fw" x="26" y="180" width="36" height="24" rx="5"/><rect class="s fw" x="54" y="220" width="36" height="24" rx="5"/>
+                      <rect class="s fw" x="122" y="180" width="36" height="24" rx="5"/><rect class="s fw" x="150" y="220" width="36" height="24" rx="5"/>
+                      <rect class="s fw" x="218" y="180" width="36" height="24" rx="5"/><rect class="s fw" x="246" y="220" width="36" height="24" rx="5"/>
+                      <rect class="s fw" x="314" y="180" width="36" height="24" rx="5"/><rect class="s fw" x="342" y="220" width="36" height="24" rx="5"/>
+                    </g>
+                    <text x="20" y="276" class="sm m">writes → leader · reads → replicas (lag!)</text>
+                    <text x="20" y="296" class="xs r">cross-shard JOINs &amp; transactions get expensive</text>
+                  </svg>
+                  <figcaption class="sk-caption">Fig 4.1 — sharding scales <b>writes</b>, replication scales <b>reads</b> &amp; availability</figcaption>
+                </figure>
+
+                <figure class="sk-figure tape-pink">
+                  <svg class="sk-svg" viewBox="0 0 400 300" role="img" aria-label="CAP triangle with consistency, availability and partition tolerance and example databases on each edge">
+                    <path class="s thick" d="M200,40 L50,240 L350,240 Z"/>
+                    <circle class="s b fb" cx="200" cy="40" r="20"/><text x="193" y="47" class="b">C</text>
+                    <circle class="s g fg" cx="50" cy="240" r="20"/><text x="43" y="247" class="g">A</text>
+                    <circle class="s r fp" cx="350" cy="240" r="20"/><text x="344" y="247" class="r">P</text>
+                    <text x="282" y="120" class="sm b">CP</text>
+                    <text x="282" y="140" class="xs">etcd · ZooKeeper</text>
+                    <text x="282" y="156" class="xs">HBase · Spanner</text>
+                    <text x="160" y="270" class="sm g">AP</text>
+                    <text x="190" y="270" class="xs">Cassandra · DynamoDB</text>
+                    <text x="20" y="120" class="sm m">CA = single node</text>
+                    <text x="20" y="138" class="xs m">(no network, no P)</text>
+                    <text x="140" y="180" class="sm r">partitions WILL</text>
+                    <text x="148" y="200" class="sm r">happen → choose</text>
+                    <text x="156" y="220" class="sm r">C or A</text>
+                  </svg>
+                  <figcaption class="sk-caption">Fig 4.2 — and when there's no partition, PACELC asks: <b>latency or consistency?</b></figcaption>
+                </figure>
+              </div>
+
+              <div class="sk-trace-wrap">
+                <table class="sk-trace">
+                  <thead><tr><th>Isolation level</th><th>Dirty read</th><th>Non-repeatable read</th><th>Phantom</th><th>Who uses it by default</th></tr></thead>
+                  <tbody>
+                    <tr><td>Read Uncommitted</td><td class="miss">possible</td><td class="miss">possible</td><td class="miss">possible</td><td>almost nobody</td></tr>
+                    <tr><td>Read Committed</td><td class="hit">prevented</td><td class="miss">possible</td><td class="miss">possible</td><td>PostgreSQL, SQL Server, Oracle</td></tr>
+                    <tr><td>Repeatable Read</td><td class="hit">prevented</td><td class="hit">prevented</td><td class="miss">possible*</td><td>MySQL InnoDB (*gap locks block most)</td></tr>
+                    <tr><td>Serializable</td><td class="hit">prevented</td><td class="hit">prevented</td><td class="hit">prevented</td><td>money movement, inventory decrements</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
             <!-- Remember Box -->
             <div class="remember-box">
               <div class="remember-header">⭐ Storage Engine Tradeoff: B-Tree vs LSM-Tree</div>
@@ -946,7 +1233,7 @@
             <div class="page-footer">
               <span>System Design Master Series</span>
               <span>@amitmahata | Quality Insights, Better Careers!</span>
-              <span>Page 4 of 8</span>
+              <span>Page 4 of 10</span>
             </div>
 
           </div>
@@ -969,7 +1256,7 @@
           <div class="page-content">
             <div class="page-header">
               <span class="watermark-tag">✍️ @amitmahata</span>
-              <span class="page-num">5/8</span>
+              <span class="page-num">5/10</span>
             </div>
 
             <h1 class="page-title">
@@ -1071,6 +1358,75 @@
               </div>
             </div>
 
+            <!-- Section 4: Kafka partitions & consumer groups -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num yellow">④</div>
+                <h2 class="section-title">Picture Kafka: Partitions, Offsets &amp; Consumer Groups</h2>
+              </div>
+              <figure class="sk-figure tape-blue">
+                <svg class="sk-svg" viewBox="0 0 800 330" role="img" aria-label="Producers writing keyed messages into three partitions of a topic, read by two consumer groups">
+                  <rect class="s fb" x="16" y="70" width="110" height="44" rx="10"/><text x="30" y="98" class="sm">Order API</text>
+                  <rect class="s fb" x="16" y="170" width="110" height="44" rx="10"/><text x="30" y="198" class="sm">Payment svc</text>
+                  <text x="10" y="250" class="xs m">key = order_id</text>
+                  <text x="10" y="266" class="xs m">hash(key) % 3</text>
+                  <path class="s a m" d="M128,92 L196,76 M128,92 L196,146 M128,192 L196,216"/>
+
+                  <text x="200" y="34" class="sm">topic: <tspan class="tp">orders</tspan></text>
+                  <text x="200" y="80" class="xs b">P0</text><text x="200" y="150" class="xs b">P1</text><text x="200" y="220" class="xs b">P2</text>
+                  <g>
+                    <rect class="s fw" x="224" y="58" width="40" height="34"/><rect class="s fw" x="264" y="58" width="40" height="34"/><rect class="s fw" x="304" y="58" width="40" height="34"/><rect class="s fw" x="344" y="58" width="40" height="34"/><rect class="s fy" x="384" y="58" width="40" height="34"/>
+                    <rect class="s fw" x="224" y="128" width="40" height="34"/><rect class="s fw" x="264" y="128" width="40" height="34"/><rect class="s fy" x="304" y="128" width="40" height="34"/>
+                    <rect class="s fw" x="224" y="198" width="40" height="34"/><rect class="s fw" x="264" y="198" width="40" height="34"/><rect class="s fw" x="304" y="198" width="40" height="34"/><rect class="s fw" x="344" y="198" width="40" height="34"/>
+                  </g>
+                  <text x="238" y="81" class="xs">0</text><text x="278" y="81" class="xs">1</text><text x="318" y="81" class="xs">2</text><text x="358" y="81" class="xs">3</text><text x="398" y="81" class="xs">4</text>
+                  <text x="238" y="151" class="xs">0</text><text x="278" y="151" class="xs">1</text><text x="318" y="151" class="xs">2</text>
+                  <text x="238" y="221" class="xs">0</text><text x="278" y="221" class="xs">1</text><text x="318" y="221" class="xs">2</text><text x="358" y="221" class="xs">3</text>
+                  <text x="224" y="262" class="xs m">append-only log · offsets ↑ · retained 7 days</text>
+                  <path class="s a r" d="M330,40 L380,56"/><text x="300" y="34" class="xs r">newest</text>
+
+                  <rect class="s g dash" x="500" y="40" width="140" height="210" rx="14"/>
+                  <text x="508" y="34" class="xs g">group: fulfillment</text>
+                  <rect class="s g fg" x="520" y="58" width="100" height="36" rx="8"/><text x="538" y="82" class="sm">consumer 1</text>
+                  <rect class="s g fg" x="520" y="128" width="100" height="36" rx="8"/><text x="538" y="152" class="sm">consumer 2</text>
+                  <rect class="s g fg" x="520" y="198" width="100" height="36" rx="8"/><text x="538" y="222" class="sm">consumer 3</text>
+                  <path class="s a g" d="M428,75 L516,76 M348,145 L516,146 M388,215 L516,216"/>
+
+                  <rect class="s p fv" x="670" y="120" width="116" height="54" rx="10"/>
+                  <text x="680" y="142" class="xs p">group: analytics</text>
+                  <text x="684" y="164" class="sm">1 consumer</text>
+                  <path class="s a p dash" d="M430,92 C560,110 600,110 666,140"/>
+
+                  <text x="20" y="300" class="sm">✓ order within a partition only · ✓ each group reads independently · ✗ consumers &gt; partitions ⇒ idle consumers</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 5.1 — partitions are the unit of <b>parallelism</b> and of <b>ordering</b>; pick the key that must stay ordered</figcaption>
+              </figure>
+
+              <div class="sk-stickies">
+                <div class="sk-sticky">
+                  <h4>📏 Sizing partitions</h4>
+                  <ul>
+                    <li>#partitions ≥ peak MB/s ÷ per-consumer MB/s</li>
+                    <li>Over-provision a bit — increasing later reshuffles key → partition</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky pink">
+                  <h4>🔥 Hot partition</h4>
+                  <ul>
+                    <li>One celebrity key = one overloaded partition</li>
+                    <li>Fix: salt the key (`key#0..N`) when ordering isn't needed</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky blue">
+                  <h4>📉 Watch consumer lag</h4>
+                  <ul>
+                    <li>lag = latest offset − committed offset</li>
+                    <li>Rising lag = scale consumers or speed up handlers</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             <!-- Remember Box -->
             <div class="remember-box">
               <div class="remember-header">⭐ Kafka Partitioning Law</div>
@@ -1091,7 +1447,7 @@
             <div class="page-footer">
               <span>System Design Master Series</span>
               <span>@amitmahata | Quality Insights, Better Careers!</span>
-              <span>Page 5 of 8</span>
+              <span>Page 5 of 10</span>
             </div>
 
           </div>
@@ -1114,7 +1470,7 @@
           <div class="page-content">
             <div class="page-header">
               <span class="watermark-tag">✍️ @amitmahata</span>
-              <span class="page-num">6/8</span>
+              <span class="page-num">6/10</span>
             </div>
 
             <h1 class="page-title">
@@ -1218,6 +1574,63 @@
               </div>
             </div>
 
+            <!-- Section 4: Upload & streaming pipeline sketch -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">④</div>
+                <h2 class="section-title">The Upload → Transcode → Stream Pipeline (sketch)</h2>
+              </div>
+              <figure class="sk-figure tape-green">
+                <svg class="sk-svg" viewBox="0 0 800 330" role="img" aria-label="Video pipeline: client gets presigned URL, uploads to object storage, queue triggers transcoders, outputs served via CDN">
+                  <rect class="s fb" x="20" y="40" width="110" height="50" rx="12"/><text x="40" y="72">📱 Client</text>
+                  <rect class="s fy" x="240" y="16" width="130" height="46" rx="12"/><text x="258" y="46" class="sm">Upload API</text>
+                  <path class="s a" d="M132,54 L236,36"/><text x="140" y="30" class="xs">① ask for URL</text>
+                  <path class="s a g dash" d="M238,54 L134,72"/><text x="150" y="88" class="xs g">② presigned URL</text>
+
+                  <rect class="s fg" x="240" y="130" width="140" height="56" rx="12"/><text x="256" y="156" class="sm">🪣 S3 (raw)</text><text x="256" y="176" class="xs m">multipart, resumable</text>
+                  <path class="s a b thick" d="M80,92 C80,150 160,160 236,158"/><text x="70" y="140" class="xs b">③ upload direct</text>
+                  <text x="70" y="156" class="xs b">(bypass app tier)</text>
+
+                  <rect class="s fv" x="440" y="130" width="110" height="56" rx="12"/><text x="456" y="162" class="sm">📬 Queue</text>
+                  <path class="s a" d="M382,158 L436,158"/><text x="384" y="148" class="xs">④ event</text>
+
+                  <rect class="s fp" x="600" y="100" width="180" height="116" rx="12"/>
+                  <text x="612" y="124" class="sm">⚙️ Transcoders (DAG)</text>
+                  <text x="618" y="148" class="xs">• 1080p / 720p / 480p</text>
+                  <text x="618" y="166" class="xs">• 4-sec HLS/DASH chunks</text>
+                  <text x="618" y="184" class="xs">• thumbnails · DRM</text>
+                  <text x="618" y="202" class="xs">• safety scan</text>
+                  <path class="s a" d="M552,158 L596,158"/>
+
+                  <rect class="s fg" x="600" y="250" width="180" height="50" rx="12"/><text x="612" y="281" class="sm">🪣 S3 (renditions)</text>
+                  <path class="s a" d="M690,218 L690,246"/><text x="696" y="238" class="xs">⑤</text>
+                  <rect class="s fy" x="340" y="250" width="160" height="50" rx="12"/><text x="356" y="281" class="sm">🌍 CDN edge</text>
+                  <path class="s a" d="M596,275 L504,275"/><text x="530" y="266" class="xs">⑥ origin</text>
+                  <rect class="s fb" x="60" y="250" width="160" height="50" rx="12"/><text x="76" y="281" class="sm">▶️ Viewers</text>
+                  <path class="s a b" d="M336,275 L224,275"/><text x="236" y="266" class="xs b">⑦ adaptive bitrate</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 6.1 — app servers only hand out <b>signed URLs</b>; bytes flow client ⇄ storage ⇄ CDN</figcaption>
+              </figure>
+
+              <div class="sk-stickies">
+                <div class="sk-sticky">
+                  <h4>🧾 Cache-Control cheat</h4>
+                  <ul>
+                    <li>Video chunks / hashed assets: `public, max-age=31536000, immutable`</li>
+                    <li>Manifests (.m3u8): short TTL, e.g. `max-age=10`</li>
+                    <li>Private content: signed URL + `private`</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky green">
+                  <h4>♻️ Resumable uploads</h4>
+                  <ul>
+                    <li>Split into 5–100 MB parts, upload in parallel</li>
+                    <li>Retry only the failed part; complete with ETag list</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             <!-- Remember Box -->
             <div class="remember-box">
               <div class="remember-header">⭐ Never Stream Large Files Through App Servers!</div>
@@ -1238,7 +1651,7 @@
             <div class="page-footer">
               <span>System Design Master Series</span>
               <span>@amitmahata | Quality Insights, Better Careers!</span>
-              <span>Page 6 of 8</span>
+              <span>Page 6 of 10</span>
             </div>
 
           </div>
@@ -1261,7 +1674,7 @@
           <div class="page-content">
             <div class="page-header">
               <span class="watermark-tag">✍️ @amitmahata</span>
-              <span class="page-num">7/8</span>
+              <span class="page-num">7/10</span>
             </div>
 
             <h1 class="page-title">
@@ -1373,6 +1786,55 @@
               </div>
             </div>
 
+            <!-- Section 5: Raft & fencing tokens sketches -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">⑤</div>
+                <h2 class="section-title">Sketches: a Raft Quorum &amp; Why Locks Need Fencing Tokens</h2>
+              </div>
+              <div class="sk-grid-2">
+                <figure class="sk-figure tape-blue">
+                  <svg class="sk-svg" viewBox="0 0 400 300" role="img" aria-label="Raft leader replicating a log entry to followers; committed after three of five acknowledge">
+                    <circle class="s y fy thick" cx="200" cy="64" r="30"/><text x="186" y="60" class="sm">👑 S1</text><text x="178" y="80" class="xs">term 7</text>
+                    <circle class="s fw" cx="70" cy="150" r="26"/><text x="58" y="157" class="sm">S2</text>
+                    <circle class="s fw" cx="330" cy="150" r="26"/><text x="318" y="157" class="sm">S3</text>
+                    <circle class="s fw" cx="120" cy="250" r="26"/><text x="108" y="257" class="sm">S4</text>
+                    <circle class="s r fp" cx="280" cy="250" r="26"/><text x="268" y="257" class="sm r">S5</text>
+                    <path class="s r thick" d="M262,232 L298,268 M298,232 L262,268"/>
+                    <path class="s a b" d="M172,78 L98,134"/><path class="s a b" d="M228,78 L302,134"/>
+                    <path class="s a b" d="M188,94 L130,224"/><path class="s a m dash" d="M212,94 L270,224"/>
+                    <text x="96" y="104" class="xs g">ack ✓</text><text x="270" y="104" class="xs g">ack ✓</text>
+                    <text x="104" y="196" class="xs m">slow…</text><text x="250" y="196" class="xs r">down</text>
+                    <text x="20" y="30" class="sm">AppendEntries(x = 5)</text>
+                    <text x="196" y="296" class="sm g">S1 + S2 + S3 = 3/5 ⇒ commit</text>
+                  </svg>
+                  <figcaption class="sk-caption">Fig 7.1 — majority = ⌊n/2⌋ + 1 → 5 nodes survive <b>2 failures</b></figcaption>
+                </figure>
+
+                <figure class="sk-figure tape-pink">
+                  <svg class="sk-svg" viewBox="0 0 400 300" role="img" aria-label="Fencing tokens: a paused client with an old token is rejected by storage">
+                    <text x="26" y="24" class="sm b">Client 1</text><text x="122" y="24" class="sm p">Client 2</text>
+                    <text x="222" y="24" class="sm">Lock</text><text x="318" y="24" class="sm g">Storage</text>
+                    <path class="s m thin dash" d="M56,34 V290 M150,34 V290 M240,34 V290 M340,34 V290"/>
+                    <path class="s a b dash" d="M238,60 L60,60"/><text x="90" y="54" class="xs b">lease, token 33</text>
+                    <path class="s r" d="M50,80 L62,92 L50,104 L62,116 L50,128 L62,140"/>
+                    <text x="66" y="118" class="xs r">GC pause 💤</text>
+                    <text x="160" y="104" class="xs m">lease expires…</text>
+                    <path class="s a p dash" d="M238,150 L154,150"/><text x="164" y="144" class="xs p">token 34</text>
+                    <path class="s a p" d="M152,186 L336,186"/><text x="170" y="180" class="xs p">write(…, 34) ✓</text>
+                    <path class="s a b" d="M58,236 L336,236"/><text x="80" y="230" class="xs b">write(…, 33)</text>
+                    <path class="s r thick" d="M318,226 L338,246 M338,226 L318,246"/>
+                    <text x="200" y="270" class="xs r">33 &lt; 34 → rejected</text>
+                  </svg>
+                  <figcaption class="sk-caption">Fig 7.2 — the <b>storage</b> enforces safety; a lease alone can't</figcaption>
+                </figure>
+              </div>
+
+              <div class="sk-mnemonic">
+                🧠 <strong>Quorum rule:</strong> with N replicas, write quorum W and read quorum R, you read your latest write when <strong>W + R &gt; N</strong> (e.g. N = 3, W = 2, R = 2). Cassandra/Dynamo let you tune it per query.
+              </div>
+            </div>
+
             <!-- Remember Box -->
             <div class="remember-box">
               <div class="remember-header">⭐ NTP Clock Drift is Real</div>
@@ -1393,7 +1855,7 @@
             <div class="page-footer">
               <span>System Design Master Series</span>
               <span>@amitmahata | Quality Insights, Better Careers!</span>
-              <span>Page 7 of 8</span>
+              <span>Page 7 of 10</span>
             </div>
 
           </div>
@@ -1416,7 +1878,7 @@
           <div class="page-content">
             <div class="page-header">
               <span class="watermark-tag">✍️ @amitmahata</span>
-              <span class="page-num">8/8</span>
+              <span class="page-num">8/10</span>
             </div>
 
             <h1 class="page-title">
@@ -1508,6 +1970,46 @@
               </div>
             </div>
 
+            <!-- Section 3: Hybrid fanout sketch -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">③</div>
+                <h2 class="section-title">Hybrid News-Feed Fanout (sketch)</h2>
+              </div>
+              <figure class="sk-figure">
+                <svg class="sk-svg" viewBox="0 0 800 320" role="img" aria-label="Normal users fan out on write to follower timelines; celebrity posts are merged at read time">
+                  <text x="20" y="30" class="sm b">write path</text>
+                  <rect class="s fb" x="20" y="44" width="140" height="46" rx="12"/><text x="32" y="73" class="sm">🙂 normal user</text>
+                  <rect class="s fy" x="220" y="44" width="150" height="46" rx="12"/><text x="232" y="73" class="sm">Fanout workers</text>
+                  <path class="s a" d="M162,67 L216,67"/><text x="166" y="58" class="xs">post</text>
+                  <rect class="s fg" x="440" y="20" width="160" height="28" rx="6"/><text x="450" y="40" class="xs">timeline:alice [p9, p7, …]</text>
+                  <rect class="s fg" x="440" y="54" width="160" height="28" rx="6"/><text x="450" y="74" class="xs">timeline:bob [p9, p5, …]</text>
+                  <rect class="s fg" x="440" y="88" width="160" height="28" rx="6"/><text x="450" y="108" class="xs">timeline:carol [p9, …]</text>
+                  <path class="s a g" d="M372,60 L436,34 M372,67 L436,68 M372,74 L436,102"/>
+                  <text x="620" y="58" class="sm g">push (fanout-on-write)</text>
+                  <text x="620" y="80" class="xs m">Redis lists, cap ~800 ids</text>
+
+                  <path class="s m thin" d="M20,138 H780"/>
+
+                  <text x="20" y="168" class="sm r">celebrity (&gt; 100K followers)</text>
+                  <rect class="s fp" x="20" y="180" width="140" height="46" rx="12"/><text x="32" y="209" class="sm">⭐ celebrity</text>
+                  <rect class="s fw" x="220" y="180" width="150" height="46" rx="12"/><text x="232" y="209" class="sm">Posts DB only</text>
+                  <path class="s a r" d="M162,203 L216,203"/>
+                  <text x="176" y="250" class="xs r">no fanout — 50M writes avoided</text>
+
+                  <rect class="s p fv" x="440" y="200" width="170" height="60" rx="12"/>
+                  <text x="452" y="224" class="sm">Timeline service</text>
+                  <text x="452" y="246" class="xs">merge + rank at read</text>
+                  <path class="s a p dash" d="M372,203 L436,222"/>
+                  <path class="s a g dash" d="M520,118 L520,196"/>
+                  <rect class="s fb" x="660" y="206" width="120" height="46" rx="12"/><text x="672" y="235" class="sm">📱 reader</text>
+                  <path class="s a b" d="M612,230 L656,230"/>
+                  <text x="440" y="296" class="sm">read = precomputed timeline ∪ recent posts of followed celebrities</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 8.1 — push for the many, pull for the few: bounded write amplification <b>and</b> fast reads</figcaption>
+              </figure>
+            </div>
+
             <!-- Remember Box -->
             <div class="remember-box">
               <div class="remember-header">⭐ The Ultimate Interview Checklist</div>
@@ -1531,7 +2033,382 @@
             <div class="page-footer">
               <span>System Design Master Series</span>
               <span>@amitmahata | Quality Insights, Better Careers!</span>
-              <span>Page 8 of 8</span>
+              <span>Page 8 of 10</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 9
+           ========================================================= -->
+      <article class="notebook-page" id="page-9">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">9/10</span>
+            </div>
+
+            <h1 class="page-title">
+              Case Study: <span class="highlight-blue">Design a URL Shortener</span> (TinyURL)
+              <span class="title-underline"></span>
+            </h1>
+
+            <div class="sk-scribble blue">
+              <span class="sk-scribble-icon">✎</span>
+              <span>A full 45-minute answer, written the way you'd talk through it. Follow the numbered rail.</span>
+            </div>
+
+            <!-- Section 1: Requirements & estimates -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">①</div>
+                <h2 class="section-title">Scope It (5 min)</h2>
+              </div>
+              <div class="two-col">
+                <div class="hand-box glow-green">
+                  <div class="box-title">✅ Functional</div>
+                  <ul class="handwritten-list">
+                    <li>Shorten a long URL → 7-char code</li>
+                    <li>Redirect `GET /{code}` → long URL</li>
+                    <li>Optional custom alias &amp; expiry</li>
+                    <li>Click analytics (async, can lag)</li>
+                  </ul>
+                </div>
+                <div class="hand-box glow-purple">
+                  <div class="box-title">📏 Non-functional &amp; napkin math</div>
+                  <ul class="handwritten-list">
+                    <li><span class="highlight-blue">100M new URLs / month</span> ≈ 40 writes/s</li>
+                    <li>Read:write = 100:1 ⇒ ~4K redirects/s, peak ~20K</li>
+                    <li>5 yrs × 1.2B/yr × 500 B ≈ <span class="highlight-red">3 TB</span></li>
+                    <li>62⁷ ≈ <span class="highlight-green">3.5 trillion</span> codes — plenty</li>
+                    <li>p99 redirect &lt; 50 ms · 99.99% available</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: API & data model -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num blue">②</div>
+                <h2 class="section-title">API &amp; Data Model (5 min)</h2>
+              </div>
+              <div class="two-col">
+                <div class="hand-box glow-blue">
+                  <div class="box-title">🔌 API</div>
+                  <div class="compare-row"><span>`POST /api/v1/urls`</span><span>`{ longUrl, alias?, expiresAt? }` → 201 `{ shortUrl }`</span></div>
+                  <div class="compare-row"><span>`GET /{code}`</span><span>302 + `Location:` header (404 / 410 if expired)</span></div>
+                  <div class="compare-row"><span>`GET /api/v1/urls/{code}/stats`</span><span>clicks by day / country</span></div>
+                </div>
+                <div class="hand-box glow-amber">
+                  <div class="box-title">🗄️ Table `urls`</div>
+                  <div class="compare-row"><span><strong>code</strong> (PK)</span><span>char(7)</span></div>
+                  <div class="compare-row"><span>long_url</span><span>text (≤ 2 KB)</span></div>
+                  <div class="compare-row"><span>owner_id · created_at · expires_at</span><span>for quotas &amp; TTL cleanup</span></div>
+                  <div style="font-family:'Patrick Hand'; font-size:14px; color:#475569; margin-top:6px;">Pure key lookups, no joins ⇒ a key-value store (DynamoDB / Cassandra) shards trivially by `code`.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Architecture sketch -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">③</div>
+                <h2 class="section-title">High-Level Architecture (10 min)</h2>
+              </div>
+              <figure class="sk-figure tape-blue">
+                <svg class="sk-svg" viewBox="0 0 800 340" role="img" aria-label="URL shortener architecture with write path through key generation service and read path through Redis cache">
+                  <rect class="s fb" x="16" y="140" width="100" height="50" rx="12"/><text x="30" y="172">👤 Client</text>
+                  <rect class="s fy" x="160" y="140" width="110" height="50" rx="12"/><text x="172" y="164" class="sm">LB + API GW</text><text x="172" y="182" class="xs m">rate limit</text>
+                  <path class="s a" d="M118,165 L156,165"/>
+
+                  <text x="300" y="34" class="sm b">write path (40/s)</text>
+                  <rect class="s b fb" x="300" y="46" width="130" height="50" rx="12"/><text x="314" y="77" class="sm">Shorten svc</text>
+                  <path class="s a b" d="M272,150 C290,110 290,80 296,74"/>
+                  <rect class="s p fv" x="480" y="20" width="150" height="56" rx="12"/><text x="492" y="44" class="sm">Key Gen Service</text><text x="492" y="64" class="xs">hands out ranges of 1K ids</text>
+                  <path class="s a p" d="M432,62 L476,52"/>
+                  <rect class="s fw" x="680" y="20" width="100" height="56" rx="12"/><text x="692" y="44" class="sm">ZooKeeper</text><text x="692" y="64" class="xs m">range counter</text>
+                  <path class="s m thin dash" d="M632,48 L676,48"/>
+
+                  <text x="300" y="232" class="sm g">read path (4K–20K/s)</text>
+                  <rect class="s g fg" x="300" y="244" width="130" height="50" rx="12"/><text x="314" y="275" class="sm">Redirect svc</text>
+                  <path class="s a g" d="M272,180 C290,220 290,250 296,262"/>
+                  <rect class="s r fp" x="480" y="244" width="120" height="50" rx="12"/><text x="494" y="274" class="sm">⚡ Redis</text>
+                  <path class="s a g" d="M432,269 L476,269"/>
+                  <text x="490" y="312" class="xs r">hit ≈ 95% (hot links)</text>
+
+                  <rect class="s fg" x="640" y="140" width="140" height="56" rx="12"/><text x="654" y="166" class="sm">🗄️ urls KV</text><text x="654" y="186" class="xs m">sharded by code</text>
+                  <path class="s a b" d="M432,80 C560,110 600,130 636,158"/>
+                  <path class="s a g dash" d="M602,262 C630,240 660,220 690,200"/><text x="640" y="248" class="xs g">miss</text>
+
+                  <rect class="s fy" x="160" y="290" width="120" height="40" rx="10"/><text x="172" y="316" class="sm">Kafka clicks</text>
+                  <path class="s a m dash" d="M326,296 L284,306"/>
+                  <text x="20" y="316" class="xs m">→ ClickHouse stats</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 9.1 — reads and writes are scaled <b>independently</b>; analytics never sits on the redirect hot path</figcaption>
+              </figure>
+            </div>
+
+            <!-- Section 4: Deep dives -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num red">④</div>
+                <h2 class="section-title">Deep Dives the Interviewer Will Push On (15 min)</h2>
+              </div>
+              <div class="sk-trace-wrap">
+                <table class="sk-trace">
+                  <thead><tr><th>Key generation option</th><th>How</th><th>👍</th><th>👎</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Hash + truncate</strong></td><td>first 7 chars of base62(MD5(url))</td><td>stateless, same URL → same code</td><td class="miss">collisions → retry loop &amp; extra reads</td></tr>
+                    <tr><td><strong>Global counter + base62</strong></td><td>DB sequence → base62</td><td>no collisions, short</td><td class="miss">single hot counter; codes are guessable</td></tr>
+                    <tr><td><strong>KGS ranges</strong> ✅</td><td>each server leases 1K ids from ZooKeeper, encodes locally</td><td class="hit">no coordination per request, no collisions</td><td>a crash wastes ≤ 1K ids (fine)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="sk-stickies">
+                <div class="sk-sticky">
+                  <h4>↪️ 301 or 302?</h4>
+                  <ul>
+                    <li><strong>301</strong> permanent: browser caches it → fewer hits, but you lose analytics</li>
+                    <li><strong>302</strong> temporary: every click reaches you → accurate stats ✅</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky pink">
+                  <h4>🛡️ Abuse &amp; safety</h4>
+                  <ul>
+                    <li>Rate-limit creates per user / IP</li>
+                    <li>Scan targets against malware lists (async)</li>
+                    <li>Shuffle the id → code mapping so codes aren't sequential</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky blue">
+                  <h4>⏳ Expiry</h4>
+                  <ul>
+                    <li>Check `expires_at` on read (lazy)</li>
+                    <li>Nightly sweeper deletes rows (or native TTL in DynamoDB/Cassandra)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="remember-box">
+              <div class="remember-header">⭐ Trade-offs to Say Out Loud</div>
+              <div class="remember-content">
+                ✓ Cache-aside with long TTL is safe here because mappings are <strong>immutable</strong>.<br/>
+                ✓ Eventual consistency is fine for analytics, <strong>not</strong> for code uniqueness — that's why KGS owns id ranges.<br/>
+                ✓ Custom aliases go through a conditional write (`PutItem if not exists`) to avoid races.
+              </div>
+            </div>
+
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff-Level Follow-up</div>
+              <div class="interview-body">
+                <strong>Q: A link goes viral — 1M redirects/s for one code. What breaks?</strong><br/>
+                <strong>A:</strong> One Redis shard becomes hot. Add an <strong>in-process LRU cache</strong> (seconds-long TTL) on every redirect pod, and serve the 302 from the <strong>CDN edge</strong> with a short `max-age`, so the origin sees a trickle instead of the flood.
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 9 of 10</span>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================================================
+           PAGE 10
+           ========================================================= -->
+      <article class="notebook-page" id="page-10">
+        <div class="notebook-inner">
+          <div class="spiral-holes">
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
+          </div>
+
+          <div class="page-content">
+            <div class="page-header">
+              <span class="watermark-tag">✍️ @amitmahata</span>
+              <span class="page-num">10/10</span>
+            </div>
+
+            <h1 class="page-title">
+              Case Study: <span class="highlight-purple">Design a Chat System</span> (WhatsApp / Slack)
+              <span class="title-underline"></span>
+            </h1>
+
+            <!-- Section 1: Requirements & estimates -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num green">①</div>
+                <h2 class="section-title">Scope It</h2>
+              </div>
+              <div class="two-col">
+                <div class="hand-box glow-green">
+                  <div class="box-title">✅ Functional</div>
+                  <ul class="handwritten-list">
+                    <li>1:1 and group chats (≤ 500 members)</li>
+                    <li>Sent ✓ · delivered ✓✓ · read receipts</li>
+                    <li>Online / last-seen presence</li>
+                    <li>Push notification when offline</li>
+                    <li>Multi-device history sync</li>
+                  </ul>
+                </div>
+                <div class="hand-box glow-purple">
+                  <div class="box-title">📏 Napkin math</div>
+                  <ul class="handwritten-list">
+                    <li>500M DAU × 40 msgs = <span class="highlight-blue">20B msgs/day</span></li>
+                    <li>÷ 10⁵ s ≈ <span class="highlight-red">200K msgs/s</span> avg</li>
+                    <li>20B × 100 B ≈ <span class="highlight-green">2 TB/day</span> of text</li>
+                    <li>~50M concurrent sockets ÷ ~500K per gateway ≈ 100 gateways</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Architecture -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num blue">②</div>
+                <h2 class="section-title">Architecture (sketch)</h2>
+              </div>
+              <figure class="sk-figure tape-pink">
+                <svg class="sk-svg" viewBox="0 0 800 340" role="img" aria-label="Chat architecture with WebSocket gateways, session registry, chat service, Kafka, Cassandra and push notifications">
+                  <rect class="s fb" x="16" y="40" width="100" height="46" rx="12"/><text x="30" y="70">📱 Alice</text>
+                  <rect class="s fb" x="16" y="250" width="100" height="46" rx="12"/><text x="34" y="280">📱 Bob</text>
+                  <rect class="s fy" x="170" y="36" width="130" height="54" rx="12"/><text x="182" y="60" class="sm">WS Gateway 1</text><text x="182" y="80" class="xs m">stateful sockets</text>
+                  <rect class="s fy" x="170" y="246" width="130" height="54" rx="12"/><text x="182" y="270" class="sm">WS Gateway 7</text><text x="182" y="290" class="xs m">stateful sockets</text>
+                  <path class="s a b" d="M118,63 L166,63"/><path class="s a b" d="M166,273 L118,273"/>
+                  <text x="122" y="56" class="xs b">wss</text>
+
+                  <rect class="s p fv" x="360" y="140" width="130" height="56" rx="12"/><text x="374" y="166" class="sm">Chat service</text><text x="374" y="186" class="xs">validate · seq · persist</text>
+                  <path class="s a" d="M302,72 C340,90 360,120 384,138"/>
+
+                  <rect class="s fw" x="360" y="20" width="150" height="50" rx="12"/><text x="372" y="42" class="sm">Session registry</text><text x="372" y="60" class="xs m">Redis: user → gateway</text>
+                  <path class="s m thin dash" d="M430,70 L430,136"/>
+
+                  <rect class="s fg" x="560" y="140" width="110" height="56" rx="12"/><text x="574" y="166" class="sm">Kafka</text><text x="574" y="186" class="xs m">key = conv_id</text>
+                  <path class="s a" d="M492,168 L556,168"/>
+                  <rect class="s fg" x="560" y="20" width="220" height="56" rx="12"/><text x="574" y="44" class="sm">🗄️ Cassandra messages</text><text x="574" y="64" class="xs m">PK (conv_id, bucket) · CK msg_id ↓</text>
+                  <path class="s a g" d="M492,150 C520,110 540,80 558,62"/>
+
+                  <rect class="s fy" x="560" y="246" width="120" height="54" rx="12"/><text x="572" y="270" class="sm">Fanout worker</text><text x="572" y="290" class="xs m">who's online?</text>
+                  <path class="s a" d="M615,198 L615,242"/>
+                  <path class="s a b" d="M556,273 L304,273"/><text x="390" y="264" class="xs b">online → push frame</text>
+                  <rect class="s r fp" x="700" y="246" width="88" height="54" rx="12"/><text x="712" y="270" class="sm">APNs</text><text x="712" y="290" class="sm">FCM</text>
+                  <path class="s a r dash" d="M682,273 L696,273"/>
+                  <text x="690" y="236" class="xs r">offline</text>
+                  <text x="24" y="190" class="xs m">heartbeat every 30s</text>
+                  <text x="24" y="206" class="xs m">→ presence (TTL key)</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 10.1 — gateways only hold sockets; all logic lives in stateless services behind them</figcaption>
+              </figure>
+            </div>
+
+            <!-- Section 3: Message lifecycle -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num purple">③</div>
+                <h2 class="section-title">The Life of One Message (✓ → ✓✓ → blue ✓✓)</h2>
+              </div>
+              <figure class="sk-figure">
+                <svg class="sk-svg" viewBox="0 0 800 320" role="img" aria-label="Sequence of send, persist, acknowledge, deliver and read receipts between Alice, server, store and Bob">
+                  <rect class="s fb" x="60" y="12" width="110" height="38" rx="10"/><text x="84" y="38">Alice</text>
+                  <rect class="s fv" x="270" y="12" width="110" height="38" rx="10"/><text x="292" y="38">Server</text>
+                  <rect class="s fg" x="470" y="12" width="110" height="38" rx="10"/><text x="496" y="38">Store</text>
+                  <rect class="s fb" x="640" y="12" width="110" height="38" rx="10"/><text x="672" y="38">Bob</text>
+                  <path class="s m thin dash" d="M115,52 V310 M325,52 V310 M525,52 V310 M695,52 V310"/>
+
+                  <path class="s a" d="M117,80 L321,80"/><text x="130" y="72" class="sm">send(text, clientMsgId)</text>
+                  <path class="s a g" d="M327,108 L521,108"/><text x="346" y="100" class="sm g">persist, msg_id = snowflake</text>
+                  <path class="s a m dash" d="M321,136 L119,136"/><text x="150" y="130" class="sm">✓ sent (ack msg_id)</text>
+                  <path class="s a b" d="M327,168 L691,168"/><text x="450" y="160" class="sm b">deliver over socket</text>
+                  <path class="s a m dash" d="M691,200 L329,200"/><text x="470" y="194" class="sm">ack delivered</text>
+                  <path class="s a m dash" d="M321,228 L119,228"/><text x="150" y="222" class="sm">✓✓ delivered</text>
+                  <path class="s a b dash" d="M691,262 L329,262"/><text x="470" y="256" class="sm b">opened chat → read up to msg_id</text>
+                  <path class="s a b dash" d="M321,292 L119,292"/><text x="150" y="286" class="sm b">✓✓ read (blue)</text>
+                </svg>
+                <figcaption class="sk-caption">Fig 10.2 — <b>clientMsgId</b> makes retries idempotent; receipts carry "up to msg_id" so one ack covers many messages</figcaption>
+              </figure>
+            </div>
+
+            <!-- Section 4: Deep dives -->
+            <div class="section-block">
+              <div class="section-head">
+                <div class="sec-num red">④</div>
+                <h2 class="section-title">Deep Dives</h2>
+              </div>
+              <div class="sk-stickies">
+                <div class="sk-sticky">
+                  <h4>🔢 Ordering</h4>
+                  <ul>
+                    <li>Order per conversation, not globally</li>
+                    <li>Kafka key = conv_id → one partition per chat</li>
+                    <li>Server assigns msg_id; clients sort by it, never by device clock</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky green">
+                  <h4>👥 Group fanout</h4>
+                  <ul>
+                    <li>Small groups: write once, fan out to each member's inbox/socket</li>
+                    <li>Huge channels (Slack): members pull since their last-read cursor</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky blue">
+                  <h4>📲 Multi-device sync</h4>
+                  <ul>
+                    <li>Each device keeps `lastSeenMsgId` per chat</li>
+                    <li>On reconnect: fetch `msg_id &gt; cursor` from Cassandra</li>
+                  </ul>
+                </div>
+                <div class="sk-sticky pink">
+                  <h4>🔌 Gateway dies?</h4>
+                  <ul>
+                    <li>Clients reconnect with jittered backoff to any gateway</li>
+                    <li>Registry entry has a TTL, so stale routes expire</li>
+                    <li>Nothing lost: messages were persisted before ✓</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="remember-box">
+              <div class="remember-header">⭐ Why Cassandra for Messages?</div>
+              <div class="remember-content">
+                ✓ Write-heavy (200K/s) append-only workload → LSM-tree storage shines.<br/>
+                ✓ Access pattern is always "latest N messages of conversation X" → partition by `(conv_id, month_bucket)`, cluster by `msg_id DESC`.<br/>
+                ✓ The bucket keeps partitions from growing forever in long-lived chats.
+              </div>
+            </div>
+
+            <div class="interview-tip">
+              <div class="interview-header">💡 Staff-Level Follow-up</div>
+              <div class="interview-body">
+                <strong>Q: How would you add end-to-end encryption?</strong><br/>
+                <strong>A:</strong> Clients exchange keys (Signal protocol: identity + pre-keys published to a key server); the server only relays ciphertext. Consequences: no server-side search, group messages are encrypted per member (or via sender keys), and push notifications carry only a "you have a message" hint.
+              </div>
+            </div>
+
+            <div class="page-footer">
+              <span>System Design Master Series</span>
+              <span>@amitmahata | Quality Insights, Better Careers!</span>
+              <span>Page 10 of 10</span>
             </div>
 
           </div>
@@ -1544,5 +2421,6 @@
 
   <script src="script.js"></script>
   <script src="../shared-search.js"></script>
+  <script src="../sketch-kit.js"></script>
 </body>
 </html>
