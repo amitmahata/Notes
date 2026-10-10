@@ -359,9 +359,10 @@
       --k8s-glow: rgba(16, 185, 129, 0.25);
       --docker-glow: rgba(245, 158, 11, 0.25);
       --dsa-glow: rgba(99, 102, 241, 0.35);
+      --iv-glow: rgba(251, 146, 60, 0.35);
     }
 
-    /* Asymmetric Bento Span Layout: Row 1 = AI (7) + DSA (5), Row 2 = SD (4) + K8s (4) + Docker (4) */
+    /* Asymmetric Bento Span Layout: Row 1 = AI (7) + DSA (5), Row 2 = SD (4) + K8s (4) + Docker (4), Row 3 = Interview Q&A (12) */
     .bento-ai {
       grid-column: span 7;
       border-color: rgba(244, 63, 94, 0.25);
@@ -379,6 +380,16 @@
     .bento-dsa:hover {
       border-color: rgba(129, 140, 248, 0.8);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 45px var(--dsa-glow);
+    }
+
+    .bento-interview {
+      grid-column: span 12;
+      border-color: rgba(251, 146, 60, 0.35);
+      background: linear-gradient(120deg, rgba(67, 20, 7, 0.7) 0%, rgba(15, 23, 42, 0.72) 55%, rgba(30, 27, 75, 0.7) 100%);
+    }
+    .bento-interview:hover {
+      border-color: rgba(251, 146, 60, 0.8);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 45px var(--iv-glow);
     }
 
     .bento-sd {
@@ -559,7 +570,7 @@
        RESPONSIVE MOBILE STYLES
        ========================================= */
     @media (max-width: 900px) {
-      .bento-dsa, .bento-ai, .bento-sd, .bento-k8s, .bento-docker {
+      .bento-dsa, .bento-ai, .bento-sd, .bento-k8s, .bento-docker, .bento-interview {
         grid-column: span 12;
       }
       .stats-strip {
@@ -622,7 +633,7 @@
     <div class="header">
       <div class="hero-badge">
         <span class="pulse-dot"></span>
-        <span>✨ 42 Interactive Pages • 5 Core Engineering Topics</span>
+        <span>✨ 67 Interactive Pages • 6 Core Engineering Topics</span>
       </div>
       <h1 class="title">✍️ Amit Mahata's Handwritten Notes</h1>
       <p class="subtitle">Interactive Digital Notebook Hub for Software Engineering, Architecture, AI &amp; DSA</p>
@@ -632,7 +643,7 @@
     <div class="hub-search-container">
       <div class="hub-search-box" onclick="openSearchModal()">
         <span class="hub-search-icon">🔍</span>
-        <span class="hub-search-placeholder">Search 42+ pages (e.g. AlexNet, LRU Cache, Dijkstra, Kafka, Raft, Dockerfile)...</span>
+        <span class="hub-search-placeholder">Search 67+ pages (e.g. LRU Cache, Kafka, STAR stories, Nth highest salary)...</span>
         <span class="hub-search-badge"><kbd style="font-family: inherit;">Ctrl</kbd> + <kbd style="font-family: inherit;">K</kbd></span>
       </div>
     </div>
@@ -794,16 +805,50 @@
         </div>
       </a>
 
+      <!-- Bento 6: Interview Q&A (full width) -->
+      <a href="interview-notes/index.html" class="bento-card bento-interview">
+        <div class="card-sheen"></div>
+        <div>
+          <div class="card-top">
+            <span class="card-badge" style="background: rgba(251, 146, 60, 0.18); color: #fed7aa; border: 1px solid rgba(251, 146, 60, 0.4);">
+              🎯 Tier 1 → Tier 3 Question Bank
+            </span>
+            <span class="card-page-count">25 Pages</span>
+          </div>
+          <div class="card-icon-title">
+            <span class="card-icon">🎯</span>
+            <h2 class="card-title" style="color: #fb923c;">Interview Q&amp;A Master Notes</h2>
+          </div>
+          <p class="card-desc">
+            340+ real interview questions with handwritten model answers, follow-ups &amp; traps — tagged by company (Google, Meta, Amazon, Microsoft, Uber, Flipkart, Atlassian, TCS, Infosys…). Company loops for 2025–26, DSA, OS, DBMS &amp; SQL, networking, OOP &amp; LLD, system design, C#/JS, Docker/K8s, AI/LLM, behavioral STAR stories &amp; HR negotiation — with a self-test Quiz mode.
+          </p>
+          <div class="card-tags">
+            <span class="topic-pill">Company Loops</span>
+            <span class="topic-pill">Machine Coding</span>
+            <span class="topic-pill">SQL</span>
+            <span class="topic-pill">System Design</span>
+            <span class="topic-pill">Amazon LPs</span>
+            <span class="topic-pill">RAG &amp; LLMs</span>
+            <span class="topic-pill">CTC Negotiation</span>
+            <span class="topic-pill">Quiz Mode</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link" style="color: #fb923c;">Open Notebook</span>
+          <span class="card-arrow" style="color: #fb923c;">&rarr;</span>
+        </div>
+      </a>
+
     </div>
 
     <!-- Bottom Quick Stats Bento Strip -->
     <div class="stats-strip">
       <div class="stat-box">
-        <div class="stat-number">42+</div>
+        <div class="stat-number">67+</div>
         <div class="stat-label">Handcrafted Pages</div>
       </div>
       <div class="stat-box">
-        <div class="stat-number">5</div>
+        <div class="stat-number">6</div>
         <div class="stat-label">Core Engineering Topics</div>
       </div>
       <div class="stat-box">

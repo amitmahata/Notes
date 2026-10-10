@@ -34,19 +34,19 @@
     <!-- Top Navigation Bar -->
     <header class="topbar">
       <div class="topbar-left">
-        <button class="nav-btn drawer-toggle-btn" onclick="toggleSidebar(true)" title="Topic Index & Notebook Switcher">☰ Topics</button>
-        <a href="../index.html" class="home-link-btn" title="Back to All Notes Hub">🏠 Hub</a>
+        <button class="nav-btn drawer-toggle-btn" onclick="toggleSidebar(true)" title="Topic Index & Notebook Switcher" aria-label="Topics">☰<span class="btn-label"> Topics</span></button>
+        <a href="../index.html" class="home-link-btn" title="Back to All Notes Hub" aria-label="Notes Hub">🏠<span class="btn-label"> Hub</span></a>
         <span class="brand-icon">💻</span>
         <span class="topbar-title">DSA Master Notes <span class="author-pill">Tier 1, 2, 3 • 8+ YoE Guide</span></span>
       </div>
       <div class="topbar-center">
-        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page">← Prev</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page" aria-label="Previous page">←<span class="btn-label"> Prev</span></button>
         <span class="page-indicator" id="pageIndicator">Page 1 / 14</span>
-        <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page">Next →</button>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page" aria-label="Next page"><span class="btn-label">Next </span>→</button>
       </div>
       <div class="topbar-right">
-        <button class="topbar-search-btn" onclick="openSearchModal()" title="Search All Notes (Ctrl+K)">
-          <span>🔍 Search</span>
+        <button class="topbar-search-btn" onclick="openSearchModal()" title="Search All Notes (Ctrl+K)" aria-label="Search all notes">
+          <span>🔍<span class="btn-label"> Search</span></span>
           <span class="kbd-hint">Ctrl+K</span>
         </button>
       </div>
@@ -102,6 +102,13 @@
             <div class="switcher-info">
               <span class="switcher-title">DSA Master</span>
               <span class="switcher-pages">14 Pages</span>
+            </div>
+          </a>
+          <a href="../interview-notes/index.html" class="switcher-card" title="Interview Q&amp;A Notes">
+            <span class="switcher-icon">🎯</span>
+            <div class="switcher-info">
+              <span class="switcher-title">Interview Q&amp;A</span>
+              <span class="switcher-pages">25 Pages</span>
             </div>
           </a>
         </nav>
@@ -1265,24 +1272,6 @@
 }</code></pre>
               </div>
             </div>
-          </div>
-
-          <!-- Key Takeaway Box -->
-          <div class="takeaway-card">
-            <div class="washi-tape"></div>
-            <div class="takeaway-badge">🎯 Key Takeaway</div>
-            <div class="takeaway-inner-pink">
-              <p>"Dummy Head &amp; Tail sentinels eliminate 100% of null checks &amp; edge case bugs in live interviews!"</p>
-            </div>
-            <p class="takeaway-quote">
-              "Never write special conditions for inserting into an empty list — sentinels guarantee head.Next and tail.Prev always exist." 😊
-            </p>
-          </div>
-
-          <div class="social-banner">
-            <span class="social-banner-pill">🏗️ Custom DS Design</span>
-            <span class="social-banner-pill">✍️ Follow @amitmahata</span>
-            <span class="social-banner-pill">🔖 Save for later!</span>
           </div>
 
           <!-- Key Takeaway Box -->
