@@ -1049,6 +1049,641 @@ const NOTES_SEARCH_DATABASE = [
         content: "One-breath summary of each core template with its time complexity: prefix sum + map, sliding window, LRU, binary search on answer, monotonic stack, top-K heap, BFS, topo sort, DSU, DP, backtracking, intervals."
       }
     ]
+  },
+
+  // --- INTERVIEW Q&A NOTES (25 Pages) ---
+  {
+    id: "iv-p1",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 1,
+    url: "../interview-notes/index.html?page=1",
+    rootUrl: "interview-notes/index.html?page=1",
+    tag: "Strategy",
+    title: "Page 1: Start Here: Company Tiers, What Each Tier Tests & How to Use",
+    sections: [
+      {
+        heading: "Who sits in which tier? (by interview bar, not by \"quality\")",
+        content: "Who sits in which tier? (by interview bar, not by 'quality') Fig 1.1 — tiers describe how hard and how wide the loop is. Prepare for the tier you target + one"
+      },
+      {
+        heading: "What each tier actually weighs",
+        content: "What each tier actually weighs Fig 1.2 — T1 = DSA + design + behaviour all strong. T2 = design-heavy (machine coding!). T3 = fundamentals, your stack & project depth. Area Tier 1 Tier 2 Tier 3 Coding 2 LC medium/hard per 45 min, bug-free, optimal, dry-run 1–2 medium; clean, modular, extensible Easy–medium; OA must pass all tests LLD / OOP Sometimes (Microsoft, Uber, Amazon SDE2) Core round — 90-min machine coding (Flipkart, Swiggy, Uber IN) OOP pillars, SOLID, patterns by name HLD 1–2 rounds for senior; deep trade-offs, numbers 1 round; sometimes your own project Your project architecture, basics of scaling Behavioral Dedicated round + Bar Raiser / HC / values Values round (Atlassian) + HM round Managerial + HR, client-facing skills Stack depth Language-agnostic Some stack questions Heavy: C#/.NET, Java, SQL, cloud,"
+      },
+      {
+        heading: "How to use this notebook",
+        content: "How to use this notebook 📖 Read mode (default) Every answer is open — read like a book. Yellow box = the one insight to remember. Blue box = follow-up the interviewer asks next. Pink box = trap / common mistake. 🧠 Quiz mode (press Q) Hides all answers. Answer aloud in 60–90 s. Click the question to check yourself. Your choice is remembered next visit. 🔗 Deeper theory Patterns & code → DSA notebook Architectures → System Design Pages 19–24 = Q&A Bank II (harder DSA, more designs, production scenarios). Ctrl+K searches all notebooks at"
+      },
+      {
+        heading: "Meta questions (about the interview itself)",
+        content: "What are interviewers really scoring in a coding round? I have 8+ years of experience. How is my loop different from a fresher's? How many problems should I solve, and which ones? What changed in 2025–26 interviews because of AI? — Answer: Four signals, almost everywhere: Problem solving — did you find an efficient approach and can you justify it (complexity, why it is correct)? Coding — readable, idiomatic, well-named, decomposed into helpers. Verification — you test your own code: dry run, edge cases, fix bugs before the interviewer points them out. Communication — you think aloud, clarify, accept hints and explain trade-offs. 💡 A correct solution with silent coding and no testing often scores lower than a slightly slower solution that was communicated and verified well. Fewer pure-DSA rounds, more design — usually 1–2 coding, 1–2 system design, 1 LLD/machine coding (India), 1"
+      }
+    ]
+  },
+  {
+    id: "iv-p2",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 2,
+    url: "../interview-notes/index.html?page=2",
+    rootUrl: "interview-notes/index.html?page=2",
+    tag: "Loops",
+    title: "Page 2: Company Interview Loops 2025-26 (Tier 1, 2, 3)",
+    sections: [
+      {
+        heading: "The shape of a loop, by tier",
+        content: "The shape of a loop, by tier Fig 2.1 — T1 = breadth + committee. T2 = build-it-live first. T3 = your stack, your project, then managerial +"
+      },
+      {
+        heading: "Tier 1 — round by round",
+        content: "Tier 1 — round by round Company Typical senior loop What is unique Google Recruiter → 1 technical screen → onsite: 2–3 coding, 1–2 system design (L5+), 1 Googleyness & Leadership → Hiring Committee → team match Scored on GCA, RRK, Leadership, Googleyness . At least one round back in person for many roles. G&L may include a design chat on your past work. Code often not executed — dry-run matters. Meta Recruiter → screen (≈2 problems / 45 min) → onsite: 1 classic coding + 1 AI-enabled coding (pilot), 1–2 system/product design, 1 behavioral Speed: 2 mediums in 35–40 min. AI round = 60 min multi-file codebase (build / extend / debug) with a chosen model. Level set mostly by design + behavioral. Amazon OA (coding + work-style) → phone screen → loop of 4–5 × 60 min → debrief Every round has Leadership-Principle questions (≈ half the time). A Bar Raiser from another org can veto. SDE2+ gets"
+      },
+      {
+        heading: "Tier 2 & Tier 3 — round by round",
+        content: "Tier 2 & Tier 3 — round by round Company Typical loop What is unique Flipkart Machine coding (≈30 min brief + 90 min build, proctored) → PSDS (2 LC mediums) → design (LLD/HLD) → HM / techno-managerial Machine coding is usually the gate. Graded on working code, SOLID, patterns, extensibility, tests. Seen: food ordering, BookMyShow, parking lot, property management. Atlassian Screen (sometimes Karat) → code design → data structures → system design → management/leadership → values → hiring committee Code design = build & extend a small real system (rate limiter, file-size report, snake game, feature flags). Values round can fail strong engineers. Adobe · Salesforce · Walmart · PayPal OA → 2 DSA → LLD/HLD → HM → HR Balanced loops; DSA medium, LLD in Java/C#-style OOP, solid CS fundamentals. Intuit OA/screen → Craft Demo (build something, then present + extend) → HM/behavioral You are judged"
+      },
+      {
+        heading: "Loop questions you should be able to answer",
+        content: "What is a Bar Raiser and how do I 'pass' one? How does Google's hiring committee and team match work? What is a machine coding round and how is it graded? What are Atlassian's values, and how do I prepare for the values round? What do service companies ask experienced (lateral) candidates? What should I ask the recruiter before the loop? — Answer: A trained interviewer from outside the hiring team whose job is to ensure every hire is better than 50% of current people at that level. They usually probe Leadership Principles deeply and can veto. Expect 3–5 follow-ups per story: 'What exactly did you do?', 'What data?', 'What would you do differently?' Use real numbers (latency, cost, % improvement, team size, dates). Have 2 stories per principle so you never repeat one in the same loop. ⚠️ 'We decided…' without your own action = weak signal. Say 'I'. Answer: Interviewers write detailed"
+      }
+    ]
+  },
+  {
+    id: "iv-p3",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 3,
+    url: "../interview-notes/index.html?page=3",
+    rootUrl: "interview-notes/index.html?page=3",
+    tag: "DSA",
+    title: "Page 3: DSA Q&A I: Arrays, Strings, Hashing & Sliding Window",
+    sections: [
+      {
+        heading: "Hear the keyword → pick the pattern",
+        content: "Hear the keyword → pick the pattern Fig 3.1 — say the pattern name out loud in the interview: 'this smells like a sliding window"
+      },
+      {
+        heading: "Hashing & prefix sums",
+        content: "Two Sum — return indices of two numbers that add to target. Subarray Sum Equals K (array has negatives). Product of Array Except Self — without division, O(n). Longest Consecutive Sequence in O(n). Group Anagrams. — Answer: Walk once; for each x check whether target - x was seen. Store value → index after the check (so an element is not paired with itself). O(n) time, O(n) space. ↪ Sorted input? → two pointers, O(1) space. All pairs / count pairs? → map of counts. Stream of numbers? → keep the map, answer per arrival. Answer: sum(i..j) = prefix[j] − prefix[i−1]. So at each position, the number of subarrays ending here with sum k = how many earlier prefixes equal prefix - k . Seed the map with {0: 1} (the empty prefix). O(n) / O(n). ⚠️ Sliding window does not work here — negatives break the 'shrink when too big' rule. Say this explicitly; interviewers love it. Answer: answer[i] ="
+      },
+      {
+        heading: "Kadane, stock & two pointers",
+        content: "Maximum Subarray (Kadane's algorithm). Best Time to Buy and Sell Stock (one transaction). 3Sum — all unique triplets summing to 0. Trapping Rain Water. Sort Colors (0s, 1s, 2s) in one pass. — Answer: At each element decide: extend the previous subarray or restart here — cur = max(x, cur + x) . Track the best. O(n) / O(1) . Works for all-negative arrays (answer = largest element). ↪ Return the indices too → remember start when you restart. Max product subarray → track both max and min (a negative flips them). Answer: Track the minimum price so far; profit if sold today = price − min. Keep the max. O(n) / O(1) . ↪ Unlimited transactions → sum every positive day-to-day rise (greedy). At most k transactions / cooldown / fee → DP with states (holding, not holding). Answer: Sort. For each i (skip if same as previous), run two pointers L = i+1, R = end: sum < 0 → L++, sum > 0 → R--, else"
+      },
+      {
+        heading: "Sliding window",
+        content: "Longest Substring Without Repeating Characters. Minimum Window Substring (contains all chars of t). Longest Repeating Character Replacement (at most k changes). — Answer: Window [L, R]. Remember last index of each char; when s[R] was seen inside the window, jump L past it. O(n) time, O(alphabet) space. Answer: Count what we need . Grow R; when a needed char arrives, missing-- . While missing == 0 the window is valid → record, then shrink L; if removing s[L] makes it needed again, missing++ . O(|s| + |t|) . 💡 Generic window template: grow R → while invalid (or valid, for 'minimum') shrink L → update answer. Longest = update after shrinking; shortest = update while shrinking. Answer: Window is valid if windowLen - maxFreq ≤ k (chars we must change). Grow R, update counts and maxFreq; if invalid, move L by one. O(n) . maxFreq never needs to decrease — the answer only grows when a bigger"
+      }
+    ]
+  },
+  {
+    id: "iv-p4",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 4,
+    url: "../interview-notes/index.html?page=4",
+    rootUrl: "interview-notes/index.html?page=4",
+    tag: "DSA",
+    title: "Page 4: DSA Q&A II: Linked Lists, Stacks, Binary Search, Heaps & Intervals",
+    sections: [
+      {
+        heading: "Linked lists",
+        content: "Reverse a linked list — iteratively and recursively. Detect a cycle and return the node where it starts. Why does Floyd's trick work? Merge K sorted lists. Remove N-th node from end in one pass? Intersection of two lists? Copy list with random pointer? Design an LRU cache? — Answer: Iterative: three pointers prev , cur , next ; flip one arrow per step. O(n) / O(1) . Recursive: reverse the rest, then make head.next.next = head , head.next = null . O(n) stack . ↪ Reverse in groups of k, reverse between positions m..n, palindrome list (reverse 2nd half, compare, restore). Fig 4.1 — after they meet at M, walk one pointer from H and one from M at the same speed: they meet at S . Answer: slow moves 1, fast moves 2. If they meet, there is a cycle. Slow walked a + b; fast walked twice that, i.e. a full number of extra loops: a + b = k·L. So a = k·L − b = c + (k−1)·L — walking a steps from the"
+      },
+      {
+        heading: "Stacks & monotonic stacks",
+        content: "Valid Parentheses. Daily Temperatures / Next Greater Element. Design a Min Stack (getMin in O(1)). — Answer: Push openers; on a closer, the top must be its matching opener, else false. At the end the stack must be empty. O(n) . Quick reject: odd length. ↪ Min removals to make valid (Meta favourite): count unmatched ')' while scanning and unmatched '(' left over — remove those indices. Answer: Keep a stack of indices with decreasing temperatures. For each day, pop while today is warmer — each popped day's answer is i - popped . Each index is pushed and popped once → O(n) . ↪ Same pattern: Largest Rectangle in Histogram, Stock Span, Remove K Digits, Sum of Subarray Minimums. Answer: Store pairs (value, minSoFar) on one stack, or keep a second stack that pushes when a value ≤ current min. All ops O(1)"
+      },
+      {
+        heading: "Binary search",
+        content: "Search in Rotated Sorted Array. Koko Eating Bananas / Ship Packages in D Days — 'binary search on the answer'. Median of Two Sorted Arrays in O(log(min(m,n))). — Answer: One half around mid is always sorted. If nums[lo] ≤ nums[mid] the left half is sorted: target in [lo, mid) → go left, else right. Otherwise the right half is sorted — mirror it. O(log n) . ⚠️ With duplicates, nums[lo] == nums[mid] is ambiguous → lo++ ; worst case becomes O(n). Say it. Answer: The answer (speed / capacity) lives in a range [lo, hi], and feasible(x) is monotonic (if x works, x+1 works). Binary search for the smallest feasible x. Cost: O(n · log range) . 💡 Recognise it by 'minimum maximum' / 'smallest capacity such that…'. Template details: DSA notes p.6 . Answer: Binary search a cut i in the smaller array; the cut in the other is j = (m + n + 1)/2 − i . Valid when A[i−1] ≤ B[j] and B[j−1] ≤ A[i] (use ±∞"
+      },
+      {
+        heading: "Heaps & intervals",
+        content: "Kth Largest Element — heap or quickselect? Find Median from Data Stream. Merge Intervals & Meeting Rooms II (min rooms needed). — Answer: Min-heap of size k: push each, pop when size > k; the top is the answer. O(n log k), O(k) — works on streams. Quickselect: partition around a random pivot, recurse into one side — O(n) average, O(n²) worst , in-place. ↪ Top K Frequent: count with a map, then heap of size k, or bucket sort by frequency (O(n)). Answer: Two heaps: a max-heap for the lower half, a min-heap for the upper half. Add to lower, move lower's top to upper, rebalance so lower has equal or one more. Median = lower.top or the average of both tops. add O(log n), median O(1) . ↪ Values in 0..100 only → counting array, O(100) median. 99% in range → counts + two overflow heaps. Answer — Merge: sort by start; if current start ≤ last merged end, extend end = max(end, cur.end), else"
+      }
+    ]
+  },
+  {
+    id: "iv-p5",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 5,
+    url: "../interview-notes/index.html?page=5",
+    rootUrl: "interview-notes/index.html?page=5",
+    tag: "DSA",
+    title: "Page 5: DSA Q&A III: Trees, Tries & Graphs",
+    sections: [
+      {
+        heading: "Binary trees & BSTs",
+        content: "Diameter of a Binary Tree. Validate a Binary Search Tree. Lowest Common Ancestor — binary tree and BST. Level Order Traversal / Right Side View / Zigzag. Serialize and Deserialize a Binary Tree. Binary Tree Maximum Path Sum. Implement a Trie; then Word Search II. — Answer: DFS returns the node's height to its parent; while there, update a global best with left + right (the longest path that bends at this node). O(n) time, O(h) stack. 💡 Same 'return one thing, record another' shape solves Max Path Sum (return max(0, gain)), Balanced Tree (return −1 if unbalanced) and Longest Univalue Path. Answer: Pass down an allowed range (min, max): left child gets (min, node.val), right gets (node.val, max). Or do an inorder walk and check strictly increasing. O(n) . ⚠️ Classic wrong answer: only checking left.val < node.val < right.val . A grandchild can break the rule. Use long bounds (or nullable)"
+      },
+      {
+        heading: "Graphs — pick the algorithm",
+        content: "Number of Islands. Course Schedule I & II (can all courses be finished? in what order?). Rotting Oranges / Walls and Gates (multi-source BFS). Word Ladder (shortest transformation sequence). Dijkstra — Network Delay Time. Why does it fail with negative edges? Clone Graph? Accounts Merge / Redundant Connection? Detect a cycle — directed vs undirected? Alien Dictionary? — Answer: Scan the grid; on each unvisited '1', count++ and flood-fill (DFS/BFS) marking the island visited. O(R·C) . DFS recursion can overflow on a 1000×1000 all-land grid → use BFS or an explicit stack. ↪ Islands added one by one (Number of Islands II) → DSU, O(α) per addition. Count distinct shapes → serialize the DFS path relative to the start. Answer: Directed graph prereq → course. Kahn's algorithm: queue all in-degree-0 nodes; pop, append to order, decrement neighbours, enqueue those that hit 0. If order has fewer"
+      }
+    ]
+  },
+  {
+    id: "iv-p6",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 6,
+    url: "../interview-notes/index.html?page=6",
+    rootUrl: "interview-notes/index.html?page=6",
+    tag: "DSA",
+    title: "Page 6: DSA Q&A IV: Dynamic Programming, Backtracking & Greedy",
+    sections: [
+      {
+        heading: "DP concepts they ask before the code",
+        content: "How do you recognise that a problem needs DP? Memoization vs tabulation — which and why? — Answer: Two properties: optimal substructure (the best answer is built from best answers of smaller sub-problems) and overlapping sub-problems (the plain recursion solves the same sub-problem many times). Trigger words: 'number of ways', 'min/max cost', 'can you reach / is it possible', 'longest/shortest … subsequence'. 💡 Script: 'Brute force tries every choice — exponential. Many branches repeat the same (i, j) state, so I'll memoise on (i, j): states × work per state.' Memoization (top-down) Tabulation (bottom-up) How Recursion + cache Loops fill a table in dependency order Pros Natural to derive; only computes reachable states No recursion depth risk; easy space optimisation (rolling rows) Cons Stack overflow on deep inputs; call overhead Must figure out the order; computes all states Interview"
+      },
+      {
+        heading: "Classic DP questions",
+        content: "House Robber (no two adjacent houses). Coin Change (fewest coins) vs Coin Change II (number of ways). Longest Increasing Subsequence — O(n²) and O(n log n). Edit Distance (insert / delete / replace). Word Break. Partition Equal Subset Sum (0/1 knapsack). Longest Palindromic Substring? Unique Paths / Minimum Path Sum? Decode Ways ('226' → 3)? Longest Common Subsequence? — Answer: dp[i] = max(dp[i-1], dp[i-2] + nums[i]) — skip house i or rob it. Only two previous values matter → O(n) / O(1) . Circular street (House Robber II): answer = max(rob 0..n−2, rob 1..n−1). Fewest: dp[a] = min over coins c of dp[a - c] + 1 , dp[0] = 0, unreachable = ∞ → return −1. O(A · C) . Ways: dp[0] = 1 ; outer loop coins, inner loop amounts → counts combinations (1+2 same as 2+1). ⚠️ Swap the loops (amount outside) and you count permutations — that is Combination Sum IV. Interviewers ask exactly this. ↪ Why"
+      },
+      {
+        heading: "Backtracking",
+        content: "Subsets, Permutations, Combination Sum — one template? N-Queens and Word Search. — Answer: Choose → explore → un-choose. Permutations: loop from 0 every time, use a used[] array; record only when path.Count == n. O(n · n!). Combination Sum: recurse with i (reuse allowed), stop when remaining < 0; sort and break early when nums[i] > remaining. N-Queens: place row by row; keep sets for columns, r - c diagonals and r + c anti-diagonals for O(1) conflict checks. Word Search: DFS from each cell matching word[0]; mark the cell (e.g. '#') before recursing and restore it after. O(R·C·4^L). Prune: if the board lacks enough letters, return false"
+      },
+      {
+        heading: "Greedy",
+        content: "Jump Game I & II? Gas Station? How do you prove a greedy choice is correct? Non-overlapping intervals (min removals)? — I: track farthest reachable; if i > farthest → false. II: BFS-by-ranges — when i reaches the current range end, jumps++ and range end = farthest. Both O(n). If total gas < total cost → −1. Otherwise scan; when the tank goes negative, the start must be after i — reset tank, start = i+1. O(n). Exchange argument: take any optimal solution that differs from greedy at the first choice; swap in the greedy choice and show it is no worse. Or find a counter-example quickly → then it's DP. Sort by end ; keep an interval if its start ≥ last kept end, else remove it. Earliest end leaves the most room. O(n log"
+      }
+    ]
+  },
+  {
+    id: "iv-p7",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 7,
+    url: "../interview-notes/index.html?page=7",
+    rootUrl: "interview-notes/index.html?page=7",
+    tag: "CS Core",
+    title: "Page 7: CS Fundamentals: Operating Systems & Concurrency",
+    sections: [
+      {
+        heading: "Processes, threads & memory",
+        content: "Process vs thread — differences and when to use which? What happens during a context switch? Virtual memory, paging, page faults and thrashing. Stack vs heap memory? User mode vs kernel mode; system call? CPU scheduling algorithms? How many processes after n fork() calls? — Process Thread Memory Own virtual address space Shares the process's heap, code, files; own stack + registers Creation / switch cost High (new page tables, TLB flush) Low Communication IPC: pipes, sockets, shared memory, queues Shared variables (needs synchronisation) Fault isolation Crash is contained One bad thread can kill the process Use processes for isolation/security (Chrome tabs, microservices, worker processes); threads for cheap parallelism inside one service. Answer: Timer interrupt or blocking call → kernel saves the running thread's CPU state (registers, program counter, stack pointer) into its PCB/TCB →"
+      },
+      {
+        heading: "Synchronisation & deadlocks",
+        content: "Mutex vs semaphore vs monitor. What is a deadlock? Necessary conditions and how to prevent it. Race condition — example and three ways to fix it. Implement producer–consumer with a bounded buffer. Print odd and even numbers alternately using two threads. Concurrency vs parallelism? Why use a thread pool? Optimistic vs pessimistic locking? Dining philosophers — the fix? — Mutex: one owner at a time; must be released by the thread that acquired it. Protects a critical section. Semaphore: a counter of permits (counting) — limits concurrency to N (e.g. max 10 DB calls). Any thread can signal. Binary semaphore ≈ lock without ownership. Monitor: mutex + condition variables bundled with the data (C# lock + Monitor.Wait/Pulse , Java synchronized + wait/notify). 💡 One-liner: 'A mutex is a key to one room; a semaphore is a bowl of N keys.' Fig 7.2 — a cycle in the wait-for graph. Fix: always take"
+      }
+    ]
+  },
+  {
+    id: "iv-p8",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 8,
+    url: "../interview-notes/index.html?page=8",
+    rootUrl: "interview-notes/index.html?page=8",
+    tag: "CS Core",
+    title: "Page 8: CS Fundamentals: DBMS, Transactions, Indexing & SQL",
+    sections: [
+      {
+        heading: "Transactions",
+        content: "Explain ACID with a bank transfer. Isolation levels and the anomalies each one allows. — Transfer ₹100 from A to B = debit A + credit B. Atomicity — both happen or neither (rollback via undo log if the credit fails). Consistency — constraints hold before and after (balance ≥ 0, total money unchanged). Isolation — a concurrent report never sees A debited but B not yet credited. Durability — once committed, survives a crash (write-ahead log fsynced before ack). ↪ Across two services/databases there is no single ACID transaction → Saga with compensations, or outbox pattern (page 12). Level Dirty read Non-repeatable read Phantom Notes Read Uncommitted ❌ possible ❌ ❌ Almost never used Read Committed ✅ prevented ❌ ❌ Default in PostgreSQL, SQL Server, Oracle Repeatable Read ✅ ✅ ❌ (in the standard) Default in MySQL InnoDB (gap locks limit phantoms) Serializable ✅ ✅ ✅ Safest, slowest; may abort"
+      },
+      {
+        heading: "Indexing & performance",
+        content: "How does an index work? Clustered vs non-clustered? When will the database NOT use my index? An API is slow because of a query. How do you debug it? Normalization 1NF → 3NF, and when to denormalize? SQL vs NoSQL — how do you choose? DELETE vs TRUNCATE vs DROP? WHERE vs HAVING; UNION vs UNION ALL? — An index is a separate sorted structure (usually a B+ tree) mapping key → row location, so lookups are O(log n) page reads instead of a full table scan. Clustered: the table rows themselves are stored in key order (one per table — usually the primary key in SQL Server / InnoDB). Non-clustered (secondary): separate tree whose leaves point to the row (or to the clustered key → extra 'key lookup'). Covering index: includes all columns the query needs → no lookup back to the table ( INCLUDE columns). Cost: slower writes (every insert/update maintains each index) and extra storage. Function or"
+      },
+      {
+        heading: "SQL they make you write",
+        content: "Find the Nth highest salary (handle ties). Top 3 salaries in each department. Employees who earn more than their manager (self-join). Find and delete duplicate emails, keeping the smallest id. Running total of sales per day; customers who never ordered. — ↪ RANK vs DENSE_RANK vs ROW_NUMBER for salaries 100, 100, 90: RANK 1,1,3 · DENSE_RANK 1,1,2 · ROW_NUMBER 1,2,3. Return NULL if fewer than N distinct salaries. ⚠️ NOT IN (subquery) returns nothing if the subquery contains a NULL — prefer NOT EXISTS"
+      }
+    ]
+  },
+  {
+    id: "iv-p9",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 9,
+    url: "../interview-notes/index.html?page=9",
+    rootUrl: "interview-notes/index.html?page=9",
+    tag: "CS Core",
+    title: "Page 9: CS Fundamentals: Networking, HTTP & APIs",
+    sections: [
+      {
+        heading: "The famous one",
+        content: "What happens when you type a URL and press Enter? — Parse URL; check HSTS (force HTTPS); check browser / OS / router caches. DNS: stub resolver → recursive resolver (ISP / 8.8.8.8) → root → TLD (.com) → authoritative server → A/AAAA record (cached by TTL). TCP 3-way handshake to the IP on port 443 (or QUIC over UDP for HTTP/3). TLS 1.3: ClientHello / ServerHello, server certificate verified against trusted CAs, key exchange (ECDHE) → symmetric session keys. HTTP request hits a CDN edge or load balancer → reverse proxy → app server → cache / DB. Response with status, headers (Cache-Control, Set-Cookie), compressed body. Render: parse HTML → DOM, CSS → CSSOM, run JS, layout, paint; extra resources fetched in"
+      },
+      {
+        heading: "Transport & protocols",
+        content: "TCP vs UDP — and where would you use each? HTTP/1.1 vs HTTP/2 vs HTTP/3. How does HTTPS / TLS keep data secure? OSI vs TCP/IP layers? L4 vs L7 load balancer? WebSockets vs SSE vs long polling? What does a CDN do? — TCP UDP Connection Connection-oriented (handshake) Connectionless Reliability Ordered, retransmits, flow + congestion control Best effort; may drop / reorder Overhead Higher; head-of-line blocking Low latency, small header Use HTTP/1–2, DB connections, file transfer, email DNS, video calls, gaming, streaming, QUIC (HTTP/3) HTTP/1.1: text, keep-alive, one request at a time per connection → browsers open ~6 connections; head-of-line blocking. HTTP/2: binary framing, multiplexed streams on one TCP connection, header compression (HPACK). Still TCP-level HOL blocking on packet loss. HTTP/3: over QUIC (UDP) — independent streams (no TCP HOL), faster handshakes (TLS 1.3 built in,"
+      },
+      {
+        heading: "API design & security",
+        content: "PUT vs PATCH vs POST — and which methods are idempotent? REST vs gRPC vs GraphQL — when to pick which? Authentication vs authorization; sessions vs JWT; what is OAuth 2.0? What is CORS and why does my browser call fail while Postman works? Top web security issues and how you prevent them. How do you version an API? Offset vs cursor pagination? — POST — create / action; not idempotent (retry = second order!). PUT — replace the full resource at a known URI; idempotent. PATCH — partial update; not guaranteed idempotent (e.g. 'increment'). GET, HEAD, PUT, DELETE — idempotent; GET/HEAD are also safe (no side effects). 💡 Make POST safe to retry with an Idempotency-Key header: store key → response; replay the stored response on retry (how payment APIs work). ↪ Status codes to know: 200, 201 Created, 202 Accepted, 204, 301/302/304, 400, 401 (who are you?), 403 (not allowed), 404, 409 Conflict,"
+      }
+    ]
+  },
+  {
+    id: "iv-p10",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 10,
+    url: "../interview-notes/index.html?page=10",
+    rootUrl: "interview-notes/index.html?page=10",
+    tag: "OOP",
+    title: "Page 10: OOP, SOLID & Design Patterns Q&A",
+    sections: [
+      {
+        heading: "OOP fundamentals",
+        content: "Explain the four pillars of OOP with real examples. Abstract class vs interface — when to use which? Overloading vs overriding? Why composition over inheritance? Coupling vs cohesion? DRY, KISS, YAGNI? — Encapsulation — hide state behind behaviour: Account.Withdraw(amount) validates; the balance field is private. Protects invariants. Abstraction — expose what , hide how : IPaymentGateway.Charge() without knowing Razorpay vs Stripe internals. Inheritance — 'is-a' reuse: SavingsAccount : Account . Use sparingly. Polymorphism — one call, many behaviours: shape.Area() on Circle/Square. Compile-time = overloading; runtime = overriding (virtual dispatch). Abstract class Interface Inheritance Single Multiple State Fields, constructors No instance fields (C# 8+ allows default methods) Meaning 'is-a' with shared code 'can-do' capability / contract Use when Related classes share base logic"
+      },
+      {
+        heading: "SOLID",
+        content: "Explain SOLID — with a violation and a fix for each. — Principle Violation Fix S ingle Responsibility InvoiceService calculates totals, writes PDFs and sends emails Split into calculator, renderer, notifier — one reason to change each O pen/Closed switch (paymentType) edited for every new method IPaymentStrategy per method; add a class, don't edit old code L iskov Substitution Square : Rectangle — setting width also changes height, breaking callers Don't inherit; both implement IShape I nterface Segregation IMachine { Print; Scan; Fax } forces a basic printer to throw on Fax IPrinter , IScanner , IFax D ependency Inversion OrderService does new SqlOrderRepo() Depend on IOrderRepo , inject it (DI container) 💡 In machine coding, the grader literally checks: 'Can I add a new X without modifying existing classes?' — that's O + D in"
+      },
+      {
+        heading: "Design patterns",
+        content: "Implement a thread-safe Singleton in C#. Why is Singleton often called an anti-pattern? Factory vs Abstract Factory vs Builder. Observer pattern — where have you used it? Decorator vs Proxy vs Adapter? State pattern — when? Chain of Responsibility? What is Dependency Injection / IoC? 'Which design patterns have you used in your project?' — how to answer. — Alternatives: double-checked locking with volatile , or a static readonly field (eager). Downsides: hidden global state, hard to unit-test/mock, couples callers to a concrete class. Better in modern .NET: register as a singleton lifetime in the DI container ( services.AddSingleton<IConfigCache, ConfigCache>() ). Factory Method: one method decides which concrete class to create ( NotificationFactory.Create('sms') ). Hides new + the switch in one place. Abstract Factory: creates families of related objects ( IUiFactory → Windows button"
+      }
+    ]
+  },
+  {
+    id: "iv-p11",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 11,
+    url: "../interview-notes/index.html?page=11",
+    rootUrl: "interview-notes/index.html?page=11",
+    tag: "LLD",
+    title: "Page 11: Low-Level Design & Machine Coding Rounds",
+    sections: [
+      {
+        heading: "The 90-minute game plan",
+        content: "The 90-minute game plan 0–10 min · Read & clarify List the must-have flows (3–5) and park the nice-to-haves. Ask: in-memory OK? CLI/driver or tests? Concurrency expected? 10–25 min · Model Nouns → entities, verbs → service methods. Write interfaces for anything that will vary (pricing, strategy, storage). Enums for types/status. 25–70 min · Build the happy path end-to-end Models → repository (in-memory dictionaries) → services → driver. Commit to runnable early, then deepen. 70–85 min · Edge cases & demo Validation, custom exceptions, a main/driver or unit tests that exercise every requirement. 85–90 min · Extension talk Show where a new requirement plugs in ('new split type = new class implementing ISplitStrategy'). Why candidates fail machine coding Code doesn't run at the end (spent 60 min on the 'perfect' design). One god class ( SplitwiseManager with 900 lines). Hard-coded if (type"
+      },
+      {
+        heading: "Parking lot — the classic",
+        content: "Design a Parking Lot (multi-floor, vehicle types, tickets, fees). — Entities ParkingLot, Floor, ParkingSpot (type, isFree), Vehicle (type, number), Ticket, Payment, Gate. Interfaces ISpotAllocationStrategy.FindSpot(vehicleType) , IFeeStrategy.Calculate(ticket, exitTime) . Flows Park → find spot → mark occupied → issue ticket. Unpark → compute fee → pay → free spot. Data Per floor and type, a set/min-heap of free spot IDs → O(log n) nearest spot; map ticketId → ticket. Concurrency Two gates must not assign the same spot: lock per floor+type, or atomic compare-and-set on spot.isFree . Extensions EV charging spots, reservations, display boards (Observer on spot changes), monthly passes (new fee"
+      },
+      {
+        heading: "The rest of the top 10",
+        content: "Design Splitwise (expenses, splits, balances, settle up). Design BookMyShow — how do you stop two users booking the same seat? Implement a rate limiter class (per user, N requests per second). Design an Elevator system. Snake & Ladder? Vending machine? In-memory key-value store with TTL? Food ordering (Flipkart-style)? Logger / in-memory pub-sub? Library management (T3 favourite)? — Entities User, Group, Expense (paidBy, amount, splits), Split (user, amount). Strategy ISplitStrategy : EqualSplit, ExactSplit, PercentSplit (validate sums = amount / 100%). Balances Dictionary<(from, to), decimal> or per-user net balance; update on each expense. Simplify debts Compute net balance per user; repeatedly match the largest creditor with the largest debtor (two heaps) — at most n−1 transactions. Gotchas Use decimal for money; rounding — give the leftover paisa to the first person; idempotent"
+      }
+    ]
+  },
+  {
+    id: "iv-p12",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 12,
+    url: "../interview-notes/index.html?page=12",
+    rootUrl: "interview-notes/index.html?page=12",
+    tag: "HLD",
+    title: "Page 12: System Design Concepts: Rapid-Fire Q&A",
+    sections: [
+      {
+        heading: "The skeleton almost every answer reuses",
+        content: "The skeleton almost every answer reuses Fig 12.1 — start every design from this and then change one box for the problem's real"
+      },
+      {
+        heading: "Consistency & data distribution",
+        content: "Explain CAP — and why PACELC is the more useful version. Leader-follower vs multi-leader vs leaderless replication; what is a quorum? How do you shard a database? What problems come with it? Vertical vs horizontal scaling? Strong vs eventual consistency? Partitioning vs sharding vs replication? How is a leader elected? — Answer: During a network P artition, a distributed store must choose C onsistency (refuse/serve errors to stay correct) or A vailability (answer, possibly stale). Partitions are not optional, so it's really CP vs AP when partitioned . PACELC: if Partition → A or C; E lse (normal operation) → L atency or C onsistency. Example: DynamoDB/Cassandra default PA/EL (fast, eventually consistent, tunable); Spanner / traditional single-leader SQL PC/EC. 💡 Choose per feature: payments/inventory → consistency; likes, feeds, view counts → availability + eventual consistency. Single"
+      },
+      {
+        heading: "Caching, queues & reliability",
+        content: "Caching strategies, eviction and the hard part — invalidation. Why use a message queue? Kafka vs RabbitMQ? Delivery guarantees? How do you keep data consistent across microservices (no distributed DB transaction)? Rate-limiting algorithms — compare them. Retries done right? Circuit breaker & bulkhead? Load-balancing algorithms? Monolith vs microservices? SLI vs SLO vs SLA; why p99? Bloom filter — where is it used? — Strategy How Good for Cache-aside App reads cache → miss → DB → populate; on write update DB then delete the key Default choice; read-heavy Write-through Write cache + DB synchronously Read-after-write freshness Write-back Write cache, flush to DB later Write-heavy counters; risk of loss Write-around Write DB only; cache fills on read Data rarely re-read Eviction: LRU, LFU, TTL. Problems: stampede (many misses at once → request coalescing / lock per key, jittered TTLs),"
+      },
+      {
+        heading: "Napkin numbers to memorise",
+        content: "Napkin numbers to memorise Thing Rough number Use it for 1 day ≈ 86,400 s ≈ 10 5 s 1M req/day ≈ 12 QPS avg; peak ≈ 2–5× avg Memory read / SSD read / same-DC round trip ~100 ns / ~100 µs / ~0.5 ms Why caches and batching win Cross-continent round trip ~100–150 ms Why multi-region + CDN One Redis node ~100K simple ops/s Cache sizing One SQL primary a few thousand write TPS (varies a lot) When to shard Storage 100M users × 1 KB = 100 GB Fits one node? Then don't shard"
+      }
+    ]
+  },
+  {
+    id: "iv-p13",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 13,
+    url: "../interview-notes/index.html?page=13",
+    rootUrl: "interview-notes/index.html?page=13",
+    tag: "HLD",
+    title: "Page 13: System Design Problems: Answer Blueprints",
+    sections: [
+      {
+        heading: "The 45-minute shape",
+        content: "The 45-minute shape Minutes Step Say / draw 0–5 Requirements 3–5 functional, then non-functional: scale, latency, consistency, availability. Write them down. 5–10 Estimates DAU → QPS (avg, peak), storage/day, read:write ratio. Only the numbers that change the design. 10–15 API + data model 3–4 endpoints; main tables/keys; choose SQL/NoSQL with a reason. 15–25 High-level diagram The skeleton from page 12, walking one request end to end. 25–40 Deep dives The 2 hardest parts (the interviewer often picks). Trade-offs, failure modes. 40–45 Wrap-up Bottlenecks, monitoring, what you'd do next with more"
+      },
+      {
+        heading: "Social & real-time",
+        content: "Design a News Feed (Twitter / Instagram / LinkedIn). Design a Notification System (push, SMS, email, in-app). Design a distributed rate limiter for an API gateway. — Requirements Post, follow, see a ranked/recent feed; feed loads < 200 ms; eventual consistency OK (a post appearing 5 s late is fine). Estimates 300M DAU × 10 feed loads/day ≈ 35K QPS avg reads; writes ~10× fewer → read-heavy. API POST /posts , POST /follow/{id} , GET /feed?cursor= . Data Posts (sharded by post_id / author), follow graph (user → followers, followee lists), feed cache (user → list of post IDs), media in object storage + CDN. Deep dive Hybrid fan-out (Fig 13.1); ranking service (features: recency, affinity, engagement); cursor pagination; cache warm-up for inactive users computed on login. Trade-offs Fan-out cost vs read latency; ordering under eventual consistency; deleting a post must remove/skip it on read"
+      },
+      {
+        heading: "Location, money & search",
+        content: "Design Uber / Ola (ride matching). Design a Payment System (wallet / checkout). Design Typeahead / Search Autocomplete. Design YouTube / Netflix (upload + streaming). Ticket booking at a flash sale (IRCTC Tatkal / concert drop)? Web crawler? Distributed cache (like Redis Cluster)? Distributed job scheduler (cron at scale)? — Requirements Drivers send location every ~4 s; riders request a ride, get matched in seconds; trip tracking; pricing. Estimates 1M active drivers / 4 s ≈ 250K location writes/s → keep live locations in memory , not in a SQL table. Geo index Geohash / S2 / H3 cells: driver location → cell; search the rider's cell + neighbours (Redis GEO or an in-memory sharded index by cell). Matching Candidate drivers ranked by ETA (routing service), offer to one at a time with timeout; lock driver state to avoid double assignment. Trip State machine (Requested → Accepted → Arrived"
+      }
+    ]
+  },
+  {
+    id: "iv-p14",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 14,
+    url: "../interview-notes/index.html?page=14",
+    rootUrl: "interview-notes/index.html?page=14",
+    tag: "Language",
+    title: "Page 14: C# / .NET & JavaScript / Node.js Q&A",
+    sections: [
+      {
+        heading: "C# / .NET",
+        content: "How does async/await work, and why does .Result cause deadlocks? Value types vs reference types; struct vs class; boxing. How does the .NET garbage collector work? IDisposable vs finalizer? IEnumerable vs IQueryable; what is deferred execution? DI lifetimes — and the 'captive dependency' bug? ASP.NET Core middleware pipeline? const vs readonly vs static readonly? Why is string immutable; when StringBuilder? EF Core performance tips? How does Dictionary work internally? — The compiler rewrites an async method into a state machine . At an await on an incomplete task, the method returns to its caller; the rest is registered as a continuation. For I/O (HTTP, DB, file) no thread is blocked while waiting — the OS signals completion and a thread-pool thread resumes the continuation. That's why async scales servers. The continuation resumes on the captured SynchronizationContext (UI thread, old"
+      },
+      {
+        heading: "JavaScript / Node.js",
+        content: "What is the output order? (event loop) Closures — and the classic var-in-a-loop bug. Implement debounce. How is throttle different? var vs let vs const; hoisting; TDZ? How is 'this' decided? Promise.all vs allSettled vs race vs any? Node is single-threaded — how does it handle 10K connections? == vs ===; prototypal inheritance? — Answer: A D F C E B . Sync first (A, D — an async function runs synchronously until its first await — then F). Then microtasks in order (C, E). Then the timer macrotask (B). Answer: A closure is a function bundled with references to the variables of the scope where it was created. var is function-scoped → one shared i (3 when the timers run). let is block-scoped → a fresh binding per iteration. Uses: data privacy (module pattern), memoisation, partial application, React hooks. Debounce: run once after the calls stop for wait ms (search box). Throttle: run at"
+      }
+    ]
+  },
+  {
+    id: "iv-p15",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 15,
+    url: "../interview-notes/index.html?page=15",
+    rootUrl: "interview-notes/index.html?page=15",
+    tag: "DevOps",
+    title: "Page 15: Docker, Kubernetes & Cloud Q&A",
+    sections: [
+      {
+        heading: "Docker",
+        content: "Container vs virtual machine. How do you make a Docker image small, fast to build and secure? CMD vs ENTRYPOINT; COPY vs ADD? Volumes vs bind mounts? Docker networks? Image vs container? — Answer: A VM virtualises hardware — each VM runs its own guest OS kernel on a hypervisor (GBs, boots in minutes, strong isolation). A container virtualises the OS — processes share the host kernel, isolated with Linux namespaces (pid, net, mount…) and limited with cgroups (CPU, memory) — MBs, starts in milliseconds, weaker isolation. Many companies run containers inside VMs for both. Multi-stage builds; slim/distroless/alpine base images. Layer order: least-changing first (dependency manifests before source) to maximise cache hits; .dockerignore . Combine RUN steps and clean package caches; pin image versions/digests. Run as non-root, no secrets in layers (use build secrets / runtime env from a"
+      },
+      {
+        heading: "Kubernetes",
+        content: "Explain Kubernetes architecture — what happens on kubectl apply ? Liveness vs readiness vs startup probes. A pod is in CrashLoopBackOff. How do you debug it? Requests vs limits; how does autoscaling work? Deployment vs StatefulSet vs DaemonSet vs Job? Service types & Ingress? ConfigMap vs Secret? Rolling vs blue-green vs canary? — Control plane: kube-apiserver (the only door; validates, stores), etcd (consistent key-value store of desired + current state), scheduler (picks a node for unscheduled pods), controller-manager (reconciliation loops: Deployment, ReplicaSet, Node…), cloud-controller-manager. Nodes: kubelet (starts containers via the runtime, reports status, runs probes), kube-proxy (Service routing via iptables/IPVS — or eBPF CNIs), container runtime (containerd). apply flow: kubectl → API server (authn/authz/admission) → etcd → Deployment controller creates a ReplicaSet → RS"
+      },
+      {
+        heading: "Cloud & delivery",
+        content: "IaaS vs PaaS vs SaaS? Describe your CI/CD pipeline. Zero-downtime deploy with a DB schema change? AWS ↔ Azure service map (quick)? — IaaS: you manage OS and up (EC2, Azure VMs). PaaS: you deploy code, provider runs the platform (App Service, Elastic Beanstalk, Cloud Run). SaaS: you just use the software (M365, Salesforce). PR → build + unit tests + lint + SAST → image build + scan → push to registry → deploy to dev (IaC: Terraform/Bicep, Helm) → integration tests → staging → approval → prod canary → monitor → full rollout / auto-rollback. Expand → migrate → contract: add the new column (nullable) → deploy code that writes both and reads new-with-fallback → backfill → switch reads → later drop the old column. Never rename in one step. EC2 ↔ VMs · S3 ↔ Blob Storage · Lambda ↔ Functions · EKS ↔ AKS · RDS ↔ Azure SQL · DynamoDB ↔ Cosmos DB · SQS ↔ Service Bus queues · SNS ↔ Event"
+      }
+    ]
+  },
+  {
+    id: "iv-p16",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 16,
+    url: "../interview-notes/index.html?page=16",
+    rootUrl: "interview-notes/index.html?page=16",
+    tag: "AI",
+    title: "Page 16: AI / ML & LLM Q&A (+ AI-Assisted Coding Rounds)",
+    sections: [
+      {
+        heading: "ML fundamentals (still asked)",
+        content: "Supervised vs unsupervised vs reinforcement learning? Overfitting vs underfitting? Precision vs recall — which matters when? How does a neural network learn? — Supervised: labelled examples → predict (spam, price). Unsupervised: find structure without labels (clustering, anomaly detection). RL: agent learns from rewards (games, robotics; RLHF tunes LLMs on human preferences). Overfit: great on train, poor on test (high variance) → more data, regularisation (L1/L2, dropout), early stopping, simpler model. Underfit: poor on both (high bias) → richer features/model, train longer. Precision = of predicted positives, how many are right (spam filter: don't bin real mail). Recall = of real positives, how many we caught (cancer screening, fraud). F1 = harmonic mean. Accuracy misleads on imbalanced data. Forward pass → loss → backpropagation computes gradients via the chain rule → gradient"
+      },
+      {
+        heading: "LLMs",
+        content: "Explain how a Transformer / LLM works in 2 minutes. What are embeddings and how does vector search work? Design a RAG-based Q&A bot over company documents. Prompting vs RAG vs fine-tuning — how do you choose? How do you reduce hallucinations? What is an AI agent / tool calling? What is prompt injection; how do you defend? How do you cut LLM cost and latency? — Text → tokens (sub-words) → embeddings (vectors) + position information. Each layer uses self-attention : every token builds a Query, Key and Value; attention weights = softmax(Q·Kᵀ / √d); the output mixes Values — so each token 'looks at' the tokens most relevant to it. Multi-head = several such views in parallel. Then a feed-forward network. Decoder-only LLMs are trained to predict the next token on huge text corpora (causal mask: can't see the future), then instruction-tuned and preference-tuned (RLHF/DPO). Generation = sample"
+      },
+      {
+        heading: "AI-assisted coding rounds (Meta pilot, others following)",
+        content: "How should I use the AI assistant in an AI-enabled interview round? — First 3–5 min: no AI Read the codebase and the task yourself. Explain the structure and your plan aloud — they are scoring your understanding. Prompt precisely Give the AI the data structure / algorithm, the language, constraints and the quality bar ('O(n log n), handle empty input, keep the existing interface'). Review every line Read generated code before using it; point out what you'd change. Blind paste = red flag. Verify Run tests, add edge cases, debug failures yourself; ask the AI for test ideas, not just code. Narrate trade-offs Why this approach, what the AI got wrong, what you'd do in production. ⚠️ The signal is judgment: decomposition, validation and debugging. Using AI to skip understanding loses the round even if tests"
+      }
+    ]
+  },
+  {
+    id: "iv-p17",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 17,
+    url: "../interview-notes/index.html?page=17",
+    rootUrl: "interview-notes/index.html?page=17",
+    tag: "Behavioral",
+    title: "Page 17: Behavioral Q&A: STAR, Amazon LPs, Googleyness & Values",
+    sections: [
+      {
+        heading: "STAR, with the right proportions",
+        content: "STAR, with the right proportions Fig 17.1 — most weak answers are 50% situation. Interviewers score the Action and the Result . 📒 Build a story bank (8–10) Hardest technical problem Production incident you led Conflict / disagreement Failure / mistake Influence without authority Mentoring / growing someone Ambiguous project you shaped Customer-driven decision 🎯 Senior signals Scope beyond your team Trade-offs stated explicitly Numbers: latency, cost, %, people You changed a process, not just code Honest learning from failure 🏢 What each company calls it Amazon: 16 Leadership Principles Google: Googleyness & Leadership Meta: ambiguity, conflict, growth, impact Atlassian: 5 values (page 2) Microsoft: growth mindset,"
+      },
+      {
+        heading: "Amazon's 16 Leadership Principles → the question you'll hear",
+        content: "Amazon's 16 Leadership Principles → the question you'll hear Principle Typical question Customer Obsession Tell me about a time you went beyond what the customer asked for. Ownership A time you took on something outside your responsibility. Invent and Simplify A time you simplified a complex process or system. Are Right, A Lot A decision you made with incomplete data. Were you right? Learn and Be Curious Something you learned recently on your own and applied. Hire and Develop the Best How you mentored someone / raised the bar in hiring. Insist on the Highest Standards A time you refused to ship something that wasn't good enough. Think Big A bold idea you proposed that changed direction. Bias for Action A time you acted quickly on a calculated risk. Frugality Accomplished more with less (cost, people, time). Earn Trust A time you admitted a mistake / received hard feedback. Dive Deep A"
+      },
+      {
+        heading: "Top questions with worked answers",
+        content: "'Tell me about yourself.' 'Tell me about a conflict with a teammate or manager.' 'Tell me about a time you failed / made a mistake.' 'Describe the most complex technical problem you solved.' (Dive Deep) 'Tell me about a time you influenced without authority.' 'Tell me about a time you had to make a decision with incomplete information / under a tight deadline.' 'How do you mentor engineers?' 'Disagree and commit' example? 'How do you handle critical feedback?' 'Time you handled ambiguity?' — Formula (90 s): Present → Past → Why you're here. 'I'm a senior backend engineer with 8+ years, mostly C#/.NET and distributed systems on Azure. Right now I lead the payments-integration team of 5 at ___, where I re-architected our settlement pipeline from nightly batches to event-driven processing on Kafka — settlement time dropped from ~8 hours to under 10 minutes. Before that I built ___ at ___,"
+      }
+    ]
+  },
+  {
+    id: "iv-p18",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 18,
+    url: "../interview-notes/index.html?page=18",
+    rootUrl: "interview-notes/index.html?page=18",
+    tag: "HR",
+    title: "Page 18: Senior / Staff, Managerial & HR Rounds (India)",
+    sections: [
+      {
+        heading: "Project deep dive & hiring-manager round",
+        content: "'Walk me through the most significant project you've worked on.' 'How do you balance tech debt against feature work?' 'A team member is underperforming. What do you do?' 'How do you estimate work?' 'Client changes requirements mid-sprint / escalates?' 'Production is down at 2 AM — walk me through it.' Staff-level: 'How do you set technical direction for multiple teams?' — Why it mattered (1 min) Business problem + metric: 'checkout failures cost ~2% of orders'. Architecture (3–4 min) Draw it: components, data flow, scale numbers (QPS, data size, team size). Your part (2 min) What you designed/decided/led vs what the team did. Hardest decision (3 min) Two options, trade-offs, why you chose one, what it cost. What broke + what you'd change (2 min) Incidents, tech debt, the redesign you'd do today. Shows maturity. ⚠️ Be ready for 'why not X?' on every box you draw. If you can't defend a"
+      },
+      {
+        heading: "HR round — India specifics",
+        content: "'What is your current and expected CTC?' How do I negotiate the offer? 'What is your notice period? Can you join early?' 'Why are you leaving your current company?' 'Why this company?' 'Strengths and weaknesses?' 'Will you accept a counter-offer?' Explaining a career gap? Questions to ask them at the end? — Current: be honest and break it down (fixed, variable, stock, bonus) — Indian companies often ask for payslips/offer letters, so inflated numbers backfire. Expected: anchor on the role and market , not a hike %: 'Based on the scope of this senior role and offers in the market, I'm looking at ₹__ fixed and total comp in the ₹__–__ range. I'm flexible on the mix.' Early in the process, you can defer: 'I'd like to understand the role and level first; I'm sure we can align if it's the right fit.' Research bands (levels.fyi, AmbitionBox, Glassdoor, peers) for that company + level before"
+      }
+    ]
+  },
+  {
+    id: "iv-p19",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 19,
+    url: "../interview-notes/index.html?page=19",
+    rootUrl: "interview-notes/index.html?page=19",
+    tag: "Bank II",
+    title: "Page 19: Q&A Bank II — DSA V: Matrix, Bit Manipulation & Strings",
+    sections: [
+      {
+        heading: "Matrix",
+        content: "Rotate Image (n×n, 90° clockwise, in place). Spiral Matrix — return elements in spiral order. Set Matrix Zeroes with O(1) extra space. Search a row- and column-sorted 2D matrix? Game of Life in place? — ⚠️ Starting j at 0 swaps every pair twice and undoes the transpose. Answer: Keep four walls top, bottom, left, right . Walk right along top (top++), down the right wall (right--), then — only if top ≤ bottom — left along bottom (bottom--), and only if left ≤ right — up the left wall (left++). Repeat while top ≤ bottom and left ≤ right. O(m·n) . ⚠️ The two 'only if' checks prevent double-printing the middle row/column of non-square matrices. Answer: Use the first row and first column as marker arrays. First remember (two booleans) whether row 0 / column 0 themselves contain a zero. Mark m[i][0] = m[0][j] = 0 for every zero cell, then zero cells (i, j ≥ 1) whose row or column marker is 0,"
+      },
+      {
+        heading: "Bit manipulation",
+        content: "Single Number — every element appears twice except one. Counting Bits — number of 1s for every i in 0..n. Missing Number in 0..n? Generate all subsets with bitmasks? Add two integers without + or −? Useful bit one-liners? — Answer: XOR everything: a ^ a = 0 , a ^ 0 = a , and XOR is commutative → the pairs cancel. O(n) / O(1). ↪ Every other number appears three times → count each bit position mod 3. Two singles → XOR all to get x^y, split numbers by any set bit of that result, XOR each group. Alternative: bits[i] = bits[i & (i - 1)] + 1 . Both O(n) . XOR all indices 0..n with all values — the missing one survives. Or n(n+1)/2 − sum (watch overflow → long). Sorting is O(n log n) and not needed. For mask 0..2ⁿ−1, element i is in the subset if (mask >> i) & 1 . O(n·2ⁿ). Same idea powers bitmask DP (TSP-style, n ≤ 20). Sum without carry = a ^ b; carry = (a & b) << 1. Repeat with a = sum, b ="
+      },
+      {
+        heading: "String puzzles",
+        content: "Find a pattern in text in O(n + m) — explain KMP. Decode String: '3[a2[c]]' → 'accaccacc'. Basic Calculator II ('3+2*2', no parentheses). String to Integer (atoi) — what edge cases? Valid Palindrome II (delete at most one char)? Reorganize String (no two equal neighbours)? Reverse words in a string in place? — Answer: Precompute lps[i] = length of the longest proper prefix of pattern[0..i] that is also a suffix. On a mismatch, instead of restarting, jump the pattern pointer to lps[j-1] — the text pointer never moves backwards. ↪ Alternatives to name: Rabin-Karp (rolling hash, great for many patterns / plagiarism), Z-algorithm. In production: IndexOf(…, StringComparison.Ordinal) . Answer: Two stacks: counts and partial strings. Digit → build k (multi-digit!). [ → push (k, current), reset. ] → pop (k, prev), current = prev + current × k . Letter → append. Use StringBuilder. Time ="
+      }
+    ]
+  },
+  {
+    id: "iv-p20",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 20,
+    url: "../interview-notes/index.html?page=20",
+    rootUrl: "interview-notes/index.html?page=20",
+    tag: "Bank II",
+    title: "Page 20: Q&A Bank II — DSA VI: Hard Tier-1 Patterns & Design-a-DS",
+    sections: [
+      {
+        heading: "Monotonic deque",
+        content: "Sliding Window Maximum in O(n). — Answer: Deque of indices whose values are decreasing. For each i: drop the front if it left the window; pop the back while its value ≤ nums[i] (they can never be a max again); push i; the front is the window max. Each index enters and leaves once → O(n) . i nums[i] deque (values) window max 0 1 [1] — 1 3 [3] (1 popped) — 2 −1 [3, −1] 3 3 −3 [3, −1, −3] 3 4 5 [5] (3 expired, −3, −1 popped) 5 5 3 [5, 3] 5 6 6 [6] 6 7 7 [7] 7 ↪ Same deque trick: Shortest Subarray with Sum ≥ K (with prefix sums, negatives allowed), Constrained Subsequence Sum, Jump Game"
+      },
+      {
+        heading: "Design a data structure",
+        content: "Insert, Delete, GetRandom — all O(1). Time-Based Key-Value Store: set(key, value, t), get(key, t) → latest value at or before t. Design a Hit Counter (hits in last 5 min)? Design an LFU cache in O(1)? Flatten a Nested List Iterator? Median of a sliding window? — Answer: List<int> for O(1) random index + Dictionary<int,int> value → index. Delete: move the last element into the deleted slot, update its index in the map, remove the last slot. GetRandom: list[rng.Next(list.Count)] . ↪ Duplicates allowed → map value → HashSet of indices. Answer: Dictionary<string, List<(int t, string v)>> ; timestamps arrive increasing, so each list stays sorted. get → binary search for the last entry with time ≤ t. set O(1), get O(log n). ↪ Out-of-order timestamps → SortedList / SortedDictionary per key. This is MVCC in miniature — mention it. Queue of timestamps, pop older than t−300 (exact, memory ∝"
+      },
+      {
+        heading: "Hard DP",
+        content: "Regular Expression Matching with '.' and '*'. Burst Balloons — the 'interval DP' template. Longest Valid Parentheses? Longest Increasing Path in a Matrix? — Answer: dp[i][j] = does s[0..i) match p[0..j). If p[j−1] is '*': zero copies → dp[i][j−2], or one more copy → dp[i−1][j] when s[i−1] matches p[j−2]. Else: dp[i−1][j−1] when chars match (or p is '.'). Base: dp[0][0] = true; dp[0][j] = p[j−1]=='*' && dp[0][j−2] (patterns like 'a*b*' match empty). O(m·n) . Answer: Pad with 1s at both ends. Think about the balloon burst last in (l, r): its neighbours are then l and r, and the two sides are independent. dp[l][r] = max over k of dp[l][k] + dp[k][r] + a[l]·a[k]·a[r] , filled by increasing interval length. O(n³) . 💡 'Choose the last action, not the first' turns dependent sub-problems into independent ones. Same for Matrix-Chain Multiplication and Minimum Cost to Cut a Stick. Stack of"
+      },
+      {
+        heading: "Hard graphs",
+        content: "Critical Connections (bridges) in a network? Parallel Courses / minimum semesters? Bus Routes (fewest buses)? Shortest path visiting all nodes (n ≤ 12)? — Tarjan: DFS with discovery time disc[u] and low[u] = earliest discovery reachable via the subtree plus one back edge. Edge (u, v) is a bridge if low[v] > disc[u] . O(V + E). Kahn's BFS level by level — each level is one semester; answer = number of levels, −1 if a cycle leaves nodes unprocessed. Longest path in a DAG = DP in topological order. BFS over routes , not stops: map stop → routes; start with routes containing the source; mark visited routes and stops. Level = buses taken. O(sum of route lengths). BFS over state (node, visitedMask), starting from every node at once; the first state with all bits set gives the answer. O(2ⁿ · n²). Recognise 'n ≤ 20' → bitmask"
+      }
+    ]
+  },
+  {
+    id: "iv-p21",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 21,
+    url: "../interview-notes/index.html?page=21",
+    rootUrl: "interview-notes/index.html?page=21",
+    tag: "Bank II",
+    title: "Page 21: Q&A Bank II — System Design II: More Blueprints",
+    sections: [
+      {
+        heading: "Storage, collaboration & logs",
+        content: "Design Google Docs (real-time collaborative editing). Design Dropbox / Google Drive (file sync). Design a distributed message queue / log like Kafka. — Core problem Two users edit the same paragraph at once; everyone must converge to the same text without locking. Algorithms OT (Operational Transformation): a central server orders operations and transforms concurrent ones against each other (Google Docs style). CRDT : each character gets a unique, ordered ID so replicas merge without a central order (works offline / peer-to-peer; more metadata). Architecture WebSocket gateway → document session server (one owner per doc, sticky by doc_id) holding the live state → operation log (append-only) + periodic snapshots in storage. Presence/cursors via a lightweight pub/sub channel. Deep dives Reconnect: client sends last acked version, server replays ops since then. Version history = snapshots"
+      },
+      {
+        heading: "IDs, ranking & location",
+        content: "Design a distributed unique ID generator. Design a real-time gaming leaderboard (top 10 + my rank). Design 'nearby restaurants' (Yelp / Swiggy discovery). — Option Pros Cons DB auto-increment Simple, ordered Single bottleneck; multi-master needs step/offset tricks UUID v4 No coordination 128-bit, random → poor index locality UUID v7 / ULID Time-ordered, no coordination Still 128-bit Snowflake (Fig 21.1) 64-bit, time-sortable, fast Needs machine-ID assignment (ZooKeeper/config) and sane clocks Ticket server / ID ranges Each node leases a block of 1,000 IDs Gaps on crash; range service must be HA Store Redis sorted set per leaderboard: ZINCRBY on score, ZREVRANGE 0 9 for the top 10, ZREVRANK for a user's rank — all O(log n). Durability Scores also written to a DB (source of truth) via the game service; Redis can be rebuilt. Scale Hundreds of millions of users: shard by score range, or"
+      },
+      {
+        heading: "Analytics, booking & migrations",
+        content: "Design ad-click / metrics aggregation (counts per minute, at scale). Design hotel / Airbnb booking — how do you prevent double booking? Migrate a live database with zero downtime? Active-active multi-region — what's hard? Handle a hot partition / celebrity key? Design an online code judge (LeetCode)? — Ingest Click events → Kafka (keyed by ad_id) → stream processor (Flink / Kafka Streams) with tumbling 1-min windows and event-time watermarks for late events. Store Aggregates to an OLAP/time-series store (ClickHouse, Druid, Pinot); raw events to cheap object storage for replay and audits. Correctness Dedupe by click_id; exactly-once sinks or idempotent upserts; nightly batch reconciliation (Lambda) or replay-from-log (Kappa). Hot keys A viral ad → pre-aggregate per partition, then merge. Answer: Model inventory per room-type per date ( room_type_id, date, total, reserved ). Booking = one"
+      }
+    ]
+  },
+  {
+    id: "iv-p22",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 22,
+    url: "../interview-notes/index.html?page=22",
+    rootUrl: "interview-notes/index.html?page=22",
+    tag: "Bank II",
+    title: "Page 22: Q&A Bank II — LLD & Machine Coding II",
+    sections: [
+      {
+        heading: "Order matching engine (stock exchange)",
+        content: "Implement a limit-order matching engine (price-time priority). — ↪ Extensions they ask: cancel (lazy-delete set checked on peek, or SortedDictionary<price, LinkedList<Order>> + id → node map for O(1) cancel), market orders (no price check), one book per symbol, single-threaded matcher per symbol fed by a queue (no locks,"
+      },
+      {
+        heading: "More machine-coding problems",
+        content: "Shopping cart with pluggable discount rules. Cab booking (Uber/Ola LLD): riders, drivers, matching, fares. Tic-tac-toe on an n×n board — check the winner in O(1) per move. Meeting room scheduler? ATM machine? Task scheduler with dependencies and priorities? Cache with pluggable eviction policy? Inventory with reservations (e-commerce)? Feature-flag evaluator (Atlassian-style)? — Entities Product (id, price, category), Cart (lines: product + qty), Coupon, User (tier). Rules IDiscountRule { bool AppliesTo(Cart); decimal Discount(Cart); } — FlatOff, PercentOff (capped), BuyXGetY, CategoryOff, FirstOrder. A PricingEngine runs rules in priority order; a stacking policy (best single / all stackable) is itself a strategy. Money decimal , round once at the end, never below zero, return a line-by-line breakdown (users and graders both love it). Extension New rule = new class + registration;"
+      }
+    ]
+  },
+  {
+    id: "iv-p23",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 23,
+    url: "../interview-notes/index.html?page=23",
+    rootUrl: "interview-notes/index.html?page=23",
+    tag: "Bank II",
+    title: "Page 23: Q&A Bank II — Production Scenarios (.NET, SQL, Network, K8s, Cloud)",
+    sections: [
+      {
+        heading: ".NET services in production",
+        content: "CPU is at 100% on your API pods. Walk me through it. Memory keeps growing until the pod is OOMKilled. How do you find the leak? Latency spikes under load but CPU is low. What is thread-pool starvation? Why is async void dangerous? Global error handling in ASP.NET Core? IMemoryCache vs IDistributedCache? How do you make logs useful? — Mitigate: scale out / roll back the last deploy if it correlates. Scope: all pods or one? Which endpoints got slower (APM traces)? Traffic spike or same traffic? Evidence: dotnet-counters monitor (CPU, GC %, thread-pool queue, exceptions/sec); dotnet-trace collect for a CPU profile → hot methods. Usual suspects: tight retry loops, regex backtracking, huge JSON serialisation, LINQ in loops (O(n²)), GC thrash from allocations, exception storms. Prevent: load test the hot path, alerts on CPU + p99, regex timeouts, allocation budgets. Confirm with metrics"
+      },
+      {
+        heading: "Database scenarios",
+        content: "Design an index for: WHERE tenant_id = ? AND status = ? AND created_at > ? ORDER BY created_at. Database deadlocks in production? Lost updates with EF Core? User saved data but doesn't see it on refresh? Add a column to a 500M-row table safely? — Answer: Composite index (tenant_id, status, created_at) — equality columns first, then the range/sort column . The index then serves the filter and the ORDER BY (no sort step). Add frequently selected columns with INCLUDE to make it covering. Verify with the actual plan. ⚠️ Putting created_at first makes the range scan everything after the date for all tenants. Capture the deadlock graph (SQL Server extended events / Postgres logs). Fix: touch tables/rows in a consistent order, keep transactions short, add indexes so updates lock fewer rows, retry the victim transaction. Optimistic concurrency: a rowversion / [Timestamp] or concurrency-token"
+      },
+      {
+        heading: "Network & Linux debugging",
+        content: "Users get intermittent 502/504 errors after a deploy. Debug it. Linux commands for a sick server? 'Works on my machine, fails in prod with SSL error'? — Correlate with the deploy → roll back first if impact is high. 502 during rollout: pods killed while serving (no graceful shutdown / preStop delay), readiness passing too early, keep-alive timeout of app shorter than the LB's (LB reuses a connection the app just closed). 504: a slow dependency or query; LB timeout shorter than the request path; thread-pool starvation. Tools: LB access logs (target status, latency), app logs by trace ID, curl -v from inside the cluster, pod events. top/htop (CPU, load), free -m (memory), df -h / du -sh (disk), ss -tulpn (ports), lsof -p (open files), journalctl -u svc / tail -f (logs), dig / nslookup (DNS), curl -v (HTTP/TLS), tcpdump (packets). Expired/incomplete certificate chain, hostname mismatch,"
+      },
+      {
+        heading: "Kubernetes, cloud & delivery scenarios",
+        content: "Pod stuck in Pending? ImagePullBackOff? Service exists but calls time out? RPO vs RTO; DR strategies? Cut the cloud bill by 30%? git merge vs rebase; revert vs reset? Unit vs integration vs contract tests? How do you roll out a risky change? — kubectl describe pod → events: insufficient CPU/memory (requests too high / cluster full → autoscaler), node selector/taints without tolerations, unbound PVC, quota exceeded. Wrong image name/tag, private registry without imagePullSecrets / managed identity, registry rate limits (Docker Hub), network egress blocked. kubectl get endpoints svc — empty means the selector doesn't match pod labels or pods aren't Ready. Then check targetPort vs container port, NetworkPolicies, and DNS ( svc.namespace.svc.cluster.local ). RPO = how much data you can lose (time since last good copy); RTO = how long you can be down. Cheapest → fastest: backup & restore →"
+      }
+    ]
+  },
+  {
+    id: "iv-p24",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 24,
+    url: "../interview-notes/index.html?page=24",
+    rootUrl: "interview-notes/index.html?page=24",
+    tag: "Bank II",
+    title: "Page 24: Q&A Bank II — Behavioral II & AI/LLM Engineering II",
+    sections: [
+      {
+        heading: "More behavioral questions, worked",
+        content: "'Tell me about a time you took ownership of something outside your role.' (Ownership) 'Tell me about delivering under a tight deadline.' (Deliver Results / Bias for Action) 'Tell me about a difficult stakeholder.' 'Why should we hire you?' 'A time you simplified something.' (Invent & Simplify) 'A time you refused to compromise on quality.' 'Priorities changed / your project was cancelled.' 'Tell me about learning something fast.' — S/T: Our on-call got ~40 pages a week, most from one flaky integration owned by another team that was busy with a launch. A: I grouped a month of alerts by cause, found 70% came from timeouts on one vendor endpoint, proposed a fix in their repo (retry with jitter + circuit breaker + a dead-letter queue), paired with their engineer to review it, and added a dashboard both teams watched. R: Pages dropped from ~40 to ~6 a week within a month; the other team"
+      },
+      {
+        heading: "AI / LLM engineering — the follow-ups",
+        content: "How do you evaluate a RAG system? Chunking strategies — and why chunking matters so much. LoRA / QLoRA / quantization? What drives LLM latency? How do you get reliable structured output? Estimate the cost of an LLM feature? Long conversations exceed the context window? When should you NOT use an agent? You switch embedding models — what breaks? What guardrails would you put on a customer-facing bot? — Build a golden set — 100–300 real questions with expected answers and the source passages (from support tickets, SMEs, logs). Retrieval metrics: recall@k (is the right chunk in the top k?), MRR / nDCG (is it near the top?). Generation metrics: faithfulness/groundedness (every claim supported by retrieved text), answer relevance, correctness vs reference, citation accuracy — scored by human review plus an LLM-as-judge calibrated against humans. Online: thumbs up/down, escalation-to-human"
+      }
+    ]
+  },
+  {
+    id: "iv-p25",
+    notebook: "interview-notes",
+    notebookName: "Interview Q&A",
+    notebookIcon: "🎯",
+    page: 25,
+    url: "../interview-notes/index.html?page=25",
+    rootUrl: "interview-notes/index.html?page=25",
+    tag: "Revision",
+    title: "Page 25: 30-Day Plan, Company Cheat Sheet & Night-Before Checklist",
+    sections: [
+      {
+        heading: "The 30-day calendar",
+        content: "The 30-day calendar Fig 25.1 — Tier 3 target? Compress weeks 3–4 and spend more on stack depth (p.14–15, 23). Tier 1? Add a 5th week: Q&A Bank II"
+      },
+      {
+        heading: "Company-wise cheat sheet",
+        content: "Company-wise cheat sheet Company Win condition Revise these pages Google Clean optimal code without running it; graphs/DP; G&L stories; design depth at L5+ 5, 6, 12, 13, 17, 19–21 Meta Speed (2 mediums / 40 min), trees/graphs/arrays; AI-enabled round; product design; ambiguity & conflict stories 3, 4, 5, 13, 16, 17, 20, 24 Amazon LP story in every round (2 per principle); OOD; system design for SDE2+ 3, 4, 11, 13, 17, 21, 24 Microsoft DSA medium, LLD + HLD, AA round, collaboration stories; C#/.NET depth helps 4, 7, 10, 11, 14, 19, 23 Uber Graphs/DP, runnable machine coding, project-centred design, strong HM round 5, 6, 11, 13, 18, 20, 22 Flipkart · Swiggy · Razorpay Machine coding gate (SOLID, extensible, runs), PSDS mediums, practical HLD 10, 11, 22, 3–5, 13, 21 Atlassian Code design build-and-extend, values round, system design 2, 11, 12, 17, 20, 22 Adobe · Salesforce · Walmart ·"
+      },
+      {
+        heading: "Am I ready?",
+        content: "How do I know I'm ready for the loop? — ✓ You solve an unseen medium in ≤ 25 min with a clean dry run, 4 times out of 5. ✓ You can answer every 🔥 question in this notebook in Quiz mode without peeking. ✓ You've built parking lot + one other LLD in 90 minutes and it ran (T2 targets). ✓ You can whiteboard feed, notifications and rate limiter in 40 minutes each, with numbers. ✓ You have 8+ STAR stories with metrics, each told in under 3 minutes. ✓ You know your own numbers: current CTC breakdown, notice period, expected range. 💡 If two boxes are unticked, reschedule by a week — recruiters almost always agree, and a failed loop often means a 6–12 month"
+      }
+    ]
   }
 ];
 
@@ -1185,12 +1820,13 @@ function initSearchModalUI() {
         </div>
 
         <div class="search-modal-filters">
-          <button class="search-filter-chip active" data-filter="all" onclick="setSearchFilter('all')">🌐 All Notebooks (38 Pages)</button>
+          <button class="search-filter-chip active" data-filter="all" onclick="setSearchFilter('all')">🌐 All Notebooks (67 Pages)</button>
           <button class="search-filter-chip" data-filter="ai-notes" onclick="setSearchFilter('ai-notes')">🧠 AI Evolution</button>
           <button class="search-filter-chip" data-filter="system-design-notes" onclick="setSearchFilter('system-design-notes')">📐 System Design</button>
           <button class="search-filter-chip" data-filter="kubernetes-notes" onclick="setSearchFilter('kubernetes-notes')">⎈ Kubernetes</button>
           <button class="search-filter-chip" data-filter="docker-notes" onclick="setSearchFilter('docker-notes')">🐳 Docker</button>
           <button class="search-filter-chip" data-filter="dsa-notes" onclick="setSearchFilter('dsa-notes')">💻 DSA Master</button>
+          <button class="search-filter-chip" data-filter="interview-notes" onclick="setSearchFilter('interview-notes')">🎯 Interview Q&amp;A</button>
         </div>
 
         <div class="search-modal-results" id="searchModalResults">
@@ -1207,6 +1843,8 @@ function initSearchModalUI() {
               <span class="suggestion-tag" onclick="quickFillSearch('Consistent Hashing')">🔄 Consistent Hashing</span>
               <span class="suggestion-tag" onclick="quickFillSearch('Raft Consensus')">🤝 Raft Consensus</span>
               <span class="suggestion-tag" onclick="quickFillSearch('Kubernetes Ingress')">⎈ K8s Ingress</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('STAR')">🎯 STAR Stories</span>
+              <span class="suggestion-tag" onclick="quickFillSearch('Nth highest salary')">🗄️ Nth Highest Salary</span>
             </div>
           </div>
         </div>
@@ -1877,10 +2515,10 @@ function initThemeSystem() {
     });
 
     wrapper.innerHTML = `
-      <button class="topbar-theme-btn" onclick="toggleThemePopover(event)" title="Choose Theme Palette">
+      <button class="topbar-theme-btn" onclick="toggleThemePopover(event)" title="Choose Theme Palette" aria-label="Choose theme palette">
         <span class="theme-active-dot" id="topbarThemeDot" style="color: ${currentT.color};"></span>
         <span id="topbarThemeBtnText">${currentT.icon}</span>
-        <span style="font-size: 11px; opacity: 0.7;">▼</span>
+        <span class="theme-caret" style="font-size: 11px; opacity: 0.7;">▼</span>
       </button>
       <div class="theme-popover-menu" id="themePopoverMenu">
         <div class="theme-popover-title">Reading Palette</div>
