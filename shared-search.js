@@ -7,11 +7,11 @@
 
 // Full Content Index of All Handwritten Notes
 const NOTES_SEARCH_DATABASE = [
-  // --- AI NOTES (6 Pages) ---
+  // --- AI NOTES BOOK — Ch 1 "Inside the Mind of AI" › The Evolution of AI (6 Pages) ---
   {
     id: "ai-p1",
     notebook: "ai-notes",
-    notebookName: "AI Evolution",
+    notebookName: "AI Notes",
     notebookIcon: "🧠",
     page: 1,
     url: "../ai-notes/index.html?page=1",
@@ -40,7 +40,7 @@ const NOTES_SEARCH_DATABASE = [
   {
     id: "ai-p2",
     notebook: "ai-notes",
-    notebookName: "AI Evolution",
+    notebookName: "AI Notes",
     notebookIcon: "🧠",
     page: 2,
     url: "../ai-notes/index.html?page=2",
@@ -65,7 +65,7 @@ const NOTES_SEARCH_DATABASE = [
   {
     id: "ai-p3",
     notebook: "ai-notes",
-    notebookName: "AI Evolution",
+    notebookName: "AI Notes",
     notebookIcon: "🧠",
     page: 3,
     url: "../ai-notes/index.html?page=3",
@@ -90,7 +90,7 @@ const NOTES_SEARCH_DATABASE = [
   {
     id: "ai-p4",
     notebook: "ai-notes",
-    notebookName: "AI Evolution",
+    notebookName: "AI Notes",
     notebookIcon: "🧠",
     page: 4,
     url: "../ai-notes/index.html?page=4",
@@ -115,7 +115,7 @@ const NOTES_SEARCH_DATABASE = [
   {
     id: "ai-p5",
     notebook: "ai-notes",
-    notebookName: "AI Evolution",
+    notebookName: "AI Notes",
     notebookIcon: "🧠",
     page: 5,
     url: "../ai-notes/index.html?page=5",
@@ -140,7 +140,7 @@ const NOTES_SEARCH_DATABASE = [
   {
     id: "ai-p6",
     notebook: "ai-notes",
-    notebookName: "AI Evolution",
+    notebookName: "AI Notes",
     notebookIcon: "🧠",
     page: 6,
     url: "../ai-notes/index.html?page=6",
@@ -1821,7 +1821,7 @@ function initSearchModalUI() {
 
         <div class="search-modal-filters">
           <button class="search-filter-chip active" data-filter="all" onclick="setSearchFilter('all')">🌐 All Notebooks (67 Pages)</button>
-          <button class="search-filter-chip" data-filter="ai-notes" onclick="setSearchFilter('ai-notes')">🧠 AI Evolution</button>
+          <button class="search-filter-chip" data-filter="ai-notes" onclick="setSearchFilter('ai-notes')">🧠 AI Notes</button>
           <button class="search-filter-chip" data-filter="system-design-notes" onclick="setSearchFilter('system-design-notes')">📐 System Design</button>
           <button class="search-filter-chip" data-filter="kubernetes-notes" onclick="setSearchFilter('kubernetes-notes')">⎈ Kubernetes</button>
           <button class="search-filter-chip" data-filter="docker-notes" onclick="setSearchFilter('docker-notes')">🐳 Docker</button>

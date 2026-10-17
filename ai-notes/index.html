@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Evolution of AI - Handwritten Notes by Amit Mahata</title>
+  <title>AI Notes — A Handwritten Book by Amit Mahata</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
   <meta name="description"
-    content="Comprehensive handwritten-style study notes covering the Evolution of AI — from Turing Test (1950), Rule-based Expert Systems, Machine Learning & Deep Learning, AlexNet, NLP & Transformers, to Generative AI, Multimodal LLMs, and Autonomous AI Agents." />
+    content="A handwritten-style AI book organised into chapters and topics. Chapter 1, Inside the Mind of AI, covers the Evolution of AI — from Turing Test (1950), Rule-based Expert Systems, Machine Learning & Deep Learning, AlexNet, NLP & Transformers, to Generative AI, Multimodal LLMs, and Autonomous AI Agents." />
 
   <!-- Handwritten & Code Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,14 +39,15 @@
     <!-- Top Navigation Bar -->
     <header class="topbar">
       <div class="topbar-left">
-        <button class="nav-btn drawer-toggle-btn" onclick="toggleSidebar(true)" title="Topic Index & Notebook Switcher" aria-label="Topics">☰<span class="btn-label"> Topics</span></button>
+        <button class="nav-btn drawer-toggle-btn" onclick="toggleSidebar(true)" title="Chapters, topics &amp; notebook switcher (T)" aria-label="Chapters">☰<span class="btn-label"> Chapters</span></button>
+        <button class="nav-btn contents-btn" onclick="goToContents()" title="Book contents (C)" aria-label="Book contents">📖<span class="btn-label"> Contents</span></button>
         <a href="../index.html" class="home-link-btn" title="Back to All Notes Hub" aria-label="Notes Hub">🏠<span class="btn-label"> Hub</span></a>
         <span class="brand-icon">🧠</span>
-        <span class="topbar-title">The Evolution of AI <span class="author-pill">by Amit Mahata • Handwritten Notes</span></span>
+        <span class="topbar-title"><span id="topbarTitleText">AI Notes</span> <span class="author-pill" id="topbarBreadcrumb">by Amit Mahata • Handwritten Book</span></span>
       </div>
       <div class="topbar-center">
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Page" aria-label="Previous page">←<span class="btn-label"> Prev</span></button>
-        <span class="page-indicator" id="pageIndicator">Page 1 / 6</span>
+        <span class="page-indicator" id="pageIndicator">Contents</span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Page" aria-label="Next page"><span class="btn-label">Next </span>→</button>
       </div>
       <div class="topbar-right">
@@ -77,8 +78,8 @@
           <a href="../ai-notes/index.html" class="switcher-card active" title="AI Notes">
             <span class="switcher-icon">🧠</span>
             <div class="switcher-info">
-              <span class="switcher-title">AI Evolution</span>
-              <span class="switcher-pages">6 Pages</span>
+              <span class="switcher-title">AI Notes</span>
+              <span class="switcher-pages">Book • 6 Pages</span>
             </div>
           </a>
           <a href="../system-design-notes/index.html" class="switcher-card" title="System Design Notes">
@@ -121,82 +122,16 @@
 
       <!-- Search Filter -->
       <div class="sidebar-section">
-        <div class="section-label">TOPIC EXPLORER (PRESS 'T')</div>
+        <div class="section-label">BOOK CONTENTS (PRESS 'T')</div>
         <div class="sidebar-search-box">
           <span class="search-icon">🔍</span>
-          <input type="text" id="topicSearchInput" placeholder="Search topics (e.g. Turing, CNN, LLM)..." oninput="filterSidebarTopics(this.value)" autocomplete="off" />
+          <input type="text" id="topicSearchInput" placeholder="Search chapters &amp; topics (e.g. Turing, CNN, LLM)..." oninput="filterSidebarTopics(this.value)" autocomplete="off" />
           <button class="clear-search-btn" id="clearSearchBtn" onclick="clearTopicSearch()" style="display:none;">&times;</button>
         </div>
       </div>
 
-      <!-- Topics Tree / List -->
-      <div class="sidebar-topics-list" id="sidebarTopicsList">
-        <div class="sidebar-topic-item active" data-page="1" data-keywords="turing mccarthy 1950 1955 1986 rule based expert systems spam chess" onclick="goToPage(1)">
-          <div class="topic-left">
-            <span class="topic-num-badge">P1</span>
-            <div class="topic-info">
-              <span class="topic-title">Early Foundations &amp; Rule-Based AI</span>
-              <span class="topic-subtitle">Turing Test (1950), McCarthy, Chess &amp; Rules</span>
-            </div>
-          </div>
-          <span class="topic-tag-pill" style="background: #fee2e2; color: #dc2626;">Origins</span>
-        </div>
-
-        <div class="sidebar-topic-item" data-page="2" data-keywords="machine learning deep learning neural networks backpropagation weights data" onclick="goToPage(2)">
-          <div class="topic-left">
-            <span class="topic-num-badge">P2</span>
-            <div class="topic-info">
-              <span class="topic-title">ML &amp; Deep Learning Revolution</span>
-              <span class="topic-subtitle">Paradigm Shift, Features vs Neural Weights</span>
-            </div>
-          </div>
-          <span class="topic-tag-pill" style="background: #dbeafe; color: #1d4ed8;">ML &amp; DL</span>
-        </div>
-
-        <div class="sidebar-topic-item" data-page="3" data-keywords="alexnet imagenet cnn computer vision nlp word2vec rnn lstm attention" onclick="goToPage(3)">
-          <div class="topic-left">
-            <span class="topic-num-badge">P3</span>
-            <div class="topic-info">
-              <span class="topic-title">Vision (AlexNet) &amp; NLP Evolution</span>
-              <span class="topic-subtitle">ImageNet 2012, Word2Vec, Attention Mechanism</span>
-            </div>
-          </div>
-          <span class="topic-tag-pill" style="background: #ede9fe; color: #7c3aed;">Vision &amp; NLP</span>
-        </div>
-
-        <div class="sidebar-topic-item" data-page="4" data-keywords="transformers attention is all you need gpt bert generative ai llm pre-training rlhf" onclick="goToPage(4)">
-          <div class="topic-left">
-            <span class="topic-num-badge">P4</span>
-            <div class="topic-info">
-              <span class="topic-title">Generative AI &amp; LLMs (Transformers)</span>
-              <span class="topic-subtitle">Attention Is All You Need, GPT, Pre-training &amp; RLHF</span>
-            </div>
-          </div>
-          <span class="topic-tag-pill" style="background: #fef3c7; color: #d97706;">GenAI</span>
-        </div>
-
-        <div class="sidebar-topic-item" data-page="5" data-keywords="multimodal gpt-4v gemini autonomous agents tools memory react reflection multi-agent" onclick="goToPage(5)">
-          <div class="topic-left">
-            <span class="topic-num-badge">P5</span>
-            <div class="topic-info">
-              <span class="topic-title">Multimodal AI &amp; Autonomous Agents</span>
-              <span class="topic-subtitle">Vision-Language, Tool Use, Memory &amp; Multi-Agent</span>
-            </div>
-          </div>
-          <span class="topic-tag-pill" style="background: #dcfce7; color: #059669;">Agents</span>
-        </div>
-
-        <div class="sidebar-topic-item" data-page="6" data-keywords="future frontier reasoning agi timeline summary comparison cheat sheet" onclick="goToPage(6)">
-          <div class="topic-left">
-            <span class="topic-num-badge">P6</span>
-            <div class="topic-info">
-              <span class="topic-title">Future Frontiers &amp; Master Cheat Sheet</span>
-              <span class="topic-subtitle">Timeline Comparison, Paradigm Matrix &amp; Key Takeaways</span>
-            </div>
-          </div>
-          <span class="topic-tag-pill" style="background: #f1f5f9; color: #334155;">Summary</span>
-        </div>
-      </div>
+      <!-- Chapter → Topic → Page tree (built by script.js from the <main> markup) -->
+      <div class="sidebar-topics-list" id="sidebarTopicsList"></div>
 
       <!-- Sidebar Footer -->
       <div class="sidebar-footer">
@@ -209,57 +144,62 @@
     <!-- Dot Navigation -->
     <div class="dot-nav" id="dotNav"></div>
 
-    <!-- Table of Contents Modal -->
-    <div class="toc-modal" id="tocModal">
-      <div class="toc-card">
-        <div class="toc-header">
-          <h3>Table of Contents (AI Master Notes)</h3>
-          <button class="toc-close" onclick="toggleTOC(false)">&times;</button>
-        </div>
-        <div class="toc-list">
-          <div class="toc-item" onclick="goToPage(1)">
-            <span>Page 1: Early Foundations (1950 – 1997) &amp; Rule-Based AI</span>
-            <span style="color: var(--ink-red); font-weight: bold;">Origins</span>
-          </div>
-          <div class="toc-item" onclick="goToPage(2)">
-            <span>Page 2: Machine Learning &amp; Deep Learning Revolution</span>
-            <span style="color: var(--ink-blue); font-weight: bold;">ML &amp; Neural Nets</span>
-          </div>
-          <div class="toc-item" onclick="goToPage(3)">
-            <span>Page 3: Computer Vision (AlexNet) &amp; NLP Evolution</span>
-            <span style="color: var(--ink-purple); font-weight: bold;">Vision &amp; NLP</span>
-          </div>
-          <div class="toc-item" onclick="goToPage(4)">
-            <span>Page 4: Transformers (2017), LLMs &amp; Generative AI</span>
-            <span style="color: var(--ink-yellow); font-weight: bold;">Transformers &amp; GenAI</span>
-          </div>
-          <div class="toc-item" onclick="goToPage(5)">
-            <span>Page 5: Multimodal AI &amp; The AI Today (Agents)</span>
-            <span style="color: var(--ink-green); font-weight: bold;">Modern Autonomous AI</span>
-          </div>
-          <div class="toc-item" onclick="goToPage(6)">
-            <span>Page 6: Master Analysis: Have Machines Become Smarter Than Humans?</span>
-            <span style="color: var(--ink-red); font-weight: bold;">Synthesis</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Notebook Pages Container -->
-    <main class="notebook-container" id="notebookContainer">
+    <!--
+      THE AI BOOK — how to add notes
+
+      <main>                                  = the book
+        <section class="book-chapter">        = a chapter
+          <section class="book-topic">        = a topic inside the chapter
+            <article class="notebook-page">   = a page inside the topic
+
+      script.js builds everything else from this markup: the Contents page,
+      chapter opener pages, the sidebar tree, page headers ("Ch 1 › Topic · 2 / 6"),
+      spiral holes, dots, prev/next across topics and #deep-links.
+
+      New page    → add inside a topic:
+                      <article class="notebook-page" data-title="..." data-subtitle="..."
+                        data-keywords="..." data-tag="..." data-tag-color="red|blue|purple|yellow|green|slate">
+                        <div class="page-content"> ...your notes... </div>
+                      </article>
+      New topic   → <section class="book-topic" data-id data-title data-subtitle data-icon>
+      New chapter → <section class="book-chapter" data-id data-title data-subtitle data-icon>
+                    (add data-status="coming-soon" while it has no pages)
+
+      Global page numbers (?page=N, used by the Ctrl+K search index) follow document
+      order. Append new topics/chapters after the existing ones, or update the
+      ai-notes entries in ../shared-search.js.
+    -->
+    <main class="notebook-container" id="notebookContainer"
+      data-book-title="AI Notes"
+      data-book-subtitle="A handwritten book on how AI thinks, how it evolved, and how it is changing the way we build software."
+      data-book-author="Amit Mahata">
+
+      <!-- ═════════════════════════════════════════════════════════
+           CHAPTER 1 · Inside the Mind of AI
+           ═════════════════════════════════════════════════════════ -->
+      <section class="book-chapter"
+        data-id="inside-the-mind-of-ai"
+        data-title="Inside the Mind of AI"
+        data-subtitle="Where AI came from, how machines learned to see, read and reason — and where it is heading."
+        data-icon="🧠">
+
+        <!-- ── Topic 1.1 · The Evolution of AI ─────────────────── -->
+        <section class="book-topic"
+          data-id="evolution-of-ai"
+          data-title="The Evolution of AI"
+          data-subtitle="From the Turing Test (1950) to autonomous AI agents"
+          data-icon="📜">
 
       <!-- =========================================================
            PAGE 1: Early Foundations (1950 – 1997) & Rule-Based AI
            ========================================================= -->
-      <article class="notebook-page active" id="page-1">
+      <article class="notebook-page"
+        data-title="Early Foundations &amp; Rule-Based AI"
+        data-subtitle="Turing Test (1950), McCarthy, Chess &amp; Rules"
+        data-keywords="turing mccarthy 1950 1955 1986 rule based expert systems spam chess"
+        data-tag="Origins" data-tag-color="red">
         <div class="notebook-inner">
-          <div class="spiral-holes">
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-          </div>
 
           <div class="page-content">
 
@@ -270,10 +210,6 @@
               <span>25 August 2026 at 2:15 PM</span>
             </div>
 
-            <div class="page-header">
-              <span class="author-tag">✍️ Notes by Amit Mahata</span>
-              <span class="page-num">1 / 6</span>
-            </div>
 
             <!-- Red Title from Note -->
             <h1 class="note-title-red">
@@ -363,21 +299,14 @@
       <!-- =========================================================
            PAGE 2: Machine Learning & Deep Learning Revolution
            ========================================================= -->
-      <article class="notebook-page" id="page-2">
+      <article class="notebook-page"
+        data-title="ML &amp; Deep Learning Revolution"
+        data-subtitle="Paradigm Shift, Features vs Neural Weights"
+        data-keywords="machine learning deep learning neural networks backpropagation weights data"
+        data-tag="ML &amp; DL" data-tag-color="blue">
         <div class="notebook-inner">
-          <div class="spiral-holes">
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-          </div>
 
           <div class="page-content">
-            <div class="page-header">
-              <span class="author-tag">✍️ Notes by Amit Mahata</span>
-              <span class="page-num">2 / 6</span>
-            </div>
 
             <!-- Expert Systems / Medical Example -->
             <div style="background: rgba(255, 255, 255, 0.7); border: 1.5px dashed var(--ink-yellow); border-radius: 10px; padding: 12px 18px; margin-bottom: 20px;">
@@ -451,21 +380,14 @@
       <!-- =========================================================
            PAGE 3: Computer Vision Revolution & NLP Evolution
            ========================================================= -->
-      <article class="notebook-page" id="page-3">
+      <article class="notebook-page"
+        data-title="Vision (AlexNet) &amp; NLP Evolution"
+        data-subtitle="ImageNet 2012, Word2Vec, Attention Mechanism"
+        data-keywords="alexnet imagenet cnn computer vision nlp word2vec rnn lstm attention"
+        data-tag="Vision &amp; NLP" data-tag-color="purple">
         <div class="notebook-inner">
-          <div class="spiral-holes">
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-          </div>
 
           <div class="page-content">
-            <div class="page-header">
-              <span class="author-tag">✍️ Notes by Amit Mahata</span>
-              <span class="page-num">3 / 6</span>
-            </div>
 
             <!-- Key Insight Callout: Difference between ML & DL -->
             <div class="yellow-callout" style="font-size: 22px;">
@@ -547,21 +469,14 @@
       <!-- =========================================================
            PAGE 4: Transformers (2017), LLMs & Generative AI
            ========================================================= -->
-      <article class="notebook-page" id="page-4">
+      <article class="notebook-page"
+        data-title="Generative AI &amp; LLMs (Transformers)"
+        data-subtitle="Attention Is All You Need, GPT, Pre-training &amp; RLHF"
+        data-keywords="transformers attention is all you need gpt bert generative ai llm pre-training rlhf"
+        data-tag="GenAI" data-tag-color="yellow">
         <div class="notebook-inner">
-          <div class="spiral-holes">
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-          </div>
 
           <div class="page-content">
-            <div class="page-header">
-              <span class="author-tag">✍️ Notes by Amit Mahata</span>
-              <span class="page-num">4 / 6</span>
-            </div>
 
             <div class="handwritten-green-text" style="font-size: 21px; font-weight: bold; margin-bottom: 14px;">
               ↳ much much better RNN (solving sequential bottlenecks with Self-Attention)
@@ -647,21 +562,14 @@
       <!-- =========================================================
            PAGE 5: Multimodal AI & The AI Today (Agents)
            ========================================================= -->
-      <article class="notebook-page" id="page-5">
+      <article class="notebook-page"
+        data-title="Multimodal AI &amp; Autonomous Agents"
+        data-subtitle="Vision-Language, Tool Use, Memory &amp; Multi-Agent"
+        data-keywords="multimodal gpt-4v gemini autonomous agents tools memory react reflection multi-agent"
+        data-tag="Agents" data-tag-color="green">
         <div class="notebook-inner">
-          <div class="spiral-holes">
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-          </div>
 
           <div class="page-content">
-            <div class="page-header">
-              <span class="author-tag">✍️ Notes by Amit Mahata</span>
-              <span class="page-num">5 / 6</span>
-            </div>
 
             <div class="handwritten-blue-text" style="font-size: 21px; margin-bottom: 14px;">
               &ndash; <strong>Memory &amp; Context:</strong> Long-horizon reasoning across millions of tokens.
@@ -815,21 +723,14 @@
       <!-- =========================================================
            PAGE 6: Master Analysis: Have Machines Become Smarter?
            ========================================================= -->
-      <article class="notebook-page" id="page-6">
+      <article class="notebook-page"
+        data-title="Future Frontiers &amp; Master Cheat Sheet"
+        data-subtitle="Timeline Comparison, Paradigm Matrix &amp; Key Takeaways"
+        data-keywords="future frontier reasoning agi timeline summary comparison cheat sheet"
+        data-tag="Summary" data-tag-color="slate">
         <div class="notebook-inner">
-          <div class="spiral-holes">
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-            <div class="hole"></div><div class="hole"></div><div class="hole"></div>
-          </div>
 
           <div class="page-content">
-            <div class="page-header">
-              <span class="author-tag">✍️ Notes by Amit Mahata</span>
-              <span class="page-num">6 / 6</span>
-            </div>
 
             <h1 class="note-title-red" style="color: var(--ink-green);">
               Analysis: Are Machines Smarter Than Humans?
@@ -888,6 +789,28 @@
           </div>
         </div>
       </article>
+
+        </section><!-- /topic: evolution-of-ai -->
+
+        <!-- Next topic of Chapter 1 goes here:
+        <section class="book-topic" data-id="..." data-title="..." data-subtitle="..." data-icon="...">
+          <article class="notebook-page" data-title="..." ...> <div class="page-content">…</div> </article>
+        </section> -->
+
+      </section><!-- /chapter: inside-the-mind-of-ai -->
+
+      <!-- ═════════════════════════════════════════════════════════
+           CHAPTER 2 · AI Native Software Engineer  (coming soon)
+           Add <section class="book-topic"> blocks here and remove
+           data-status="coming-soon" once it has pages.
+           ═════════════════════════════════════════════════════════ -->
+      <section class="book-chapter"
+        data-id="ai-native-software-engineer"
+        data-title="AI Native Software Engineer"
+        data-subtitle="Building software with AI as a teammate — workflows, agents, prompting and the new engineering craft."
+        data-icon="🤖"
+        data-status="coming-soon">
+      </section>
 
     </main>
 
