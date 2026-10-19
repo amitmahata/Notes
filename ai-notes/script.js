@@ -1,11 +1,13 @@
 // =========================================
 // AI NOTES — A HANDWRITTEN BOOK
-// script.js - Book structure, navigation, contents & interactivity
+// script.js - Book loading, structure, navigation, contents & interactivity
 //
-// The book is described by the markup inside <main id="notebookContainer">:
+// book.js lists the chapters and topics; each topic file under chapters/
+// registers its pages with AIBook.topic(id, html). This script loads those
+// files, assembles them into <main id="notebookContainer"> as
 //   .book-chapter  >  .book-topic  >  article.notebook-page
-// Everything else (Contents page, chapter openers, sidebar tree, page
-// headers, dots, prev/next, deep links) is generated from it here.
+// and generates everything else (Contents page, chapter openers, sidebar
+// tree, page headers, dots, prev/next, deep links) from that markup.
 // =========================================
 
 const BOOK = {
@@ -52,9 +54,18 @@ function pageRange(topic) {
   return first === last ? `p. ${first}` : `p. ${first}–${last}`;
 }
 
+// "<topic-id>/<n>" → global page number (stable when topics are added before it)
+function pageFromTopicRef(ref) {
+  const m = String(ref || '').match(/^([\w-]+)\/(\d+)$/);
+  if (!m) return 0;
+  const page = BOOK.pages.find(p => p.topic.id === m[1] && p.indexInTopic === parseInt(m[2], 10));
+  return page ? page.num : 0;
+}
+
 function readLastPage() {
   try {
-    const n = parseInt(localStorage.getItem(LAST_PAGE_KEY), 10);
+    const saved = localStorage.getItem(LAST_PAGE_KEY);
+    const n = /^\d+$/.test(saved || '') ? parseInt(saved, 10) : pageFromTopicRef(saved);
     return n >= 1 && n <= TOTAL_PAGES ? n : 0;
   } catch (e) {
     return 0;
@@ -62,7 +73,75 @@ function readLastPage() {
 }
 
 function saveLastPage(n) {
-  try { localStorage.setItem(LAST_PAGE_KEY, String(n)); } catch (e) { /* storage unavailable */ }
+  const p = BOOK.pages[n - 1];
+  try { localStorage.setItem(LAST_PAGE_KEY, `${p.topic.id}/${p.indexInTopic}`); } catch (e) { /* storage unavailable */ }
+}
+
+// ---------- Load the topic files listed in book.js ----------
+
+const TOPIC_HTML = {};
+
+// Called by every chapters/**/*.js file
+window.AIBook = {
+  topic(id, html) { TOPIC_HTML[id] = html; }
+};
+
+function loadScript(src) {
+  return new Promise(resolve => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.async = false;   // run in manifest order
+    s.onload = () => resolve(true);
+    s.onerror = () => resolve(false);
+    document.body.appendChild(s);
+  });
+}
+
+// Plain <script> tags (not fetch) so the book also opens from file://
+function loadTopics() {
+  const manifest = window.AI_BOOK || { chapters: [] };
+  const topics = manifest.chapters.flatMap(c => c.topics || []);
+  return Promise.all(topics.map(t => loadScript(t.file)));
+}
+
+function setData(el, data) {
+  Object.entries(data).forEach(([k, v]) => { if (v != null) el.dataset[k] = v; });
+}
+
+function missingTopicPage(topic) {
+  return `
+    <article class="notebook-page" data-title="Couldn't load this topic" data-tag="Error" data-tag-color="red">
+      <div class="page-content">
+        <h1 class="note-title-red">${esc(topic.icon)} ${esc(topic.title)}</h1>
+        <p class="book-load-error">Couldn't load <code>${esc(topic.file)}</code>. Check that the file exists and that it calls
+          <code>AIBook.topic('${esc(topic.id)}', …)</code> with the same id as in book.js.</p>
+      </div>
+    </article>`;
+}
+
+// Turn the manifest + loaded topic HTML into chapter/topic/page markup
+function renderBookMarkup() {
+  const manifest = window.AI_BOOK || { chapters: [] };
+  const main = document.getElementById('notebookContainer');
+  setData(main, { bookTitle: manifest.title, bookSubtitle: manifest.subtitle, bookAuthor: manifest.author });
+  main.innerHTML = '';
+
+  manifest.chapters.forEach(ch => {
+    const chapterEl = document.createElement('section');
+    chapterEl.className = 'book-chapter';
+    setData(chapterEl, { id: ch.id, title: ch.title, subtitle: ch.subtitle, icon: ch.icon });
+    if (!ch.topics || !ch.topics.length) chapterEl.dataset.status = 'coming-soon';
+
+    (ch.topics || []).forEach(t => {
+      const topicEl = document.createElement('section');
+      topicEl.className = 'book-topic';
+      setData(topicEl, { id: t.id, title: t.title, subtitle: t.subtitle, icon: t.icon });
+      topicEl.innerHTML = TOPIC_HTML[t.id] || missingTopicPage(t);
+      chapterEl.appendChild(topicEl);
+    });
+
+    main.appendChild(chapterEl);
+  });
 }
 
 // ---------- Build the book model from the markup ----------
@@ -431,6 +510,7 @@ function updateTreeVisibility() {
 // ---------- Assemble ----------
 
 function buildBook() {
+  renderBookMarkup();
   readBookStructure();
   const main = document.getElementById('notebookContainer');
 
@@ -474,7 +554,7 @@ function showSlot(index, opts = {}) {
   if (slot.type === 'contents') renderCoverActions();
 
   updateUI(opts);
-  toggleSidebar(false);
+  closeOverlaySidebar();
 }
 
 // Go to content page N (1-based, document order) — also used by shared-search.js
@@ -503,27 +583,73 @@ function toggleTOC(show) {
   if (show) goToContents();
 }
 
-// Sidebar Drawer Controls
-function toggleSidebar(show) {
+// ---------- Sidebar: docked panel on wide screens, overlay drawer otherwise ----------
+
+const SIDEBAR_KEY = 'ai_book_sidebar';                       // 'open' | 'closed' (docked mode only)
+const DOCK_QUERY = window.matchMedia('(min-width: 1280px)');  // room for 360px panel + the page
+
+function isDocked() {
+  return document.body.classList.contains('sidebar-docked');
+}
+
+function readDockPref() {
+  try { return localStorage.getItem(SIDEBAR_KEY) !== 'closed'; } catch (e) { return true; }
+}
+
+function saveDockPref(open) {
+  try { localStorage.setItem(SIDEBAR_KEY, open ? 'open' : 'closed'); } catch (e) { /* storage unavailable */ }
+}
+
+// show: open/close. opts.auto: not a user action (don't remember it, don't steal focus)
+function toggleSidebar(show, opts = {}) {
   const drawer = document.getElementById('sidebarDrawer');
   const backdrop = document.getElementById('sidebarBackdrop');
-  if (drawer && backdrop) {
-    if (show) {
-      drawer.classList.add('open');
-      backdrop.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      revealActiveInTree();
-      const searchInput = document.getElementById('topicSearchInput');
-      if (searchInput && window.innerWidth >= 768) {
-        setTimeout(() => searchInput.focus(), 150);
-      }
-    } else {
-      drawer.classList.remove('open');
-      backdrop.classList.remove('open');
-      document.body.style.overflow = '';
+  if (!drawer || !backdrop) return;
+
+  const dock = DOCK_QUERY.matches;
+  drawer.classList.toggle('open', show);
+  backdrop.classList.toggle('open', show && !dock);
+  document.body.classList.toggle('sidebar-docked', show && dock);
+  document.body.style.overflow = show && !dock ? 'hidden' : '';
+  document.querySelectorAll('.drawer-toggle-btn').forEach(b => b.setAttribute('aria-expanded', String(show)));
+
+  if (dock && !opts.auto) saveDockPref(show);
+
+  if (show) {
+    revealActiveInTree();
+    // Overlay only: a focused input would swallow ← → page turns while reading with the panel docked
+    const searchInput = document.getElementById('topicSearchInput');
+    if (searchInput && !dock && !opts.auto && window.innerWidth >= 768) {
+      setTimeout(() => searchInput.focus(), 150);
     }
   }
 }
+
+// After navigating or on Esc: the overlay drawer gets out of the way, a docked panel stays
+function closeOverlaySidebar() {
+  const drawer = document.getElementById('sidebarDrawer');
+  if (drawer && drawer.classList.contains('open') && !isDocked()) toggleSidebar(false, { auto: true });
+}
+
+function applySidebarMode() {
+  const drawer = document.getElementById('sidebarDrawer');
+  if (!drawer) return;
+  if (DOCK_QUERY.matches) {
+    toggleSidebar(readDockPref(), { auto: true });
+  } else if (isDocked()) {
+    toggleSidebar(false, { auto: true });   // window got narrow: fall back to the overlay drawer, closed
+  }
+}
+
+// Re-check when the window crosses the breakpoint ('resize' too: some browsers/emulators skip 'change')
+let lastDockMatch = DOCK_QUERY.matches;
+function onDockBreakpoint() {
+  if (DOCK_QUERY.matches === lastDockMatch) return;
+  lastDockMatch = DOCK_QUERY.matches;
+  applySidebarMode();
+}
+DOCK_QUERY.addEventListener('change', onDockBreakpoint);
+window.addEventListener('resize', onDockBreakpoint);
 
 function revealActiveInTree() {
   const active = document.querySelector('#sidebarTopicsList .sidebar-topic-item.active');
@@ -532,7 +658,15 @@ function revealActiveInTree() {
   const chapter = active.closest('.tree-chapter');
   if (topic) topic.open = true;
   if (chapter) chapter.open = true;
-  setTimeout(() => active.scrollIntoView({ block: 'nearest' }), 50);
+  // Scroll only the list (scrollIntoView would also cancel the page's smooth scroll-to-top)
+  setTimeout(() => {
+    const list = document.getElementById('sidebarTopicsList');
+    if (!list) return;
+    const a = active.getBoundingClientRect();
+    const l = list.getBoundingClientRect();
+    if (a.top < l.top) list.scrollTop -= l.top - a.top + 8;
+    else if (a.bottom > l.bottom) list.scrollTop += a.bottom - l.bottom + 8;
+  }, 50);
 }
 
 // Filter topics in sidebar (shared-search.js upgrades this with full-text matches)
@@ -593,7 +727,7 @@ function updateUI(opts = {}) {
     if (indicator) indicator.textContent = `Page ${p.num} / ${TOTAL_PAGES}`;
     if (titleText) titleText.textContent = p.topic.title;
     if (crumb) crumb.textContent = `Ch ${p.chapter.num} · ${p.chapter.title} · ${p.indexInTopic}/${p.topic.pages.length}`;
-    hash = `#page-${p.num}`;
+    hash = `#${p.topic.id}/${p.indexInTopic}`;
     docTitle = `${p.title} · ${p.topic.title} — ${BOOK.title}`;
   } else if (slot.type === 'chapter') {
     if (indicator) indicator.textContent = `Chapter ${slot.chapter.num}`;
@@ -626,6 +760,7 @@ function updateUI(opts = {}) {
   document.querySelectorAll('.sidebar-topic-item').forEach(item => {
     item.classList.toggle('active', parseInt(item.dataset.page, 10) === currentPage);
   });
+  if (isDocked()) revealActiveInTree();
   document.querySelectorAll('#sidebarTopicsList .tree-chapter[data-chapter]').forEach(ch => {
     ch.classList.toggle('current', slot.chapter && parseInt(ch.dataset.chapter, 10) === slot.chapter.num);
   });
@@ -643,12 +778,15 @@ function updateUI(opts = {}) {
   }
 }
 
-// Where to open: ?page=N (search results) wins over #page-N / #chapter-N deep links
+// Where to open: ?page=N (search results) wins over #<topic-id>/<n>, #page-N and #chapter-N deep links
 function slotFromLocation() {
   const queryPage = parseInt(new URLSearchParams(window.location.search).get('page'), 10);
   if (BOOK.pages[queryPage - 1]) return BOOK.pages[queryPage - 1].slot;
 
   const hash = window.location.hash;
+  const topicPage = pageFromTopicRef(decodeURIComponent(hash.slice(1)));
+  if (topicPage) return BOOK.pages[topicPage - 1].slot;
+
   let m;
   if ((m = hash.match(/^#page-(\d+)$/))) {
     const page = BOOK.pages[parseInt(m[1], 10) - 1];
@@ -660,7 +798,7 @@ function slotFromLocation() {
   return 0;
 }
 
-// Same-document links such as <a href="#page-3"> or a hand-edited URL
+// Same-document links such as <a href="#evolution-of-ai/3"> or a hand-edited URL
 window.addEventListener('hashchange', () => {
   const target = slotFromLocation();
   if (target !== currentSlot) showSlot(target);
@@ -671,7 +809,7 @@ document.addEventListener('keydown', (e) => {
   if (e.ctrlKey || e.metaKey || e.altKey) return;
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
     if (e.key === 'Escape') {
-      toggleSidebar(false);
+      closeOverlaySidebar();
     }
     return;
   }
@@ -680,7 +818,7 @@ document.addEventListener('keydown', (e) => {
   } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
     changePage(-1);
   } else if (e.key === 'Escape') {
-    toggleSidebar(false);
+    closeOverlaySidebar();
   } else if (e.key === 'c' || e.key === 'C') {
     goToContents();
   } else if (e.key === 't' || e.key === 'T') {
@@ -703,7 +841,7 @@ document.addEventListener('touchstart', (e) => {
 
 document.addEventListener('touchend', (e) => {
   const drawer = document.getElementById('sidebarDrawer');
-  if (drawer && drawer.classList.contains('open')) return;
+  if (drawer && drawer.classList.contains('open') && !isDocked()) return;
   // Let wide tables scroll sideways without turning the page
   if (e.target.closest && e.target.closest('.handwritten-table')) return;
 
@@ -716,8 +854,17 @@ document.addEventListener('touchend', (e) => {
   }
 }, { passive: true });
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize: start loading topic files now, build once the DOM and topics are ready
+const topicsLoaded = loadTopics();
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await topicsLoaded;
   buildBook();
   showSlot(slotFromLocation(), { initial: true });
+  // Docked panel appears in place on load instead of sliding in
+  document.body.classList.add('sidebar-instant');
+  applySidebarMode();
+  requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.remove('sidebar-instant')));
+  // Hand-drawn figures: needs the pages in the DOM, so it loads after the build
+  loadScript('../sketch-kit.js');
 });
