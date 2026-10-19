@@ -9,7 +9,7 @@
 
 | Module | Topic | Web Notebook | PDF Export | Highlights |
 | :--- | :--- | :--- | :--- | :--- |
-| 🧠 **AI Notes** (book) | Chapters › Topics › Pages | [`ai-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/ai-notes/index.html) | [`AI-Handwritten-Notes.pdf`](file:///c:/Users/amitm/source/repos/Notes/ai-notes/AI-Handwritten-Notes.pdf) | **Ch 1 · Inside the Mind of AI** › The Evolution of AI: Turing Test (1950), Rule-based Expert Systems, ML vs DL, AlexNet, NLP, Transformers, LLMs, GenAI, Multimodal &amp; Autonomous AI Agents · *Ch 2 · AI Native Software Engineer (coming soon)* · auto-generated Contents page, chapter openers, chapter/topic sidebar tree &amp; `#page-N` deep links |
+| 🧠 **AI Notes** (book · 15 pages) | Chapters › Topics › Pages | [`ai-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/ai-notes/index.html) | — | **Ch 1 · Inside the Mind of AI** › 1.1 The Evolution of AI: Turing Test (1950), Rule-based Expert Systems, ML vs DL, AlexNet, NLP, Transformers, LLMs, GenAI, Multimodal &amp; Autonomous AI Agents › 1.2 Does ChatGPT Know or Guess?: search vs LLMs, next-token probability, weights &amp; knowledge cut-off, base model vs assistant, hallucinations, tools &amp; RAG · *Ch 2 · AI Native Software Engineer (coming soon)* · one file per topic + `book.js` manifest ([authoring guide](ai-notes/README.md)), auto-generated Contents page, chapter openers, chapters panel docked beside the page on desktop, 10 hand-drawn sketches in 1.2, tap-to-reveal revision quiz &amp; `#topic-id/N` deep links |
 | 📐 **System Design** (10 pages) | Distributed Systems Architecture | [`system-design-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/system-design-notes/index.html) | [`System-Design-Handwritten-Notes.pdf`](file:///c:/Users/amitm/source/repos/Notes/system-design-notes/System-Design-Handwritten-Notes.pdf) | 4-Step Framework, worked napkin math, hash ring, token bucket, cache-aside sequence, CAP triangle, Kafka partitions, Raft quorum, fencing tokens, hybrid fanout, **case studies: URL Shortener & Chat System** |
 | 🎯 **Interview Q&A** (25 pages) | Tier 1 / 2 / 3 Company Question Bank | [`interview-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/interview-notes/index.html) | — | 340+ questions with model answers, follow-ups &amp; traps, tagged by company: 2025–26 loops (Google, Meta AI-enabled round, Amazon Bar Raiser, Microsoft AA, Flipkart machine coding, Atlassian values, TCS/Infosys laterals), DSA, OS &amp; concurrency, DBMS &amp; SQL, networking &amp; APIs, OOP/SOLID/patterns, LLD, system design blueprints, C#/.NET &amp; JS, Docker/K8s, AI/LLM &amp; RAG, STAR + 16 Amazon LPs, HR/CTC negotiation, **Q&A Bank II** (matrix/bits/KMP, hard DSA & design-a-DS, Docs/Drive/Kafka/Snowflake designs, order-book LLD, production scenarios, more STAR + RAG evals), 30-day plan · **Quiz mode** |
 | 💻 **DSA Master** (14 pages) | Data Structures & Algorithms Patterns | [`dsa-notes/index.html`](file:///c:/Users/amitm/source/repos/Notes/dsa-notes/index.html) | — | 6-week roadmap, Big-O curves, sliding window & rain-water sketches, LRU/LFU, binary search on answer, heaps, trees/tries, graphs (BFS, DSU, Dijkstra), DP, **backtracking**, **"which pattern?" flowchart**, dry-run traces & practice sets |
@@ -26,7 +26,7 @@ Each note module is built as an interactive web application styled to look like 
 - 🌀 **Spiral Binder Rings**: Realistic metallic/ring spiral visuals with punch holes.
 - 🎨 **Multi-Color Ink Palette**: Highlighting critical terms in Red, Blue, Slate, Golden Yellow, and Emerald Green.
 - ✍️ **Handwritten Typography**: Google Fonts (`Kalam`, `Caveat`, `Patrick Hand`).
-- 🖍️ **Sketch Kit (DSA, System Design & Interview Q&A)** — shared [`sketch-kit.css`](sketch-kit.css) / [`sketch-kit.js`](sketch-kit.js):
+- 🖍️ **Sketch Kit (AI Notes, DSA, System Design & Interview Q&A)** — shared [`sketch-kit.css`](sketch-kit.css) / [`sketch-kit.js`](sketch-kit.js):
   - Hand-drawn inline SVG diagrams with a pen-wobble filter and a "drawing" animation each time a page opens (respects reduced-motion).
   - Sticky notes, margin scribbles, dry-run trace tables, "bugs I keep making" boxes, mnemonics and tick-off practice lists.
   - Inline `$O(n \log n)$` math and `` `code` `` in note text are rendered as handwritten math / code chips.
@@ -34,7 +34,9 @@ Each note module is built as an interactive web application styled to look like 
 - 🧠 **Q&A Cards &amp; Quiz Mode (Interview Q&A)**: every question is a handwritten card with tier-coded company chips (🔴 Tier 1, 🔵 Tier 2, 🟢 Tier 3, 🔥 frequently asked), an answer, a key-insight box, the interviewer's follow-up and the common trap. Press `Q` (or the topbar button) to hide all answers and self-test; printing always includes answers.
 - ⚡ **Interactive Controls**:
   - `Prev` / `Next` page navigation &amp; keyboard arrow shortcuts (`←` / `→`).
-  - Table of Contents (`Index`) popup modal.
+  - Table of Contents (`Index`) popup modal (AI Notes: a generated **Contents** page, `C`).
+  - **Chapters panel (AI Notes)**: on screens ≥ 1280px it stays docked beside the page while you read; close it with `×`, `☰` or `T` and the choice is remembered. Smaller screens get the slide-in drawer, which closes after you pick a page.
+  - `Ctrl + K` full-text search across every notebook, plus 4 colour themes (Classic Paper, Dark Obsidian, Vintage Sepia, Tech Blueprint).
   - Touch swipe gestures on iPad / mobile devices.
   - One-click **Download PDF** print stylesheet export.
 - 🛠️ **Smart URL Path Routing**: Automatic trailing-slash redirection script in every module's `<head>` to guarantee CSS asset loading regardless of whether the URL is accessed with or without a trailing slash (`/kubernetes-notes` vs `/kubernetes-notes/`).
@@ -51,6 +53,12 @@ To serve locally using `npx serve` or Live Server:
 
 ```bash
 npx serve .
+```
+
+No Node? Python works too:
+
+```bash
+python -m http.server 3000
 ```
 
 Then navigate to:
@@ -70,11 +78,13 @@ Then navigate to:
 Notes/
 ├── index.html                           # Master Hub Landing Page
 ├── README.md                            # Master Repository Documentation
-├── ai-notes/                            # The Evolution of AI Notes
-│   ├── index.html                       # AI Notebook Web App (with Trailing-Slash Redirect)
-│   ├── styles.css                       # Notebook CSS Stylesheet & Print Media Query
-│   ├── script.js                        # Navigation & Interactivity Script
-│   └── AI-Handwritten-Notes.pdf         # Exported PDF Document
+├── ai-notes/                            # AI Notes — a book: Chapters › Topics › Pages
+│   ├── index.html                       # App shell only (topbar, sidebar, empty <main>)
+│   ├── book.js                          # Manifest: chapters & topics in reading order
+│   ├── chapters/                        # One file per topic, e.g. 01-inside-the-mind-of-ai/02-does-chatgpt-know-or-guess.js
+│   ├── script.js                        # Loads topics, builds Contents/openers/sidebar, navigation
+│   ├── styles.css                       # Notebook styles + reusable note components
+│   └── README.md                        # How to add a page, topic or chapter
 ├── sketch-kit.css / sketch-kit.js       # Shared hand-drawn diagram & sticky-note kit (DSA, System Design, Interview Q&A)
 ├── shared-search.css / shared-search.js # Ctrl+K cross-notebook search + themes
 ├── dsa-notes/                           # DSA Master Notes (14 pages)

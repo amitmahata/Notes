@@ -2321,3 +2321,224 @@ button.toc-topic-head:hover .toc-topic-title {
     width: 100%;
   }
 }
+
+/* =========================================
+   NOTE COMPONENTS (reusable in any topic)
+   two-col · prob-chart · token-steps · prompt-card
+   sub-heading-yellow · verdict-box · qa-reveal
+   ========================================= */
+
+.book-load-error {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 18px;
+  color: var(--ink-red);
+  background: var(--bg-red);
+  border: 2px dashed var(--ink-red);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 20px auto;
+  max-width: 640px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin: 16px 0 20px;
+}
+
+.sub-heading-yellow {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ink-yellow);
+  margin: 8px 0 6px;
+}
+
+/* Next-word probability bars */
+.prob-chart {
+  background: var(--bg-blue);
+  border: 2px dashed rgba(100, 116, 139, 0.35);
+  border-radius: 14px 6px 14px 6px;
+  padding: 14px 16px;
+}
+.prob-prompt {
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--ink-blue);
+  margin-bottom: 10px;
+}
+.prob-row {
+  display: grid;
+  grid-template-columns: 84px 1fr 46px;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 18px;
+  color: var(--ink-dark);
+}
+.prob-bar {
+  height: 16px;
+  border-radius: 3px 10px 4px 9px;
+  border: 1.5px solid var(--ink-yellow);
+  background: linear-gradient(90deg, var(--ink-yellow) var(--p), transparent var(--p));
+  opacity: 0.85;
+}
+.prob-row.top .prob-word,
+.prob-row.top .prob-val { color: var(--ink-green); font-weight: 700; }
+.prob-row.top .prob-bar { border-color: var(--ink-green); background: linear-gradient(90deg, var(--ink-green) var(--p), transparent var(--p)); }
+.prob-val { text-align: right; }
+.prob-note {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--ink-dark);
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+/* Token-by-token generation steps */
+.token-steps {
+  list-style: none;
+  margin: 10px 0 18px;
+  padding: 0;
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  line-height: 1.45;
+}
+.token-steps li { padding-left: 32px; position: relative; }
+.token-steps li::before {
+  content: '→';
+  position: absolute;
+  left: 4px;
+  color: var(--ink-blue);
+}
+.token-steps .ctx { color: var(--ink-blue); }
+.token-steps .new {
+  color: var(--ink-green);
+  font-weight: 700;
+  background: var(--bg-green);
+  border-radius: 6px;
+  padding: 0 6px;
+}
+
+/* Prompt / output example card */
+.prompt-card {
+  background: var(--bg-purple);
+  border: 2px solid rgba(124, 58, 237, 0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+.prompt-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-purple);
+  margin-top: 4px;
+}
+.prompt-text {
+  font-family: 'Fira Code', monospace;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-dark);
+  margin: 2px 0 8px;
+}
+.prompt-text.out { color: var(--ink-green); font-style: italic; }
+
+/* Boxed final answer */
+.verdict-box {
+  border: 3px solid var(--ink-red);
+  border-radius: 18px 6px 22px 8px / 8px 22px 6px 18px;
+  padding: 20px 24px;
+  margin: 28px 0;
+  background: var(--bg-red);
+  transform: rotate(-0.4deg);
+}
+.verdict-q {
+  font-family: 'Caveat', cursive;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--ink-dark);
+  margin-bottom: 8px;
+}
+.verdict-a {
+  font-family: 'Kalam', cursive;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink-dark);
+}
+.verdict-line {
+  display: block;
+  margin-top: 10px;
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+  color: var(--ink-green);
+}
+
+/* Tap-to-reveal self quiz */
+.qa-reveal-list { display: grid; gap: 10px; margin: 12px 0 8px; }
+.qa-reveal {
+  border: 2px dashed rgba(100, 116, 139, 0.4);
+  border-radius: 10px;
+  background: var(--bg-yellow);
+  padding: 10px 14px;
+}
+.qa-reveal summary {
+  cursor: pointer;
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink-dark);
+  list-style: none;
+}
+.qa-reveal summary::-webkit-details-marker { display: none; }
+.qa-reveal summary::before { content: '❓ '; }
+.qa-reveal[open] summary::before { content: '💡 '; }
+.qa-reveal p {
+  font-family: 'Kalam', cursive;
+  font-size: 18px;
+  color: var(--ink-blue);
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .prob-row { grid-template-columns: 72px 1fr 40px; font-size: 16px; }
+  .token-steps { font-size: 22px; }
+  .verdict-q { font-size: 28px; }
+  .verdict-box { padding: 16px; }
+}
+
+/* =========================================
+   DOCKED SIDEBAR (wide screens ≥ 1280px)
+   The chapters panel stays open beside the page, the page shifts right,
+   no backdrop. × or ☰ / T closes it and the choice is remembered.
+   Narrower screens keep the overlay drawer.
+   ========================================= */
+body {
+  transition: padding-left 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.sidebar-docked {
+  padding-left: 360px;
+}
+
+body.sidebar-docked .sidebar-drawer {
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.35);
+}
+
+body.sidebar-docked .drawer-toggle-btn {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+body.sidebar-instant,
+body.sidebar-instant .sidebar-drawer {
+  transition: none !important;
+}
+
+@media print {
+  body.sidebar-docked { padding-left: 0; }
+}

@@ -7,7 +7,7 @@
 
 // Full Content Index of All Handwritten Notes
 const NOTES_SEARCH_DATABASE = [
-  // --- AI NOTES BOOK — Ch 1 "Inside the Mind of AI" › The Evolution of AI (6 Pages) ---
+  // --- AI NOTES BOOK — Ch 1 "Inside the Mind of AI" › Topic 1.1 The Evolution of AI (6 Pages) ---
   {
     id: "ai-p1",
     notebook: "ai-notes",
@@ -155,6 +155,221 @@ const NOTES_SEARCH_DATABASE = [
       {
         heading: "Evolution of AI Timeline & Paradigm Comparison Matrix",
         content: "1950 Turing Test → 1955 Dartmouth AI → 1997 Deep Blue → 2012 AlexNet CNN → 2017 Transformer → 2022 ChatGPT / LLMs → 2024 Multimodal & Autonomous Agents → 2026 Test-Time Reasoning & AGI Frontiers."
+      }
+    ]
+  },
+
+  // --- AI NOTES BOOK — Ch 1 › Topic 1.2 Does ChatGPT Know or Guess? (9 Pages) ---
+  {
+    id: "ai-p7",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 7,
+    url: "../ai-notes/index.html?page=7",
+    rootUrl: "ai-notes/index.html?page=7",
+    tag: "Search",
+    title: "Page 7: Search Engines vs LLMs",
+    sections: [
+      {
+        heading: "Does ChatGPT know or does it guess?",
+        content: "ChatGPT, Claude and Gemini answer instantly and confidently, but where does the answer come from? Compare LLMs with search engines."
+      },
+      {
+        heading: "Search Engines vs LLMs: Retrieve vs Generate",
+        content: "Google: question, search an index, rank relevant documents, return results. ChatGPT: prompt, learned patterns, predict next text, generate response. Search engines retrieve, LLMs generate."
+      },
+      {
+        heading: "How search engines find information",
+        content: "Crawlers / spiders visit internet pages and build an index. A search query hits the index, which returns ranked documents. Ranking signals: domain authority, page speed, keywords, average time spent, backlinks, meta tags, date / freshness."
+      }
+    ]
+  },
+  {
+    id: "ai-p8",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 8,
+    url: "../ai-notes/index.html?page=8",
+    rootUrl: "ai-notes/index.html?page=8",
+    tag: "Generation",
+    title: "Page 8: Search Flaws & How LLMs Write",
+    sections: [
+      {
+        heading: "Search engine flaws and pros",
+        content: "Flaws: does not guarantee truth, can be outdated, ranking can be imperfect, misleading. Pros: a trail back to the source, check who published it, see the date, compare multiple results."
+      },
+      {
+        heading: "How LLMs generate responses: next word prediction",
+        content: "LLM predicts the next word (token): the sun rises in the east. Roses, Roses are, Roses are red, violets are blue. Autoregressive: each token is appended and fed back in. The word can be different each time it generates."
+      },
+      {
+        heading: "Is ChatGPT just randomly guessing? Is an LLM just autocomplete?",
+        content: "The answer is probability."
+      }
+    ]
+  },
+  {
+    id: "ai-p9",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 9,
+    url: "../ai-notes/index.html?page=9",
+    rootUrl: "ai-notes/index.html?page=9",
+    tag: "Probability",
+    title: "Page 9: Probability, Not Random Guessing",
+    sections: [
+      {
+        heading: "Every next word has a probability",
+        content: "The capital of India is Delhi 90%, Kolkata 2%, Punjab 1%. Roses are red 50%, beautiful 30%, flowers 10%. The model scores every token in its vocabulary and samples one: weighted, not random."
+      },
+      {
+        heading: "Temperature: the creativity knob",
+        content: "Low temperature picks the top word (code, facts). Medium ~0.7 default chat. High temperature picks rare words: creative but more mistakes."
+      },
+      {
+        heading: "So is it just autocomplete?",
+        content: "Mechanically yes, but a modern LLM uses a much larger context and has learned extremely complex patterns: grammar, programming, reasoning, facts, languages, stories, maths, associations between people, places, events and ideas."
+      }
+    ]
+  },
+  {
+    id: "ai-p10",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 10,
+    url: "../ai-notes/index.html?page=10",
+    rootUrl: "ai-notes/index.html?page=10",
+    tag: "Knowledge",
+    title: "Page 10: Weights & Knowledge Cut-off",
+    sections: [
+      {
+        heading: "What knowledge does an LLM contain? Parameters and weights",
+        content: "A trained neural network contains a very large collection of numbers called parameters or weights. During training these numbers are repeatedly adjusted: predict next word, compare with real word, nudge the weights. Knowledge is stored as patterns, not documents."
+      },
+      {
+        heading: "Knowledge cut-off",
+        content: "LLMs are not real-time. Neural networks are not trained every day. Models do not learn new things automatically from chats; weights are frozen after training. Anything after the cut-off date is a blind spot."
+      }
+    ]
+  },
+  {
+    id: "ai-p11",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 11,
+    url: "../ai-notes/index.html?page=11",
+    rootUrl: "ai-notes/index.html?page=11",
+    tag: "Model",
+    title: "Page 11: Base Model vs ChatGPT",
+    sections: [
+      {
+        heading: "Base model vs ChatGPT, Claude, Gemini",
+        content: "A base model is trained primarily to predict text: once upon a time..., the JS event loop is... ChatGPT wraps the base model with instruction tuning, human feedback (RLHF), safety training, system instructions, tool access, retrieval, memory, web search, files, content filters, guardrails, security, auth and conversation management."
+      },
+      {
+        heading: "Inference vs Training",
+        content: "Training adjusts weights once in months on thousands of GPUs. Inference uses the frozen trained model to answer a prompt, millions of times a day."
+      }
+    ]
+  },
+  {
+    id: "ai-p12",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 12,
+    url: "../ai-notes/index.html?page=12",
+    rootUrl: "ai-notes/index.html?page=12",
+    tag: "Hallucination",
+    title: "Page 12: Hallucinations: Confidently Wrong",
+    sections: [
+      {
+        heading: "Why do models confidently produce wrong answers? Hallucination",
+        content: "Fake fluency is not truthfulness. A hallucination occurs when an AI model generates information that appears plausible but is unsupported, incorrect, misleading or fabricated. Language quality and factual accuracy are separate dimensions. Confidence in language is not confidence in truth. Illusion of certainty."
+      },
+      {
+        heading: "Why does hallucination happen?",
+        content: "Insufficient info, ambiguous info, outdated knowledge, false assumptions, unreliable patterns, models are optimized to answer, generation is probabilistic."
+      },
+      {
+        heading: "Types of hallucinations",
+        content: "Invented facts, invented citations, incorrect combinations, outdated facts, false precision, broken reasoning."
+      }
+    ]
+  },
+  {
+    id: "ai-p13",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 13,
+    url: "../ai-notes/index.html?page=13",
+    rootUrl: "ai-notes/index.html?page=13",
+    tag: "Trust",
+    title: "Page 13: “I Don’t Know” & the Confidence Illusion",
+    sections: [
+      {
+        heading: "Why do models sometimes say I don't know?",
+        content: "Assistant training, system instructions, weak patterns, safety rules, tool requirements, prompt wording."
+      },
+      {
+        heading: "The confidence illusion",
+        content: "Humans often use tone as evidence: I think the answer may be XYZ vs the answer is definitely XYZ. LLMs can produce anything, including a confident tone."
+      },
+      {
+        heading: "How to protect yourself",
+        content: "Ask to separate facts from assumptions, ask for uncertainty, ask for sources, use web search."
+      }
+    ]
+  },
+  {
+    id: "ai-p14",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 14,
+    url: "../ai-notes/index.html?page=14",
+    rootUrl: "ai-notes/index.html?page=14",
+    tag: "Tools & RAG",
+    title: "Page 14: Tools & RAG: Giving AI Evidence",
+    sections: [
+      {
+        heading: "How tools extend the model",
+        content: "Web search, calculator, code execution, weather, location, calendar, email, database, internal docs, files. Tool access gives superpowers; ChatGPT is much more than the base model (LLM)."
+      },
+      {
+        heading: "Retrieval Augmented Generation (RAG)",
+        content: "Web search + LLM = retrieval + generation. Retrieval gives external evidence, generation converts it into a useful response. Question, retriever (search / vector DB), top chunks, prompt with evidence, LLM, grounded answer with sources. RAG can run on private data; every company wants its own RAG behind an AI chatbot. Tools do not completely eliminate errors."
+      }
+    ]
+  },
+  {
+    id: "ai-p15",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 15,
+    url: "../ai-notes/index.html?page=15",
+    rootUrl: "ai-notes/index.html?page=15",
+    tag: "Summary",
+    title: "Page 15: Verdict: Know or Guess? + Revision",
+    sections: [
+      {
+        heading: "Does the model know itself? Self-awareness",
+        content: "What a model says about itself comes from training, context, system prompt and tools."
+      },
+      {
+        heading: "Does ChatGPT know or does it guess?",
+        content: "Neither exactly: it predicts. Strong patterns behave like knowing; weak, rare or outdated patterns produce fluent guesses (hallucinations). Tools and RAG ground answers; verification makes them trusted."
+      },
+      {
+        heading: "Revision and self-quiz",
+        content: "Search vs LLM, next-token prediction, temperature, weights, knowledge cut-off, base model, inference, hallucination, RAG."
       }
     ]
   },

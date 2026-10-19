@@ -1,0 +1,605 @@
+// =========================================================
+// Chapter 1 · Inside the Mind of AI
+// Topic 1.1 · The Evolution of AI
+// Registered in ../../book.js — page markup only (see ../../README.md)
+// =========================================================
+AIBook.topic('evolution-of-ai', /* html */ `
+<!-- =========================================================
+     PAGE 1: Early Foundations (1950 – 1997) & Rule-Based AI
+     ========================================================= -->
+<article class="notebook-page"
+  data-title="Early Foundations &amp; Rule-Based AI"
+  data-subtitle="Turing Test (1950), McCarthy, Chess &amp; Rules"
+  data-keywords="turing mccarthy 1950 1955 1986 rule based expert systems spam chess"
+  data-tag="Origins" data-tag-color="red">
+  <div class="notebook-inner">
+
+    <div class="page-content">
+
+      <!-- iPad Top Meta Bar Header -->
+      <div class="ipad-note-header">
+        <span>◀ Siri &nbsp; 2:15 PM Tue 25 Aug</span>
+        <span>Note Title: <strong>The Evolution of AI</strong></span>
+        <span>25 August 2026 at 2:15 PM</span>
+      </div>
+
+
+      <!-- Red Title from Note -->
+      <h1 class="note-title-red">
+        What is Artificial Intellegence?
+      </h1>
+
+      <!-- Blue Definition from Note -->
+      <p class="note-def-blue">
+        AI is a science of making machins perform tasks that normally require human intellegence.
+      </p>
+
+      <!-- 1950 Timeline Block -->
+      <div class="timeline-block">
+        <div class="timeline-year">
+          <span>1950</span> &ndash; <span class="question">Can machine think?</span>
+        </div>
+        <div class="timeline-detail">
+          Alan Turing <span class="timeline-arrow">&rarr;</span> The turing test
+        </div>
+      </div>
+
+      <!-- 1955 Timeline Block -->
+      <div class="timeline-block">
+        <div class="timeline-year">
+          <span>1955</span> &ndash; <span>John McCarthy (Artificial Intellegence)</span>
+        </div>
+        <div class="timeline-detail">
+          Researchers came together with an ambitios belief <span class="timeline-arrow">&rarr;</span>
+        </div>
+      </div>
+
+      <!-- Red Quote Box from Note -->
+      <div class="quote-box-red">
+        &ldquo; Every aspect of learning and intellegence could, in principle, be described precisely enough for a machine to simulate. &rdquo;
+      </div>
+
+      <!-- Yellow Banner: AI Winter -->
+      <div class="yellow-callout">
+        ★ After 1955 AI winter were there for a long period.
+      </div>
+
+      <!-- 1986 Timeline Block -->
+      <div class="timeline-block">
+        <div class="timeline-year">
+          <span>1986</span> <span class="timeline-arrow">&rarr;</span> <span>Synthetic Intellegence</span>
+        </div>
+      </div>
+
+      <!-- 1997 Timeline Block (Deep Blue vs Kasparov) -->
+      <div class="chess-block">
+        <div class="chess-title">
+          <span>1997</span> <span class="timeline-arrow">&rarr;</span>
+          <span class="underline-blue">Deep blue</span> defeated
+          <span style="color: var(--ink-blue); text-decoration: underline;">Garry Kasparov</span>.
+        </div>
+
+        <div class="kasparov-annotations">
+          <div class="anno-left">
+            IBM developed
+          </div>
+          <div class="anno-right">
+            Best chess player that time
+          </div>
+        </div>
+      </div>
+
+      <!-- Green Closing Question -->
+      <div class="closing-question-green">
+        Have machines become smarter than human?
+      </div>
+
+      <!-- Rule Based AI Intro -->
+      <h2 class="note-section-red">
+        # Rule based AI (1950 &ndash; 1980)
+      </h2>
+      <div class="quote-box-red" style="font-size: 22px; margin-top: 10px;">
+        &ldquo; Intellegence is simply a collection of Rules &rdquo;
+      </div>
+      <div class="handwritten-blue-text" style="font-size: 21px;">
+        <strong>Ex &ndash; Spam Detector:</strong> Hardcoded checks for keywords like &ldquo;Free&rdquo;, &ldquo;$$$&rdquo;, &ldquo;LOTTERY&rdquo;.
+      </div>
+
+    </div>
+  </div>
+</article>
+
+<!-- =========================================================
+     PAGE 2: Machine Learning & Deep Learning Revolution
+     ========================================================= -->
+<article class="notebook-page"
+  data-title="ML &amp; Deep Learning Revolution"
+  data-subtitle="Paradigm Shift, Features vs Neural Weights"
+  data-keywords="machine learning deep learning neural networks backpropagation weights data"
+  data-tag="ML &amp; DL" data-tag-color="blue">
+  <div class="notebook-inner">
+
+    <div class="page-content">
+
+      <!-- Expert Systems / Medical Example -->
+      <div style="background: rgba(255, 255, 255, 0.7); border: 1.5px dashed var(--ink-yellow); border-radius: 10px; padding: 12px 18px; margin-bottom: 20px;">
+        <div class="handwritten-yellow-text" style="font-size: 22px;">
+          &rarr; &ldquo;Free&rdquo;, &ldquo;$$$&rdquo;, &ldquo;LOTTERY&rdquo;
+        </div>
+        <div class="handwritten-blue-text">
+          <strong>Medical Expert System:</strong>
+        </div>
+        <div class="handwritten-yellow-text" style="font-family: 'Fira Code', monospace; font-size: 19px; background: var(--bg-yellow); padding: 8px 12px; border-radius: 6px; display: inline-block;">
+          &rarr; If (Fever &amp;&amp; Cold &amp;&amp; Body Ache) &rarr; FLU
+        </div>
+        <div class="handwritten-dark-text" style="font-style: italic; margin-top: 10px;">
+          &ldquo; Expert systems were built by human experts writing a lot of rules. &rdquo;
+        </div>
+      </div>
+
+      <!-- Machine Learning Section -->
+      <h2 class="note-section-red">
+        # Machine Learning
+      </h2>
+
+      <div class="rule-vs-examples">
+        <span class="strike-rules">❌ Rules</span>
+        <span class="check-examples">✔ Examples</span>
+      </div>
+
+      <div class="handwritten-blue-text" style="font-size: 21px; margin: 12px 0;">
+        &rarr; <strong>Cat vs Dog:</strong> Train using 1 million labelled pictures.
+      </div>
+
+      <div class="handwritten-blue-text" style="font-size: 21px; margin: 12px 0;">
+        &rarr; <strong>Spam Detection:</strong> Adapts to clever variations: <span style="color: var(--ink-red); font-weight: bold; font-family: 'Fira Code', monospace;">F-R-E-E , FREEE , FREE!!!</span>
+      </div>
+
+      <!-- Pills grid for ML -->
+      <div class="pills-grid">
+        <div class="green-pill-item">Model learns</div>
+        <div class="green-pill-item">Training data</div>
+        <div class="green-pill-item">Predictions</div>
+        <div class="green-pill-item">Learn patterns</div>
+      </div>
+
+      <!-- Deep Learning Section -->
+      <h2 class="note-section-red" style="margin-top: 30px;">
+        # Deep Learning
+      </h2>
+
+      <div class="handwritten-dark-text" style="font-size: 21px;">
+        &ndash; <strong>Neural Networks</strong> <span style="color: var(--ink-green); font-weight: bold;">&rarr; Important breakthrough for AI</span>
+      </div>
+
+      <div class="quote-box-red" style="background: var(--bg-yellow); border-left-color: var(--ink-yellow); color: #92400e;">
+        <div style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Can computer learn features themselves?</div>
+        <div style="font-size: 20px; font-weight: normal; color: var(--ink-blue);">
+          Instead of human telling &ldquo;this is an eye&rdquo; &mdash; can computer discover &ldquo;eye&rdquo; automatically?
+        </div>
+      </div>
+
+      <div class="pills-grid">
+        <div class="green-pill-item">Image Recognition</div>
+        <div class="green-pill-item">Speech Recognition</div>
+        <div class="green-pill-item">Translation</div>
+        <div class="green-pill-item" style="color: var(--ink-dark); border-color: var(--ink-dark);">GPU revolution + Internet + Large dataset</div>
+      </div>
+
+    </div>
+  </div>
+</article>
+
+<!-- =========================================================
+     PAGE 3: Computer Vision Revolution & NLP Evolution
+     ========================================================= -->
+<article class="notebook-page"
+  data-title="Vision (AlexNet) &amp; NLP Evolution"
+  data-subtitle="ImageNet 2012, Word2Vec, Attention Mechanism"
+  data-keywords="alexnet imagenet cnn computer vision nlp word2vec rnn lstm attention"
+  data-tag="Vision &amp; NLP" data-tag-color="purple">
+  <div class="notebook-inner">
+
+    <div class="page-content">
+
+      <!-- Key Insight Callout: Difference between ML & DL -->
+      <div class="yellow-callout" style="font-size: 22px;">
+        &rArr; Difference between Machine Learning &amp; Deep Learning: Deep Learning automatically discovers hierarchical feature representations from raw data without manual feature engineering!
+      </div>
+
+      <!-- Computer Vision Revolution -->
+      <h2 class="note-section-red">
+        # Computer Vision Revolution
+      </h2>
+
+      <div class="handwritten-blue-text">
+        &ndash; The dataset: <strong>&lsquo;ImageNet&rsquo;</strong>
+      </div>
+      <div class="handwritten-blue-text">
+        &ndash; Trained large, large neural networks on powerful GPUs.
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.85); border-radius: 10px; padding: 16px; margin: 16px 0; border: 1.5px solid rgba(0,0,0,0.12);">
+        <div style="font-family: 'Caveat', cursive; font-size: 28px; font-weight: 700; color: var(--ink-dark);">
+          AlexNet (2012)
+        </div>
+        <div class="bracket-group">
+          <div>[ Alex Krizhevsky &amp; team</div>
+          <div>[ Deep Convolutional Neural Network (CNN)</div>
+          <div>[ It was a big, big leap &mdash; reduced ImageNet error from 26% to 15%!</div>
+        </div>
+      </div>
+
+      <!-- Real world impact -->
+      <div class="pills-grid">
+        <div class="green-pill-item">&gt; Face Unlock</div>
+        <div class="green-pill-item">&gt; Self Driving cars</div>
+        <div class="green-pill-item">&gt; X Rays &amp; Diagnostics</div>
+        <div class="green-pill-item">&gt; Shopping app products</div>
+      </div>
+
+      <div class="yellow-callout" style="justify-content: center; font-size: 24px;">
+        &ldquo; Machine could actually see &rdquo;
+      </div>
+
+      <!-- Natural Language Processing -->
+      <h2 class="note-section-red" style="margin-top: 28px;">
+        # Natural Language Processing (NLP)
+      </h2>
+
+      <!-- Ambiguity Examples -->
+      <div class="nlp-quotes-box">
+        <div class="nlp-quote-line">&ldquo; I saw a man with a telescope &rdquo;</div>
+        <div class="nlp-quote-explanation">&rarr; (Did I use the telescope, or was the man holding it?)</div>
+        <div class="nlp-quote-line">&ldquo; The chicken is ready to eat &rdquo;</div>
+        <div class="nlp-quote-explanation">&rarr; (Is the chicken eating food, or is it cooked and ready to be eaten?)</div>
+      </div>
+
+      <!-- Progression list -->
+      <div class="nlp-steps-list">
+        <div class="nlp-step-item">
+          <span class="step-num">0.</span>
+          <span><strong>Bag of Words:</strong> Simple word frequencies; loses word order and grammatical context.</span>
+        </div>
+        <div class="nlp-step-item">
+          <span class="step-num">1.</span>
+          <span><strong>N-grams &amp; Statistical Algorithms:</strong> Local sequential patterns (pairs/triplets of words).</span>
+        </div>
+        <div class="nlp-step-item">
+          <span class="step-num">2.</span>
+          <span><strong>RNN (Recurrent Neural Networks):</strong> Sequential token processing; struggled with long-term memory &amp; vanishing gradients.</span>
+        </div>
+        <div class="nlp-step-item">
+          <span class="step-num">3.</span>
+          <span><strong>LSTM (Long - Short Term Memory):</strong> Gated memory cells <span style="color: var(--ink-green); font-weight: bold;">&rarr; much, much better RNN!</span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</article>
+
+<!-- =========================================================
+     PAGE 4: Transformers (2017), LLMs & Generative AI
+     ========================================================= -->
+<article class="notebook-page"
+  data-title="Generative AI &amp; LLMs (Transformers)"
+  data-subtitle="Attention Is All You Need, GPT, Pre-training &amp; RLHF"
+  data-keywords="transformers attention is all you need gpt bert generative ai llm pre-training rlhf"
+  data-tag="GenAI" data-tag-color="yellow">
+  <div class="notebook-inner">
+
+    <div class="page-content">
+
+      <div class="handwritten-green-text" style="font-size: 21px; font-weight: bold; margin-bottom: 14px;">
+        ↳ much much better RNN (solving sequential bottlenecks with Self-Attention)
+      </div>
+
+      <!-- Transformers Section -->
+      <h2 class="note-section-red">
+        # Transformers (2017) {Big revolution in AI}
+      </h2>
+
+      <div class="handwritten-green-text" style="font-size: 22px;">
+        &rarr; Most remarkable history of mankind.
+      </div>
+
+      <div class="quote-box-red" style="font-size: 24px; border-left-color: var(--ink-blue); background: var(--bg-blue); color: var(--ink-blue-dark);">
+        &ldquo; Attention is all you need &rdquo;
+        <span style="display: block; font-size: 19px; color: var(--ink-yellow); font-weight: bold; margin-top: 4px;">
+          &rarr; Groundbreaking Research Paper by Google
+        </span>
+      </div>
+
+      <!-- Attention Sentence Demo -->
+      <div class="attention-demo">
+        <div class="attention-sentence">
+          &ldquo; The <span style="color: var(--ink-red); text-decoration: underline;">lion</span> did not cross the river because <span class="attention-circle">it</span> cannot swim &rdquo;
+        </div>
+        <div class="attention-arrow-indicator">
+          ⬆ Self-Attention dynamically binds the pronoun <strong>&lsquo;it&rsquo;</strong> to <strong>&lsquo;lion&rsquo;</strong> rather than &lsquo;river&rsquo; based on contextual probability!
+        </div>
+      </div>
+
+      <!-- LLM Section -->
+      <h2 class="note-section-red">
+        # Large Language Models (LLMs)
+      </h2>
+
+      <div class="quote-box-red" style="font-size: 23px;">
+        &ldquo; Transformers trained on very very very very large large large data &rdquo;
+      </div>
+
+      <!-- Generative AI Paradigm Shift -->
+      <h2 class="note-section-red">
+        # Generative AI
+      </h2>
+
+      <div class="paradigm-shift-container">
+        <div class="paradigm-card old">
+          <div class="paradigm-title old">Old AI Paradigm (Discriminative)</div>
+          <div class="handwritten-dark-text">&bull; Classification</div>
+          <div class="handwritten-dark-text">&bull; Predictions</div>
+          <div class="handwritten-dark-text">&bull; Recommendations</div>
+        </div>
+        <div class="paradigm-card modern">
+          <div class="paradigm-title modern">Modern AI Paradigm (Generative)</div>
+          <div class="handwritten-dark-text" style="font-weight: bold; color: var(--ink-green);">
+            &bull; Generate (Multi-Modal)
+          </div>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 18px; color: #15803d; margin-top: 4px;">
+            &rarr; Text, Images, Videos, Audio, Code &amp; Documents!
+          </div>
+        </div>
+      </div>
+
+      <!-- The ChatGPT Moment -->
+      <h2 class="note-section-red" style="margin-top: 26px;">
+        # The ChatGPT Moment (NOV 2022)
+      </h2>
+
+      <div class="handwritten-blue-text" style="font-size: 21px;">
+        &ndash; <strong>Conversation:</strong> Intuitive natural language interface accessible to anyone.
+      </div>
+      <div class="handwritten-blue-text" style="font-size: 21px;">
+        &ndash; <strong>Made it public:</strong> Fastest adopted consumer application in history (100M+ users).
+      </div>
+      <div class="handwritten-blue-text" style="font-size: 21px;">
+        &ndash; <strong>RLHF:</strong> Reinforcement Learning from Human Feedback for alignment, safety &amp; helpfulness.
+      </div>
+
+    </div>
+  </div>
+</article>
+
+<!-- =========================================================
+     PAGE 5: Multimodal AI & The AI Today (Agents)
+     ========================================================= -->
+<article class="notebook-page"
+  data-title="Multimodal AI &amp; Autonomous Agents"
+  data-subtitle="Vision-Language, Tool Use, Memory &amp; Multi-Agent"
+  data-keywords="multimodal gpt-4v gemini autonomous agents tools memory react reflection multi-agent"
+  data-tag="Agents" data-tag-color="green">
+  <div class="notebook-inner">
+
+    <div class="page-content">
+
+      <div class="handwritten-blue-text" style="font-size: 21px; margin-bottom: 14px;">
+        &ndash; <strong>Memory &amp; Context:</strong> Long-horizon reasoning across millions of tokens.
+      </div>
+      <div class="handwritten-blue-text" style="font-size: 21px; font-weight: bold; margin-bottom: 20px;">
+        &ndash; <strong>Led the whole AI movement:</strong> Foundation models powering everyday intelligence.
+      </div>
+
+      <!-- Multimodal AI -->
+      <h2 class="note-section-red">
+        # Multimodal AI
+      </h2>
+
+      <div class="modality-tags-grid">
+        <span class="modality-tag">🖼️ Images</span>
+        <span class="modality-tag">🎙️ Voice &amp; Audio</span>
+        <span class="modality-tag">🎥 Videos</span>
+        <span class="modality-tag">💬 Languages &amp; Code</span>
+        <span class="modality-tag">📄 Documents</span>
+      </div>
+
+      <div class="yellow-callout" style="justify-content: center; font-size: 25px;">
+        &ldquo; Almost every form of data &rdquo;
+      </div>
+
+      <!-- The AI Today -->
+      <h2 class="note-section-red" style="margin-top: 28px;">
+        # The AI today
+      </h2>
+
+      <p class="handwritten-dark-text" style="font-size: 22px; font-style: italic; margin-bottom: 12px;">
+        Earlier AI could only answer static questions. Today, modern AI agents can:
+      </p>
+
+      <!-- Capabilities Grid -->
+      <div class="capabilities-grid">
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Think &amp; Reason</div>
+            <div class="capability-desc">Chain of Thought &amp; planning</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Work autonomously</div>
+            <div class="capability-desc">Multi-step agent loops</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Plan</div>
+            <div class="capability-desc">Decompose complex goals</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Make decisions</div>
+            <div class="capability-desc">Self-correct &amp; adapt</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Call APIs</div>
+            <div class="capability-desc">Integrate external services</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Complete tasks</div>
+            <div class="capability-desc">End-to-end execution</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Write code</div>
+            <div class="capability-desc">Full-stack software engineering</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Has context</div>
+            <div class="capability-desc">Understand deep nuance</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Understand</div>
+            <div class="capability-desc">Multimodal cross-reasoning</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Solve problems</div>
+            <div class="capability-desc">Math, science &amp; logic</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Remember</div>
+            <div class="capability-desc">Persistent &amp; episodic memory</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Build and Test</div>
+            <div class="capability-desc">Automated CI/CD &amp; verification</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Search web</div>
+            <div class="capability-desc">Real-time information retrieval</div>
+          </div>
+        </div>
+        <div class="capability-card">
+          <span class="capability-star">⚡</span>
+          <div>
+            <div class="capability-text">Use tools</div>
+            <div class="capability-desc">Terminal, IDE, browser &amp; files</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Historical Milestones Footer -->
+      <div class="summary-timeline-bar">
+        <span>1950 &ndash; Alan Turing</span>
+        <span>1956 &ndash; John McCarthy</span>
+        <span>2012 &ndash; Deep Learning</span>
+        <span>2017 &ndash; Transformers</span>
+        <span>2022 &ndash; ChatGPT</span>
+        <span>2026+ &ndash; Agentic AI</span>
+      </div>
+
+    </div>
+  </div>
+</article>
+
+<!-- =========================================================
+     PAGE 6: Master Analysis: Have Machines Become Smarter?
+     ========================================================= -->
+<article class="notebook-page"
+  data-title="Future Frontiers &amp; Master Cheat Sheet"
+  data-subtitle="Timeline Comparison, Paradigm Matrix &amp; Key Takeaways"
+  data-keywords="future frontier reasoning agi timeline summary comparison cheat sheet"
+  data-tag="Summary" data-tag-color="slate">
+  <div class="notebook-inner">
+
+    <div class="page-content">
+
+      <h1 class="note-title-red" style="color: var(--ink-green);">
+        Analysis: Are Machines Smarter Than Humans?
+      </h1>
+
+      <p class="note-def-blue" style="border-left-color: var(--ink-green);">
+        The answer depends on whether we measure <strong>Narrow Specialization</strong> vs <strong>Artificial General Intelligence (AGI)</strong>.
+      </p>
+
+      <table class="handwritten-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Human Brain 🧠</th>
+            <th>AI Systems 🤖</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Processing Speed</strong></td>
+            <td>~100 Hz biological signal transmission</td>
+            <td><span style="color: var(--ink-blue); font-weight: bold;">TeraFLOPS &amp; PetaFLOPS parallel compute</span></td>
+          </tr>
+          <tr>
+            <td><strong>Memory Capacity</strong></td>
+            <td>Selective, associative &amp; reconstructive</td>
+            <td><span style="color: var(--ink-blue); font-weight: bold;">Petabytes of lossless retrieval &amp; 2M+ token contexts</span></td>
+          </tr>
+          <tr>
+            <td><strong>Specialized Mastery (Chess/Math/Code)</strong></td>
+            <td>Human champions surpassed</td>
+            <td><span style="color: var(--ink-green); font-weight: bold;">Superhuman performance (Deep Blue, AlphaGo, o1/o3)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Autonomous Tool &amp; API Usage</strong></td>
+            <td>Manual manipulation</td>
+            <td><span style="color: var(--ink-green); font-weight: bold;">Instantaneous programmatic agent orchestration</span></td>
+          </tr>
+          <tr>
+            <td><strong>Generalization &amp; Empathy</strong></td>
+            <td><span style="color: var(--ink-red); font-weight: bold;">Unmatched biological consciousness, emotional depth &amp; moral judgment</span></td>
+            <td>Probabilistic synthesis, synthetic empathy, hallucination risk</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote-box-red" style="border-left-color: var(--ink-blue); background: var(--bg-blue); color: var(--ink-blue-dark); font-size: 23px;">
+        &ldquo; Scaling laws and agent architectures prove that machines excel at computational scale, synthesis, and rapid tool orchestration &mdash; while humans remain the architects of intent, ethics, and profound creative insight. &rdquo;
+      </div>
+
+      <div class="closing-question-green"
+        style="background: var(--bg-yellow); border-color: var(--ink-yellow); color: var(--ink-yellow);">
+        Conclusion: The future is Collaborative Superintelligence — Humans + AI Agents working together!
+      </div>
+
+    </div>
+  </div>
+</article>
+`);
