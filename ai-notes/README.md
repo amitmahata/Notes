@@ -9,7 +9,8 @@ ai-notes/
 ├── chapters/
 │   ├── 01-inside-the-mind-of-ai/
 │   │   ├── 01-evolution-of-ai.js
-│   │   └── 02-does-chatgpt-know-or-guess.js
+│   │   ├── 02-does-chatgpt-know-or-guess.js
+│   │   └── 03-secret-language-of-llms.js
 │   └── 02-ai-native-software-engineer/      (create when the first topic is written)
 ├── script.js       # Loads the topic files, builds the Contents page, chapter openers,
 │                   # sidebar tree, page headers, prev/next, dots and deep links

@@ -35,6 +35,13 @@ window.AI_BOOK = {
           subtitle: 'Search vs LLMs, next-word prediction, hallucinations, tools & RAG',
           icon: '🎲',
           file: 'chapters/01-inside-the-mind-of-ai/02-does-chatgpt-know-or-guess.js'
+        },
+        {
+          id: 'secret-language-of-llms',
+          title: 'The Secret Language of LLMs',
+          subtitle: 'Tokens, Token IDs, tokenizers (BPE), languages, special tokens & the context window',
+          icon: '🔤',
+          file: 'chapters/01-inside-the-mind-of-ai/03-secret-language-of-llms.js'
         }
       ]
     },

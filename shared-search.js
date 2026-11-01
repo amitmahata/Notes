@@ -374,6 +374,234 @@ const NOTES_SEARCH_DATABASE = [
     ]
   },
 
+  // --- AI NOTES BOOK — Ch 1 › Topic 1.3 The Secret Language of LLMs (10 Pages) ---
+  {
+    id: "ai-p16",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 16,
+    url: "../ai-notes/index.html?page=16",
+    rootUrl: "ai-notes/index.html?page=16",
+    tag: "Tokens",
+    title: "Page 16: Computers Can't Read Words",
+    sections: [
+      {
+        heading: "The Secret Language of LLMs: computers cannot directly understand words",
+        content: "Kangchenjunga is the third highest mountain in the world. The statement is broken down into smaller pieces called tokens before it goes into an LLM."
+      },
+      {
+        heading: "Tokens and Token IDs",
+        content: "Weather is so good becomes tokens, each token is assigned a number called the Token ID, and the sequence of numbers is passed to the LLM."
+      },
+      {
+        heading: "LLMs predict the next token ID, not the next word",
+        content: "The model predicts what the next number will come, again and again; IDs are decoded back into text at the end."
+      }
+    ]
+  },
+  {
+    id: "ai-p17",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 17,
+    url: "../ai-notes/index.html?page=17",
+    rootUrl: "ai-notes/index.html?page=17",
+    tag: "Tokenizer",
+    title: "Page 17: What Is a Token?",
+    sections: [
+      {
+        heading: "What is a token? Tokenizer",
+        content: "A token is a unit of text defined by a tokenizer. A tokenizer is an algorithm that converts statements into tokens and IDs, and decodes IDs back to text."
+      },
+      {
+        heading: "Unit of text",
+        content: "A word can split into multiple tokens: playing = play + ing. Each and every word is not a token. Try the OpenAI Tokenizer tool."
+      },
+      {
+        heading: "Words vs Characters vs Tokens",
+        content: "Mount Kangchenjunga: 2 words, 19 characters, 5 tokens. Rule of thumb: 1 token is about 4 characters or 3/4 of a word in English."
+      }
+    ]
+  },
+  {
+    id: "ai-p18",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 18,
+    url: "../ai-notes/index.html?page=18",
+    rootUrl: "ai-notes/index.html?page=18",
+    tag: "Vocabulary",
+    title: "Page 18: Subwords & the Vocabulary",
+    sections: [
+      {
+        heading: "Why models use subword tokenization",
+        content: "Word tokenization creates a very lengthy vocabulary, character tokenization creates very long sequences. Subword is a balance of both."
+      },
+      {
+        heading: "Vocabulary and Token ID",
+        content: "Every tokenizer has a vocabulary: the collection of tokens it knows how to represent directly. The Token ID is the row number in the vocabulary. GPT-2 50k, GPT-4 cl100k, GPT-4o o200k."
+      }
+    ]
+  },
+  {
+    id: "ai-p19",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 19,
+    url: "../ai-notes/index.html?page=19",
+    rootUrl: "ai-notes/index.html?page=19",
+    tag: "Algorithms",
+    title: "Page 19: BPE, WordPiece & Unigram",
+    sections: [
+      {
+        heading: "Byte Pair Encoding (BPE)",
+        content: "OpenAI uses BPE tokenizers. BPE builds a vocabulary by repeatedly merging frequently occurring neighbouring pieces: low, lower, lowest, new, newest. un and able become single reusable tokens. Byte-level BPE has no unknown token."
+      },
+      {
+        heading: "WordPiece",
+        content: "Selects useful pieces using a likelihood-based criterion and matches them longest-match-first: play ##ing. Used by BERT."
+      },
+      {
+        heading: "Unigram",
+        content: "Starts with a large set of pieces and gradually removes less useful ones, the opposite of BPE. Used by T5 and ALBERT via SentencePiece."
+      }
+    ]
+  },
+  {
+    id: "ai-p20",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 20,
+    url: "../ai-notes/index.html?page=20",
+    rootUrl: "ai-notes/index.html?page=20",
+    tag: "Languages",
+    title: "Page 20: English vs Other Languages",
+    sections: [
+      {
+        heading: "English vs Hindi vs Hinglish vs mixed script",
+        content: "I am learning artificial intelligence. Main artificial intelligence seekh raha hoon. Two sentences with the same meaning do not necessarily have the same token count."
+      },
+      {
+        heading: "Hinglish",
+        content: "Mixes English vocabulary, Hindi grammar, Roman script, informal spellings and language-specific expressions. samjha, samjhao, samjhaao, samjha do, samjhaado: humans understand all, the tokenizer sees different strings."
+      },
+      {
+        heading: "Tokenization fertility",
+        content: "Fertility measures how many tokens are produced for a word or linguistic unit. Higher fertility means more pieces, more cost, fuller context window, slower replies."
+      }
+    ]
+  },
+  {
+    id: "ai-p21",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 21,
+    url: "../ai-notes/index.html?page=21",
+    rootUrl: "ai-notes/index.html?page=21",
+    tag: "Gotchas",
+    title: "Page 21: Emojis, Spaces, Capitals & Code",
+    sections: [
+      {
+        heading: "Emojis, whitespace, capital letters",
+        content: "Family emoji is several emojis joined by zero width joiners, so many tokens. The space before a word is part of the token. hello, Hello and HELLO have different IDs."
+      },
+      {
+        heading: "Special characters, numbers and code",
+        content: "Numbers are chopped into digit chunks. Every brace, indent and newline in code costs tokens. Why models struggle to count letters in strawberry."
+      }
+    ]
+  },
+  {
+    id: "ai-p22",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 22,
+    url: "../ai-notes/index.html?page=22",
+    rootUrl: "ai-notes/index.html?page=22",
+    tag: "Special Tokens",
+    title: "Page 22: Special Tokens & Chat Format",
+    sections: [
+      {
+        heading: "Special tokens",
+        content: "Reserved tokens for system instructions, start of message, end of message, tool output, last message, retrieval docs and more."
+      },
+      {
+        heading: "Chat template: system, user, assistant",
+        content: "User: what is 2+2? Assistant: 4. A chat is document completion. SYSTEM You are a helpful AI Assistant, USER Explain closures in JavaScript, ASSISTANT. The exact format varies across models, e.g. ChatML im_start im_end."
+      }
+    ]
+  },
+  {
+    id: "ai-p23",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 23,
+    url: "../ai-notes/index.html?page=23",
+    rootUrl: "ai-notes/index.html?page=23",
+    tag: "Context",
+    title: "Page 23: The Context Window",
+    sections: [
+      {
+        heading: "Context window",
+        content: "The amount of tokenized information a model can process in a request. Includes system instructions, prompt, previous messages, uploaded documents, retrieved information, tool outputs and the generated response. Shared between input and output. Maximum Context Length."
+      },
+      {
+        heading: "What happens when the context window fills",
+        content: "Rejecting the request, truncating input, removing older turns, summarising previous messages, retrieving only relevant sections, asking to shorten input, splitting into multiple requests. The visible chat is not always the model's context."
+      }
+    ]
+  },
+  {
+    id: "ai-p24",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 24,
+    url: "../ai-notes/index.html?page=24",
+    rootUrl: "ai-notes/index.html?page=24",
+    tag: "Prompting",
+    title: "Page 24: Long Prompt != Better Results",
+    sections: [
+      {
+        heading: "Long prompt is not better results",
+        content: "Explain closures in JavaScript with one simple example versus a long prompt asking exactly the same. Specific prompt: a beginner who understands functions and scope, one counter example, under 250 words."
+      },
+      {
+        heading: "Tokens directly affect API cost",
+        content: "Cost = input tokens x input price + output tokens x output price. Output tokens usually cost more. Cut filler, ask for a length limit, send only relevant docs."
+      }
+    ]
+  },
+  {
+    id: "ai-p25",
+    notebook: "ai-notes",
+    notebookName: "AI Notes",
+    notebookIcon: "🧠",
+    page: 25,
+    url: "../ai-notes/index.html?page=25",
+    rootUrl: "ai-notes/index.html?page=25",
+    tag: "Summary",
+    title: "Page 25: Myths, Revision & Quiz",
+    sections: [
+      {
+        heading: "Tokenization misconceptions",
+        content: "One token equals one word, every model uses the same tokenizer, Token ID represents meaning, one emoji equals one token, larger vocabulary is always better, larger context means perfect memory, more tokens produce a better answer."
+      },
+      {
+        heading: "Revision and self-quiz",
+        content: "Token, Token ID, tokenizer, vocabulary, subword, BPE WordPiece Unigram, fertility, special tokens, context window."
+      }
+    ]
+  },
+
   // --- DOCKER NOTES (6 Pages) ---
   {
     id: "docker-p1",
